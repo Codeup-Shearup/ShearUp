@@ -33,7 +33,21 @@ public class User {
     //NEED HELP WITH FK RELATIONSHIP // may have solved it
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usersId")
     private List<Appointment>  barber_details_id;
-
+    
+    public User() {
+    }
+    
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        username = copy.username;
+        first_name = copy.first_name;
+        last_name = copy.last_name;
+        email = copy.email;
+        password = copy.password;
+        is_barber = copy.is_barber;
+        barber_details_id = copy.barber_details_id;
+    }
+    
     public long getId() {
         return id;
     }

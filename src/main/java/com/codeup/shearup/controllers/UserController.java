@@ -1,5 +1,6 @@
 package com.codeup.shearup.controllers;
 
+import com.codeup.shearup.models.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

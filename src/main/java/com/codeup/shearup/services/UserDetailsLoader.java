@@ -1,5 +1,6 @@
 package com.codeup.shearup.services;
 
+import com.codeup.shearup.models.User;
 import com.codeup.shearup.models.UserWithRoles;
 import com.codeup.shearup.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
