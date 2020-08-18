@@ -1,5 +1,7 @@
 package com.codeup.shearup.models;
 
+import org.springframework.jdbc.core.CallableStatementCallback;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,5 +24,7 @@ public class Review {
     @OneToOne(mappedBy = "images", cascade = CascadeType.ALL)
     private Image image;
     //APPOINTMENT ID FOREIGN KEY NEEDED
+    @OneToOne(mappedBy = "appointments", cascade = CascadeType.ALL)
+    private Appointment appointment;
 
 }
