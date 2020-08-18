@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:include="partials/head :: head">
+    <title>Submit a Barber Review!</title>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+<div class="container p-5 border-left" style="margin-top: -5%;">
+    <h2>Create Posts</h2>
+
+    <!--    CREATE REVIEW FORM   -->
+    <hr>
+    <form th:action="@{'/posts/services'}" th:method="post" class="p-5" style="margin-top: -5%;">
+        <div class="form-group">
+            <label for="createTitle">Title</label>
+            <input type="text" class="form-control" id="createTitle" name="createTitle">
+        </div>
+        <div class="form-group">
+            <label for="createContent">Content</label>
+            <textarea class="form-control" id="createContent" name="createContent"></textarea>
+        </div>
+        <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Review</button>
+        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/services}">back</a>
+    </form>
+
+</div>
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>
