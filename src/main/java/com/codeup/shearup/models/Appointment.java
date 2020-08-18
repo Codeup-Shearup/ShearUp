@@ -10,7 +10,7 @@ public class Appointment {
     private long id;
 
     @Column(nullable = false, columnDefinition = "DATETIME NOT NULL")
-    private int appointment_date;
+    private int appointmentDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -26,9 +26,9 @@ public class Appointment {
     }
 
     //CONSTRUCTOR
-    public Appointment(long id, int appointment_date, User user, Service service) {
+    public Appointment(long id, int appointmentDate, User user, Service service) {
         this.id = id;
-        this.appointment_date = appointment_date;
+        this.appointmentDate = appointmentDate;
         this.user = user;
         this.service = service;
     }
@@ -43,12 +43,12 @@ public class Appointment {
         this.id = id;
     }
 
-    public int getAppointment_date() {
-        return appointment_date;
+    public int getAppointmentDate() {
+        return appointmentDate;
     }
 
-    public void setAppointment_date(int appointment_date) {
-        this.appointment_date = appointment_date;
+    public void setAppointmentDate(int appointmentDate) {
+        this.appointmentDate = appointmentDate;
     }
 
     public User getUser() {
