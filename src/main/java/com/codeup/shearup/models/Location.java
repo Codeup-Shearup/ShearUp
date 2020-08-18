@@ -10,10 +10,10 @@ public class Location {
     private long id;
 
     @Column(nullable = false, length = 50)
-    private String address_one;
+    private String addressOne;
 
     @Column(nullable = false, length = 50)
-    private String address_two;
+    private String addressTwo;
 
     @Column(nullable = false, length = 50)
     private String city;
@@ -22,7 +22,7 @@ public class Location {
     private String state;
 
     @Column(nullable = false, columnDefinition = "INT UNSIGNED")
-    private int zip_code;
+    private int zipCode;
 
 
     //Zero argument Constructor
@@ -31,13 +31,13 @@ public class Location {
     }
 
     //Constructor
-    public Location(long id, String address_one, String address_two, String city, String state, int zip_code) {
+    public Location(long id, String addressOne, String addressTwo, String city, String state, int zipCode) {
         this.id = id;
-        this.address_one = address_one;
-        this.address_two = address_two;
+        this.addressOne = addressOne;
+        this.addressTwo = addressTwo;
         this.city = city;
         this.state = state;
-        this.zip_code = zip_code;
+        this.zipCode = zipCode;
     }
 
     //GETTERS AND SETTERS
@@ -50,19 +50,19 @@ public class Location {
     }
 
     public String getAddress_one() {
-        return address_one;
+        return addressOne;
     }
 
-    public void setAddress_one(String address_one) {
-        this.address_one = address_one;
+    public void setAddress_one(String addressOne) {
+        this.addressOne = addressOne;
     }
 
     public String getAddress_two() {
-        return address_two;
+        return addressTwo;
     }
 
-    public void setAddress_two(String address_two) {
-        this.address_two = address_two;
+    public void setAddress_two(String addressTwo) {
+        this.addressTwo = addressTwo;
     }
 
     public String getCity() {
@@ -82,10 +82,10 @@ public class Location {
     }
 
     public int getZip_code() {
-        return zip_code;
+        return zipCode;
     }
 
-    public void setZip_code(int zip_code) {
-        this.zip_code = zip_code;
+    public void setZip_code(int zipCode) {
+        this.zipCode = zipCode;
     }
 }
