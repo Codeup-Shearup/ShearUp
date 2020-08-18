@@ -26,6 +26,8 @@ public class BarberDetail {
     private List<Image> images;
     //one to many barber details to images
 
+
+
     //Empty Constructor
     public BarberDetail(){
 

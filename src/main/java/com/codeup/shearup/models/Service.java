@@ -24,7 +24,7 @@ public class Service {
 
     //BARBER DETAILS FOREIGN KEY NEEDED HERE
     @ManyToOne
-    @JoinColumn(name = "barber_details_id")
+    @JoinColumn(name = "barber_details_id") //_id was here before
     private BarberDetail barberDetail;
 
     //Zero argument Constructor
