@@ -14,7 +14,9 @@ public class Image {
 
     //NEED SERVICE ID FOREIGN KEY
     // Get entire service object
-    @OneToOne(mappedBy = "services", cascade = CascadeType.ALL)
+    //OneToMany relationship
+    @ManyToOne
+    @JoinColumn(name = "service_id")
     private Service service;
 
     // Zero argument Constructor

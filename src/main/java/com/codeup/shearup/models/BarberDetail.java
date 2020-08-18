@@ -1,5 +1,7 @@
 package com.codeup.shearup.models;
 
+import org.hibernate.boot.model.source.spi.ColumnsAndFormulasSourceContainer;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,13 +21,21 @@ public class BarberDetail {
 
     // Need 2 foreign key relationships location id fk
     //one to one barber details to location
-    @OneToOne(mappedBy = "locations", cascade = CascadeType.ALL)
+    @OneToOne
     private Location location;
     // image id fk
-    @OneToMany(mappedBy = "images", cascade = CascadeType.ALL)
-    private List<Image> images;
+    //Barber should be only OneToOne 1 profile image
+
+    //TODO: ==========MAYBE CHANGE TO PROFILEIMAGE=========
+    //One profile image per Barber
+    @OneToOne
+    private Image image;
     //one to many barber details to images
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "barber_details")
+    private List<Service> services;
+
+    //=======TODO: UPDATE GETTERS AND SETTERS========
 
 
     //Empty Constructor
@@ -34,11 +44,14 @@ public class BarberDetail {
     }
 
     // Constructor
-    public BarberDetail(long id, String bio, Location location, List<Image> images) {
+
+
+    public BarberDetail(long id, String bio, Location location, Image image, List<Service> services) {
         this.id = id;
         this.bio = bio;
         this.location = location;
-        this.images = images;
+        this.image = image;
+        this.services = services;
     }
 
     //GETTERS AND SETTERS
@@ -66,11 +79,19 @@ public class BarberDetail {
         this.location = location;
     }
 
-    public List<Image> getImages() {
-        return images;
+    public Image getImage() {
+        return image;
     }
 
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public List<Service> getServices() {
+        return services;
+    }
+
+    public void setServices(List<Service> services) {
+        this.services = services;
     }
 }

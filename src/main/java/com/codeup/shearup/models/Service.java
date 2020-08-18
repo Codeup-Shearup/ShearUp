@@ -1,6 +1,7 @@
 package com.codeup.shearup.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "services")
@@ -26,6 +27,9 @@ public class Service {
     @ManyToOne
     @JoinColumn(name = "barber_details_id") //_id was here before
     private BarberDetail barberDetail;
+    // mappedBy references service on line 20 in Image class (ManyToOne)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "service")
+    private List<Image> images;
 
     //Zero argument Constructor
     public Service () {
