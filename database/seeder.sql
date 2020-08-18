@@ -1,5 +1,7 @@
 USE shearup_db;
 
+# SHOW GRANTS for 'root'@'localhost';
+
 # Users Table
 INSERT INTO users (id, username, first_name, last_name, email, password, is_barber, barber_details_id)
 VALUES (1, 'Barber1', 'Albert', 'Cudd', 'acudd0@mac.com', 'iX0R2rtCQ', 1, 1);
