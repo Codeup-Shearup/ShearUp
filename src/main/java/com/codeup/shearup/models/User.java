@@ -28,15 +28,42 @@ public class User {
     private String password;
 
     @Column(nullable = false, columnDefinition = "TINYINT")
-    private boolean is_barber;
+    private boolean isBarber;
 
     //NEED HELP WITH FK RELATIONSHIP // may have solved it
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usersId")
-    private List<Appointment>  barber_details_id;
-    
+    // Relationship with Appointments Table One to Many
+    //Grabs users id and service id from appointments Table
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usersId")
+//    private List<Appointment>  barber_details_id;
+
+    @OneToOne
+    private BarberDetail barberDetail;
+
+
+
+//    @JoinTable(
+//            name="barber_details")
+//            joinColumns={@JoinColumn(name="post_id")},
+//            inverseJoinColumns={@JoinColumn(name="category_id")}
+//    )
+
+    //ZERO ARGUMENT CONSTRUCTOR
     public User() {
+
     }
-    
+    //CONSTRUCTOR
+    public User(long id, String username, String first_name, String last_name, String email, String password, boolean isBarber, BarberDetail barberDetail) {
+        this.id = id;
+        this.username = username;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.password = password;
+        this.isBarber = isBarber;
+        this.barberDetail = barberDetail;
+    }
+
+    //COPY OF FOR SPRING
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
         username = copy.username;
@@ -44,10 +71,12 @@ public class User {
         last_name = copy.last_name;
         email = copy.email;
         password = copy.password;
-        is_barber = copy.is_barber;
-        barber_details_id = copy.barber_details_id;
+        isBarber = copy.isBarber;
+        barberDetail = copy.barberDetail;
     }
-    
+
+    //GETTERS AND SETTERS
+
     public long getId() {
         return id;
     }
@@ -96,19 +125,19 @@ public class User {
         this.password = password;
     }
 
-    public boolean getIs_barber() {
-        return is_barber;
+    public boolean isBarber() {
+        return isBarber;
     }
 
-    public void setIs_barber(boolean is_barber) {
-        this.is_barber = is_barber;
+    public void setBarber(boolean barber) {
+        isBarber = barber;
     }
 
-    public List<Appointment> getBarber_details_id() {
-        return barber_details_id;
+    public BarberDetail getBarberDetail() {
+        return barberDetail;
     }
 
-    public void setBarber_details_id(List<Appointment> barber_details_id) {
-        this.barber_details_id = barber_details_id;
+    public void setBarberDetail(BarberDetail barberDetail) {
+        this.barberDetail = barberDetail;
     }
 }
