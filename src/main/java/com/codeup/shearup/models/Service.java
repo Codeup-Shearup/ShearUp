@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
 
     @Column(nullable = false, length = 50, unique = true)
@@ -22,6 +23,9 @@ public class Service {
     private int duration;
 
     //BARBER DETAILS FOREIGN KEY NEEDED HERE
+    @ManyToOne
+    @JoinColumn(name = "barber_details_id")
+    private BarberDetail barberDetail;
 
 
 }

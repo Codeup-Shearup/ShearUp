@@ -13,14 +13,10 @@ public class Appointment {
     private int appointment_date;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "usersId")
-    private User userId;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne
-    @JoinColumn(name = "service_id", referencedColumnName = "usersId")
-    private User serviceId;
-
-
-
-
+    @JoinColumn(name = "service_id")
+    private Service service;
 }

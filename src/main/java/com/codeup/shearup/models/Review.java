@@ -19,7 +19,8 @@ public class Review {
     private double rating;
 
     //IMAGE ID FOREIGN KEY NEEDED
-
+    @OneToOne(mappedBy = "images", cascade = CascadeType.ALL)
+    private Image image;
     //APPOINTMENT ID FOREIGN KEY NEEDED
 
 }

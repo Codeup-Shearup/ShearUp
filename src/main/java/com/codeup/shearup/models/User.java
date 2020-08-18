@@ -31,10 +31,24 @@ public class User {
     private boolean is_barber;
 
     //NEED HELP WITH FK RELATIONSHIP // may have solved it
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usersId")
-    private List<Appointment>  barber_details_id;
+    // Relationship with Appointments Table One to Many
+    //Grabs users id and service id from appointments Table
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usersId")
+//    private List<Appointment>  barber_details_id;
+
+    @OneToOne(mappedBy = "barber_details", cascade = CascadeType.ALL)
+    private BarberDetail barber_details_id;
+
+
+
+//    @JoinTable(
+//            name="barber_details")
+//            joinColumns={@JoinColumn(name="post_id")},
+//            inverseJoinColumns={@JoinColumn(name="category_id")}
+//    )
     
     public User() {
+
     }
     
     public User(User copy) {
@@ -104,11 +118,15 @@ public class User {
         this.is_barber = is_barber;
     }
 
-    public List<Appointment> getBarber_details_id() {
+    public boolean isIs_barber() {
+        return is_barber;
+    }
+
+    public BarberDetail getBarber_details_id() {
         return barber_details_id;
     }
 
-    public void setBarber_details_id(List<Appointment> barber_details_id) {
+    public void setBarber_details_id(BarberDetail barber_details_id) {
         this.barber_details_id = barber_details_id;
     }
 }

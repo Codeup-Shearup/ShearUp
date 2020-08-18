@@ -13,5 +13,8 @@ public class Image {
     private String filestack_url;
 
     //NEED SERVICE ID FOREIGN KEY
+    // Get entire service object
+    @OneToOne(mappedBy = "services", cascade = CascadeType.ALL)
+    private Service service;
 
 }
