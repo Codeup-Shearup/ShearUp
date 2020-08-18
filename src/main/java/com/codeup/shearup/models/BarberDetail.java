@@ -26,5 +26,49 @@ public class BarberDetail {
     private List<Image> images;
     //one to many barber details to images
 
+    //Empty Constructor
+    public BarberDetail(){
 
+    }
+
+    // Constructor
+    public BarberDetail(long id, String bio, Location location, List<Image> images) {
+        this.id = id;
+        this.bio = bio;
+        this.location = location;
+        this.images = images;
+    }
+
+    //GETTERS AND SETTERS
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
 }

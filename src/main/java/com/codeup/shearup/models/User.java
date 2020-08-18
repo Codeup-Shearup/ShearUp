@@ -46,11 +46,24 @@ public class User {
 //            joinColumns={@JoinColumn(name="post_id")},
 //            inverseJoinColumns={@JoinColumn(name="category_id")}
 //    )
-    
+
+    //ZERO ARGUMENT CONSTRUCTOR
     public User() {
 
     }
-    
+    //CONSTRUCTOR
+    public User(long id, String username, String first_name, String last_name, String email, String password, boolean is_barber, BarberDetail barber_details_id) {
+        this.id = id;
+        this.username = username;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.password = password;
+        this.is_barber = is_barber;
+        this.barber_details_id = barber_details_id;
+    }
+
+    //COPY OF FOR SPRING
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
         username = copy.username;
@@ -61,7 +74,9 @@ public class User {
         is_barber = copy.is_barber;
         barber_details_id = copy.barber_details_id;
     }
-    
+
+    //GETTERS AND SETTERS
+
     public long getId() {
         return id;
     }
@@ -110,16 +125,12 @@ public class User {
         this.password = password;
     }
 
-    public boolean getIs_barber() {
+    public boolean isIs_barber() {
         return is_barber;
     }
 
     public void setIs_barber(boolean is_barber) {
         this.is_barber = is_barber;
-    }
-
-    public boolean isIs_barber() {
-        return is_barber;
     }
 
     public BarberDetail getBarber_details_id() {
