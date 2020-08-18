@@ -10,7 +10,7 @@ public class Image {
     private long id;
 
     @Column(nullable = true, length = 255)
-    private String filestack_url;
+    private String filestackUrl;
 
     //NEED SERVICE ID FOREIGN KEY
     // Get entire service object
@@ -25,9 +25,9 @@ public class Image {
     }
 
     //Constructor
-    public Image(long id, String filestack_url, Service service) {
+    public Image(long id, String filestackUrl, Service service) {
         this.id = id;
-        this.filestack_url = filestack_url;
+        this.filestackUrl = filestackUrl;
         this.service = service;
     }
 
@@ -42,11 +42,11 @@ public class Image {
     }
 
     public String getFilestack_url() {
-        return filestack_url;
+        return filestackUrl;
     }
 
-    public void setFilestack_url(String filestack_url) {
-        this.filestack_url = filestack_url;
+    public void setFilestack_url(String filestackUrl) {
+        this.filestackUrl = filestackUrl;
     }
 
     public Service getService() {
