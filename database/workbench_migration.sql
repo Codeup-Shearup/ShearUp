@@ -42,10 +42,9 @@ CREATE TABLE IF NOT EXISTS `shearup_db`.`services` (
   `name` VARCHAR(50) NOT NULL,
   `description` LONGTEXT NOT NULL,
   `price` DECIMAL(4,2) UNSIGNED NOT NULL,
-  `duration` INT UNSIGNED NULL DEFAULT 'depends on client',
-  `barber_details_id_fk` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+  `duration` INT UNSIGNED NULL,
+  `barber_details_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
@@ -58,7 +57,7 @@ DROP TABLE IF EXISTS `shearup_db`.`images` ;
 CREATE TABLE IF NOT EXISTS `shearup_db`.`images` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `filestack_url` VARCHAR(255) NOT NULL,
-  `service_id_fk` INT UNSIGNED NOT NULL,
+  `service_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
@@ -72,11 +71,11 @@ DROP TABLE IF EXISTS `shearup_db`.`barber_details` ;
 CREATE TABLE IF NOT EXISTS `shearup_db`.`barber_details` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `bio` LONGTEXT NOT NULL,
-  `location_id_fk` INT UNSIGNED NOT NULL,
-  `image_id_fk` INT UNSIGNED NOT NULL,
+  `location_id` INT UNSIGNED NOT NULL,
+  `image_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
 -- Table `shearup_db`.`users`
@@ -91,10 +90,10 @@ CREATE TABLE IF NOT EXISTS `shearup_db`.`users` (
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(50) NOT NULL,
   `is_barber` TINYINT NOT NULL,
-  `barber_details_id_fk` INT UNSIGNED NOT NULL,
+  `barber_details_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
+  UNIQUE INDEX `email_UNIQUE` (`email`),
+  UNIQUE INDEX `username_UNIQUE` (`username`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
@@ -106,8 +105,8 @@ DROP TABLE IF EXISTS `shearup_db`.`appointments` ;
 
 CREATE TABLE IF NOT EXISTS `shearup_db`.`appointments` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id_fk` INT NULL,
-  `service_id_fk` INT UNSIGNED NULL,
+  `user_id` INT NULL,
+  `service_id` INT UNSIGNED NULL,
   `appointment_date` DATETIME NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -122,14 +121,10 @@ CREATE TABLE IF NOT EXISTS `shearup_db`.`reviews` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NOT NULL,
   `content` LONGTEXT NOT NULL,
-  `rating` DECIMAL(1,1) UNSIGNED NOT NULL,
-  `image_id_fk` INT UNSIGNED NOT NULL,
-  `appointment_id_fk` INT UNSIGNED NOT NULL,
+  `rating` DECIMAL(2,1) UNSIGNED NOT NULL,
+  `image_id` INT UNSIGNED NOT NULL,
+  `appointment_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

@@ -14,60 +14,60 @@ VALUES (5, 'Barber3', 'Susan', 'Stormouth', 'mstormouth4@themeforest.net', 'dfD9
 
 
 # Barber Details Table
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
-VALUES (1, 'lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque', 1, 1);
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
-VALUES (2, 'vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci', 2, 2);
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
-VALUES (3, 'amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in', 3, 3);
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
-VALUES (4, 'phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat', 4, 4);
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
+INSERT INTO barber_details (id, bio, location_id, image_id)
+VALUES (1, 'Best barber in all of Texas!', 1, 1);
+INSERT INTO barber_details (id, bio, location_id, image_id)
+VALUES (2, 'Pretty skilled with shear not going to lie.', 2, 2);
+INSERT INTO barber_details (id, bio, location_id, image_id)
+VALUES (3, 'Cheers to the Shears!', 3, 3);
+INSERT INTO barber_details (id, bio, location_id, image_id)
+VALUES (4, 'Superior cuts found here with me.', 4, 4);
+INSERT INTO barber_details (id, bio, location_id, image_id)
 VALUES (5, 'nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis', 5, 5);
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
+INSERT INTO barber_details (id, bio, location_id, image_id)
 VALUES (6, 'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in', 6, 6);
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
+INSERT INTO barber_details (id, bio, location_id, image_id)
 VALUES (7, 'luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac', 7, 7);
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
+INSERT INTO barber_details (id, bio, location_id, image_id)
 VALUES (8, 'aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed', 8, 8);
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
+INSERT INTO barber_details (id, bio, location_id, image_id)
 VALUES (9, 'adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy', 9, 9);
-INSERT INTO barber_details_id (id, bio, location_id, image_id)
+INSERT INTO barber_details (id, bio, location_id, image_id)
 VALUES (10, 'quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus', 10, 10);
 
 # Appointments Table
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (1, 1, 1, 1, '08/18/2020 08:30');
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (2, 2, 2, 2, '08/18/2020 09:30');
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (3, 3, 2, 3, '08/19/2020 10:30');
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (4, 4, 3, 4, '08/19/2020 12:30');
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (5, 5, 5, 5, '08/19/2020 09:00');
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (6, 6, 6, 6, '08/20/2020 08:30');
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (7, 7, 7, 7, '08/20/2020 07:30');
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (8, 8, 8, 8, '08/20/2020 08:30');
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (9, 9, 9, 9, '08/21/2020 12:00');
-INSERT INTO appointments (id, user_id, barber_details_id, service_id, appointment_date) VALUES (10, 10, 10, 10, '08/21/2020 11:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (1, 1, 1, '08/18/2020 08:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (2, 2, 2, '08/18/2020 09:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (3, 2, 3, '08/19/2020 10:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (4, 3, 4, '08/19/2020 12:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (5, 5, 5, '08/19/2020 09:00');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (6, 6, 6, '08/20/2020 08:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (7, 7, 7, '08/20/2020 07:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (10, 10, 10, '08/21/2020 11:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (9, 9, 9, '08/21/2020 12:00');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (8, 8, 8, '08/20/2020 08:30');
 
 # Services Table
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (1, 'Gentlemen Cut', 'natoque penatibus et magnis dis', '$23.00', 30, 1);
+VALUES (1, 'Gentlemen Cut', 'natoque penatibus et magnis dis', '23.00', 30, 1);
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (2, 'Bald Fade', 'pede lobortis ligula sit amet', '$15.00', 20, 1);
+VALUES (2, 'Bald Fade', 'pede lobortis ligula sit amet', '15.00', 20, 1);
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (3, 'Beard Trim', 'dapibus dolor vel est donec odio justo sollicitudin ut', '$7.00', 25, 1);
+VALUES (3, 'Beard Trim', 'dapibus dolor vel est donec odio justo sollicitudin ut', '7.00', 25, 1);
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (4, 'Kids Cut', 'ut blandit non interdum in ante vestibulum ante', '$20.00', 30, 1);
+VALUES (4, 'Kids Cut', 'ut blandit non interdum in ante vestibulum ante', '20.00', 30, 1);
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (5, 'Taper', 'luctus et ultrices posuere cubilia curae', '$16.00', 20, 1);
+VALUES (5, 'Taper', 'luctus et ultrices posuere cubilia curae', '16.00', 20, 1);
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (6, 'Military Cut', 'amet nunc viverra dapibus nulla suscipit', '$13.00', 20, 1);
+VALUES (6, 'Military Cut', 'amet nunc viverra dapibus nulla suscipit', '13.00', 20, 1);
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (7, 'Straight Razor Shave', 'volutpat in congue etiam justo etiam pretium iaculis', '$15.00', 25, 1);
+VALUES (7, 'Straight Razor Shave', 'volutpat in congue etiam justo etiam pretium iaculis', '15.00', 25, 1);
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (8, 'Beard Conditioning Treatment', 'sit amet nulla quisque arcu libero', '$25 .00', 45, 1);
+VALUES (8, 'Beard Conditioning Treatment', 'sit amet nulla quisque arcu libero', '25.00', 45, 1);
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (9, 'Long haircut', 'primis in faucibus orci luctus et ultrices posuere', '$17.00', 30, 2);
+VALUES (9, 'Long haircut', 'primis in faucibus orci luctus et ultrices posuere', '17.00', 30, 2);
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
-VALUES (10, 'Grey Hair Blending Treatment', 'ut blandit non interdum in ante vestibulum', '$55.00', 60, 2);
+VALUES (10, 'Grey Hair Blending Treatment', 'ut blandit non interdum in ante vestibulum', '55.00', 60, 2);
 
 # Reviews Table
 INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
