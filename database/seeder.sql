@@ -36,16 +36,16 @@ INSERT INTO barber_details (id, bio, location_id, image_id)
 VALUES (10, 'quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus', 10, 10);
 
 # Appointments Table
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (1, 1, 1, '08/18/2020 08:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (2, 2, 2, '08/18/2020 09:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (3, 2, 3, '08/19/2020 10:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (4, 3, 4, '08/19/2020 12:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (5, 5, 5, '08/19/2020 09:00');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (6, 6, 6, '08/20/2020 08:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (7, 7, 7, '08/20/2020 07:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (10, 10, 10, '08/21/2020 11:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (9, 9, 9, '08/21/2020 12:00');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (8, 8, 8, '08/20/2020 08:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (1, 1, 1, '2020-08-01 08:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (2, 2, 2, '2020-08-01 09:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (3, 2, 3, '2020-08-01 10:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (4, 3, 4, '2020-08-15 12:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (5, 5, 5, '2020-08-19 09:00');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (6, 6, 6, '2020-08-01 08:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (7, 7, 7, '2020-08-01 07:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (10, 10, 10, '2020-08-01 11:30');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (9, 9, 9, '2020-08-15 12:00');
+INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (8, 8, 8, '2020-08-17 08:30');
 
 # Services Table
 INSERT INTO services (id, name, description, price, duration, barber_details_id)
