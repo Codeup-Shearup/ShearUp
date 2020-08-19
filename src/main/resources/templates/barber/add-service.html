@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add service page</title>
+</head>
+<body>
+    <h1>Add Service page</h1>
+    <form th:action="@{'/barber/add-service'}"  th:method="POST" th:object="${posts}">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" th:field="*{Name}" id="title">
+        </div>
+        <br>
+        <div>
+            <label for="body"></label>
+            <textarea th:field="*{description}" id="body" cols="30" rows="10"></textarea>
+        </div>
+
+        <button>Add Service</button>
+    </form>
+</body>
+</html>
