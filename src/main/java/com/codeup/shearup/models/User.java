@@ -125,7 +125,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean isBarber() {
+    public boolean getIsBarber() {
         return isBarber;
     }
 
