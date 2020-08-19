@@ -19,6 +19,13 @@ public class Image {
     @JoinColumn(name = "service_id")
     private Service service;
 
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "image")
+    private BarberDetail barber;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "image")
+    private Review review;
+
     // Zero argument Constructor
     public Image() {
 

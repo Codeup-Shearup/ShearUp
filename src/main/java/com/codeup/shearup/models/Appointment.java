@@ -1,6 +1,7 @@
 package com.codeup.shearup.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "appointments")
@@ -19,6 +20,10 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(name = "service_id")
     private Service service;
+
+    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL)
+    private Review reviews;
+
 
     //Zero argument constructor
     public Appointment() {
