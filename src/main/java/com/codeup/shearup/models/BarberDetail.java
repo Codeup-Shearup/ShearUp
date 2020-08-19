@@ -32,7 +32,10 @@ public class BarberDetail {
     private Image image;
     //one to many barber details to images
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "barber_details")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "barberDetail")
+    private User user;
+
+    @OneToMany(mappedBy = "barberDetail")
     private List<Service> services;
 
     //=======TODO: UPDATE GETTERS AND SETTERS========
@@ -46,12 +49,11 @@ public class BarberDetail {
     // Constructor
 
 
-    public BarberDetail(long id, String bio, Location location, Image image, List<Service> services) {
+    public BarberDetail(long id, String bio, Location location, Image image) {
         this.id = id;
         this.bio = bio;
         this.location = location;
         this.image = image;
-        this.services = services;
     }
 
     //GETTERS AND SETTERS
@@ -87,11 +89,4 @@ public class BarberDetail {
         this.image = image;
     }
 
-    public List<Service> getServices() {
-        return services;
-    }
-
-    public void setServices(List<Service> services) {
-        this.services = services;
-    }
 }

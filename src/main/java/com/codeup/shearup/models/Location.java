@@ -9,10 +9,10 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 255)
     private String addressOne;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 255)
     private String addressTwo;
 
     @Column(nullable = false, length = 50)
@@ -24,6 +24,9 @@ public class Location {
     @Column(nullable = false, columnDefinition = "INT UNSIGNED")
     private int zipCode;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "location")
+    private BarberDetail barber;
+
 
     //Zero argument Constructor
     public Location() {
@@ -31,13 +34,14 @@ public class Location {
     }
 
     //Constructor
-    public Location(long id, String addressOne, String addressTwo, String city, String state, int zipCode) {
+    public Location(long id, String addressOne, String addressTwo, String city, String state, int zipCode, BarberDetail barber) {
         this.id = id;
         this.addressOne = addressOne;
         this.addressTwo = addressTwo;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+        this.barber = barber;
     }
 
     //GETTERS AND SETTERS

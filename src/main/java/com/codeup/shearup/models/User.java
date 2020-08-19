@@ -12,7 +12,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, length = 50, unique = true)
     private String username;
 
     @Column(nullable = false, length = 50, unique = false)
@@ -24,7 +24,7 @@ public class User {
     @Column(nullable = false, length = 100, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = false, length = 50, unique = false)
     private String password;
 
     @Column(nullable = false, columnDefinition = "TINYINT")
@@ -65,14 +65,14 @@ public class User {
 
     //COPY OF FOR SPRING
     public User(User copy) {
-        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
-        username = copy.username;
-        firstName = copy.firstName;
-        lastName = copy.lastName;
-        email = copy.email;
-        password = copy.password;
-        isBarber = copy.isBarber;
-        barberDetail = copy.barberDetail;
+        this.id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        this.username = copy.username;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        this.email = copy.email;
+        this.password = copy.password;
+        this.isBarber = copy.isBarber;
+        this.barberDetail = copy.barberDetail;
     }
 
     //GETTERS AND SETTERS

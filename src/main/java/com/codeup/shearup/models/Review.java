@@ -17,14 +17,15 @@ public class Review {
     @Column(nullable = true, columnDefinition = "LONGTEXT")
     private String content;
 
-    @Column(nullable = false, columnDefinition = "DECIMAL(1,1)")
+    @Column(nullable = false, columnDefinition = "DECIMAL(2,1)")
     private double rating;
 
-    //IMAGE ID FOREIGN KEY NEEDED
-    @OneToOne(mappedBy = "images", cascade = CascadeType.ALL)
+    @OneToOne
     private Image image;
-    //APPOINTMENT ID FOREIGN KEY NEEDED
-    @OneToOne(mappedBy = "appointments", cascade = CascadeType.ALL)
+
+
+    @OneToOne
+    @JoinColumn(name = "appointment_id") //_id was here before
     private Appointment appointment;
 
     //Zero argument constructor
@@ -75,13 +76,13 @@ public class Review {
         this.rating = rating;
     }
 
-    public Image getImage() {
-        return image;
-    }
+//    public Image getImage() {
+//        return image;
+//    }
 
-    public void setImage(Image image) {
-        this.image = image;
-    }
+//    public void setImage(Image image) {
+//        this.image = image;
+//    }
 
     public Appointment getAppointment() {
         return appointment;
