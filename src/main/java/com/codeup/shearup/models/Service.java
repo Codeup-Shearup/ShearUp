@@ -8,7 +8,6 @@ import java.util.List;
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
 
     @Column(nullable = false, length = 50, unique = true)
@@ -28,6 +27,8 @@ public class Service {
     @JoinColumn(name = "barber_details_id") //_id was here before
     private BarberDetail barberDetail;
     // mappedBy references service on line 20 in Image class (ManyToOne)
+
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "service")
     private List<Image> images;
 
