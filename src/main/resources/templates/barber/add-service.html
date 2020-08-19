@@ -8,15 +8,24 @@
     <h1>Add Service page</h1>
     <form th:action="@{'/barber/add-service'}"  th:method="POST" th:object="${service}">
         <div>
-            <label for="title">Title</label>
-            <input type="text" th:field="*{Name}" id="title">
-        </div>
-        <br>
-        <div>
-            <label for="body"></label>
-            <textarea th:field="*{description}" id="body" cols="30" rows="10"></textarea>
+            <label for="title">Service Name: </label>
+            <input type="text" th:field="*{name}" id="title">
         </div>
 
+        <div>
+            <label for="description">Description: </label>
+            <input th:field="*{description}" id="description">
+        </div>
+
+        <div>
+            <label for="duration">Duration: </label>
+            <input th:field="*{duration}" id="duration">
+        </div>
+
+        <div>
+            <label for="price">Price: $</label>
+            <input th:field="*{price}" id="price">
+        </div>
         <button>Add Service</button>
     </form>
 </body>

@@ -46,6 +46,8 @@ public class Service {
         this.barberDetail = barberDetail;
     }
 
+
+
     //GETTERS AND SETTERS
 
     public long getId() {
