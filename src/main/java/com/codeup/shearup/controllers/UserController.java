@@ -1,6 +1,7 @@
 package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.User;
+import com.codeup.shearup.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,25 +11,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
-//	private UserRepository users;
-//	private PasswordEncoder passwordEncoder;
+	private UserRepository users;
+	private PasswordEncoder passwordEncoder;
 //
-//	public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
-//		this.users = users;
-//		this.passwordEncoder = passwordEncoder;
-//	}
+	public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
+		this.users = users;
+		this.passwordEncoder = passwordEncoder;
+	}
 	
 	@GetMapping("/sign-up")
 	public String showSignupForm(Model model){
 		model.addAttribute("user", new User());
-		return "users/sign-up";
+		return "users/signup";
 	}
 	
 	@PostMapping("/sign-up")
 	public String saveUser(@ModelAttribute User user){
-//		String hash = passwordEncoder.encode(user.getPassword());
-//		user.setPassword(hash);
-//		users.save(user);
+		String hash = passwordEncoder.encode(user.getPassword());
+		user.setPassword(hash);
+		users.save(user);
 		return "redirect:/login";
 	}
 }
