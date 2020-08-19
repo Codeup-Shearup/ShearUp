@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-	<meta charset="UTF-8" />
-	<title>Log In</title>
-</head>
+<head th:replace="partials :: head (Title = 'Login')"></head>
 <body>
 
 <div sec:authorize="isAuthenticated()">
@@ -25,5 +22,6 @@
 	<input id="password" name="password" type="password" />
 	<input type="submit" value="Log In" />
 </form>
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
