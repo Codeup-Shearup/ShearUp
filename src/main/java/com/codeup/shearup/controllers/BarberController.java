@@ -35,9 +35,6 @@ public class BarberController {
     }
 
 
-
-
-
     //======ADD A SERVICE PAGE FOR BARBER=========//
     @GetMapping("/barber/add-service")
     public String addService(Model model){
