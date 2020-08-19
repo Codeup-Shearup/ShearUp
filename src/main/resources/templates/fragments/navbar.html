@@ -1,16 +1,81 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Navbar</title>
+    <title>ShearUp Navbar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/da30200d10.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
+<!--NAVBAR-->
+<div th:fragment="navbar">
+<!--    LOGO on all Navbars-->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar">
+        <a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i></i>ShearUp</i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--NAVBAR ITEMS-->
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
+                <th:block sec:authorize="isAuthenticated()">
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{services}">Services</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="@{barberProfile}">Barber</a>-->
+<!--                    </li>-->
+<!--                </th:block>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{clientProfile}">Client</a>-->
+<!--                </li>-->
 
 
+                <!--IF NOT AUTHENTICATED HIDE SHOW THESE-->
+
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
+                    </li>
+                </th:block>
 
 
+                <!--IF AUTHENTICATED HIDE SHOW THESE-->
 
 
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form  th:action="@{/logout}" th:method="post">
+                            <button class="nav-link">Logout</button>
+                        </form>
+                    </li>
+                </th:block>
+
+            </ul>
+        </div>
+<!--        should we search on other navbar pages?-->
+<!--        <form action="/ads/search" class="form-inline" method="GET">-->
+<!--            <input id="s" name="s" class="form-control" type="search" placeholder="Search Ads..." aria-label="Search">-->
+<!--            <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>-->
+<!--        </form>-->
+    </nav>
+</div>
+
+<!--needed CDN-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
 </html>
