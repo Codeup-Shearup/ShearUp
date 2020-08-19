@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head th:include="partials/head :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-replace-svg="nest"></script>
+</head>
+<body>
+<footer th:fragment="footer">
+    <ul>
+        <li>
+            <i class="fab fa-twitter">
+                <a th:href="@{}"></a>
+            </i>
+        </li>
+        <li>
+            <i class="fab fa-instagram">
+                <a th:href="@{}"></a>
+            </i>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>
