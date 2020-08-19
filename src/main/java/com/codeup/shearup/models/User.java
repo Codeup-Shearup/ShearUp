@@ -24,7 +24,7 @@ public class User {
     @Column(nullable = false, length = 100, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 50, unique = false)
+    @Column(nullable = false, length = 255, unique = false)
     private String password;
 
     @Column(nullable = false, columnDefinition = "TINYINT")
@@ -125,7 +125,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean isBarber() {
+    public boolean getIsBarber() {
         return isBarber;
     }
 

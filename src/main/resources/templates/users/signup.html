@@ -4,6 +4,19 @@
 <body>
 <h1>Create an account</h1>
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+	<label for="is_barber">I am a: </label>
+	<select name="is_barber" id="is_barber" th:field="*{isBarber}">
+<!--		<option th:value="selected" th:text="Select one" selected="selected"></option>-->
+		<option th:value="1" th:text="Barber"></option>
+		<option th:value="0" th:text="Client"></option>
+	</select>
+	
+	<label for="first-name">First Name</label>
+	<input id="first-name" th:field="*{firstName}" />
+	
+	<label for="last-name">Last Name</label>
+	<input id="last-name" th:field="*{lastName}" />
+	
 	<label for="username">Username</label>
 	<input id="username" th:field="*{username}" />
 	
