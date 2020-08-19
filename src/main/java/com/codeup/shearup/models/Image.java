@@ -41,11 +41,11 @@ public class Image {
         this.id = id;
     }
 
-    public String getFilestack_url() {
+    public String getFilestackUrl() {
         return filestackUrl;
     }
 
-    public void setFilestack_url(String filestackUrl) {
+    public void setFilestackUrl(String filestackUrl) {
         this.filestackUrl = filestackUrl;
     }
 

@@ -33,8 +33,8 @@ public class User {
     //NEED HELP WITH FK RELATIONSHIP // may have solved it
     // Relationship with Appointments Table One to Many
     //Grabs users id and service id from appointments Table
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usersId")
-//    private List<Appointment>  barber_details_id;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usersId")
+    private List<Appointment>  barber_details_id;
 
     @OneToOne
     private BarberDetail barberDetail;
