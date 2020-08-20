@@ -124,15 +124,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public boolean getIsBarber() {
+    
+    public boolean isBarber() {
         return isBarber;
     }
-
+    
     public void setBarber(boolean barber) {
         isBarber = barber;
     }
-
+    
     public BarberDetail getBarberDetail() {
         return barberDetail;
     }
