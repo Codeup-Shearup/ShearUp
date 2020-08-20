@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS barber_details (
 );
 CREATE TABLE IF NOT EXISTS  services (
                                          id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-                                         name VARCHAR(50) NOT NULL,
+                                         title VARCHAR(50) NOT NULL,
                                          description VARCHAR(255) NOT NULL,
                                          price DECIMAL (4,2) NOT NULL,
                                          duration INT DEFAULT NULL,
