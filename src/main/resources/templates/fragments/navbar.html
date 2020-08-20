@@ -31,7 +31,7 @@
                 <!--WITH BANG IF NOT AUTHENTICATED HIDE THESE-->
                 <th:block sec:authorize="!isAuthenticated()">
                     <li class="nav-item">
-<!--                        <a class="nav-link" th:href="@{login}">Login</a> why does this way not work ? Knoah -->
+<!--                        <a class="nav-link" th:href="@{/login}">Login</a> this format does not work, why?  knoah-->
                         <a class="nav-link" href="/login">Login</a>
                     </li>
                 </th:block>
