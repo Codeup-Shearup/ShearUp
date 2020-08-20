@@ -2,7 +2,6 @@ package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.Appointment;
 import com.codeup.shearup.models.Review;
-import com.codeup.shearup.models.User;
 import com.codeup.shearup.repositories.AppointmentRepository;
 import com.codeup.shearup.repositories.ReviewRepository;
 import com.codeup.shearup.repositories.UserRepository;
@@ -22,6 +21,13 @@ public class ReviewsController {
         this.reviewDao = reviewDao;
         this.usersDao = usersDao;
         this.appointmentDao = appointmentDao;
+    }
+
+    @GetMapping("/reviews")
+    public String index(@PathVariable long id, Model model){
+        Review pulledReview = reviewDao.getOne(id);
+        model.addAttribute("reviews", pulledReview);
+        return "reviews/index";
     }
 
     //Viewing Review
