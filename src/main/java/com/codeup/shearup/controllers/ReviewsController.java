@@ -9,10 +9,7 @@ import com.codeup.shearup.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ReviewsController {
@@ -28,10 +25,10 @@ public class ReviewsController {
     }
 
     //Viewing Review
-    @GetMapping("/reviews/show")
-    public String showsReviews(@PathVariable(value = "id") long id, Model model){
-        Review reviewPost = reviewDao.getOne(id);
-        model.addAttribute("review", reviewPost);
+    @GetMapping("/reviews/{id}")
+    public String show(@PathVariable long id, Model model){
+        Review pulledReview = reviewDao.getOne(id);
+        model.addAttribute("review", pulledReview);
         return "reviews/show";
     }
 
@@ -48,14 +45,35 @@ public class ReviewsController {
         Appointment appointment = (Appointment) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         review.setAppointment(appointment);
         reviewDao.save(review);
-        return "redirect:/reviews";
+        return "redirect:/reviews/show";
+    }
+
+    //Edit Review
+    @GetMapping("/reviews/{id}/edit")
+    public String showEditForm(@PathVariable Long id, Model model){
+        model.addAttribute("review", reviewDao.getOne(id));
+        return "reviews/edit";
+    }
+
+    //Edit Review
+    @PostMapping("/posts/{id}/edit")
+    public String editPost(@PathVariable long id,
+                           @RequestParam(name = "titleEdit")String titleUpdate,
+                           @RequestParam(name = "contentEdit") String contentUpdate,
+                           @RequestParam(name = "ratingEdit") Double ratingUpdate){
+        Review review = reviewDao.getOne(id);
+        review.setTitle(titleUpdate);
+        review.setContent(contentUpdate);
+        review.setRating(ratingUpdate);
+        reviewDao.save(review);
+        return "redirect:/reviews/show" + id;
     }
 
     //Deleting Review
     @PostMapping("/reviews/{id}/delete")
     public String deleteReview(@PathVariable long id){
         reviewDao.deleteById(id);
-        return "redirect:/reviews";
+        return "redirect:/reviews/show";
     }
 
 
