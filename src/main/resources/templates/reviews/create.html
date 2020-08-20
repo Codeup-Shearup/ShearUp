@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="partials/head :: head">
-    <title>Submit a Barber Review!</title>
+<head th:replace="partials :: head (Title = 'Create')"></head>
+    <title>Create a Barber Review!</title>
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container p-5 border-left" style="margin-top: -5%;">
-    <h2>Create Posts</h2>
+<!--<nav th:replace="fragments/navbar :: navbar"></nav>-->
+<!--<div class="container p-5 border-left" style="margin-top: -5%;">-->
+    <div class="container p-5 border-left">
+
+    <h2>Create Review</h2>
 
     <!--    CREATE REVIEW FORM   -->
     <hr>
-    <form th:action="@{'/posts/services'}" th:method="post" class="p-5" style="margin-top: -5%;">
+    <form th:action="@{'/reviews/create'}" th:method="post" class="p-5" style="margin-top: -5%;">
         <div class="form-group">
             <label for="createTitle">Title</label>
             <input type="text" class="form-control" id="createTitle" name="createTitle">
@@ -25,6 +27,6 @@
     </form>
 
 </div>
-<footer th:replace="partials/footer :: footer"></footer>
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
