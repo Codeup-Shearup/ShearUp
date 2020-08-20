@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="partials :: head (Title = 'Create')"></head>
+<title>Submit a Barber Review!</title>
+</head>
+<body>
+<!--<nav th:replace="fragments/navbar :: navbar"></nav>-->
+<!--<div class="container p-5 border-left" style="margin-top: -5%;">-->
+<div class="container p-5 border-left">
+
+    <h2>Viewing Reviews</h2>
+    <a class="btn btn-primary" href="/reviews/create">Create Review</a>
+
+<!--    <div th:each="review : ${reviews}">-->
+        <h2 th:text="${review.title}"></h2>
+        <p th:text="${review.content}"></p>
+        <p th:text="${review.rating}"></p>
+        <p th:text="${review.appointment}"></p>
+<!--    </div>-->
+
+
+</div>
+<footer th:replace="partials :: footer"></footer>
+</body>
+</html>
