@@ -1,37 +1,37 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:include="partials/head :: header-links">
-    <head>
-        <meta charset="UTF-8">
-        <title>Create Services</title>
-    </head>
-<body>
-<h1>Create Event</h1>
-<form th:action="@{'/services/create'}" th:method="POST" th:object="${service}">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:include="partials/head :: header-links">-->
+<!--    <head>-->
+<!--        <meta charset="UTF-8">-->
+<!--        <title>Create Services</title>-->
+<!--    </head>-->
+<!--<body>-->
+<!--<h1>Create Event</h1>-->
+<!--<form th:action="@{'/services/create'}" th:method="POST" th:object="${service}">-->
 
-<!--    change name field in tables/models to be title not name knoah-->
-    <div class="input">
-        <label for="title">Name:</label>
-        <input type="text" id="title" th:field="*{title}">
-    </div>
+<!--&lt;!&ndash;    change name field in tables/models to be title not name knoah&ndash;&gt;-->
+<!--    <div class="input">-->
+<!--        <label for="title">Name:</label>-->
+<!--        <input type="text" id="title" th:field="*{title}">-->
+<!--    </div>-->
 
-    <div class="input">
-        <label for="description">Description:</label>
-        <input type="text" id="description" th:field="*{description}">
-    </div>
+<!--    <div class="input">-->
+<!--        <label for="description">Description:</label>-->
+<!--        <input type="text" id="description" th:field="*{description}">-->
+<!--    </div>-->
 
-    <div class="input">
-        <label for="duration">Duration:</label>
-        <input type="duration" id="duration" th:field="*{duration}">
-    </div>
+<!--    <div class="input">-->
+<!--        <label for="duration">Duration:</label>-->
+<!--        <input type="duration" id="duration" th:field="*{duration}">-->
+<!--    </div>-->
 
-    <div class="input">
-        <label for="price">Price:</label>
-        <input type="price" id="price" th:field="*{price}">
-    </div>
+<!--    <div class="input">-->
+<!--        <label for="price">Price:</label>-->
+<!--        <input type="price" id="price" th:field="*{price}">-->
+<!--    </div>-->
 
-    <button>Create Service</button>
+<!--    <button>Create Service</button>-->
 
-</form>
-</body>
-</html>
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
