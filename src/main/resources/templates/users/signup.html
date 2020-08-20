@@ -4,12 +4,15 @@
 <body>
 <h1>Create an account</h1>
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-	<label for="is_barber">I am a: </label>
-	<select name="is_barber" id="is_barber" th:field="*{isBarber}">
-<!--		<option th:value="selected" th:text="Select one" selected="selected"></option>-->
-		<option th:value="1" th:text="Barber"></option>
-		<option th:value="0" th:text="Client"></option>
-	</select>
+<!--	<label for="is_barber">I am a: </label>-->
+<!--	<select name="isBarber" id="is_barber" th:field="*{isBarber}">-->
+<!--&lt;!&ndash;		<option th:value="selected" th:text="Select one" selected="selected"></option>&ndash;&gt;-->
+<!--		<option th:value="true" th:text="Barber"></option>-->
+<!--		<option th:value="false" th:text="Client"></option>-->
+<!--	</select>-->
+	
+	<label for="isBarber">Are you a barber? </label>
+	<input type="checkbox" id="isBarber" th:field="*{isBarber}">
 	
 	<label for="first-name">First Name</label>
 	<input id="first-name" th:field="*{firstName}" />
