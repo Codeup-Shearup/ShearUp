@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
-<head>
+<head th:fragment="head(title)">
     <meta charset="UTF-8">
-    <title>ShearUp Navbar</title>
+<!--REQUIRED META TAGS-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/da30200d10.js" crossorigin="anonymous"></script>
+<!--FONT AWESOME ICONS-->
+    <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
+<!--CSS STYLING-->
+    <link href="/static/css/custom.css" th:href="@{/css}" rel="stylesheet" media="screen"/>
+    <title>ShearUp Navbar</title>
+<!--    <title th:text="${title}"></title>-->
 </head>
 <body>
-<!--NAVBAR-->
-<div th:fragment="navbar">
-<!--    LOGO on all Navbars-->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar">
-        <a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i></i>ShearUp</i></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<!--START NAVBAR-->
+<th:block th:fragment="nav">
+<!--    LOGO ON ALL NAVBARS-->
+        <nav class="navbar sticky-top  navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand nav-link" th:href="@{/home}"><i class="fas fa-cut"></i></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!--NAVBAR ITEMS-->
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupport">
             <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
+
+                <!--WITH BANG IF NOT AUTHENTICATED HIDE SHOW THESE-->
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{login}">Login</a>
+                    </li>
+                </th:block>
+
+                <!--IF AUTHENTICATED HIDE SHOW THESE-->
                 <th:block sec:authorize="isAuthenticated()">
 <!--                    <li class="nav-item">-->
 <!--                        <a class="nav-link" th:href="@{services}">Services</a>-->
@@ -32,48 +47,42 @@
 <!--                    <a class="nav-link" th:href="@{clientProfile}">Client</a>-->
 <!--                </li>-->
 
-                <!--IF NOT AUTHENTICATED HIDE SHOW THESE-->
-
-                <th:block sec:authorize="!isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
-                    </li>
-                </th:block>
-
-
-                <!--IF AUTHENTICATED HIDE SHOW THESE-->
-
+                   <!--CLIENT USER-->
+<!--                    <th:block sec:authorize="isAuthenticated()">-->
+                        <li class="nav-item dropdown">
+                            <a href="#" id="nav-shears" class="nav-link dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  style="color: #8d2827">ShearUp</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item"  style="color: #2b333d" th:href="@{/services}">Services</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" style="color: #8d2827"  th:href="@{/barbers/view-all}">View all barbers</a>
+                                <div class="dropdown-divider" ></div>
+                                <a class="dropdown-item" style="color: #c2b59b"  th:href="@{/services/create}">Create a services</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" style="color: #2b333d"  th:href="@{/mapbox}">View barber map</a>
+                            </div>
+                        </li>
+                    </th:block>
 
                 <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item">
-                        <form  th:action="@{/logout}" th:method="post">
-                            <button class="nav-link">Logout</button>
+                        <form  th:action="@{/logout}" th:method="POST">
+                            <button id="logout" class="btn-link btn" style="color: #8D2827">Logout</button>
                         </form>
                     </li>
                 </th:block>
 
-            </ul>
-        </div>
 <!--        should we search on other navbar pages?-->
 <!--        <form action="/ads/search" class="form-inline" method="GET">-->
-<!--            <input id="s" name="s" class="form-control" type="search" placeholder="Search Ads..." aria-label="Search">-->
+<!--            <input id="s" name="s" class="form-control" type="search" placeholder="Search for a barber" aria-label="Search">-->
 <!--            <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>-->
 <!--        </form>-->
-    </nav>
-</div>
 
+<!--error here why?-->
+    </nav>
 <!--needed CDN-->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>-->
-<!--</body>-->
-<!--</html>-->
-
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>-->
 </body>
 </html>
