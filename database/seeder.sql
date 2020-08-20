@@ -102,25 +102,25 @@ INSERT INTO barber_details (id, bio, location_id, image_id)
 VALUES (10, 'quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus', 10, 10);
 
 # Services Table
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (1, 'Gentlemen Cut', 'natoque penatibus et magnis dis', '23.00', 30, 1);
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (2, 'Bald Fade', 'pede lobortis ligula sit amet', '15.00', 20, 1);
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (3, 'Beard Trim', 'dapibus dolor vel est donec odio justo sollicitudin ut', '7.00', 25, 1);
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (4, 'Kids Cut', 'ut blandit non interdum in ante vestibulum ante', '20.00', 30, 1);
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (5, 'Taper', 'luctus et ultrices posuere cubilia curae', '16.00', 20, 1);
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (6, 'Military Cut', 'amet nunc viverra dapibus nulla suscipit', '13.00', 20, 1);
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (7, 'Straight Razor Shave', 'volutpat in congue etiam justo etiam pretium iaculis', '15.00', 25, 1);
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (8, 'Beard Conditioning Treatment', 'sit amet nulla quisque arcu libero', '25.00', 45, 1);
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (9, 'Long haircut', 'primis in faucibus orci luctus et ultrices posuere', '17.00', 30, 2);
-INSERT INTO services (id, name, description, price, duration, barber_details_id)
+INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (10, 'Grey Hair Blending Treatment', 'ut blandit non interdum in ante vestibulum', '55.00', 60, 2);
 
 

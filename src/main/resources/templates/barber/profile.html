@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Barber profile page</title>
 </head>
 <body>
     <h1>Barber Profile page</h1>
 
     <h1>List of Services: </h1>
+        <!--  THROWING ERROR FOR NOW WORKING ON FIX
+        (I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
+<!--    <div th:each="service : ${service}">-->
+<!--        <p th:each="${service.title}"></p>-->
+<!--        <p th:each="${service.description}"></p>-->
+<!--        <p th:each="${service.duration}"></p>-->
+<!--        <p th:each="${service.price}"></p>-->
+<!--    </div>-->
+    <button><a th:href="@{/barber/add-service}">Add Service</a></button>
 </body>
 </html>

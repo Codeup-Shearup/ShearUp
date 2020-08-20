@@ -11,7 +11,7 @@ public class Service {
     private long id;
 
     @Column(nullable = false, length = 50, unique = true)
-    private String name;
+    private String title;
 
     @Column(nullable = false, columnDefinition = "LONGTEXT")
     private String description;
@@ -37,9 +37,9 @@ public class Service {
 
     }
     //Constructor
-    public Service(long id, String name, String description, double price, int duration, BarberDetail barberDetail) {
+    public Service(long id, String title, String description, double price, int duration, BarberDetail barberDetail) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.price = price;
         this.duration = duration;
@@ -50,6 +50,7 @@ public class Service {
 
     //GETTERS AND SETTERS
 
+
     public long getId() {
         return id;
     }
@@ -58,12 +59,12 @@ public class Service {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -96,5 +97,13 @@ public class Service {
 
     public void setBarberDetail(BarberDetail barberDetail) {
         this.barberDetail = barberDetail;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

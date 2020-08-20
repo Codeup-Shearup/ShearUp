@@ -9,7 +9,7 @@
     <form th:action="@{'/barber/add-service'}"  th:method="POST" th:object="${service}">
         <div>
             <label for="title">Service Name: </label>
-            <input type="text" th:field="*{name}" id="title">
+            <input type="text" th:field="*{title}" id="title">
         </div>
 
         <div>
