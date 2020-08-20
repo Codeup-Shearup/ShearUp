@@ -17,39 +17,54 @@
 <body>
 <!--START NAVBAR-->
 <!--    LOGO ON ALL NAVBARS-->
-<nav class="navbar navbar-sticky-top navbar-expand-lg navbar-dark bg-dark" th:fragment="nav">
+<nav  th:fragment="nav" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 
         <a class="navbar-brand nav-link" href="/home"><i class="fas fa-cut"></i>SHEARUP</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
                 <!--WITH BANG IF NOT AUTHENTICATED HIDE THESE-->
                 <th:block sec:authorize="!isAuthenticated()">
                     <li class="nav-item">
-<!--                        <a class="nav-link" th:href="@{login}">Login</a> why does this way not work ? -->
+<!--                        <a class="nav-link" th:href="@{login}">Login</a> why does this way not work ? Knoah -->
                         <a class="nav-link" href="/login">Login</a>
                     </li>
-
                 </th:block>
-                <!--IF AUTHENTICATED SHOW THESE-->
-                <!--LOGGED IN CLIENT USER-->
 
+                <!--IF AUTHENTICATED SHOW THESE-->
+                <!--LOGGED IN CLIENT / BARBER USER-->
+
+<!--                <th:block sec:authorize="isAuthenticated()">-->
 <!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{services}">Services</a>-->
+<!--                        <a class="nav-link" th:href="/services">Services</a>-->
 <!--                    </li>-->
 <!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{barberProfile}">Barber</a>-->
+<!--                        <a class="nav-link" th:href="/barberProfile">Barber</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" th:href="/clientProfile">Client</a>-->
 <!--                    </li>-->
 <!--                </th:block>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" th:href="@{clientProfile}">Client</a>-->
-<!--                </li>-->
 
-<!--                    <th:block sec:authorize="isAuthenticated()">-->
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form  th:action="/logout" th:method="POST">
+                            <button id="logout" class="btn-link btn" style="color: #8D2827"><i class="fas fa-sign-out-alt"></i></button>
+                        </form>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+</nav>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+</html>
+
 <!--                        <li class="nav-item dropdown dropdown-menu-left">-->
 <!--                            <a href="#" id="nav-shears" class="nav-link dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  style="color: #8d2827">Menu</a>-->
 <!--                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
@@ -63,19 +78,3 @@
 <!--                            </div>-->
 <!--                        </li>-->
 <!--                    </th:block>-->
-
-<!--                <th:block sec:authorize="isAuthenticated()">-->
-<!--                    <li class="nav-item">-->
-<!--                        <form  th:action="@{/logout}" th:method="POST">-->
-<!--                            <button id="logout" class="btn-link btn" style="color: #8D2827">Logout</button>-->
-<!--                        </form>-->
-<!--                    </li>-->
-                </th:block>
-            </ul>
-        </div>
-</nav>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-</body>
-</html>
