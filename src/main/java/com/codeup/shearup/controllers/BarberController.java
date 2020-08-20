@@ -28,11 +28,17 @@ public class BarberController {
     }
 
     //==========PROFILE PAGE FOR SPECIFIC BARBER==========//
+    //==========ADDED ModelAttribute SERVICE TO POPULATE SERVICES on page=======////
     @GetMapping("barber/profile/{id}")
-    public String barberProfile(@PathVariable long id, Model model) {
+    public String barberProfile(@ModelAttribute Service service, @PathVariable long id, Model model) {
+
+        model.addAttribute("service", servicesDao.getOne(id));
         model.addAttribute("barber", barberDetailDao.getOne(id));
+        model.addAttribute("user", usersDao.getOne(id));
         return"barber/profile";
     }
+
+
 
 
     //======ADD A SERVICE PAGE FOR BARBER=========//
