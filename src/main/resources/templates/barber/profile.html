@@ -11,12 +11,12 @@
     <h1>List of Services: </h1>
         <!--  THROWING ERROR FOR NOW WORKING ON FIX
         (I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
-<!--    <div th:each="service : ${service}">-->
-<!--        <p th:each="${service.title}"></p>-->
-<!--        <p th:each="${service.description}"></p>-->
-<!--        <p th:each="${service.duration}"></p>-->
-<!--        <p th:each="${service.price}"></p>-->
-<!--    </div>-->
+    <div th:each="service : ${services}">
+        <p th:text="${service.title}"></p>
+        <p th:text="${service.description}"></p>
+        <p th:text="${service.duration}"></p>
+        <p th:text="${service.price}"></p>
+    </div>
     <button><a th:href="@{/barber/add-service}">Add Service</a></button>
 </body>
 </html>

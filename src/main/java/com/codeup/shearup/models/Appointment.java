@@ -1,6 +1,7 @@
 package com.codeup.shearup.models;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -10,8 +11,8 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, columnDefinition = "DATETIME NOT NULL")
-    private int appointmentDate;
+    @Column(nullable = false, columnDefinition = "DATE NOT NULL")
+    private Date appointmentDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -31,14 +32,26 @@ public class Appointment {
     }
 
     //CONSTRUCTOR
-    public Appointment(long id, int appointmentDate, User user, Service service) {
+
+    public Appointment(long id, Date appointmentDate, User user, Service service, Review reviews) {
         this.id = id;
         this.appointmentDate = appointmentDate;
         this.user = user;
         this.service = service;
+        this.reviews = reviews;
+    }
+    //NEEDS TO BE HERE FOR NOW PER BRANCE -RAMON
+    public Appointment(Date appointmentDate, User user, Service service, Review reviews) {
+
+        this.appointmentDate = appointmentDate;
+        this.user = user;
+        this.service = service;
+        this.reviews = reviews;
     }
 
+
     //GETTERS AND SETTERS
+
 
     public long getId() {
         return id;
@@ -48,11 +61,11 @@ public class Appointment {
         this.id = id;
     }
 
-    public int getAppointmentDate() {
+    public Date getAppointmentDate() {
         return appointmentDate;
     }
 
-    public void setAppointmentDate(int appointmentDate) {
+    public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
 
@@ -70,5 +83,13 @@ public class Appointment {
 
     public void setService(Service service) {
         this.service = service;
+    }
+
+    public Review getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Review reviews) {
+        this.reviews = reviews;
     }
 }

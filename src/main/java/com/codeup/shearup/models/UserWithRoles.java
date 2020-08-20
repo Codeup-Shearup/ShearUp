@@ -5,6 +5,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 public class UserWithRoles extends User implements UserDetails {
 
@@ -12,7 +13,10 @@ public class UserWithRoles extends User implements UserDetails {
 		super(user);  // Call the copy constructor defined in User
 	}
 
-	@Override
+    public <T> UserWithRoles(User user, List<T> emptyList) {
+    }
+
+    @Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		String roles = ""; // Since we're not using the authorization part of the component
 		return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
