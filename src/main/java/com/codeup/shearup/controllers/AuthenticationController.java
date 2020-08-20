@@ -12,7 +12,7 @@ public class AuthenticationController {
 	public String showLoginForm() {
 		Authentication token = SecurityContextHolder.getContext().getAuthentication();
 		
-		if (token instanceof AnonymousAuthenticationToken) return "login";
+		if (token instanceof AnonymousAuthenticationToken) return "users/login";
 		
 		return String.format("redirect:%s", "/");
 	}
