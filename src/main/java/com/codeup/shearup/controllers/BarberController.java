@@ -38,7 +38,9 @@ public class BarberController {
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
         model.addAttribute("services", servicesDao.findAll());
         //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
+
         model.addAttribute("barber", barberDetailDao.getOne(id));
+
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
         return"barber/profile";
@@ -100,9 +102,10 @@ public class BarberController {
 //        barberDetailDao.getOne(barberDetailSession.getId());
         // commented out below because causing error
 //        barberDetailDao.getOne(loggedInBarber.getId());
-//        sessionUser.getBarberDetail().getServices().add(service);
+        sessionUser.getBarberDetail().getServices().add(service);
+        service.setBarberDetail(sessionUser.getBarberDetail());
         servicesDao.save(service);
-        return "redirect:/barber/profile";
+        return "redirect:/barber/profile/" + sessionUser.getBarberDetail().getId();
     }
 
 
