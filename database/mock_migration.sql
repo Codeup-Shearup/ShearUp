@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS  images (
 );
 CREATE TABLE IF NOT EXISTS  reviews (
                                         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-                                        title VARCHAR(50) NOT NULL,
+                                        title VARCHAR(255) NOT NULL,
                                         content VARCHAR(500) NOT NULL,
                                         rating DECIMAL (2,1),
                                         images_id INT UNSIGNED NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS barber_details (
 );
 CREATE TABLE IF NOT EXISTS  services (
                                          id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-                                         title VARCHAR(50) NOT NULL,
+                                         title VARCHAR(255) NOT NULL,
                                          description VARCHAR(255) NOT NULL,
                                          price DECIMAL (4,2) NOT NULL,
                                          duration INT DEFAULT NULL,
@@ -59,9 +59,9 @@ CREATE TABLE IF NOT EXISTS  services (
 
 CREATE TABLE IF NOT EXISTS users (
                     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	                username VARCHAR(50) NOT NULL,
-                    first_name VARCHAR(50) NOT NULL,
-                    last_name  VARCHAR(50) NOT NULL,
+	                username VARCHAR(255) NOT NULL,
+                    first_name VARCHAR(255) NOT NULL,
+                    last_name  VARCHAR(255) NOT NULL,
                     email VARCHAR(100) NOT NULL,
                     password VARCHAR(32) NOT NULL,
 	                is_barber TINYINT NOT NULL,

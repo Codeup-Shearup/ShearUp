@@ -11,12 +11,13 @@
 
     <h2>Viewing Reviews</h2>
 
-<!--    Viewing the review based off off id-->
+    <!--    Viewing the review based off off id-->
+    <div th:each="review : ${reviews}">
     <h2 th:text="${review.title}"></h2>
     <p th:text="${review.content}"></p>
     <p th:text="${review.rating}"></p>
     <p th:text="${review.appointment}"></p>
-
+    </div>
 
 </div>
 <footer th:replace="partials :: footer"></footer>

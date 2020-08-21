@@ -15,6 +15,7 @@ public class UserWithRoles extends User implements UserDetails {
 
 	public <T> UserWithRoles(User user, List<T> emptyList) {
 	}
+	
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

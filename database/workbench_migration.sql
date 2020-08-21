@@ -22,9 +22,9 @@ DROP TABLE IF EXISTS `shearup_db`.`locations` ;
 
 CREATE TABLE IF NOT EXISTS `shearup_db`.`locations` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `address_one` VARCHAR(50) NOT NULL,
-  `address_two` VARCHAR(50) NULL,
-  `city` VARCHAR(50) NOT NULL,
+  `address_one` VARCHAR(255) NOT NULL,
+  `address_two` VARCHAR(255) NULL,
+  `city` VARCHAR(255) NOT NULL,
   `state` VARCHAR(2) NOT NULL,
   `zip_code` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`))
@@ -39,7 +39,7 @@ DROP TABLE IF EXISTS `shearup_db`.`services` ;
 
 CREATE TABLE IF NOT EXISTS `shearup_db`.`services` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(50) NOT NULL,
+  `title` VARCHAR(255) NOT NULL,
   `description` LONGTEXT NOT NULL,
   `price` DECIMAL(4,2) UNSIGNED NOT NULL,
   `duration` INT UNSIGNED NULL,
@@ -84,11 +84,11 @@ DROP TABLE IF EXISTS `shearup_db`.`users` ;
 
 CREATE TABLE IF NOT EXISTS `shearup_db`.`users` (
   `id` INT UNSIGNED NOT NULL,
-  `username` VARCHAR(50) NOT NULL,
-  `first_name` VARCHAR(50) NOT NULL,
-  `last_name` VARCHAR(50) NOT NULL,
+  `username` VARCHAR(255) NOT NULL,
+  `first_name` VARCHAR(255) NOT NULL,
+  `last_name` VARCHAR(255) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
-  `password` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `is_barber` TINYINT NOT NULL,
   `barber_details_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
@@ -119,7 +119,7 @@ DROP TABLE IF EXISTS `shearup_db`.`reviews` ;
 
 CREATE TABLE IF NOT EXISTS `shearup_db`.`reviews` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(50) NOT NULL,
+  `title` VARCHAR(255) NOT NULL,
   `content` LONGTEXT NOT NULL,
   `rating` DECIMAL(2,1) UNSIGNED NOT NULL,
   `image_id` INT UNSIGNED NOT NULL,
