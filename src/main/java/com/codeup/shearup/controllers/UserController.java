@@ -43,8 +43,8 @@ public class UserController {
 		String hash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(hash);
 		users.save(user);
-		authenticate(user);
-		return "redirect:/";
+		authenticate(user); // programatically login the new user
+		return "redirect:/"; // direct redirect upon login
 	}
 
 	private void authenticate(User user) {

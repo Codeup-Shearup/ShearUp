@@ -13,8 +13,8 @@ public class UserWithRoles extends User implements UserDetails {
 		super(user);  // Call the copy constructor defined in User
 	}
 
-    public <T> UserWithRoles(User user, List<T> emptyList) {
-    }
+	public <T> UserWithRoles(User user, List<T> emptyList) {
+	}
 
     @Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
