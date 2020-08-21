@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head>
+
+    <head th:replace="partials :: head (Title = 'View By Id')">
     <meta charset="UTF-8">
     <title>Barber profile page</title>
 </head>
 <body>
+<header th:replace="partials :: header"></header>
     <h1>Barber Profile page</h1>
     <h1>Welcome, <h1 th:text="${user.firstName}"></h1>
     <h1>List of Services: </h1>
