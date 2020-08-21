@@ -5,7 +5,8 @@
     <title>Create a Barber Review!</title>
 </head>
 <body>
-<!--<nav th:replace="fragments/navbar :: navbar"></nav>-->
+<header th:replace="partials :: header"></header>
+
 <!--<div class="container p-5 border-left" style="margin-top: -5%;">-->
     <div class="container p-5 border-left">
 
@@ -35,7 +36,7 @@
             <textarea class="form-control" id="createAppointment" th:field="*{appointment}"></textarea>
         </div>
         <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Review</button>
-        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews/show}">back</a>
+        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
     </form>
 
 </div>
