@@ -82,8 +82,7 @@ public class BarberController {
 
     //NEED TO MANUALLY INPUT THE BARBER WHO MADE SERVICE=====
     @PostMapping("/barber/add-service")
-    public String insertService(@ModelAttribute Service service,
-                                @ModelAttribute BarberDetail barberDetail) {
+    public String insertService(@ModelAttribute Service service) {
         // commented out below because causing error
 //        BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -92,6 +91,8 @@ public class BarberController {
 //        BarberDetail barberDetailSession =(BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //=====NEED TO HAVE LOGGED IN BARBER TO =====//
 
+
+
         //=====This is Placeholder for now====//
         //=====LOGIC BEHIND THIS IS A SPECIFIC BARBER===//
         //=====IS LINKED TO EACH BARBER DETAIL=======/////
@@ -99,8 +100,9 @@ public class BarberController {
 //        barberDetailDao.getOne(barberDetailSession.getId());
         // commented out below because causing error
 //        barberDetailDao.getOne(loggedInBarber.getId());
+//        sessionUser.getBarberDetail().getServices().add(service);
         servicesDao.save(service);
-        return "redirect:barber/profile";
+        return "redirect:/barber/profile";
     }
 
 
