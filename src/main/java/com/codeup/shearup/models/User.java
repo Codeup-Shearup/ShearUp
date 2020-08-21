@@ -140,4 +140,6 @@ public class User {
     public void setBarberDetail(BarberDetail barberDetail) {
         this.barberDetail = barberDetail;
     }
+
+
 }

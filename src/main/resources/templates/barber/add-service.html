@@ -26,10 +26,11 @@
             <label for="price">Price: $</label>
             <input th:field="*{price}" id="price">
         </div>
+<!--        <div th:object="${user}">-->
+<!--            <input type="hidden" th:value="${user.barberDetail}" th:field="${service.barberDetail}">-->
+<!--        </div>-->
         <button>Add Service</button>
-        <div th:object="${user}">
-            <input type="hidden" th:value="${user.barberDetail}" th:field="${service.barberDetail}">
-        </div>
+
     </form>
 </body>
 </html>
