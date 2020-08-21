@@ -2,6 +2,7 @@ package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.Appointment;
 import com.codeup.shearup.models.Review;
+import com.codeup.shearup.models.User;
 import com.codeup.shearup.repositories.AppointmentRepository;
 import com.codeup.shearup.repositories.ReviewRepository;
 import com.codeup.shearup.repositories.UserRepository;
@@ -51,10 +52,11 @@ public class ReviewsController {
     //Creating Review
     @PostMapping("reviews/create")
     public String createReview(@ModelAttribute Review review){
-        Appointment appointment = (Appointment) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+        Appointment appointment = appointmentDao.getOne(1L);
         review.setAppointment(appointment);
         reviewsDao.save(review);
-        return "redirect:/reviews/show";
+        return "redirect:/reviews";
     }
 
     //Edit Review

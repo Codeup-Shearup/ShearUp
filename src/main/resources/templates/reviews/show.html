@@ -24,6 +24,8 @@
     <form th:action="@{'/reviews/' + ${review.id} + '/delete'}" th:method="POST">
         <button>Delete</button>
     </form>
+    <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
+
     <!--    <p th:text="${review.appointment}"></p>-->
 
 
