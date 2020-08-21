@@ -1,5 +1,6 @@
 package com.codeup.shearup.controllers;
 
+import com.codeup.shearup.models.BarberDetail;
 import com.codeup.shearup.models.User;
 import com.codeup.shearup.models.UserWithRoles;
 import com.codeup.shearup.repositories.UserRepository;
@@ -21,10 +22,12 @@ import java.util.Collections;
 public class UserController {
 	private UserRepository users;
 	private PasswordEncoder passwordEncoder;
+	private BarberDetailRepository barberDetailDao;
 //
-	public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
+	public UserController(UserRepository users, PasswordEncoder passwordEncoder, BarberDetailRepository barberDetailDao) {
 		this.users = users;
 		this.passwordEncoder = passwordEncoder;
+		this.barberDetailDao = barberDetailDao;
 	}
 	
 	@GetMapping("/sign-up")
@@ -41,7 +44,7 @@ public class UserController {
 		authenticate(user); // programatically login the new user
 		return "redirect:/"; // direct redirect upon login
 	}
-	
+
 	private void authenticate(User user) {
 		UserDetails userDetails = new UserWithRoles(user, Collections.emptyList());
 		Authentication auth = new UsernamePasswordAuthenticationToken(

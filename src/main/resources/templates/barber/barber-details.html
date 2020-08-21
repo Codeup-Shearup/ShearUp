@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Barber Details</title>
+</head>
+<body>
+<form th:action="@{'/barber/barber-details'}"  th:method="POST" th:object="${barberDetail}">
+    <h1>Tell us about yourself!</h1>
+    <div>
+        <label for="bio">Enter Bio: </label>
+        <input type="text" th:field="*{bio}" id="bio">
+    </div>
+
+    <button>Submit Bio!</button>
+</form>
+</body>
+</html>

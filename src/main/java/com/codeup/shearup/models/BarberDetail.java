@@ -45,6 +45,10 @@ public class BarberDetail {
     public BarberDetail(){
 
     }
+    //====BARBER DETAILS USER CONTROLLER ONLY ACCEPTS ID======//
+    public BarberDetail(long id) {
+        this.id = id;
+    }
 
     // Constructor
 
