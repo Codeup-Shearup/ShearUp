@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Provider;
-
 @Controller
 public class BarberController {
     //========CREATION OF USER AND SERVICE OBJECTS=====//
@@ -46,28 +44,23 @@ public class BarberController {
         return"barber/profile";
     }
 
+    //===========START OF THREE STEP FORM========///
+    //==========BARBER-DETAIL => LOCATIONS => IMAGE ==//
     //=============BARBER DETAIL FORM===========//
     @GetMapping("/barber/barber-details")
     public String barberDetail(Model model){
         model.addAttribute("barberDetail", new BarberDetail());
-        model.addAttribute("location", new Location());
-        model.addAttribute("image", new Image());
         return "barber/barber-details";
     }
     //============BARBER DETAIL FORM POST MAPPING=======//
-    //===========IMAGES AND LOCATION MODEL ATTRIBUTE ADDED===//
-    //================FOR FUTURE USE=============//
     @PostMapping("/barber/barber-details")
-    public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail,
-                                      @ModelAttribute Location location,
-                                      @ModelAttribute Image image) {
+    public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail) {
         BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         usersDao.getOne(loggedInUser.getId());
         barberDetailDao.getOne(loggedInBarber.getId());
         return "redirect:barber/profile";
-
     }
 
 
@@ -76,25 +69,36 @@ public class BarberController {
     //======ADD A SERVICE PAGE FOR BARBER=========//
     @GetMapping("/barber/add-service")
     public String addService(Model model){
-        //LOGICAL BUT UNNECCESARY
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.getOne(sessionUser.getId());
+        //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
+        //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
+        model.addAttribute("user", user);
+
+        //LOGICAL BUT NOT NEEDED?
         model.addAttribute("service", new Service());
         return "barber/add-service";
     }
 
     //NEED TO MANUALLY INPUT THE BARBER WHO MADE SERVICE=====
     @PostMapping("/barber/add-service")
-    public String insertService(@ModelAttribute Service service) {
-        BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //=======OLD USER OBJECT HERE======//
-         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String insertService(@ModelAttribute Service service,
+                                @ModelAttribute BarberDetail barberDetail) {
+        // commented out below because causing error
+//        BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+        //=======OLD USER OBJECT HERE======//
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        BarberDetail barberDetailSession =(BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //=====NEED TO HAVE LOGGED IN BARBER TO =====//
-        //=====TEST OUT FUNCTIONALITY====//
+
         //=====This is Placeholder for now====//
         //=====LOGIC BEHIND THIS IS A SPECIFIC BARBER===//
         //=====IS LINKED TO EACH BARBER DETAIL=======/////
-        usersDao.getOne(loggedInUser.getId());
-        barberDetailDao.getOne(loggedInBarber.getId());
+        usersDao.getOne(sessionUser.getId());
+//        barberDetailDao.getOne(barberDetailSession.getId());
+        // commented out below because causing error
+//        barberDetailDao.getOne(loggedInBarber.getId());
         servicesDao.save(service);
         return "redirect:barber/profile";
     }

@@ -12,7 +12,7 @@
         <!--  THROWING ERROR FOR NOW WORKING ON FIX
         (I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
     <div th:each="service : ${services}">
-        <p th:text="${service.title}"></p>
+        <p th:text="${service.title}">Title: </p>
         <p th:text="${service.description}"></p>
         <p th:text="${service.duration}"></p>
         <p th:text="${service.price}"></p>
