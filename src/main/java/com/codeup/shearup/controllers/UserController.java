@@ -3,7 +3,6 @@ package com.codeup.shearup.controllers;
 import com.codeup.shearup.models.BarberDetail;
 import com.codeup.shearup.models.User;
 import com.codeup.shearup.models.UserWithRoles;
-import com.codeup.shearup.repositories.BarberDetailRepository;
 import com.codeup.shearup.repositories.UserRepository;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -45,10 +44,6 @@ public class UserController {
 		user.setPassword(hash);
 		users.save(user);
 		authenticate(user);
-//		BarberDetail barberDetails = new BarberDetail(user.getId());
-//		user.setBarberDetail(barberDetails);
-//		barberDetailDao.save(barberDetails);
-//		user = users.save(user);
 		return "redirect:/";
 	}
 
@@ -61,20 +56,5 @@ public class UserController {
 		);
 		SecurityContext context = SecurityContextHolder.getContext();
 		context.setAuthentication(auth);
-	}
-
-	//========PLACE HOLDER FOR DASHBOARD FOR NOW TEMPORARY======//
-	@GetMapping("/dashboard")
-	public String dashboard(){
-		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//=====THIS REPRESENTS CURRENT USER THAT IS LOGGED IN GRABBING USER OBJECT==////
-		//===== GETS USER OBJECT OF ASSOCIATED ID WITH USER THAT IS LOGGED IN=======///
-		//==SUPPOSED TO BE USERDAO====//
-		//BELOW IF STATEMENT SEND THEM TO DASHBOARD===//
-		User user = users.getOne(sessionUser.getId());
-		if(user.isBarber()) {
-			return "redirect:/barber/profile/" + user.getBarberDetail().getId();
-		}
-		return "redirect:/";
 	}
 }
