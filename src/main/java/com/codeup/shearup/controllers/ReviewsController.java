@@ -88,5 +88,11 @@ public class ReviewsController {
     }
 
 
+    //About Us Controller Placeholder for now
+    @GetMapping("/about")
+    public String about(Model model){
+        return "/about/about-us";
+    }
+
 
 }
