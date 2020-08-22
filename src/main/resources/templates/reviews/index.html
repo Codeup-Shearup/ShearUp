@@ -3,18 +3,64 @@
 
 <head th:replace="partials :: head (Title = 'View all')"></head>
 <title>Submit a Barber Review!</title>
+
+<style>
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 200px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    .sidenav a {
+        padding: 6px 6px 6px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+    .main {
+        margin-left: 200px; /* Same as the width of the sidenav */
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }
+</style>
+
 </head>
 <body>
 <!--<div class="container p-5 border-left" style="margin-top: -5%;">-->
 <header th:replace="partials :: header"></header>
 
+<div class="main">
 <div class="container p-5 border-left">
-
+    <div class="sidenav">
+        <a href="#">About</a>
+        <a th:href="@{'/reviews'}">View</a>
+        <a th:href="@{'/reviews/create'}">Create</a>
+        <a th:href="@{'/reviews/create'}">Edit</a>
+    </div>
 
     <h2>Viewing Reviews</h2>
     <hr>
-    <a th:href="@{'/reviews/create'}">Create Review</a>
-    <hr>
+<!--    <a th:href="@{'/reviews/create'}">Create Review</a>-->
+<!--    <hr>-->
 
     <!--    Viewing the review based off off id-->
     <div th:each="review : ${reviews}">
@@ -27,5 +73,9 @@
 
 </div>
 <footer th:replace="partials :: footer"></footer>
+</div>
 </body>
 </html>
+
+<!--Source-->
+<!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav-->
