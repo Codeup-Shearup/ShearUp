@@ -27,7 +27,7 @@ public class BarberController {
     }
 
     //==========PROFILE PAGE FOR SPECIFIC BARBER==========//
-    //==========ADDED ModelAttribute SERVICE TO POPULATE SERVICES on page=======////
+    //==========ADDED ModelAttribute SERVICE TO POPULATE SERVICES on page attached to Barber=======////
     @GetMapping("barber/profile/{id}")
     public String barberProfile(@ModelAttribute Service service, @PathVariable long id, Model model) {
         //=======PULL USER THAT IS CURRENTLY LOGGED IN AND CASTING USER INTO USER OBJECT======//
@@ -35,8 +35,13 @@ public class BarberController {
         //=====THIS REPRESENTS CURRENT USER THAT IS LOGGED IN GRABBING USER OBJECT==////
         //===== GETS USER OBJECT OF ASSOCIATED ID WITH USER THAT IS LOGGED IN=======///
         User user = usersDao.getOne(sessionUser.getId());
+
+        //TRIED USING THIS NOT WORKING ATM//
+//        Service servicesOfBarber = servicesDao.findServiceByBarberDetail(sessionUser.getBarberDetail());
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
-        model.addAttribute("services", servicesDao.findAll());
+
+        model.addAttribute("services", servicesDao.findAllByBarberDetail(sessionUser.getBarberDetail()));
+        System.out.println("Hello");
         //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
 
         model.addAttribute("barber", barberDetailDao.getOne(id));
@@ -46,24 +51,35 @@ public class BarberController {
         return"barber/profile";
     }
 
-    //===========START OF THREE STEP FORM========///
-    //==========BARBER-DETAIL => LOCATIONS => IMAGE ==//
-    //=============BARBER DETAIL FORM===========//
-    @GetMapping("/barber/barber-details")
-    public String barberDetail(Model model){
-        model.addAttribute("barberDetail", new BarberDetail());
-        return "barber/barber-details";
+    //============DELETE A SERVICE BUTTON==============// -NEEDS WORK
+    @PostMapping("/barber/service-delete")
+    public String deleteService(@RequestParam(name = "deleteButton") long id,
+                                @ModelAttribute Service service){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(id);
+        usersDao.getOne(sessionUser.getId());
+        servicesDao.delete(servicesDao.getOne(id));
+        return "redirect:/barber/profile/" + sessionUser.getBarberDetail().getId();
     }
-    //============BARBER DETAIL FORM POST MAPPING=======//
-    @PostMapping("/barber/barber-details")
-    public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail) {
-        BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        usersDao.getOne(loggedInUser.getId());
-        barberDetailDao.getOne(loggedInBarber.getId());
-        return "redirect:barber/profile";
-    }
+//    //===========START OF THREE STEP FORM========///
+//    //==========BARBER-DETAIL => LOCATIONS => IMAGE ==//
+//    //=============BARBER DETAIL FORM===========//
+//    @GetMapping("/barber/barber-details")
+//    public String barberDetail(Model model){
+//        model.addAttribute("barberDetail", new BarberDetail());
+//        return "barber/barber-details";
+//    }
+//    //============BARBER DETAIL FORM POST MAPPING=======//
+//    @PostMapping("/barber/barber-details")
+//    public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail) {
+//        BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        usersDao.getOne(loggedInUser.getId());
+//        barberDetailDao.getOne(loggedInBarber.getId());
+//        return "redirect:barber/profile";
+//    }
 
 
 
@@ -73,11 +89,8 @@ public class BarberController {
     public String addService(Model model){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = usersDao.getOne(sessionUser.getId());
-        //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
-
-        //LOGICAL BUT NOT NEEDED?
         model.addAttribute("service", new Service());
         return "barber/add-service";
     }
@@ -85,23 +98,11 @@ public class BarberController {
     //NEED TO MANUALLY INPUT THE BARBER WHO MADE SERVICE=====
     @PostMapping("/barber/add-service")
     public String insertService(@ModelAttribute Service service) {
-        // commented out below because causing error
-//        BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         //=======OLD USER OBJECT HERE======//
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        BarberDetail barberDetailSession =(BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //=====NEED TO HAVE LOGGED IN BARBER TO =====//
-
-
-
         //=====This is Placeholder for now====//
         //=====LOGIC BEHIND THIS IS A SPECIFIC BARBER===//
-        //=====IS LINKED TO EACH BARBER DETAIL=======/////
         usersDao.getOne(sessionUser.getId());
-//        barberDetailDao.getOne(barberDetailSession.getId());
-        // commented out below because causing error
-//        barberDetailDao.getOne(loggedInBarber.getId());
         sessionUser.getBarberDetail().getServices().add(service);
         service.setBarberDetail(sessionUser.getBarberDetail());
         servicesDao.save(service);
