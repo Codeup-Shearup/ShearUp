@@ -10,30 +10,32 @@
     <h1>Add Service page for</h1>
     <h2 th:text="${user.firstName}"></h2>
     <form th:action="@{'/barber/add-service'}"  th:method="POST" th:object="${service}">
-        <div>
+        <div class="form-group">
             <label for="title">Service Name: </label>
-            <input type="text" th:field="*{title}" id="title">
+            <input class="form-control" type="text" th:field="*{title}" id="title" placeholder="Enter service name">
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="description">Description: </label>
-            <input th:field="*{description}" id="description">
+            <input class="form-control" th:field="*{description}" id="description" placeholder="Enter description of Service">
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="duration">Duration: </label>
-            <input th:field="*{duration}" id="duration">
+            <input class="form-control" th:field="*{duration}" id="duration" placeholder="Enter duration of service">
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="price">Price: $</label>
-            <input th:field="*{price}" id="price">
+            <input class="form-control" th:field="*{price}" id="price" placeholder="Enter price">
         </div>
 <!--        <div th:object="${user}">-->
 <!--            <input type="hidden" th:value="${user.barberDetail}" th:field="${service.barberDetail}">-->
 <!--        </div>-->
-        <button>Add Service</button>
+        <button class=" btn btn-primary">Add Service</button>
 
     </form>
+    <footer th:replace="partials :: footer"></footer>
+
 </body>
 </html>

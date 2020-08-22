@@ -9,7 +9,7 @@ public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    //SERVICE SHOULD NOT BE UNIQUE
     @Column(nullable = false, length = 50, unique = true)
     private String title;
 
@@ -106,6 +106,8 @@ public class Service {
     public void setImages(List<Image> images) {
         this.images = images;
     }
+
+
 
 
 }
