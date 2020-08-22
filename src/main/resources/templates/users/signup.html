@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head (Title = 'Sign Up')"></head>
 <body>
+<header th:replace="partials :: header"></header>
 <h1>Create an account</h1>
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
 	<label for="is_barber">I am a: </label>

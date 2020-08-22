@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
@@ -81,5 +82,29 @@ public class UserController {
 			return "redirect:/barber/profile/" + user.getBarberDetail().getId();
 		}
 		return "redirect:/";
+	}
+	
+	@GetMapping("/profile")
+	public String userProfile(Model model) {
+		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = users.getOne(sessionUser.getId());
+		model.addAttribute("user", user);
+		return "users/user-profile";
+	}
+	
+	@GetMapping("/profile/edit")
+	public String editProfile(Model model) {
+		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = users.getOne(sessionUser.getId());
+		model.addAttribute("user", user);
+		return "users/edit-profile";
+	}
+	
+	@PostMapping("/profile/edit")
+	public String update(@PathVariable long id, @ModelAttribute User user) {
+		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		users.save(sessionUser);
+		users.save(user);
+		return "redirect:/profile";
 	}
 }
