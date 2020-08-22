@@ -21,7 +21,7 @@
         <h2 th:text="${review.title}"></h2>
         <p th:text="${review.content}"></p>
         <p th:text="${review.rating}"></p>
-        <p th:text="${review.appointment}"></p>
+        <p th:value="${review.appointment}"></p>
         <a th:href="@{'/reviews/' + ${review.id}}">View Review</a>
     </div>
 

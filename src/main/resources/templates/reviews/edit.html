@@ -15,7 +15,7 @@
 
     <!-- EDIT REVIEW FORM   -->
     <hr>
-    <form th:action="@{'/reviews/{id}/edit'}" th:method="post" th:object="${review}" class="p-5" style="margin-top: -5%;">
+    <form th:action="@{'/reviews/{id}/edit'}" th:method="POST" th:object="${review}" class="p-5" style="margin-top: -5%;">
         <div class="form-group">
             <label for="editTitle">Title</label>
             <input type="text" class="form-control" id="editTitle" th:field="*{title}">
@@ -32,11 +32,11 @@
         <!--            <label for="createContent">Content</label>-->
         <!--            <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
         <!--        </div>-->
-        <div class="form-group">
-            <label for="editAppointment">Appointment</label>
-            <textarea class="form-control" id="editAppointment" th:field="*{appointment}"></textarea>
-        </div>
-        <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Review</button>
+<!--        <div class="form-group">-->
+<!--            <label for="editAppointment">Appointment</label>-->
+<!--            <textarea class="form-control" id="editAppointment" th:field="*{appointment}"></textarea>-->
+<!--        </div>-->
+        <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Edit Review</button>
         <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">back</a>
     </form>
 </div>
