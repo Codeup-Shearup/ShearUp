@@ -9,29 +9,36 @@ import com.codeup.shearup.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class ReviewsController {
 
-    private final ReviewRepository reviewDao;
+    private final ReviewRepository reviewsDao;
     private final UserRepository usersDao;
     private final AppointmentRepository appointmentDao;
 
-    public ReviewsController(ReviewRepository reviewDao, UserRepository usersDao, AppointmentRepository appointmentDao){
-        this.reviewDao = reviewDao;
+    public ReviewsController(ReviewRepository reviewsDao, UserRepository usersDao, AppointmentRepository appointmentDao){
+        this.reviewsDao = reviewsDao;
         this.usersDao = usersDao;
         this.appointmentDao = appointmentDao;
     }
 
+    @GetMapping("/reviews")
+    public String index(Model model){
+        List<Review> myReview = reviewsDao.findAll();
+//        Review pulledReview = reviewsDao.getOne(id);
+        model.addAttribute("reviews", myReview);
+        return "reviews/index";
+    }
+
     //Viewing Review
-    @GetMapping("/reviews/show")
-    public String showsReviews(@PathVariable(value = "id") long id, Model model){
-        Review reviewPost = reviewDao.getOne(id);
-        model.addAttribute("review", reviewPost);
+    @GetMapping("/reviews/{id}")
+    public String show(@PathVariable long id, Model model){
+        Review pulledReview = reviewsDao.getOne(id);
+        model.addAttribute("review", pulledReview);
         return "reviews/show";
     }
 
@@ -45,16 +52,38 @@ public class ReviewsController {
     //Creating Review
     @PostMapping("reviews/create")
     public String createReview(@ModelAttribute Review review){
-        Appointment appointment = (Appointment) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+        Appointment appointment = appointmentDao.getOne(1L);
         review.setAppointment(appointment);
-        reviewDao.save(review);
+        reviewsDao.save(review);
         return "redirect:/reviews";
+    }
+
+    //Edit Review
+    @GetMapping("/reviews/{id}/edit")
+    public String showEditForm(@PathVariable Long id, Model model){
+        model.addAttribute("review", reviewsDao.getOne(id));
+        return "reviews/edit";
+    }
+
+    //Edit Review
+    @PostMapping("/posts/{id}/edit")
+    public String editPost(@PathVariable long id,
+                           @RequestParam(name = "titleEdit")String titleUpdate,
+                           @RequestParam(name = "contentEdit") String contentUpdate,
+                           @RequestParam(name = "ratingEdit") Double ratingUpdate){
+        Review review = reviewsDao.getOne(id);
+        review.setTitle(titleUpdate);
+        review.setContent(contentUpdate);
+        review.setRating(ratingUpdate);
+        reviewsDao.save(review);
+        return "redirect:/reviews/show" + id;
     }
 
     //Deleting Review
     @PostMapping("/reviews/{id}/delete")
     public String deleteReview(@PathVariable long id){
-        reviewDao.deleteById(id);
+        reviewsDao.deleteById(id);
         return "redirect:/reviews";
     }
 

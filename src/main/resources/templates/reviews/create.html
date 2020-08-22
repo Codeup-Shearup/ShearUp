@@ -5,7 +5,8 @@
     <title>Create a Barber Review!</title>
 </head>
 <body>
-<!--<nav th:replace="fragments/navbar :: navbar"></nav>-->
+<header th:replace="partials :: header"></header>
+
 <!--<div class="container p-5 border-left" style="margin-top: -5%;">-->
     <div class="container p-5 border-left">
 
@@ -13,17 +14,29 @@
 
     <!--    CREATE REVIEW FORM   -->
     <hr>
-    <form th:action="@{'/reviews/create'}" th:method="post" class="p-5" style="margin-top: -5%;">
+    <form th:action="@{'/reviews/create'}" th:method="post" th:object="${review}" class="p-5" style="margin-top: -5%;">
         <div class="form-group">
             <label for="createTitle">Title</label>
-            <input type="text" class="form-control" id="createTitle" name="createTitle">
+            <input type="text" class="form-control" id="createTitle" th:field="*{title}">
         </div>
         <div class="form-group">
             <label for="createContent">Content</label>
-            <textarea class="form-control" id="createContent" name="createContent"></textarea>
+            <textarea class="form-control" id="createContent" th:field="*{content}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="createContent">Rating</label>
+            <textarea class="form-control" id="createRating" th:field="*{rating}"></textarea>
+        </div>
+<!--        <div class="form-group">-->
+<!--            <label for="createContent">Content</label>-->
+<!--            <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
+<!--        </div>-->
+        <div class="form-group">
+            <label for="createContent">Appointment</label>
+            <textarea class="form-control" id="createAppointment" th:field="*{appointment}"></textarea>
         </div>
         <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Review</button>
-        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/services}">back</a>
+        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
     </form>
 
 </div>

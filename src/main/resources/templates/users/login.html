@@ -3,6 +3,8 @@
 <head th:replace="partials :: head (Title = 'Login')"></head>
 <body>
 
+<header th:replace="partials :: header"></header>
+
 <div sec:authorize="isAuthenticated()">
 	<a href="/">Go Back to Home Page</a>
 </div>

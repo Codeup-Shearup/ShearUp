@@ -16,7 +16,7 @@ public class BarberDetail {
 
     // One to one not included because already defined in User class in Models
 
-    @Column(nullable = false, columnDefinition = "LONGTEXT")
+    @Column(nullable = true, columnDefinition = "LONGTEXT")
     private String bio;
 
     // Need 2 foreign key relationships location id fk
@@ -32,10 +32,10 @@ public class BarberDetail {
     private Image image;
     //one to many barber details to images
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "barberDetail")
+    @OneToOne(cascade = CascadeType.MERGE, mappedBy = "barberDetail")
     private User user;
 
-    @OneToMany(mappedBy = "barberDetail")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "barberDetail", fetch = FetchType.EAGER)
     private List<Service> services;
 
     //=======TODO: UPDATE GETTERS AND SETTERS========
@@ -44,6 +44,10 @@ public class BarberDetail {
     //Empty Constructor
     public BarberDetail(){
 
+    }
+    //====BARBER DETAILS USER CONTROLLER ONLY ACCEPTS ID======//
+    public BarberDetail(long id) {
+        this.id = id;
     }
 
     // Constructor
@@ -88,5 +92,22 @@ public class BarberDetail {
     public void setImage(Image image) {
         this.image = image;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Service> getServices() {
+        return services;
+    }
+
+    public void setServices(List<Service> services) {
+        this.services = services;
+    }
+
 
 }

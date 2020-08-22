@@ -2,6 +2,8 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+  <head th:replace="partials :: head (Title = 'Home Page')"></head>
+
 	<!-- This script tag includes the Filestack API into your HTML file -->
 	<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
 <!--	<script src="https://static.filestackapi.com/v3/filestack.js"></script>-->
@@ -29,8 +31,6 @@
 <!--<div style="text-align:center;vertical-align:middle;">-->
 <!--	<img id="result" style="width:600px" />-->
 <!--</div>-->
-
-
 
 
 </body>

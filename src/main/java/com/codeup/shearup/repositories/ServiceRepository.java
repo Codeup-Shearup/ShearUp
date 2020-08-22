@@ -1,5 +1,6 @@
 package com.codeup.shearup.repositories;
 
+import com.codeup.shearup.models.BarberDetail;
 import com.codeup.shearup.models.Service;
 import com.codeup.shearup.models.User;
 import org.hibernate.mapping.List;

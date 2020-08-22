@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:replace="partials :: head (Title = 'View By Id')">
     <meta charset="UTF-8">
     <title>Add service page</title>
 </head>
 <body>
-    <h1>Add Service page</h1>
+<header th:replace="partials :: header"></header>
+
+    <h1>Add Service page for</h1>
+    <h2 th:text="${user.firstName}"></h2>
     <form th:action="@{'/barber/add-service'}"  th:method="POST" th:object="${service}">
         <div>
             <label for="title">Service Name: </label>
@@ -26,7 +29,11 @@
             <label for="price">Price: $</label>
             <input th:field="*{price}" id="price">
         </div>
+<!--        <div th:object="${user}">-->
+<!--            <input type="hidden" th:value="${user.barberDetail}" th:field="${service.barberDetail}">-->
+<!--        </div>-->
         <button>Add Service</button>
+
     </form>
 </body>
 </html>
