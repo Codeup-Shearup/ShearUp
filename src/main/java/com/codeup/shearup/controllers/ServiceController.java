@@ -1,11 +1,9 @@
 package com.codeup.shearup.controllers;
 
-import com.codeup.shearup.models.Review;
 import com.codeup.shearup.models.Service;
 import com.codeup.shearup.models.User;
 import com.codeup.shearup.repositories.ServiceRepository;
 import com.codeup.shearup.repositories.UserRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,15 +17,15 @@ public class ServiceController {
     private final ServiceRepository servicesDao;
     private final UserRepository usersDao;
 
-    public PostController(ServiceRepository servicesDao, UserRepository usersDao) {
+    public ServiceController(ServiceRepository servicesDao, UserRepository usersDao) {
         this.servicesDao = servicesDao;
         this.usersDao = usersDao;
     }
 
-    //  ALL POSTS
+    //  LIST OF ALL SERVICES
     @GetMapping("/services")
     public String serviceIndexPage(Model model) {
-        List<Service> myServices = servicesDao.findAll();
+        List<Service> myService = servicesDao.findAll();
         model.addAttribute("services", myService);
         return "services/index";
     }
@@ -35,8 +33,8 @@ public class ServiceController {
     //GETTING ONE SERVICE
     @GetMapping("/services/{id}")
     public String showOne(@PathVariable long id, Model model){
-        Service pulledPost = servicesDao.getOne(id);
-        model.addAttribute("Service", pulledPost);
+        Service pulledService = servicesDao.getOne(id);
+        model.addAttribute("service", pulledService);
         return "services/show";
     }
 
@@ -50,24 +48,12 @@ public class ServiceController {
 //    @PostMapping("/services/create")
 //    public String createService(@ModelAttribute Service Service){
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-////        Service.setBarberDetail(loggedInBarberDetail);
+////        Service.setBarberDetail(loggedInBarberDetail); <----barber-details user can create a service
 //        servicesDao.save(Service);
 //        return "redirect:/services";
 //    }
 
-    //  CREATE REVIEW
-//    @PostMapping("/services/show/{id}/review")
-//    public String getPost(@PathVariable(value = "id") long id, @RequestParam(name = "createReview") String createReview) {
-//        Service service = servicesDao.getOne(id);
-//        Review review = new Review();
-//        Review.setContent(createReview);
-//        Review.setParentService(service);
-//        reviewDao.save(review);
-//
-//        return "redirect:/services/show/" + id;
-//    }
-//
-
+// ==== EDITING SERVICES ==== //
 
     //editing individual services
     @GetMapping("/services/{id}/edit")
@@ -84,6 +70,8 @@ public class ServiceController {
         servicesDao.save(Service);
         return "redirect:/services";
     }
+
+//    getParent on thymeleaf
 
 
 // ==== DELETING SERVICES ==== //

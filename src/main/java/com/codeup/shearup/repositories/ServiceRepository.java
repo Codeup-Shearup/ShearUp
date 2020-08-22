@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface ServiceRepository extends JpaRepository<Service, Long> {
 //    List<Service> findServicesByUserId(long id);
-
-    Service findByService(String service);
+//    Service findByService(String service);
 
 }

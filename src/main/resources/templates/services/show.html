@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:replace="partials :: head (Title = 'Create')"></head>
+<head th:replace="partials :: head (Title = 'Show')"></head>
 <title>Submit a Barber service!</title>
 </head>
 <body>
-<!--<nav th:replace="fragments/navbar :: navbar"></nav>-->
 
 <div class="container p-5 border-left">
 
@@ -13,6 +12,7 @@
     <a class="btn btn-primary" href="/reviews/create">Create Service</a>
 
 
+<!--    why is this red?-->
     <h2 th:text="${service.title}"></h2>
     <p th:text="${service.description}"></p>
     <p th:text="${service.price}"></p>
