@@ -69,9 +69,11 @@
     <p th:text="${review.content}"></p>
     <p th:text="${review.rating}"></p>
     <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">Edit Review</a>
-    <form th:action="@{'/reviews/' + ${review.id} + '/delete'}" th:method="POST">
-        <button>Delete</button>
-    </form>
+    <br>
+    <a th:href="@{'/reviews/' + ${review.id} + '/delete'}">Delete Review</a>
+    <!--    <form th:action="@{'/reviews/' + ${review.getId()} + '/delete'}" th:method="post">-->
+<!--        <button>Delete</button>-->
+<!--    </form>-->
     <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
 
     <!--    <p th:text="${review.appointment}"></p>-->
