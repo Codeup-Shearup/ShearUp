@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS shearup_db;
 CREATE DATABASE IF NOT EXISTS shearup_db;
 USE shearup_db;
 
+drop table services;
+
 # SHOW DATABASES;
 # SELECT database();
 # SHOW TABLES;
