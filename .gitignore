@@ -32,4 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
+### APPLICATION PROPERTIES ##
 src/main/resources/application.properties
+
+### FILESTACK ###
+keys.js
