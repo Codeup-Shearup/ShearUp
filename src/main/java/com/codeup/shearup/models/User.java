@@ -39,8 +39,6 @@ public class User {
     @OneToOne
     private BarberDetail barberDetail;
 
-
-
 //    @JoinTable(
 //            name="barber_details")
 //            joinColumns={@JoinColumn(name="post_id")},
