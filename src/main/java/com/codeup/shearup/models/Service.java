@@ -10,7 +10,7 @@ public class Service {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     //SERVICE SHOULD NOT BE UNIQUE
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = false, length = 50)
     private String title;
 
     @Column(nullable = false, columnDefinition = "LONGTEXT")
