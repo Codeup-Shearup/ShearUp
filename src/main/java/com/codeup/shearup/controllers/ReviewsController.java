@@ -80,13 +80,28 @@ public class ReviewsController {
         return "redirect:/reviews/show" + id;
     }
 
-    //Deleting Review
+    //Delete Review GET
+    @GetMapping("/reviews/{id}/delete")
+    public String deletePage(@PathVariable Long id, Model model){
+        Review pulledReview = reviewsDao.getOne(id);
+        model.addAttribute("review", pulledReview);
+        return "reviews/delete";
+    }
+
+    //Deleting Review POST
     @PostMapping("/reviews/{id}/delete")
-    public String deleteReview(@PathVariable long id){
-        reviewsDao.deleteById(id);
+    public String deleteReview(@ModelAttribute Review review){
+        Review deleteReview = reviewsDao.getOne(review.getId());
+        reviewsDao.delete(deleteReview);
         return "redirect:/reviews";
     }
 
+
+    //About Us Controller Placeholder for now
+    @GetMapping("/about")
+    public String about(Model model){
+        return "/about/about-us";
+    }
 
 
 }

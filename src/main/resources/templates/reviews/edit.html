@@ -1,45 +1,105 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-
+<head>
 <head th:replace="partials :: head (Title = 'Edit')"></head>
 <title>Edit a Barber Review!</title>
+
+<!--    Custom Styling For Side Nav-->
+<style>
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 200px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 53px;
+    }
+
+    .sidenav a {
+        padding: 6px 6px 6px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+    .main {
+        margin-left: 200px; /* Same as the width of the sidenav */
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+</style>
+
 </head>
 <body>
+
+<!--Nav-->
 <header th:replace="partials :: header"></header>
 
-<!--<div class="container p-5 border-left" style="margin-top: -5%;">-->
-<div class="container p-5 border-left">
+<div class="main">
+    <!--        Side Nav-->
+    <div class="sidenav">
+        <a th:href="@{'/about'}">About</a>
+        <a th:href="@{'/reviews'}">View</a>
+        <a th:href="@{'/reviews/create'}">Create</a>
+        <a th:href="@{'/reviews/create'}">Edit</a>
+    </div>
 
+    <div class="container p-5 border-left">
 
-    <h2>Edit Review</h2>
+        <h2>Edit Review</h2>
 
-    <!-- EDIT REVIEW FORM   -->
-    <hr>
-    <form th:action="@{'/reviews/{id}/edit'}" th:method="post" th:object="${review}" class="p-5" style="margin-top: -5%;">
-        <div class="form-group">
-            <label for="editTitle">Title</label>
-            <input type="text" class="form-control" id="editTitle" th:field="*{title}">
-        </div>
-        <div class="form-group">
-            <label for="editContent">Content</label>
-            <textarea class="form-control" id="editContent" th:field="*{content}"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="editRating">Rating</label>
-            <textarea class="form-control" id="editRating" th:field="*{rating}"></textarea>
-        </div>
-        <!--        <div class="form-group">-->
-        <!--            <label for="createContent">Content</label>-->
-        <!--            <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
-        <!--        </div>-->
-        <div class="form-group">
-            <label for="editAppointment">Appointment</label>
-            <textarea class="form-control" id="editAppointment" th:field="*{appointment}"></textarea>
-        </div>
-        <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Review</button>
-        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">back</a>
-    </form>
+        <!-- EDIT REVIEW FORM   -->
+        <hr>
+        <form th:action="@{'/reviews/{id}/edit'}" th:method="POST" th:object="${review}" class="p-5"
+              style="margin-top: -5%;">
+            <div class="form-group">
+                <label for="editTitle">Title</label>
+                <input type="text" class="form-control" id="editTitle" th:field="*{title}">
+            </div>
+            <div class="form-group">
+                <label for="editContent">Content</label>
+                <textarea class="form-control" id="editContent" th:field="*{content}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="editRating">Rating</label>
+                <textarea class="form-control" id="editRating" th:field="*{rating}"></textarea>
+            </div>
+            <!--        <div class="form-group">-->
+            <!--            <label for="createContent">Content</label>-->
+            <!--            <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
+            <!--        </div>-->
+            <!--        <div class="form-group">-->
+            <!--            <label for="editAppointment">Appointment</label>-->
+            <!--            <textarea class="form-control" id="editAppointment" th:field="*{appointment}"></textarea>-->
+            <!--        </div>-->
+            <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Edit Review</button>
+            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">back</a>
+        </form>
+    </div>
+    <footer th:replace="partials :: footer"></footer>
 </div>
-<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
+
+<!--Source-->
+<!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav-->
