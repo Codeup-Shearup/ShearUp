@@ -4,6 +4,7 @@
 <head th:replace="partials :: head (Title = 'Create')"></head>
     <title>Create a Barber Review!</title>
 
+    <!--    Custom Styling For Side Nav-->
     <style>
         body {
             font-family: "Lato", sans-serif;
@@ -18,7 +19,7 @@
             left: 0;
             background-color: #111;
             overflow-x: hidden;
-            padding-top: 20px;
+            padding-top: 53px;
         }
 
         .sidenav a {
@@ -50,11 +51,15 @@
 
 </head>
 <body>
+
+<!--Nav-->
 <header th:replace="partials :: header"></header>
 
 <div class="main">
+
+<!--    Side Nav-->
     <div class="sidenav">
-        <a href="#">About</a>
+        <a th:href="@{'/about'}">About</a>
         <a th:href="@{'/reviews'}">View</a>
         <a th:href="@{'/reviews/create'}">Create</a>
         <a th:href="@{'/reviews/create'}">Edit</a>
@@ -97,3 +102,6 @@
 </div>
 </body>
 </html>
+
+<!--Source-->
+<!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav-->
