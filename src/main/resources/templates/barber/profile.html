@@ -10,7 +10,7 @@
 <header th:replace="partials :: header"></header>
     <h1>Barber Profile page</h1>
 <h1>Welcome, <h1 th:text="${user.firstName}"></h1>
-
+<h1>Bio: </h1><p th:text="${barber.bio}"></p>
 </h1>
     <h1>List of Services: </h1>
         <!--  THROWING ERROR FOR NOW WORKING ON FIX
