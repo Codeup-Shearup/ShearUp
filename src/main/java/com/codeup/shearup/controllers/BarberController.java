@@ -59,26 +59,6 @@ public class BarberController {
 
     //================ EDIT SERVICE BUTTON =======///
 
-//    //===========START OF THREE STEP FORM========///
-//    //==========BARBER-DETAIL => LOCATIONS => IMAGE ==//
-//    //=============BARBER DETAIL FORM===========//
-//    @GetMapping("/barber/barber-details")
-//    public String barberDetail(Model model){
-//        model.addAttribute("barberDetail", new BarberDetail());
-//        return "barber/barber-details";
-//    }
-//    //============BARBER DETAIL FORM POST MAPPING=======//
-//    @PostMapping("/barber/barber-details")
-//    public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail) {
-//        BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        usersDao.getOne(loggedInUser.getId());
-//        barberDetailDao.getOne(loggedInBarber.getId());
-//        return "redirect:barber/profile";
-//    }
-
-
 
 
     //======ADD A SERVICE PAGE FOR BARBER=========//
