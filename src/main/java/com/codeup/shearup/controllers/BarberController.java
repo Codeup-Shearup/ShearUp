@@ -36,8 +36,6 @@ public class BarberController {
         //===== GETS USER OBJECT OF ASSOCIATED ID WITH USER THAT IS LOGGED IN=======///
         User user = usersDao.getOne(sessionUser.getId());
 
-        //TRIED USING THIS NOT WORKING ATM//
-//        Service servicesOfBarber = servicesDao.findServiceByBarberDetail(sessionUser.getBarberDetail());
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
         model.addAttribute("services", servicesDao.findAllByBarberDetail(sessionUser.getBarberDetail()));
         System.out.println("Hello");

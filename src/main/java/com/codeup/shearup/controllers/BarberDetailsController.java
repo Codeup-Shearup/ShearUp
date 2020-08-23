@@ -30,6 +30,7 @@ public class BarberDetailsController {
     //===========START OF THREE STEP FORM========///
     //==========BARBER-DETAIL => LOCATIONS => IMAGE ==//
     //=============BARBER DETAIL BIO FORM===========//
+    //=============STEP ONE FORM =============//
     @GetMapping("/barber/barber-details/bio")
     public String barberDetail(Model model){
         //=====GRABS LOGGED IN USER ASSOCIATED WITH SESSION FOR BARBER=====///
@@ -48,7 +49,7 @@ public class BarberDetailsController {
 //        barberDetailDao.getOne(sessionUser.getId());
         barberDetailDao.save(barberDetail);
 
-        return "redirect:barber/barber-details/";
+        return "redirect:barber/barber-details/location";
     }
 
 }
