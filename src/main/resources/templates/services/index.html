@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Services</title>
 </head>
 <body>
 
-
+<div class="main">
+    <!--        Added MG Side Nav-->
+    <div class="sidenav">
+        <a th:href="@{'/about'}">About</a>
+        <a th:href="@{'/services'}">View</a>
+        <a th:href="@{'/services/create'}">Create</a>
+        <a th:href="@{'/services/edit'}">Edit</a>
+    </div>
 
 
 </body>
