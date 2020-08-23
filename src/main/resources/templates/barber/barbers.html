@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials :: head (Title = 'Barbers')">
+	<link rel="stylesheet" href="../../static/css/profile.css">
+</head>
+<body>
+
+<header th:replace="partials :: header"></header>
+
+<div class="row row-cols-1 row-cols-md-3">
+	<div class="col mb-4">
+		<div class="card h-100" th:each="barber : ${barbers}">
+			<img src="..." class="card-img-top" alt="...">
+			<div class="card-body">
+				<a th:href="@{/barber/profile/${barber.id}}"><h5 class="card-title" th:text="${barber.firstName}"></h5></a>
+				<p class="card-text" th:text="${barber.barberDetail.bio}"></p>
+			</div>
+			<div class="card-footer">
+				<small class="text-muted" th:text="${barber.barberDetail.location.city} + ', ' + ${barber.barberDetail.location.state} + ' ' + ${barber.barberDetail.location.zip_code}"></small>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer th:replace="partials :: footer"></footer>
+</body>
+</html>

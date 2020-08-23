@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class BarberController {
     //========CREATION OF USER AND SERVICE OBJECTS=====//
@@ -87,5 +89,11 @@ public class BarberController {
     }
 
 
-
+    // ==DEBUGGING DON'T DELETE==
+//    @GetMapping("/barbers")
+//    public String getBarbers(Model model) {
+//        List<User> allBarbers = usersDao.findAllByBarber(true);
+//        model.addAttribute("barbers", allBarbers);
+//        return "barber/barbers";
+//    }
 }
