@@ -29,21 +29,27 @@ public class BarberDetailsController {
 
     //===========START OF THREE STEP FORM========///
     //==========BARBER-DETAIL => LOCATIONS => IMAGE ==//
-    //=============BARBER DETAIL FORM===========//
-    @GetMapping("/barber/barber-details")
+    //=============BARBER DETAIL BIO FORM===========//
+    //=============STEP ONE FORM =============//
+    @GetMapping("/barber/barber-details/bio")
     public String barberDetail(Model model){
+        //=====GRABS LOGGED IN USER ASSOCIATED WITH SESSION FOR BARBER=====///
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.getOne(sessionUser.getId());
+        model.addAttribute("user", user);
         model.addAttribute("barberDetail", new BarberDetail());
         return "barber/barber-details";
     }
-    //============BARBER DETAIL FORM POST MAPPING=======//
-    @PostMapping("/barber/barber-details")
+    //============BARBER DETAIL BIO FORM POST MAPPING=======//
+    @PostMapping("/barber/barber-details/bio")
     public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail) {
-        BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        usersDao.getOne(sessionUser.getId());
+        barberDetailDao.getOne(sessionUser.getId());
+//        barberDetailDao.getOne(sessionUser.getId());
+        barberDetailDao.save(barberDetail);
 
-        usersDao.getOne(loggedInUser.getId());
-        barberDetailDao.getOne(loggedInBarber.getId());
-        return "redirect:barber/profile";
+        return "redirect:barber/barber-details/location";
     }
 
 }

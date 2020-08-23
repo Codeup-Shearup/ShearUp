@@ -10,16 +10,21 @@
 <header th:replace="partials :: header"></header>
     <h1>Barber Profile page</h1>
 <h1>Welcome, <h1 th:text="${user.firstName}"></h1>
-
+<!--  BIO NOT COMING OUT YET DEBUGGING POPULATES IN BIO IN BARBER DETAIL DATABASE  -->
+<h1>Bio: </h1><p th:text="${barber.bio}"></p>
 </h1>
     <h1>List of Services: </h1>
         <!--  THROWING ERROR FOR NOW WORKING ON FIX
         (I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
-    <div th:each="service : ${services}">
-        <p>Title: </p><p th:text="${service.title}"></p>
-        <p>Description: </p><p th:text="${service.description}"></p>
-        <p>Duration: </p><p th:text="${service.duration}"></p>
-        <p>Price: </p><p th:text="${service.price}"></p>
+    <div class="card" style=" width: 18rem;" th:each="service : ${services}">
+    <!--   PICTURE OF SERVICE GOES HERE     -->
+        <img class="card-image-top" src="..." alt="">
+        <div class="card-body">
+            <h5 class="card-title">Title: </h5><p class="card-text" th:text="${service.title}"></p>
+            <h5 class ="card-title">Description: </h5><p class="card-text" th:text="${service.description}"></p>
+            <h5 class="card-title">Duration: </h5><p class="card-text" th:text="${service.duration}"></p>
+            <h5 class="card-title">Price: </h5><p class="card-text" th:text="${service.price}"></p>
+        </div>
         <form th:action="@{'/barber/service-delete'}" th:method="post">
             <input type="hidden" th:name="deleteButton" th:value="${service.id}">
             <button class="btn btn-danger">Delete</button>
