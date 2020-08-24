@@ -59,10 +59,10 @@
         <a th:href="@{'/about'}">About</a>
         <a th:href="@{'/reviews'}">View</a>
         <a th:href="@{'/reviews/create'}">Create</a>
-        <a th:href="@{'/reviews/create'}">Edit</a>
+        <a th:href="@{'/maps'}">Map</a>
     </div>
 
-    <h2>Viewing Reviews</h2>
+    <h2 class="text-center">Viewing Barber Reviews</h2>
     <hr>
 <!--    <a th:href="@{'/reviews/create'}">Create Review</a>-->
 <!--    <hr>-->
@@ -72,7 +72,6 @@
         <h2 th:text="${review.title}"></h2>
         <p th:text="${review.content}"></p>
         <p th:text="${review.rating}"></p>
-        <p th:value="${review.appointment}"></p>
         <a th:href="@{'/reviews/' + ${review.id}}">View Review</a>
     </div>
 
