@@ -1,6 +1,7 @@
 package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.Appointment;
+import com.codeup.shearup.models.BarberDetail;
 import com.codeup.shearup.models.Review;
 import com.codeup.shearup.models.User;
 import com.codeup.shearup.repositories.AppointmentRepository;
@@ -51,33 +52,36 @@ public class ReviewsController {
 
     //Creating Review
     @PostMapping("reviews/create")
-    public String createReview(@ModelAttribute Review review){
-//
-        Appointment appointment = appointmentDao.getOne(1L);
-        review.setAppointment(appointment);
+    public String createReview(@ModelAttribute Review review, BarberDetail barberDetail){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        BarberDetail barberDetail = BarberDetail.ge
+        review.setAuthor(user);
+//        review.setBarberDetail(barberDetail);
         reviewsDao.save(review);
         return "redirect:/reviews";
     }
 
     //Edit Review
     @GetMapping("/reviews/{id}/edit")
-    public String showEditForm(@PathVariable Long id, Model model){
+    public String showEditForm(@PathVariable long id, Model model){
         model.addAttribute("review", reviewsDao.getOne(id));
         return "reviews/edit";
     }
 
     //Edit Review
-    @PostMapping("/posts/{id}/edit")
-    public String editPost(@PathVariable long id,
-                           @RequestParam(name = "titleEdit")String titleUpdate,
-                           @RequestParam(name = "contentEdit") String contentUpdate,
-                           @RequestParam(name = "ratingEdit") Double ratingUpdate){
-        Review review = reviewsDao.getOne(id);
-        review.setTitle(titleUpdate);
-        review.setContent(contentUpdate);
-        review.setRating(ratingUpdate);
+    @PostMapping("/reviews/{id}/edit")
+    public String editReviews(@PathVariable long id, @ModelAttribute Review review){
+//                           @RequestParam(name = "titleEdit")String titleUpdate,
+//                           @RequestParam(name = "contentEdit") String contentUpdate,
+//                           @RequestParam(name = "ratingEdit") Double ratingUpdate){
+//        Review review = reviewsDao.getOne(1L);
+//        review.setTitle(titleUpdate);
+//        review.setContent(contentUpdate);
+//        review.setRating(ratingUpdate);
+        User user = usersDao.getOne(1L);
+        review.setAuthor(user);
         reviewsDao.save(review);
-        return "redirect:/reviews/show" + id;
+        return "redirect:/reviews";
     }
 
     //Delete Review GET
@@ -103,5 +107,10 @@ public class ReviewsController {
         return "/about/about-us";
     }
 
+    //Maps Controller Placeholder for now
+    @GetMapping("/maps")
+    public String maps(Model model){
+        return "/about/maps";
+    }
 
 }

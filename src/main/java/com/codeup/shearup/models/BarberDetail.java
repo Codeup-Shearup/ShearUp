@@ -38,8 +38,12 @@ public class BarberDetail {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "barberDetail", fetch = FetchType.EAGER)
     private List<Service> services;
 
-    //=======TODO: UPDATE GETTERS AND SETTERS========
+    // Barber detail tied to Review //
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "barberDetail", fetch = FetchType.LAZY)
+    private List<Review> reviews;
 
+
+    //=======TODO: UPDATE GETTERS AND SETTERS========
 
     //Empty Constructor
     public BarberDetail(){
@@ -109,5 +113,11 @@ public class BarberDetail {
         this.services = services;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
 
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 }
