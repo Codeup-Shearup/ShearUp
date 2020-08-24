@@ -22,31 +22,30 @@ public class Appointment {
     @JoinColumn(name = "service_id")
     private Service service;
 
-    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL)
-    private Review reviews;
+//    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL)
+//    private Review reviews;
 
 
     //Zero argument constructor
     public Appointment() {
 
     }
-
+    //------COMMENTED OUT REVIEWS-----
     //CONSTRUCTOR
-
-    public Appointment(long id, Date appointmentDate, User user, Service service, Review reviews) {
+    public Appointment(long id, Date appointmentDate, User user, Service service) {
         this.id = id;
         this.appointmentDate = appointmentDate;
         this.user = user;
         this.service = service;
-        this.reviews = reviews;
     }
+
+    //------COMMENTED OUT REVIEWS-----
     //NEEDS TO BE HERE FOR NOW PER BRANCE -RAMON
-    public Appointment(Date appointmentDate, User user, Service service, Review reviews) {
+    public Appointment(Date appointmentDate, User user, Service service) {
 
         this.appointmentDate = appointmentDate;
         this.user = user;
         this.service = service;
-        this.reviews = reviews;
     }
 
 
@@ -85,11 +84,4 @@ public class Appointment {
         this.service = service;
     }
 
-    public Review getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Review reviews) {
-        this.reviews = reviews;
-    }
 }
