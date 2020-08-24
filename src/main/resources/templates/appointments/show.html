@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:replace="partials :: head (Title = 'Deltete By Id')"></head>
+<head th:replace="partials :: head (Title = 'View By Id')"></head>
+<title>Submit a Barber Review!</title>
 
 <!--    Custom Styling For Side Nav-->
 <style>
@@ -55,21 +56,24 @@
         <!--    Side Nav-->
         <div class="sidenav">
             <a th:href="@{'/about'}">About</a>
-            <a th:href="@{'/reviews'}">View</a>
+            <a th:href="@{'/appointments'}">View</a>
             <a th:href="@{'/reviews/create'}">Create</a>
             <a th:href="@{'/reviews/create'}">Edit</a>
         </div>
 
-        <h2 class="text-center">Would you like to Delete Barber Review?</h2>
+        <h2>Viewing Appointments By Id</h2>
         <hr>
 
-        <!--    Viewing the review based off off id-->
-        <h2 th:text="${review.title}"></h2>
-        <p th:text="${review.content}"></p>
-        <p th:text="${review.rating}"></p>
-        <form th:action="@{'/reviews/' + ${review.getId()} + '/delete'}" th:method="post">
-            <button>Delete</button>
-        </form>
+        <!--    Viewing the appointment based off off id-->
+        <h2 th:text="${appointment.appointmentDate}"></h2>
+        <p th:text="${appointment.user}"></p>
+        <p th:text="${appointment.service}"></p>
+        <a th:href="@{'/appointments/' + ${appointment.id} + '/edit'}">Edit Review</a>
+        <br>
+        <a th:href="@{'/appointments/' + ${appointment.id} + '/delete'}">Delete Review</a>
+        <!--    <form th:action="@{'/reviews/' + ${review.getId()} + '/delete'}" th:method="post">-->
+        <!--        <button>Delete</button>-->
+        <!--    </form>-->
         <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
 
         <!--    <p th:text="${review.appointment}"></p>-->
