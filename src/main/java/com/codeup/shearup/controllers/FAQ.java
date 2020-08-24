@@ -11,7 +11,7 @@ public class FAQ {
     //FAQ Controller Placeholder for now
     @GetMapping("/FAQ")
     public String about(Model model){
-        return "/FAQ";
+        return "uploadImagePage";
     }
 
 

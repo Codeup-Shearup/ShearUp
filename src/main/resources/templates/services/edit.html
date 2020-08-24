@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <head th:replace="partials :: head (Title = 'Service Edit')"></head>
-    <title>Edit a Service Review!</title>
+
+<head th:replace="partials :: head (Title = 'Edit a Service')">
+    <title>Edit a Service services!</title>
 
 <body>
 
@@ -13,18 +13,18 @@
     <!--        MG Side Nav-->
     <div class="sidenav">
         <a th:href="@{'/about'}">About</a>
-        <a th:href="@{'/reviews'}">View</a>
-        <a th:href="@{'/reviews/create'}">Create</a>
-        <a th:href="@{'/reviews/create'}">Edit</a>
+        <a th:href="@{'/service'}">View</a>
+        <a th:href="@{'/service/create'}">Create</a>
+        <a th:href="@{'/service/create'}">Edit</a>
     </div>
 
     <div class="container p-5 border-left">
 
-        <h2>Edit Review</h2>
+        <h2>Edit Services</h2>
 
-        <!-- EDIT REVIEW FORM   -->
+        <!-- EDIT SERVICES FORM   -->
         <hr>
-        <form th:action="@{'/reviews/{id}/edit'}" th:method="POST" th:object="${review}" class="p-5"
+        <form th:action="@{'/service/{id}/edit(id=$(service.id)'}" th:method="POST" th:object="${services}" class="p-5"
               style="margin-top: -5%;">
             <div class="form-group">
                 <label for="editTitle">Title</label>

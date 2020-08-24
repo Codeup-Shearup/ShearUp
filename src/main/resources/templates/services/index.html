@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en"xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials :: head (Title = 'Show all Services')">
+
     <meta charset="UTF-8">
     <title>Services</title>
 </head>
+<header th:replace="partials :: header"></header>
 <body>
 
-<div class="main">
+
+<div class="container p-5 border-left">
     <!--        Added MG Side Nav-->
     <div class="sidenav">
         <a th:href="@{'/about'}">About</a>
@@ -14,6 +17,9 @@
         <a th:href="@{'/services/create'}">Create</a>
         <a th:href="@{'/services/edit'}">Edit</a>
     </div>
+</div>
+
+
 
 
 </body>
