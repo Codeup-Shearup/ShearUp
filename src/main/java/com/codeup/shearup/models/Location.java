@@ -45,6 +45,15 @@ public class Location {
         this.barber = barber;
     }
 
+    public Location(String addressOne, String addressTwo, String city, String state, int zipCode, BarberDetail barber) {
+        this.addressOne = addressOne;
+        this.addressTwo = addressTwo;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.barber = barber;
+    }
+
 
     //GETTERS AND SETTERS
 
