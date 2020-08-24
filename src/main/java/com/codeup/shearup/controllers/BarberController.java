@@ -110,10 +110,10 @@ public class BarberController {
 
 
     // ==DEBUGGING DON'T DELETE==
-//    @GetMapping("/barbers")
-//    public String getBarbers(Model model) {
-//        List<User> allBarbers = usersDao.findAllByBarber(true);
-//        model.addAttribute("barbers", allBarbers);
-//        return "barber/barbers";
-//    }
+    @GetMapping("/barbers")
+    public String getBarbers(Model model) {
+        List<User> allBarbers = usersDao.findAllBarbers();
+        model.addAttribute("barbers", allBarbers);
+        return "barber/barbers";
+    }
 }

@@ -50,7 +50,7 @@ public class UserController {
 			barberDetailDao.save(newBarberDetail);
 		}
 		authenticate(user); // programatically login the new user
-		return "redirect:/"; // direct redirect upon login
+		return "redirect:/login"; // direct redirect upon login
 	}
 		//work from Brance
 //		BarberDetail barberDetails = new BarberDetail(user.getId());
@@ -92,15 +92,15 @@ public class UserController {
 		return "users/user-profile";
 	}
 	
-	@GetMapping("/profile/edit")
-	public String editProfile(Model model) {
+	@GetMapping("/profile/{id}/edit")
+	public String editProfile(@PathVariable long id, Model model) {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = users.getOne(sessionUser.getId());
 		model.addAttribute("user", user);
 		return "users/edit-profile";
 	}
 	
-	@PostMapping("/profile/edit")
+	@PostMapping("/profile/{id}/edit")
 	public String update(@PathVariable long id, @ModelAttribute User user) {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		users.save(sessionUser);

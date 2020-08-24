@@ -10,10 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AuthenticationController {
 	@GetMapping("/login")
 	public String showLoginForm() {
-		Authentication token = SecurityContextHolder.getContext().getAuthentication();
-		
-		if (token instanceof AnonymousAuthenticationToken) return "users/login";
-		
-		return String.format("redirect:%s", "/");
+		return "users/login";
 	}
 }
