@@ -27,8 +27,22 @@
 	<label for="password">Password</label>
 	<input id="password" type="password" th:field="*{password}" />
 	
-	<input value="Sign me up!" type="submit" />
+	<label for="passwordConfirmation">Confirm Password</label>
+	<span id="message"></span>
+	<input id="passwordConfirmation" name="passwordConfirmation" type="password" />
+	
+	<input id="submitButton" value="Sign me up!" type="submit" />
 </form>
+<!--===PASSWORD CONFIRMATION SCRIPTS===-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>
+	$('#password, #passwordConfirmation').on('keyup', function () {
+		if ($('#password').val() === $('#passwordConfirmation').val()) {
+			$('#message').html('Matching').css('color', 'green');
+		} else
+			$('#message').html('Not Matching').css('color', 'red');
+	});
+</script>
 <footer th:replace="partials :: footer"></footer>
 </body>
 </html>

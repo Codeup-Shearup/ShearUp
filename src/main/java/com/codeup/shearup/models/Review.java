@@ -23,24 +23,38 @@ public class Review {
     @OneToOne
     private Image image;
 
+    // DISCONNECTED REVIEW TO APPOINTMENTS //
+//    @OneToOne
+//    @JoinColumn(name = "appointment_id") //_id was here before
+//    private Appointment appointment;
 
-    @OneToOne
-    @JoinColumn(name = "appointment_id") //_id was here before
-    private Appointment appointment;
+
+    // Barber id for Review
+    @ManyToOne
+    @JoinColumn(name = "barber_details_id")
+    private BarberDetail barberDetail;
+
+    // Review tied to user
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User author;
+
 
     //Zero argument constructor
     public Review () {
 
     }
     //Constructor
-    public Review(long id, String title, String content, double rating, Image image, Appointment appointment) {
+    public Review(long id, String title, String content, double rating, Image image, BarberDetail barberDetail, User author) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.rating = rating;
         this.image = image;
-        this.appointment = appointment;
+        this.barberDetail = barberDetail;
+        this.author = author;
     }
+
 
     //GETTERS AND SETTERS
 
@@ -76,6 +90,21 @@ public class Review {
         this.rating = rating;
     }
 
+    public BarberDetail getBarberDetail() {
+        return barberDetail;
+    }
+
+    public void setBarberDetail(BarberDetail barberDetail) {
+        this.barberDetail = barberDetail;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 //    public Image getImage() {
 //        return image;
 //    }
@@ -84,11 +113,4 @@ public class Review {
 //        this.image = image;
 //    }
 
-    public Appointment getAppointment() {
-        return appointment;
-    }
-
-    public void setAppointment(Appointment appointment) {
-        this.appointment = appointment;
-    }
 }

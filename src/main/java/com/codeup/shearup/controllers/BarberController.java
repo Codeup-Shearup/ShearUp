@@ -38,22 +38,17 @@ public class BarberController {
         //===== GETS USER OBJECT OF ASSOCIATED ID WITH USER THAT IS LOGGED IN=======///
         User user = usersDao.getOne(sessionUser.getId());
 
-        //TRIED USING THIS NOT WORKING ATM//
-//        Service servicesOfBarber = servicesDao.findServiceByBarberDetail(sessionUser.getBarberDetail());
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
-
         model.addAttribute("services", servicesDao.findAllByBarberDetail(sessionUser.getBarberDetail()));
         System.out.println("Hello");
         //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
-
         model.addAttribute("barber", barberDetailDao.getOne(id));
-
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
         return"barber/profile";
     }
 
-    //============DELETE A SERVICE BUTTON==============// -NEEDS WORK
+    //============DELETE A SERVICE BUTTON==============// -NEEDS WORK RAMON
     @PostMapping("/barber/service-delete")
     public String deleteService(@RequestParam(name = "deleteButton") long id,
                                 @ModelAttribute Service service){
@@ -63,6 +58,8 @@ public class BarberController {
         servicesDao.delete(servicesDao.getOne(id));
         return "redirect:/barber/profile/" + sessionUser.getBarberDetail().getId();
     }
+
+    //================ EDIT SERVICE BUTTON =======///
 
 //    //===========START OF THREE STEP FORM========///
 //    //==========BARBER-DETAIL => LOCATIONS => IMAGE ==//
@@ -113,10 +110,10 @@ public class BarberController {
 
 
     // ==DEBUGGING DON'T DELETE==
-//    @GetMapping("/barbers")
-//    public String getBarbers(Model model) {
-//        List<User> allBarbers = usersDao.findAllByBarber(true);
-//        model.addAttribute("barbers", allBarbers);
-//        return "barber/barbers";
-//    }
+    @GetMapping("/barbers")
+    public String getBarbers(Model model) {
+        List<User> allBarbers = usersDao.findAllBarbers();
+        model.addAttribute("barbers", allBarbers);
+        return "barber/barbers";
+    }
 }
