@@ -49,7 +49,7 @@ public class UserController {
 			user.setBarberDetail(newBarberDetail);
 			barberDetailDao.save(newBarberDetail);
 		}
-		authenticate(user); // programatically login the new user
+//		authenticate(user); // programatically login the new user
 		return "redirect:/login"; // direct redirect upon login
 	}
 		//work from Brance
@@ -58,16 +58,16 @@ public class UserController {
 //		barberDetailDao.save(barberDetails);
 //		user = users.save(user);
 
-	private void authenticate(User user) {
-		UserDetails userDetails = new UserWithRoles(user, Collections.emptyList());
-		Authentication auth = new UsernamePasswordAuthenticationToken(
-				userDetails,
-				userDetails.getPassword(),
-				userDetails.getAuthorities()
-		);
-		SecurityContext context = SecurityContextHolder.getContext();
-		context.setAuthentication(auth);
-	}
+//	private void authenticate(User user) {
+//		UserDetails userDetails = new UserWithRoles(user, Collections.emptyList());
+//		Authentication auth = new UsernamePasswordAuthenticationToken(
+//				userDetails,
+//				userDetails.getPassword(),
+//				userDetails.getAuthorities()
+//		);
+//		SecurityContext context = SecurityContextHolder.getContext();
+//		context.setAuthentication(auth);
+//	}
 
 	//========PLACE HOLDER FOR DASHBOARD FOR NOW TEMPORARY======//
 	@GetMapping("/dashboard")
