@@ -1,6 +1,7 @@
 package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.BarberDetail;
+import com.codeup.shearup.models.Location;
 import com.codeup.shearup.models.User;
 import com.codeup.shearup.repositories.BarberDetailRepository;
 import com.codeup.shearup.repositories.LocationRepository;
@@ -46,10 +47,36 @@ public class BarberDetailsController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         usersDao.getOne(sessionUser.getId());
         barberDetailDao.getOne(sessionUser.getId());
-//        barberDetailDao.getOne(sessionUser.getId());
         barberDetailDao.save(barberDetail);
 
+        return "redirect:/barber/barber-details/location";
+    }
+
+    //=================STEP 2 OF FORM using LOCATION MODEL ========///
+    @GetMapping("/barber/barber-details/location")
+    public String barberLocation(Model model){
+        //=====GRABS LOGGED IN USER ASSOCIATED WITH SESSION FOR BARBER=====///
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.getOne(sessionUser.getId());
+        model.addAttribute("user", user);
+        model.addAttribute("barberDetail", new BarberDetail());
+        model.addAttribute("location", new Location());
+        return "barber/barber-details/location";
+    }
+
+
+    @PostMapping("/barber/barber-details/location")
+    public String insertBarberLocation(@ModelAttribute Location location,
+                                       @ModelAttribute BarberDetail barberDetail) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        usersDao.getOne(sessionUser.getId());
+        barberDetailDao.getOne(sessionUser.getId());
+        locationsDao.getOne(sessionUser.getId());
+
+        barberDetailDao.save(barberDetail);
+        locationsDao.save(location);
         return "redirect:barber/barber-details/location";
     }
+
 
 }

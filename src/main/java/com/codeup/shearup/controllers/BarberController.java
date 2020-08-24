@@ -40,7 +40,6 @@ public class BarberController {
 
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
         model.addAttribute("services", servicesDao.findAllByBarberDetail(sessionUser.getBarberDetail()));
-        System.out.println("Hello");
         //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
         model.addAttribute("barber", barberDetailDao.getOne(id));
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
@@ -50,38 +49,49 @@ public class BarberController {
 
     //============DELETE A SERVICE BUTTON==============// -NEEDS WORK RAMON
     @PostMapping("/barber/service-delete")
-    public String deleteService(@RequestParam(name = "deleteButton") long id,
-                                @ModelAttribute Service service){
+    public String deleteService(@RequestParam(name = "deleteButton") long id){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(id);
         usersDao.getOne(sessionUser.getId());
-        servicesDao.delete(servicesDao.getOne(id));
+        Service service = servicesDao.getOne(id);
+        System.out.println("service.getBarberDetail().getUser().getFirstName() = " + service.getBarberDetail().getUser().getFirstName());
+        System.out.println("service.getBarberDetail().getUser().getId() = " + service.getBarberDetail().getUser().getId());
+        servicesDao.delete(service);
         return "redirect:/barber/profile/" + sessionUser.getBarberDetail().getId();
     }
+    //======2ND TRY ON THIS
+//    @PostMapping("/barber/{id}/service-delete")
+//    public String deleteService(@ModelAttribute Service service){
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Service deleteService = servicesDao.getOne(service.getId());
+//        usersDao.getOne(sessionUser.getId());
+//        servicesDao.delete(deleteService);
+//        return "redirect:/barber/profile/" + sessionUser.getBarberDetail().getId();
+//    }
 
     //================ EDIT SERVICE BUTTON =======///
+    @GetMapping("/barber/{id}/edit-service")
+    public String editButton(@PathVariable long id, Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.getOne(sessionUser.getId());
 
-//    //===========START OF THREE STEP FORM========///
-//    //==========BARBER-DETAIL => LOCATIONS => IMAGE ==//
-//    //=============BARBER DETAIL FORM===========//
-//    @GetMapping("/barber/barber-details")
-//    public String barberDetail(Model model){
-//        model.addAttribute("barberDetail", new BarberDetail());
-//        return "barber/barber-details";
-//    }
-//    //============BARBER DETAIL FORM POST MAPPING=======//
-//    @PostMapping("/barber/barber-details")
-//    public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail) {
-//        BarberDetail loggedInBarber = (BarberDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        usersDao.getOne(loggedInUser.getId());
-//        barberDetailDao.getOne(loggedInBarber.getId());
-//        return "redirect:barber/profile";
-//    }
+        model.addAttribute("user", user);
+        model.addAttribute("editButton", servicesDao.getOne(id));
+        return "barber/edit-service";
+    }
 
+    @PostMapping("/barber/{id}/edit-service")
+    public String editService(@PathVariable long id,
+                              @ModelAttribute Service service) {
 
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        usersDao.getOne(sessionUser.getId());
 
+//        service.setBarberDetail(sessionUser);
+        servicesDao.save(service);
+
+        return "redirect:/barber/edit-service";
+    }
 
     //======ADD A SERVICE PAGE FOR BARBER=========//
     @GetMapping("/barber/add-service")

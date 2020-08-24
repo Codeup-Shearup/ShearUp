@@ -43,6 +43,7 @@ public class Appointment {
     //NEEDS TO BE HERE FOR NOW PER BRANCE -RAMON
     public Appointment(Date appointmentDate, User user, Service service) {
 
+
         this.appointmentDate = appointmentDate;
         this.user = user;
         this.service = service;

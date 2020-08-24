@@ -34,6 +34,7 @@ public class Location {
     }
 
     //Constructor
+
     public Location(long id, String addressOne, String addressTwo, String city, String state, int zipCode, BarberDetail barber) {
         this.id = id;
         this.addressOne = addressOne;
@@ -44,7 +45,18 @@ public class Location {
         this.barber = barber;
     }
 
+    public Location(String addressOne, String addressTwo, String city, String state, int zipCode, BarberDetail barber) {
+        this.addressOne = addressOne;
+        this.addressTwo = addressTwo;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.barber = barber;
+    }
+
+
     //GETTERS AND SETTERS
+
     public long getId() {
         return id;
     }
@@ -53,19 +65,19 @@ public class Location {
         this.id = id;
     }
 
-    public String getAddress_one() {
+    public String getAddressOne() {
         return addressOne;
     }
 
-    public void setAddress_one(String addressOne) {
+    public void setAddressOne(String addressOne) {
         this.addressOne = addressOne;
     }
 
-    public String getAddress_two() {
+    public String getAddressTwo() {
         return addressTwo;
     }
 
-    public void setAddress_two(String addressTwo) {
+    public void setAddressTwo(String addressTwo) {
         this.addressTwo = addressTwo;
     }
 
@@ -85,11 +97,19 @@ public class Location {
         this.state = state;
     }
 
-    public int getZip_code() {
+    public int getZipCode() {
         return zipCode;
     }
 
-    public void setZip_code(int zipCode) {
+    public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public BarberDetail getBarber() {
+        return barber;
+    }
+
+    public void setBarber(BarberDetail barber) {
+        this.barber = barber;
     }
 }
