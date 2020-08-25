@@ -42,6 +42,7 @@ public class BarberController {
         model.addAttribute("services", servicesDao.findAllByBarberDetail(sessionUser.getBarberDetail()));
         //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
         model.addAttribute("barber", barberDetailDao.getOne(sessionUser.getId()));
+        model.addAttribute("location", locationsDao.getOne(sessionUser.getId()));
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
         return"barber/profile";
