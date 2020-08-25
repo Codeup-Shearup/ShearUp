@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class FAQ {
+public class FilestackController {
 
-    //FAQ Controller Placeholder for now
-    @GetMapping("/FAQ")
+    //Placeholder for now
+    @GetMapping("/filestack")
     public String about(Model model){
         return "uploadImagePage";
     }
