@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:replace="partials :: head (Title = 'Show')"></head>
 <title>Submit a Barber service!</title>
-</head>
+<head th:replace="partials :: head (Title = 'Show one Service')">
+<header th:replace="partials :: header"></header>
 <body>
 
 <div class="container p-5 border-left">
@@ -17,6 +17,7 @@
     <p th:text="${service.description}"></p>
     <p th:text="${service.price}"></p>
     <p th:text="${service.duration}"></p>
+
 
 
 

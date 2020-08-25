@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials :: head (Title = 'Edit Service Page')">
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:replace="partials :: header"></header>
+
+<h1>Add Service page for</h1>
+<h2 th:text="${user.firstName}"></h2>
+<form th:action="@{'/barber/edit-service'}"  th:method="POST" th:object="${service}">
+    <div class="form-group">
+        <label for="title">Service Name: </label>
+        <input class="form-control" type="text" th:field="*{title}" id="title" placeholder="Enter service name">
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description: </label>
+        <input class="form-control" th:field="*{description}" id="description" placeholder="Enter description of Service">
+    </div>
+
+    <div class="form-group">
+        <label for="duration">Duration: </label>
+        <input class="form-control" th:field="*{duration}" type="number" id="duration" placeholder="Enter duration of service">
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price: $</label>
+        <input class="form-control" th:field="*{price}" id="price" placeholder="Enter price">
+    </div>
+    <!--        <div th:object="${user}">-->
+    <!--            <input type="hidden" th:value="${user.barberDetail}" th:field="${service.barberDetail}">-->
+    <!--        </div>-->
+    <button class=" btn btn-primary">Edit Service</button>
+
+<footer th:replace="partials :: footer"></footer>
+</body>
+</html>
