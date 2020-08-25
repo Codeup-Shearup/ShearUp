@@ -77,8 +77,12 @@ public class UserController {
 		//==SUPPOSED TO BE USERDAO====//
 		//BELOW IF STATEMENT SEND THEM TO DASHBOARD===//
 		User user = users.getOne(sessionUser.getId());
-		if (user.isBarber()) {
-			return "redirect:/barber/profile";
+//		(barberDetailDao.getOne(Long.parseLong(user.getBarberDetail().toString())).getBio() == null))
+		if (user.isBarber() && (user.getBarberDetail() == null)) {
+			return "redirect:barber/barber-details/bio";
+		}
+		else if (user.isBarber()) {
+			return "redirect:barber/profile";
 		}
 		return "redirect:/profile";
 	}
@@ -89,7 +93,7 @@ public class UserController {
 		User user = users.getOne(sessionUser.getId());
 		model.addAttribute("user", user);
 		if (user.isBarber()) {
-			return "barber/profile";
+			return "redirect:barber/profile";
 		}
 		return "users/user-profile";
 	}

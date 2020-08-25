@@ -90,7 +90,7 @@ public class BarberDetailsController {
         barberDeet.setLocation(location);
         locationsDao.save(location);
         barberDetailDao.save(barberDeet);
-        return "redirect:/barber/profile";
+        return "redirect:/profile";
     }
 
 
