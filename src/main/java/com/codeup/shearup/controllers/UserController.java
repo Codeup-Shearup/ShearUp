@@ -76,7 +76,7 @@ public class UserController {
 		//BELOW IF STATEMENT SEND THEM TO DASHBOARD===//
 		User user = users.getOne(sessionUser.getId());
 		if (user.isBarber()) {
-			return "redirect:/barber/profile/" + user.getBarberDetail().getId();
+			return "redirect:/barber/profile";
 		}
 		return "redirect:/";
 	}

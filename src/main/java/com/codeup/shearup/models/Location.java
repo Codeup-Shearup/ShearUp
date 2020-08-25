@@ -55,6 +55,8 @@ public class Location {
     }
 
 
+
+
     //GETTERS AND SETTERS
 
     public long getId() {

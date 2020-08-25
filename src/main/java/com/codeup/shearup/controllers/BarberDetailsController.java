@@ -61,7 +61,7 @@ public class BarberDetailsController {
         model.addAttribute("user", user);
         model.addAttribute("barberDetail", new BarberDetail());
         model.addAttribute("location", new Location());
-        return "barber/barber-details/location";
+        return "barber/barber-details";
     }
 
 

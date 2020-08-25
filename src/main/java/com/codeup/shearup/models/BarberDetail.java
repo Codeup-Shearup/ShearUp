@@ -16,8 +16,11 @@ public class BarberDetail {
 
     // One to one not included because already defined in User class in Models
 
-    @Column(nullable = true, columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "LONGTEXT")
     private String bio;
+
+    @Column(columnDefinition = "INT UNSIGNED")
+    private int phone;
 
     // Need 2 foreign key relationships location id fk
     //one to one barber details to location
@@ -46,9 +49,9 @@ public class BarberDetail {
     //=======TODO: UPDATE GETTERS AND SETTERS========
 
     //Empty Constructor
-    public BarberDetail(){
+    public BarberDetail(){ }
 
-    }
+
     //====BARBER DETAILS USER CONTROLLER ONLY ACCEPTS ID======//
     public BarberDetail(long id) {
         this.id = id;
@@ -62,6 +65,16 @@ public class BarberDetail {
         this.bio = bio;
         this.location = location;
         this.image = image;
+    }
+
+    public BarberDetail(long id, String bio, int phone, Location location, Image image, User user, List<Service> services) {
+        this.id = id;
+        this.bio = bio;
+        this.phone = phone;
+        this.location = location;
+        this.image = image;
+        this.user = user;
+        this.services = services;
     }
 
     //GETTERS AND SETTERS
@@ -113,11 +126,12 @@ public class BarberDetail {
         this.services = services;
     }
 
-    public List<Review> getReviews() {
-        return reviews;
+    public int getPhone() {
+        return phone;
     }
 
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
+    public void setPhone(int phone) {
+        this.phone = phone;
+
     }
 }
