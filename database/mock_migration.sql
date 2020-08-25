@@ -4,6 +4,9 @@ USE shearup_db;
 
 drop table services;
 
+describe users;
+describe services;
+
 # SHOW DATABASES;
 # SELECT database();
 # SHOW TABLES;
