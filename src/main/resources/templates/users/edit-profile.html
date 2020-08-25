@@ -12,37 +12,47 @@
 	<!-- EDIT PROFILE FORM   -->
 	<hr>
 
-<form th:action="@{/profile/{id}/edit(id=${user.id})}" th:method="POST" th:object="${user}" class="p-5"
+<form th:action="@{/profile/edit/{id}(id=${user.id})}" th:method="POST" th:object="${user}" class="p-5"
 		style="margin-top: -5%;">
 	<div class="form-group">
 		<label for="editFirstName">First Name</label>
-		<input type="text" class="form-control" id="editFirstName" th:field="*{firstName}" th:value="*{firstName}">
+		<input type="text" class="form-control" id="editFirstName" name="editFirstName" th:field="*{firstName}" th:value="${user.firstName}">
 	</div>
 	<div class="form-group">
 		<label for="editLastName">Last Name</label>
-		<textarea class="form-control" id="editLastName" th:field="*{lastName}" th:value="*{lastName}"></textarea>
+		<input type="text" class="form-control" id="editLastName" name="editLastName" th:field="*{lastName}" th:value="${user.lastName}">
 	</div>
 	<div class="form-group">
 		<label for="editUsername">Username</label>
-		<textarea class="form-control" id="editUsername" th:field="*{username}" th:value="*{username}"></textarea>
+		<input type="text" class="form-control" id="editUsername" name="editUsername" th:field="*{username}" th:value="${user.username}">
 	</div>
 	<div class="form-group">
 		<label for="editEmail">Email</label>
-		<textarea class="form-control" id="editEmail" th:field="*{email}" th:value="*{email}"></textarea>
+		<input type="text" class="form-control" id="editEmail" name="editEmail" th:field="*{email}" th:value="${user.email}">
 	</div>
-	<div class="form-group">
-		<label for="editPassword">Password</label>
-		<textarea class="form-control" id="editPassword" th:field="*{password}" th:value="*{password}"></textarea>
-	</div>
-	<!--        <div class="form-group">-->
-	<!--            <label for="createContent">Content</label>-->
-	<!--            <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
-	<!--        </div>-->
-	<button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Edit Review</button>
-	<a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">back</a>
+<!--	<div class="form-group">-->
+<!--		<label for="editPassword">Password</label>-->
+<!--		<input class="form-control" id="editPassword" type="password" name="editPassword" th:field="*{password}">-->
+<!--	</div>-->
+<!--	<div class="form-group">-->
+<!--		<label for="passwordConfirmation">Confirm Password</label>-->
+<!--		<span id="message"></span>-->
+<!--		<input id="passwordConfirmation" name="passwordConfirmation" type="password" />-->
+<!--	</div>-->
+	<button style="border-left: 4px solid navy;" class="btn btn-dark text-white" type="submit">Save</button>
+	<a class="btn btn-secondary float-right" style="text-decoration: none; color:black;" th:href="@{/profile}">back</a>
 </form>
 </div>
-
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+<!--<script>-->
+<!--	$('#editPassword, #passwordConfirmation').on('keyup', function () {-->
+<!--		if ($('#editPassword').val() === $('#passwordConfirmation').val()) {-->
+<!--			$('#message').html('Matching').css('color', 'green');-->
+<!--		} else-->
+<!--			$('#message').html('Not Matching').css('color', 'red');-->
+<!--	});-->
+<!--</script>-->
+<div th:replace="partials :: scripts"></div>
 <footer th:replace="partials :: footer"></footer>
 </body>
 </html>

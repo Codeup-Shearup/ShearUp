@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	User findByUsername(String username);
+	User findById(long id);
 	// ==DEBUGGING DON'T DELETE==
 	
 //	@Query(value = "SELECT users.barber_detail_id from users JOIN barber_details ON users.barber_detail_id = "
