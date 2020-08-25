@@ -39,4 +39,4 @@ src/main/resources/application.properties
 keys.js
 
 ### HIDDEN MODULES ###
-#node_modules/
+node_modules/
