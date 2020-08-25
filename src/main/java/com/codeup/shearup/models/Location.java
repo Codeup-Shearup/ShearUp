@@ -21,8 +21,8 @@ public class Location {
     @Column(nullable = false, columnDefinition = "CHAR(2) DEFAULT 'XX'")
     private String state;
 
-    @Column(nullable = false, columnDefinition = "INT UNSIGNED")
-    private int zipCode;
+    @Column(nullable = false, columnDefinition = "VARCHAR(10)")
+    private String zipCode;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "location")
     private BarberDetail barber;
@@ -35,7 +35,7 @@ public class Location {
 
     //Constructor
 
-    public Location(long id, String addressOne, String addressTwo, String city, String state, int zipCode, BarberDetail barber) {
+    public Location(long id, String addressOne, String addressTwo, String city, String state, String zipCode, BarberDetail barber) {
         this.id = id;
         this.addressOne = addressOne;
         this.addressTwo = addressTwo;
@@ -45,7 +45,7 @@ public class Location {
         this.barber = barber;
     }
 
-    public Location(String addressOne, String addressTwo, String city, String state, int zipCode, BarberDetail barber) {
+    public Location(String addressOne, String addressTwo, String city, String state, String zipCode, BarberDetail barber) {
         this.addressOne = addressOne;
         this.addressTwo = addressTwo;
         this.city = city;
@@ -99,11 +99,11 @@ public class Location {
         this.state = state;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
