@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:replace="partials :: head (Title = 'Create')"></head>
+<head th:replace="partials :: head (Title = 'Create Service')"></head>
 <title>Create a Barber Service!</title>
 </head>
 <body>
 
 <div class="container p-5 border-left">
 
+
+
+
+
     <h2>Create New Service</h2>
-    <!--    CREATE Service FORM   -->
+    <!--    CREATE SERVICE FORM   -->
     <hr>
     <form th:action="@{'/services/create'}" th:method="post" class="p-5" style="margin-top: -5%;">
         <div class="form-group">
@@ -29,7 +33,7 @@
             <textarea class="form-control" id="createDuration" name="createDuration"></textarea>
         </div>
 
-<!--        with what barber would you like this service???     -->
+<!--        with what barber would you like this service??? drop down?    -->
 
         <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Service</button>
         <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/services}">Go Back</a>

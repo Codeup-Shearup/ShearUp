@@ -13,10 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
@@ -49,8 +46,8 @@ public class UserController {
 			user.setBarberDetail(newBarberDetail);
 			barberDetailDao.save(newBarberDetail);
 		}
-		authenticate(user); // programatically login the new user
-		return "redirect:/"; // direct redirect upon login
+//		authenticate(user); // programatically login the new user
+		return "redirect:/login"; // direct redirect upon login
 	}
 		//work from Brance
 //		BarberDetail barberDetails = new BarberDetail(user.getId());
@@ -58,16 +55,16 @@ public class UserController {
 //		barberDetailDao.save(barberDetails);
 //		user = users.save(user);
 
-	private void authenticate(User user) {
-		UserDetails userDetails = new UserWithRoles(user, Collections.emptyList());
-		Authentication auth = new UsernamePasswordAuthenticationToken(
-				userDetails,
-				userDetails.getPassword(),
-				userDetails.getAuthorities()
-		);
-		SecurityContext context = SecurityContextHolder.getContext();
-		context.setAuthentication(auth);
-	}
+//	private void authenticate(User user) {
+//		UserDetails userDetails = new UserWithRoles(user, Collections.emptyList());
+//		Authentication auth = new UsernamePasswordAuthenticationToken(
+//				userDetails,
+//				userDetails.getPassword(),
+//				userDetails.getAuthorities()
+//		);
+//		SecurityContext context = SecurityContextHolder.getContext();
+//		context.setAuthentication(auth);
+//	}
 
 	//========PLACE HOLDER FOR DASHBOARD FOR NOW TEMPORARY======//
 	@GetMapping("/dashboard")
@@ -92,19 +89,26 @@ public class UserController {
 		return "users/user-profile";
 	}
 	
-	@GetMapping("/profile/edit")
-	public String editProfile(Model model) {
+	@GetMapping("/profile/edit/{id}")
+	public String editProfile(@PathVariable long id, Model model) {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user = users.getOne(sessionUser.getId());
-		model.addAttribute("user", user);
+//		User user = users.getOne(sessionUser.getId());
+		model.addAttribute("user", sessionUser);
 		return "users/edit-profile";
 	}
 	
-	@PostMapping("/profile/edit")
+	@PostMapping("/profile/edit/{id}")
 	public String update(@PathVariable long id, @ModelAttribute User user) {
-		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		users.save(sessionUser);
-		users.save(user);
+//		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User currentUser = users.findById(id);
+		
+		currentUser.setFirstName(user.getFirstName());
+		currentUser.setLastName(user.getLastName());
+		currentUser.setUsername(user.getUsername());
+		currentUser.setEmail(user.getEmail());
+//		String hash = passwordEncoder.encode(user.getPassword());
+//		currentUser.setPassword(hash);
+		users.save(currentUser);
 		return "redirect:/profile";
 	}
 }

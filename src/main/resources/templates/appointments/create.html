@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<head th:replace="partials :: head (Title = 'Create')"></head>
-    <title>Create a Barber Review!</title>
+    <head th:replace="partials :: head (Title = 'Create')"></head>
+    <title>Create a Barber Appointments!</title>
 
     <!--    Custom Styling For Side Nav-->
     <style>
@@ -57,40 +57,36 @@
 
 <div class="main">
 
-<!--    Side Nav-->
+    <!--    Side Nav-->
     <div class="sidenav">
         <a th:href="@{'/about'}">About</a>
-        <a th:href="@{'/reviews'}">View</a>
-        <a th:href="@{'/reviews/create'}">Create</a>
+        <a th:href="@{'/appointments'}">View</a>
+        <a th:href="@{'/appointments/create'}">Create</a>
         <a th:href="@{'/reviews/create'}">Edit</a>
     </div>
 
     <div class="container p-5 border-left">
 
-        <h2 class="text-center">Create Barber Review</h2>
+        <h2>Create Appointments</h2>
 
-        <!--    CREATE REVIEW FORM   -->
+        <!--    CREATE Appointment FORM   -->
         <hr>
-        <form th:action="@{'/reviews/create'}" th:method="post" th:object="${review}" class="p-5"
+        <form th:action="@{'/appointments/create'}" th:method="post" th:object="${appointment}" class="p-5"
               style="margin-top: -5%;">
             <div class="form-group">
                 <label for="createTitle">Title</label>
-                <input type="text" class="form-control" id="createTitle" th:field="*{title}">
+                <input type="text" class="form-control" id="createTitle" th:datetime="*{appointmentDate}">
             </div>
             <div class="form-group">
                 <label for="createContent">Content</label>
-                <textarea class="form-control" id="createContent" th:field="*{content}"></textarea>
+                <textarea class="form-control" id="createContent" th:field="*{user}"></textarea>
             </div>
             <div class="form-group">
                 <label for="createContent">Rating</label>
-                <textarea class="form-control" id="createRating" th:field="*{rating}"></textarea>
+                <textarea class="form-control" id="createRating" th:field="*{service}"></textarea>
             </div>
-            <!--        <div class="form-group">-->
-            <!--            <label for="createContent">Content</label>-->
-            <!--            <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
-            <!--        </div>-->
             <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Review</button>
-            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
+            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/appointments}">Back</a>
         </form>
 
     </div>

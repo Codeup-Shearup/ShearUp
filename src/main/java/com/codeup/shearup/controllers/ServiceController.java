@@ -1,9 +1,12 @@
 //package com.codeup.shearup.controllers;
 //
-//import com.codeup.shearup.models.Service;
-//import com.codeup.shearup.models.User;
+//import com.codeup.shearup.models.*;
+//import com.codeup.shearup.repositories.AppointmentRepository;
+//import com.codeup.shearup.repositories.ImageRepository;
 //import com.codeup.shearup.repositories.ServiceRepository;
 //import com.codeup.shearup.repositories.UserRepository;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
 //import org.springframework.web.bind.annotation.*;
@@ -16,10 +19,14 @@
 //    //dependency injection
 //    private final ServiceRepository servicesDao;
 //    private final UserRepository usersDao;
+//    private final ImageRepository imageDao;
+//    private final AppointmentRepository appointmentDao;
 //
-//    public ServiceController(ServiceRepository servicesDao, UserRepository usersDao) {
+//    public ServiceController(ServiceRepository servicesDao, UserRepository usersDao, ImageRepository imageDao, AppointmentRepository appointmentDao) {
 //        this.servicesDao = servicesDao;
 //        this.usersDao = usersDao;
+//        this.imageDao = imageDao;
+//        this.appointmentDao = appointmentDao;
 //    }
 //
 //    //  LIST OF ALL SERVICES
@@ -45,13 +52,18 @@
 //        return "services/create";
 //    }
 //
-////    @PostMapping("/services/create")
-////    public String createService(@ModelAttribute Service Service){
-////        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//////        Service.setBarberDetail(loggedInBarberDetail); <----barber-details user can create a service
-////        servicesDao.save(Service);
-////        return "redirect:/services";
-////    }
+//    @PostMapping("/services/create")
+//    public @ResponseBody String createService(@ModelAttribute Service service, @RequestParam String imageUpload){
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        service.setBarberDetail(loggedInUser.getBarberDetail());
+//        Image img = new Image();
+//        img.setFilestack_url(imageUpload);
+//        img.setService(service);
+//        servicesDao.save(service);
+//        imageDao.save(img);
+//        return "redirect:/services";
+//    }
 //
 //// ==== EDITING SERVICES ==== //
 //

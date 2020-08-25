@@ -39,6 +39,11 @@ public class User {
     @OneToOne
     private BarberDetail barberDetail;
 
+        //=====User tied to review======
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "author")
+    private List<Review> reviews;
+
+
 //    @JoinTable(
 //            name="barber_details")
 //            joinColumns={@JoinColumn(name="post_id")},
@@ -50,7 +55,7 @@ public class User {
 
     }
     //CONSTRUCTOR
-    public User(long id, String username, String firstName, String lastName, String email, String password, boolean isBarber, BarberDetail barberDetail) {
+    public User(long id, String username, String firstName, String lastName, String email, String password, boolean isBarber, BarberDetail barberDetail, List<Review> reviews) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -59,7 +64,9 @@ public class User {
         this.password = password;
         this.isBarber = isBarber;
         this.barberDetail = barberDetail;
+        this.reviews = reviews;
     }
+
 
     //COPY OF FOR SPRING
     public User(User copy) {
@@ -139,5 +146,11 @@ public class User {
         this.barberDetail = barberDetail;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
 
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 }
