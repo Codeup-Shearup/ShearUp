@@ -66,9 +66,9 @@ public class UserController {
 //		context.setAuthentication(auth);
 //	}
 
-	//========PLACE HOLDER FOR DASHBOARD FOR NOW TEMPORARY======//
+	// this will redirect differently for barbers and clients
 	@GetMapping("/dashboard")
-	public String dashboard() {
+	public String loginGateway() {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		//=====THIS REPRESENTS CURRENT USER THAT IS LOGGED IN GRABBING USER OBJECT==////
 		//===== GETS USER OBJECT OF ASSOCIATED ID WITH USER THAT IS LOGGED IN=======///
@@ -78,7 +78,7 @@ public class UserController {
 		if (user.isBarber()) {
 			return "redirect:/barber/profile";
 		}
-		return "redirect:/";
+		return "redirect:/profile";
 	}
 	
 	@GetMapping("/profile")
@@ -86,6 +86,9 @@ public class UserController {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = users.getOne(sessionUser.getId());
 		model.addAttribute("user", user);
+		if (user.isBarber()) {
+			return "barber/profile";
+		}
 		return "users/user-profile";
 	}
 	
