@@ -1,9 +1,10 @@
-// THIS IS TO SET THE PICKER
+// THIS IS TO SET THE PICKER ON UPLOAD PAGE
+
 const client = filestack.init(FILESTACK_KEY);
 const options = {
     onUploadDone: updateForm,
-    maxSize: 10 * 1024 * 1024,
-    accept: 'image/*',
+    maxSize: 10 * 1024 * 1024, //     What are the maximum picture sizes to be uploaded?
+    accept: 'image/*', // What kind of files are allowed to be uploaded?
     uploadInBackground: false,
 };
 const picker = client.picker(options);

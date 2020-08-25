@@ -11,7 +11,7 @@ public class FilestackController {
     //Placeholder for now
     @GetMapping("/filestack")
     public String about(Model model){
-        return "uploadImagePage";
+        return "filestack";
     }
 
 
