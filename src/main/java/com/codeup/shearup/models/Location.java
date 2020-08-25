@@ -11,8 +11,8 @@ public class Location {
 
     @Column(nullable = false, length = 255)
     private String addressOne;
-
-    @Column(nullable = false, length = 255)
+    //make true//
+    @Column(nullable = true, length = 255)
     private String addressTwo;
 
     @Column(nullable = false, length = 50)

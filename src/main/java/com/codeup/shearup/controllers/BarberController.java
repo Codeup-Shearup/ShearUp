@@ -30,7 +30,7 @@ public class BarberController {
 
     //==========PROFILE PAGE FOR SPECIFIC BARBER==========//
     //==========ADDED ModelAttribute SERVICE TO POPULATE SERVICES on page attached to Barber=======////
-    @GetMapping("barber/profile")
+    @GetMapping("/barber/profile")
     public String barberProfile(@ModelAttribute Service service, Model model) {
         //=======PULL USER THAT IS CURRENTLY LOGGED IN AND CASTING USER INTO USER OBJECT======//
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -111,10 +111,11 @@ public class BarberController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //=====This is Placeholder for now====//
         //=====LOGIC BEHIND THIS IS A SPECIFIC BARBER===//
-        usersDao.getOne(sessionUser.getId());
-        sessionUser.getBarberDetail().getServices().add(service);
-        service.setBarberDetail(sessionUser.getBarberDetail());
-        servicesDao.save(service);
+        User barber = usersDao.getOne(sessionUser.getId());
+        BarberDetail barberDetail = barber.getBarberDetail();
+        barberDetail.getServices().add(service);
+        service.setBarberDetail(barberDetail);
+        barberDetailDao.save(barberDetail);
         return "redirect:/barber/profile";
     }
 

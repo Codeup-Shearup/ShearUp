@@ -19,8 +19,8 @@ public class BarberDetail {
     @Column(columnDefinition = "LONGTEXT")
     private String bio;
 
-    @Column(columnDefinition = "INT UNSIGNED")
-    private int phone;
+    @Column
+    private String phone;
 
     // Need 2 foreign key relationships location id fk
     //one to one barber details to location
@@ -29,7 +29,7 @@ public class BarberDetail {
     // image id fk
     //Barber should be only OneToOne 1 profile image
 
-    //TODO: ==========MAYBE CHANGE TO PROFILEIMAGE=========
+    //TODO: ==========MAYBE CHANGE TO PROFILE IMAGE=========
     //One profile image per Barber
     @OneToOne
     private Image image;
@@ -67,7 +67,7 @@ public class BarberDetail {
         this.image = image;
     }
 
-    public BarberDetail(long id, String bio, int phone, Location location, Image image, User user, List<Service> services) {
+    public BarberDetail(long id, String bio, String phone, Location location, Image image, User user, List<Service> services) {
         this.id = id;
         this.bio = bio;
         this.phone = phone;
@@ -75,6 +75,17 @@ public class BarberDetail {
         this.image = image;
         this.user = user;
         this.services = services;
+    }
+
+    public BarberDetail(long id, String bio, String phone, Location location, Image image, User user, List<Service> services, List<Review> reviews) {
+        this.id = id;
+        this.bio = bio;
+        this.phone = phone;
+        this.location = location;
+        this.image = image;
+        this.user = user;
+        this.services = services;
+        this.reviews = reviews;
     }
 
     //GETTERS AND SETTERS
@@ -126,12 +137,20 @@ public class BarberDetail {
         this.services = services;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
 
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }

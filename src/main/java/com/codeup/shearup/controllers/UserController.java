@@ -40,12 +40,14 @@ public class UserController {
 		String hash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(hash);
 		users.save(user);
-		if(user.isBarber()) {
-			BarberDetail newBarberDetail = new BarberDetail();
-			newBarberDetail.setUser(user);
-			user.setBarberDetail(newBarberDetail);
-			barberDetailDao.save(newBarberDetail);
-		}
+		//======THIS CODE WAS CREATING AN EXTRA BARBER DETAIL
+		// DERAILING THE BARBER-DETAIL FORMS/LOCATION=====//
+//		if(user.isBarber()) {
+//			BarberDetail newBarberDetail = new BarberDetail();
+//			newBarberDetail.setUser(user);
+//			user.setBarberDetail(newBarberDetail);
+//			barberDetailDao.save(newBarberDetail);
+//		}
 //		authenticate(user); // programatically login the new user
 		return "redirect:/login"; // direct redirect upon login
 	}
