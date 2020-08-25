@@ -100,8 +100,6 @@ public class ServiceController {
         return "redirect:/services";
     }
 
-//    getParent on thymeleaf
-
 
 // ==== DELETING SERVICES ==== //
 

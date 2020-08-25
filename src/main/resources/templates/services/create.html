@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-
-<head th:replace="partials :: head (Title = 'Create')">
-    <link rel="stylesheet" href="../../static/css/services.css">
+<head>
+<head th:replace="partials :: head (Title = 'Create')"></head>
+<!--    <link rel="stylesheet" href="../../static/css/services.css">-->
 <title>Create a Barber Service!</title>
+
 <!--    Custom Styling For Side Nav-->
 <style>
     body {
@@ -68,9 +69,9 @@
 
     <div class="container p-5 border-left">
 
+        <h2 class="text-center">Create Barber Service</h2>
 
-    <h2>Create New Service</h2>
-    <!--    CREATE Service FORM   -->
+        <!--    CREATE Service FORM   -->
     <hr>
 
     <form th:action="@{'/services/create'}" th:method="post" th:object="${Service}" class="p-5" style="margin-top: -5%;">
@@ -95,12 +96,10 @@
 
 
         <input type="hidden" id="imageUpload" name="imageUpload" value="null">
-        <img src="" class="hidden" id="imagePreview">
+        <img src="" class="hidden" id="imagePreview" style="height: 200px">
 
         <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Service</button>
         <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/services}">Go Back</a>
-
-
 
     </form>
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
