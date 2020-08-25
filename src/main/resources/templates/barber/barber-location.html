@@ -27,8 +27,13 @@
         </div>
 
         <div class="form-group">
+            <label for="state">Enter City: </label>
+            <input class="form-control" type="text" th:field="*{state}" id="state" placeholder="Enter State">
+        </div>
+
+        <div class="form-group">
             <label for="zipcode">Enter Zipcode: </label>
-            <input class="form-control" type="text" th:field="*{zipcode}" id="zipcode" placeholder="Enter City">
+            <input class="form-control" type="number" th:field="*{zipcode}" id="zipcode" placeholder="Enter Zipcode">
         </div>
 
         <button class="btn btn-primary">Submit Location!</button>
