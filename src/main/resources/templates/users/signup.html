@@ -13,23 +13,23 @@
 	</select>
 	
 	<label for="first-name">First Name</label>
-	<input id="first-name" th:field="*{firstName}" />
+	<input id="first-name" th:field="*{firstName}" required/>
 	
 	<label for="last-name">Last Name</label>
-	<input id="last-name" th:field="*{lastName}" />
+	<input id="last-name" th:field="*{lastName}" required/>
 	
 	<label for="username">Username</label>
-	<input id="username" th:field="*{username}" />
+	<input id="username" th:field="*{username}" required/>
 	
 	<label for="email">Email</label>
-	<input id="email" th:field="*{email}" />
+	<input id="email" th:field="*{email}" required/>
 	
 	<label for="password">Password</label>
-	<input id="password" type="password" th:field="*{password}" />
+	<input id="password" type="password" th:field="*{password}" required/>
 	
 	<label for="passwordConfirmation">Confirm Password</label>
 	<span id="message"></span>
-	<input id="passwordConfirmation" name="passwordConfirmation" type="password" />
+	<input id="passwordConfirmation" name="passwordConfirmation" type="password" required/>
 	
 	<input id="submitButton" value="Sign me up!" type="submit" />
 </form>
