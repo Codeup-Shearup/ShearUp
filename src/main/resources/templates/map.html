@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #map-canvas {
+            width: 770px;
+            height: 481px;
+        }
+    </style>
+</head>
+<body>
+<!-- div to hold map -->
+<div id="map-canvas"></div>
+
+<!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_GOES_HERE"></script>
+<!--<script src="../keys.js"></script>-->
+
+<!-- Script to show address on map -->
+<script type="text/javascript">
+    (function() {
+        "use strict";
+
+        // Set our map options
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 19,
+
+            // This sets the center of the map at our location
+            center: {
+                lat:  29.426791,
+                lng: -98.489602
+            }
+        };
+
+        // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    })();
+</script>
+</body>
+
+<!--&lt;!&ndash;Input Search&ndash;&gt;-->
+<!--<div id="search">-->
+<!--    <input type="text" id="address" name="location" placeholder="Enter: city, state or zipcode">-->
+<!--    <button id="addressSubmit">Find A Barber</button>-->
+<!--</div>-->
+
+<!--<div id="maps" class="mapContainer"></div>-->
+
+
+
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeY6rxO_DfMHqMb-ImqzAbL8rhizwY1-s"></script>-->
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
+<!--<script src="../keys.js"></script>-->
+<!--&lt;!&ndash;<script src="js/mapbox-geocoder-utils.js"></script>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
