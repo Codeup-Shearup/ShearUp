@@ -68,19 +68,23 @@ public class UserController {
 //		context.setAuthentication(auth);
 //	}
 
-	//========PLACE HOLDER FOR DASHBOARD FOR NOW TEMPORARY======//
+	// this will redirect differently for barbers and clients
 	@GetMapping("/dashboard")
-	public String dashboard() {
+	public String loginGateway() {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		//=====THIS REPRESENTS CURRENT USER THAT IS LOGGED IN GRABBING USER OBJECT==////
 		//===== GETS USER OBJECT OF ASSOCIATED ID WITH USER THAT IS LOGGED IN=======///
 		//==SUPPOSED TO BE USERDAO====//
 		//BELOW IF STATEMENT SEND THEM TO DASHBOARD===//
 		User user = users.getOne(sessionUser.getId());
-		if (user.isBarber()) {
-			return "redirect:/barber/profile";
+//		(barberDetailDao.getOne(Long.parseLong(user.getBarberDetail().toString())).getBio() == null))
+		if (user.isBarber() && (user.getBarberDetail() == null)) {
+			return "redirect:barber/barber-details/bio";
 		}
-		return "redirect:/";
+		else if (user.isBarber()) {
+			return "redirect:barber/profile";
+		}
+		return "redirect:/profile";
 	}
 	
 	@GetMapping("/profile")
@@ -88,6 +92,9 @@ public class UserController {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = users.getOne(sessionUser.getId());
 		model.addAttribute("user", user);
+		if (user.isBarber()) {
+			return "redirect:barber/profile";
+		}
 		return "users/user-profile";
 	}
 	
