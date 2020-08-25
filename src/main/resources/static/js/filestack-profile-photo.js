@@ -1,3 +1,6 @@
+//THIS WILL BE FOR UPLOADING A PROFILE PHOTO
+
+
 // // -------------- FILESTACK --------------
 // window.addEventListener('DOMContentLoaded', function () {
 //
@@ -21,7 +24,6 @@
 //             $("#editProfileForm").append(filestackUrl);
 //         },
 //     };
-//
 //
 //     // -------------- FILE PICKER --------------
 //     const picker = client.picker(options);

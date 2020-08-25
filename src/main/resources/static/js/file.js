@@ -1,4 +1,4 @@
-// This one works with creating a service and uploading an image
+// This one works with creating a service and uploading an image for that service
 
 const client = filestack.init("ADslPh9z8SayE48tyD5Q9z");
 

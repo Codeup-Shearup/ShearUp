@@ -1,4 +1,4 @@
-// THIS IS TO SET THE PICKER ON UPLOAD PAGE
+// THIS IS TO SET THE UPLOAD PAGE HTML
 
 const client = filestack.init(FILESTACK_KEY);
 const options = {
