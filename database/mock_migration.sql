@@ -6,6 +6,7 @@ drop table services;
 
 describe users;
 describe services;
+describe locations;
 
 # SHOW DATABASES;
 # SELECT database();
