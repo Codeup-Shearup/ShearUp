@@ -19,8 +19,8 @@ public class BarberDetail {
     @Column(columnDefinition = "LONGTEXT")
     private String bio;
 
-    @Column(columnDefinition = "INT UNSIGNED")
-    private int phone;
+    @Column
+    private String phone;
 
     // Need 2 foreign key relationships location id fk
     //one to one barber details to location
@@ -67,7 +67,7 @@ public class BarberDetail {
         this.image = image;
     }
 
-    public BarberDetail(long id, String bio, int phone, Location location, Image image, User user, List<Service> services) {
+    public BarberDetail(long id, String bio, String phone, Location location, Image image, User user, List<Service> services) {
         this.id = id;
         this.bio = bio;
         this.phone = phone;
@@ -77,7 +77,7 @@ public class BarberDetail {
         this.services = services;
     }
 
-    public BarberDetail(long id, String bio, int phone, Location location, Image image, User user, List<Service> services, List<Review> reviews) {
+    public BarberDetail(long id, String bio, String phone, Location location, Image image, User user, List<Service> services, List<Review> reviews) {
         this.id = id;
         this.bio = bio;
         this.phone = phone;
@@ -137,11 +137,11 @@ public class BarberDetail {
         this.services = services;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
 
     }

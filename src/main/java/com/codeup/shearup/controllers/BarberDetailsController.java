@@ -36,8 +36,7 @@ public class BarberDetailsController {
     public String barberDetail(Model model){
         //=====GRABS LOGGED IN USER ASSOCIATED WITH SESSION FOR BARBER=====///
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = usersDao.getOne(sessionUser.getId());
-        model.addAttribute("user", user);
+        model.addAttribute("user", sessionUser);
         model.addAttribute("barberDetail", new BarberDetail());
         return "barber/barber-details";
     }
@@ -46,10 +45,12 @@ public class BarberDetailsController {
     @PostMapping("/barber/barber-details/bio")
     public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        usersDao.getOne(sessionUser.getId());
+        User barber = usersDao.getOne(sessionUser.getId());
         barberDetailDao.getOne(sessionUser.getId());
-        barberDetailDao.save(barberDetail);
 
+        barberDetailDao.save(barberDetail);
+        barber.setBarberDetail(barberDetail);
+        usersDao.save(barber);
         return "redirect:/barber/barber-details/location";
     }
 
@@ -74,7 +75,7 @@ public class BarberDetailsController {
         model.addAttribute("user", sessionUser);
         model.addAttribute("barberDetail", new BarberDetail());
         model.addAttribute("location", new Location());
-        return "barber/barber-details";
+        return "barber/barber-location";
     }
 
 
@@ -82,13 +83,14 @@ public class BarberDetailsController {
     public String insertBarberLocation(@ModelAttribute Location location,
                                        @ModelAttribute BarberDetail barberDetail) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        usersDao.getOne(sessionUser.getId());
-        barberDetailDao.getOne(sessionUser.getId());
-        locationsDao.getOne(sessionUser.getId());
+        User barber = usersDao.getOne(sessionUser.getId());
+        BarberDetail barberDeet = barberDetailDao.getOne(sessionUser.getId());
+        location.setBarber(barberDeet);
 
-        barberDetailDao.save(barberDetail);
+        barberDeet.setLocation(location);
         locationsDao.save(location);
-        return "redirect:barber/barber-details/location";
+        barberDetailDao.save(barberDeet);
+        return "redirect:/barber/profile";
     }
 
 
