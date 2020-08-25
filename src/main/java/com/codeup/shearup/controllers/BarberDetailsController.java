@@ -41,7 +41,8 @@ public class BarberDetailsController {
         model.addAttribute("barberDetail", new BarberDetail());
         return "barber/barber-details";
     }
-    //============BARBER DETAIL BIO FORM POST MAPPING=======//
+    //============BARBER DETAIL BIO FORM POST MAPPING=======// OLD WAY OF DOING IT
+
     @PostMapping("/barber/barber-details/bio")
     public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -52,13 +53,25 @@ public class BarberDetailsController {
         return "redirect:/barber/barber-details/location";
     }
 
+//    @PostMapping("/barber/barber-details/bio")
+//    public String insertBarberDetail(@ModelAttribute BarberDetail barberDetail) {
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        usersDao.getOne(sessionUser.getId());
+//        barberDetailDao.getOne(sessionUser.getId());
+//
+//        barberDetail.setBio(sessionUser.getBarberDetail());
+//    }
+
+
+
+
     //=================STEP 2 OF FORM using LOCATION MODEL ========///
     @GetMapping("/barber/barber-details/location")
     public String barberLocation(Model model){
         //=====GRABS LOGGED IN USER ASSOCIATED WITH SESSION FOR BARBER=====///
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = usersDao.getOne(sessionUser.getId());
-        model.addAttribute("user", user);
+        usersDao.getOne(sessionUser.getId());
+        model.addAttribute("user", sessionUser);
         model.addAttribute("barberDetail", new BarberDetail());
         model.addAttribute("location", new Location());
         return "barber/barber-details";

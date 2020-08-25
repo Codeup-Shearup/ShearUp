@@ -29,7 +29,7 @@ public class BarberDetail {
     // image id fk
     //Barber should be only OneToOne 1 profile image
 
-    //TODO: ==========MAYBE CHANGE TO PROFILEIMAGE=========
+    //TODO: ==========MAYBE CHANGE TO PROFILE IMAGE=========
     //One profile image per Barber
     @OneToOne
     private Image image;
@@ -75,6 +75,17 @@ public class BarberDetail {
         this.image = image;
         this.user = user;
         this.services = services;
+    }
+
+    public BarberDetail(long id, String bio, int phone, Location location, Image image, User user, List<Service> services, List<Review> reviews) {
+        this.id = id;
+        this.bio = bio;
+        this.phone = phone;
+        this.location = location;
+        this.image = image;
+        this.user = user;
+        this.services = services;
+        this.reviews = reviews;
     }
 
     //GETTERS AND SETTERS
@@ -133,5 +144,13 @@ public class BarberDetail {
     public void setPhone(int phone) {
         this.phone = phone;
 
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }
