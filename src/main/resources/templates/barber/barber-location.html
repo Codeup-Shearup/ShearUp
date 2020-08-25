@@ -9,7 +9,7 @@
 <body>
 <header th:replace="partials :: header"></header>
 <div class="container">
-    <form th:action="@{'/barber/barber-details/location'}"  th:method="POST" th:object="${locations}">
+    <form th:action="@{'/barber/barber-details/location'}"  th:method="POST" th:object="${location}">
         <h1>Where do you Shearup?</h1>
         <div class="form-group">
             <label for="addressOne">Enter Address: </label>
@@ -27,8 +27,13 @@
         </div>
 
         <div class="form-group">
+            <label for="state">Enter City: </label>
+            <input class="form-control" type="text" th:field="*{state}" id="state" placeholder="Enter State">
+        </div>
+
+        <div class="form-group">
             <label for="zipcode">Enter Zipcode: </label>
-            <input class="form-control" type="text" th:field="*{zipcode}" id="zipcode" placeholder="Enter City">
+            <input class="form-control" type="number" th:field="*{zipCode}" id="zipcode" placeholder="Enter Zipcode">
         </div>
 
         <button class="btn btn-primary">Submit Location!</button>
