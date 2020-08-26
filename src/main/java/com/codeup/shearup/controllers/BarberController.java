@@ -71,7 +71,6 @@ public class BarberController {
 
     //================ EDIT SERVICE BUTTON =======///
 
-
         @GetMapping("/barber/edit-service")
     public String editButton(Model model, @RequestParam(name="editButton") Long serviceId) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -86,18 +85,19 @@ public class BarberController {
 
     @PostMapping("/barber/edit-service")
     public String editService(@ModelAttribute Service service, @RequestParam(name = "serviceId") Long serviceId) {
-
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         Service editService = servicesDao.getOne(serviceId);
         editService.setTitle(service.getTitle());
         editService.setDescription(service.getDescription());
         editService.setDuration(service.getDuration());
         editService.setPrice(service.getPrice());
         servicesDao.save(editService);
-
         return "redirect:/barber/profile";
     }
+
+
+
+
 
     //======ADD A SERVICE PAGE FOR BARBER=========//
     @GetMapping("/barber/add-service")

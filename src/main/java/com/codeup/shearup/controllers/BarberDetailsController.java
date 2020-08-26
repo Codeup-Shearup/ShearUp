@@ -2,6 +2,7 @@ package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.BarberDetail;
 import com.codeup.shearup.models.Location;
+import com.codeup.shearup.models.Service;
 import com.codeup.shearup.models.User;
 import com.codeup.shearup.repositories.BarberDetailRepository;
 import com.codeup.shearup.repositories.LocationRepository;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BarberDetailsController {
@@ -52,6 +54,28 @@ public class BarberDetailsController {
         barber.setBarberDetail(barberDetail);
         usersDao.save(barber);
         return "redirect:/barber/barber-details/location";
+    }
+
+    //==============EDIT BARBER DETAILS=========//
+    @GetMapping("/barber/edit-barber-details")
+    public String editBarberDetails(Model model, @RequestParam(name="editBarberDetailsButton") Long barberDetailId){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        BarberDetail barberDetail = barberDetailDao.getOne(barberDetailId);
+        model.addAttribute("barberDetail", barberDetail);
+        model.addAttribute("user", sessionUser);
+        return "barber/edit-barber-details";
+    }
+
+    @PostMapping("/barber/edit-barber-details")
+    public String editBarberDetailsPost(@ModelAttribute BarberDetail barberDetail, @RequestParam(name = "barberDetailId") Long barberDetailId) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        BarberDetail editBarberDetail = barberDetailDao.getOne(barberDetailId);
+        editBarberDetail.setBio(barberDetail.getBio());
+        editBarberDetail.setPhone(barberDetail.getPhone());
+        editBarberDetail.setHoursOfWork(barberDetail.getHoursOfWork());
+        barberDetailDao.save(editBarberDetail);
+
+        return "redirect:/barber/profile";
     }
 
 //    @PostMapping("/barber/barber-details/bio")

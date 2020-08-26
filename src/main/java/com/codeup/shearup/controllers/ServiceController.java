@@ -70,7 +70,7 @@ public class ServiceController {
         if(loggedInUser.getBarberDetail() != null){
             service.setBarberDetail(loggedInUser.getBarberDetail());
             Image img = new Image();
-            img.setFilestack_url(imageUpload);
+            img.setFilestackurl(imageUpload);
             img.setService(service);
             servicesDao.save(service);
             imageDao.save(img);
