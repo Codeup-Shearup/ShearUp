@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-
-
     <head th:replace="partials :: head (Title = 'View Barber Profile')">
     <meta charset="UTF-8">
     <title>Barber profile page</title>
@@ -22,16 +20,18 @@
 
 </form>
 <h1>Location of Business: </h1>
-    <p th:text="${location.addressOne}"></p>
-    <p th:text="${location.addressTwo}"></p>
-    <p th:text="${location.city}"></p>
-    <p th:text="${location.state}"></p>
-    <p th:text="${location.zipCode}"></p>
+<!--  NOBODY TOUCH THIS IF YOU ARE CONFUSED CALL BRANCE -ERASE LATER  -->
+    <p th:text="${user.barberDetail.location.addressOne}"></p>
+    <p th:text="${user.barberDetail.location.addressTwo}"></p>
+    <p th:text="${user.barberDetail.location.city}"></p>
+    <p th:text="${user.barberDetail.location.state}"></p>
+    <p th:text="${user.barberDetail.location.zipCode}"></p>
 
     <h1>List of Services: </h1>
         <!--  THROWING ERROR FOR NOW WORKING ON FIX
         (I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
-    <div class="card" style=" width: 18rem;" th:each="service : ${services}">
+        <!--  TH EACH WORKS THE USER IN ${A WAY TO GET AROUND DATABASE}  -->
+    <div class="card" style=" width: 18rem;" th:each="service : ${user.getBarberDetail().getServices()}">
     <!--   PICTURE OF SERVICE GOES HERE     -->
         <img class="card-image-top" src="..." alt="">
         <div class="card-body">
