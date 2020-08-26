@@ -36,25 +36,25 @@ VALUES (15, 'http://dummyimage.com/184x113.jpg/dddddd/000000', 15);
 
 
 # Reviews Table
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (1, 'Easy to connect with.', 'consectetuer eget rutrum at lorem', 4.5, 1, 1);
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (2, 'Best barber in town!', 'libero non mattis pulvinar nulla pede ullamcorper augue a', 5.0, 2, 2);
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (3, 'Great Communication', 'proin interdum mauris non ligula pellentesque', 4.0, 3, 3);
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (4, 'Very professional', 'rhoncus mauris enim leo rhoncus sed vestibulum', 4.5, 4, 4);
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (5, 'Okay experience', 'sed magna at nunc commodo placerat praesent blandit nam nulla', 2.9, 5, 5);
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (6, 'Will definitely schedule again!', 'eget congue eget semper rutrum nulla nunc purus phasellus in', 5.0, 6, 6);
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (7, 'Dope skills', 'id nisl venenatis lacinia aenean', 4.1, 7, 7);
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (8, 'Quick responder!', 'diam neque vestibulum eget vulputate', 4.0, 8, 8);
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (9, 'Awesome barber', 'sed vestibulum sit amet cursus', 5.0, 9, 9);
-INSERT INTO reviews (id, title, content, rating, image_id, appointment_id)
+INSERT INTO reviews (id, title, content, rating, image_id, user_id)
 VALUES (10, 'Good skills', 'turpis integer aliquet massa id', 3.5, 10, 10);
 
 # Locations Table
@@ -142,14 +142,14 @@ VALUES (5, 'Barber3', 'Susan', 'Stormouth', 'mstormouth4@themeforest.net', 'dfD9
 
 
 # Appointments Table
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (1, 1, 1, '2020-08-01 08:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (2, 2, 2, '2020-08-01 09:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (3, 2, 3, '2020-08-01 10:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (4, 3, 4, '2020-08-15 12:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (5, 5, 5, '2020-08-19 09:00');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (6, 5, 6, '2020-08-01 08:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (7, 4, 7, '2020-08-01 07:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (10, 3, 10, '2020-08-01 11:30');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (9, 2, 9, '2020-08-15 12:00');
-INSERT INTO appointments (id, user_id, service_id, appointment_date) VALUES (8, 1, 8, '2020-08-17 08:30');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (1, 1, 1, '2020-08-01 08:30');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (2, 2, 2, '2020-08-01 09:30');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (3, 2, 3, '2020-08-01 10:30');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (4, 3, 4, '2020-08-15 12:30');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (5, 5, 5, '2020-08-19 09:00');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (6, 5, 6, '2020-08-01 08:30');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (7, 4, 7, '2020-08-01 07:30');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (10, 3, 10, '2020-08-01 11:30');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (9, 2, 9, '2020-08-15 12:00');
+# INSERT INTO appointments (id, user_id, service_id, create_date_time) VALUES (8, 1, 8, '2020-08-17 08:30');
 
