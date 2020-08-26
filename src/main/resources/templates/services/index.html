@@ -63,16 +63,24 @@
 
         <h2 class="text-center">Viewing Barber services</h2>
         <hr>
-        <!--    <a th:href="@{'/services/create'}">Create service</a>-->
-        <!--    <hr>-->
 
         <!--    Viewing the service based off off id-->
         <div th:each="service : ${services}">
             <h2 th:text="${service.title}"></h2>
-            <p th:text="${service.content}"></p>
-            <p th:text="${service.rating}"></p>
+            <p th:text="${service.description}"></p>
+            <p th:text="${service.price}"></p>
+            <p th:text="${service.duration}"></p>
+            <div th:each="image :${service.getImages()}">
+                <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestack_url()}"></img>
+            </div>
             <a th:href="@{'/services/' + ${service.id}}">View Service</a>
+
+            <!--            <input type="hidden" id="imageUpload" name="imageUpload" value="null">-->
+            <!--            <img src="" class="hidden" id="imagePreview" style="height: 200px">-->
         </div>
+
+        <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/file.js}" />
 
     </div>
     <footer th:replace="partials :: footer"></footer>
