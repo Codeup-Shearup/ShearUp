@@ -1,10 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Deleting a Service</title>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="partials :: head (Title = 'Deltete By Id')"></head>
+
+<!--    Custom Styling For Side Nav-->
+<style>
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 200px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 53px;
+    }
+
+    .sidenav a {
+        padding: 6px 6px 6px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+    .main {
+        margin-left: 200px; /* Same as the width of the sidenav */
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }
+</style>
+
 </head>
 <body>
 
+<!--Nav-->
+<header th:replace="partials :: header"></header>
+
+<div class="main">
+    <div class="container p-5 border-left">
+
+        <!--    Side Nav-->
+        <div class="sidenav">
+            <a th:href="@{'/about'}">About</a>
+            <a th:href="@{'/services'}">View</a>
+            <a th:href="@{'/services/create'}">Create</a>
+            <a th:href="@{'/services/create'}">Edit</a>
+        </div>
+
+        <h2 class="text-center">Would you like to Delete a Service?</h2>
+        <hr>
+
+        <!--    Viewing the services based off off id-->
+        <h2 th:text="${service.title}"></h2>
+        <p th:text="${service.content}"></p>
+        <p th:text="${service.rating}"></p>
+        <form th:action="@{'/services/' + ${service.getId()} + '/delete'}" th:method="post">
+            <button>Delete</button>
+        </form>
+        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/services}">Back</a>
+
+        <!--    <p th:text="${review.appointment}"></p>-->
+
+
+    </div>
+    <footer th:replace="partials :: footer"></footer>
+</div>
 </body>
 </html>
+
+<!--Source-->
+<!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav-->

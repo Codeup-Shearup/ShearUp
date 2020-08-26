@@ -2,7 +2,7 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <head th:replace="partials :: head (Title = 'Upload Page')"></head>
+    <head th:replace="partials :: head (Title = 'Filestack')"></head>
     <meta charset="UTF-8">
     <title>FAQ Page</title>
 </head>
@@ -10,7 +10,6 @@
 <body>
 
 <h1>This is the upload image page!</h1>
-
 
 <div class="box">
     <form id="pick-form">
@@ -30,14 +29,16 @@
     </form>
 </div>
 
+<!---------- UPLOAD PROFILE PHOTO MODAL BUTTON---------->
+<button type="button" class="btn btn-sm submit-btn btn-circle" data-toggle="modal" id="open" data-target=".bd-example-modal-lg">
+    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" class="circle-btn-icon"></svg>
+</button>
+
 <!-- This script tag includes the Filestack API into your HTML file -->
 <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-<!--<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>-->
 <script th:src="@{../js/keys.js}"></script>
 <script th:src="@{../js/filestack.js}"></script>
-
-
 
 <footer th:replace="partials :: footer"></footer>
 
