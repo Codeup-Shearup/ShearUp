@@ -32,14 +32,14 @@
         <form th:action="@{'/appointments/create'}" th:method="post" th:object="${appointment}" class="p-5"
               style="margin-top: -5%;">
             <div class="form-group">
-                <label for="user">User</label>
-<!--                <input type="hidden" placeholder="User Id" class="form-control" id="user" th:value="*{getUser()}">-->
-                <input type="text" disabled="disabled" placeholder="User Id" class="form-control" id="user" th:value="*{getUser()}">
+                <label for="user"></label>
+                <input type="hidden" placeholder="User Id" class="form-control" id="user" th:value="*{getUser()}">
+<!--                <input type="text" disabled="disabled" placeholder="User Id" class="form-control" id="user" th:value="*{getUser()}">-->
             </div>
             <div class="form-group">
-                <label for="barber">Barber</label>
-<!--                <input type="hidden" placeholder="Barber Id" class="form-control" id="barber" th:value="*{getBarberDetail()}">-->
-                <input type="text" disabled="disabled" placeholder="Barber Id" class="form-control" id="barber" th:value="*{getBarberDetail()}">
+                <label for="barber"></label>
+                <input type="hidden" placeholder="Barber Id" class="form-control" id="barber" th:value="*{getBarberDetail()}">
+<!--                <input type="text" disabled="disabled" placeholder="Barber Id" class="form-control" id="barber" th:value="*{getBarberDetail()}">-->
             </div>
             <div class="form-group">
                 <label for="createTitle">Created At</label>

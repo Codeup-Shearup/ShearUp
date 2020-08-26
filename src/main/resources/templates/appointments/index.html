@@ -32,8 +32,11 @@
 
         <!--    Viewing the appointment based off off id-->
         <div th:each="appointment : ${appointment}">
-            <h2 th:text="${appointment.createDateTime}"></h2>
-            <p th:text="${appointment.note}"></p>
+            <ul class="list-group list-group-horizontal-md">
+<!--                <li th:text="${appointment.user}"></li>-->
+                <li class="list-group-item" th:text="${appointment.createDateTime}"></li>
+                <li class="list-group-item" th:text="${appointment.note}"></li>
+            </ul>
             <a th:href="@{'/appointments/' + ${appointment.id}}">View Appointment</a>
         </div>
 

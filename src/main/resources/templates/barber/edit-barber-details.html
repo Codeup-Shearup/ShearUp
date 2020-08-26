@@ -8,14 +8,14 @@
 <body>
 <header>
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        
+
         <a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i> SHEARUP</a>
-        
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
                 <!--WITH BANG IF NOT AUTHENTICATED HIDE THESE-->
@@ -27,10 +27,10 @@
                         <a class="btn btn-primary ml-3" th:href="@{/sign-up}">Sign Up</a>
                     </li>
                 </th:block>
-                
+
                 <!--IF AUTHENTICATED SHOW THESE-->
                 <!--LOGGED IN CLIENT / BARBER USER-->
-                
+
                 <!--                <th:block sec:authorize="isAuthenticated()">-->
                 <!--                    <li class="nav-item">-->
                 <!--                        <a class="nav-link" th:href="/services">Services</a>-->
@@ -42,7 +42,7 @@
                 <!--                        <a class="nav-link" th:href="/clientProfile">Client</a>-->
                 <!--                    </li>-->
                 <!--                </th:block>-->
-                
+
                 <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item">
                         <form  th:action="@{/logout}" th:method="POST">
@@ -55,26 +55,29 @@
     </nav>
 </header>
 <div class="container">
-<form th:action="@{'/barber/barber-details/bio'}"  th:method="POST" th:object="${barberDetail}">
-    <h1>Tell us about yourself!</h1>
-    <div class="form-group">
-        <label for="bio">Enter Bio: </label>
-        <input class="form-control" type="text" th:field="*{bio}" id="bio" placeholder="Enter your bio: ">
-    </div>
+    <form th:action="@{'/barber/edit-barber-details'}"  th:method="POST" th:object="${barberDetail}">
+        <h1>Tell us about yourself!</h1>
+        <div class="form-group">
+            <label for="bio">Enter Bio: </label>
+            <input class="form-control" type="text" th:field="*{bio}" id="bio" name="bio" th:value="${barberDetail.bio}">
+        </div>
 
-    <div class="form-group">
-        <label for="phone">Enter Phone Number!: </label>
-        <input class="form-control" type="number" th:field="*{phone}" id="phone" placeholder="Enter your phone: " oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                maxlength = "10">
-    </div>
+        <div class="form-group">
+            <label for="phone">Enter Phone Number!: </label>
+            <input class="form-control" type="number" th:field="*{phone}" id="phone" name="phone" th:value="${barberDetail.phone}" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                   maxlength = "10">
+        </div>
 
-    <div class="form-group">
-        <label for="hours">Enter Hours of Operation: </label>
-        <input class="form-control" type="text" th:field="*{hoursOfWork}" id="hours" placeholder="M-F 9-5:30, M-W 9-6, TH-S 9-7 ">
-    </div>
+        <div class="form-group">
+            <label for="hours">Enter Hours of Operation: </label>
+            <input class="form-control" type="text" th:field="*{hoursOfWork}" id="hours" name="hours" th:value="${barberDetail.hoursOfWork}">
+        </div>
 
-    <button class="btn btn-primary">Submit Bio!</button>
-</form>
+        <button class="btn btn-primary">Edit Barber Details!</button>
+        <input type="hidden" th:value="${barberDetail.id}" name="barberDetailId">
+        <a class="btn btn-primary float-right" style="text-decoration: none; color:black;" th:href="@{/barber/profile}">Back</a>
+
+    </form>
 </div>
 <footer th:replace="partials :: footer"></footer>
 </body>
