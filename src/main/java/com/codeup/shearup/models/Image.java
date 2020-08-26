@@ -20,11 +20,11 @@ public class Image {
     private Service service;
 
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "image")
-    private BarberDetail barber;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "image")
+//    private BarberDetail barber;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "image")
-    private Review review;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "image")
+//    private Review review;
 
     // Zero argument Constructor
     public Image() {
@@ -48,11 +48,11 @@ public class Image {
         this.id = id;
     }
 
-    public String getFilestack_url() {
+    public String getFilestackurl() {
         return filestackUrl;
     }
 
-    public void setFilestack_url(String filestackUrl) {
+    public void setFilestackurl(String filestackUrl) {
         this.filestackUrl = filestackUrl;
     }
 
