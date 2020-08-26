@@ -1,26 +1,81 @@
 <!DOCTYPE html>
 <html lang="en"xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head (Title = 'Show all Services')">
+    <title>Submit a Barber service!</title>
 
-    <meta charset="UTF-8">
-    <title>Services</title>
+    <!--    Custom Styling For Side Nav-->
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 53px;
+            /*margin-top: 50px;*/
+        }
+
+        .sidenav a {
+            padding: 6px 6px 6px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .main {
+            margin-left: 200px; /* Same as the width of the sidenav */
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+    </style>
+
 </head>
-<header th:replace="partials :: header"></header>
 <body>
 
+<!--Nav-->
+<header th:replace="partials :: header"></header>
 
-<div class="container p-5 border-left">
-    <!--        Added MG Side Nav-->
-    <div class="sidenav">
-        <a th:href="@{'/about'}">About</a>
-        <a th:href="@{'/services'}">View</a>
-        <a th:href="@{'/services/create'}">Create</a>
-        <a th:href="@{'/services/edit'}">Edit</a>
+<div class="main">
+    <div class="container p-5 border-left">
+
+        <!--    Side Nav-->
+        <div class="sidenav">
+            <a th:href="@{'/about'}">About</a>
+            <a th:href="@{'/services'}">View</a>
+            <a th:href="@{'/services/create'}">Create</a>
+            <a th:href="@{'/maps'}">Map</a>
+        </div>
+
+        <h2 class="text-center">Viewing Barber services</h2>
+        <hr>
+        <!--    <a th:href="@{'/services/create'}">Create service</a>-->
+        <!--    <hr>-->
+
+        <!--    Viewing the service based off off id-->
+        <div th:each="service : ${services}">
+            <h2 th:text="${service.title}"></h2>
+            <p th:text="${service.content}"></p>
+            <p th:text="${service.rating}"></p>
+            <a th:href="@{'/services/' + ${service.id}}">View Service</a>
+        </div>
+
     </div>
+    <footer th:replace="partials :: footer"></footer>
 </div>
-
-
-
-
 </body>
 </html>

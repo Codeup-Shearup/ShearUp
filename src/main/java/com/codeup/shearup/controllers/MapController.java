@@ -18,16 +18,11 @@ public class MapController {
         this.usersDao = usersDao;
     }
 
-//    where is this returning?
+
     @GetMapping("/map")
     public String viewMap(Model model) {
-        return "services/map-index";
+        return "map";
     }
 
-//    not sure how to incorporate a JSON file yet
-//    @GetMapping("/users.json")
-//    public @ResponseBody
-//    List<User> viewAllUserInJSONFormat() {
-//        return usersDao.findAll();
-//    }
+
 }
