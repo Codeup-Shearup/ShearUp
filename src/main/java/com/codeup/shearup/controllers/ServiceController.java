@@ -53,10 +53,12 @@ public class ServiceController {
         try {
             User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         } catch (Exception e){
+            e.printStackTrace();
             return "redirect:/";
         }
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(loggedInUser.getBarberDetail() == null) {
+//        System.out.println("loggedInUser.getUsername() = " + loggedInUser.getUsername()); --prints out twice -K
+        if(!loggedInUser.isBarber()) {
 //            throw not barber error
             return "redirect:/";
         }
