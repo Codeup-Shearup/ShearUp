@@ -1,6 +1,6 @@
 // This one works with creating a service and uploading an image for that service
 
-const client = filestack.init("ADslPh9z8SayE48tyD5Q9z");
+const client = filestack.init(FILESTACK_KEY);
 
 const options = {
     onUploadDone: saveLocation
