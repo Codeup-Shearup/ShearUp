@@ -6,7 +6,7 @@ drop table services;
 
 describe users;
 describe services;
-describe locations;
+describe barber_details;
 
 # SHOW DATABASES;
 # SELECT database();
