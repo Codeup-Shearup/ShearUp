@@ -61,6 +61,9 @@ public class ReviewsController {
         return "redirect:/reviews";
     }
 
+    //creation time stamp
+//    https://thorben-janssen.com/persist-creation-update-timestamps-hibernate
+
     //Edit Review
     @GetMapping("/reviews/{id}/edit")
     public String showEditForm(@PathVariable long id, Model model){
@@ -104,13 +107,7 @@ public class ReviewsController {
     //About Us Controller Placeholder for now
     @GetMapping("/about")
     public String about(Model model){
-        return "/about/about-us";
-    }
-
-    //Maps Controller Placeholder for now
-    @GetMapping("/maps")
-    public String maps(Model model){
-        return "/about/maps";
+        return "about/about-us";
     }
 
 }
