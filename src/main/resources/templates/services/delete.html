@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-
 <head th:replace="partials :: head (Title = 'Deltete By Id')"></head>
 
 <!--    Custom Styling For Side Nav-->
@@ -62,17 +61,15 @@
 
         <h2 class="text-center">Would you like to Delete a Service?</h2>
         <hr>
-
         <!--    Viewing the services based off off id-->
         <h2 th:text="${service.title}"></h2>
-        <p th:text="${service.content}"></p>
-        <p th:text="${service.rating}"></p>
+        <p th:text="${service.description}"></p>
+        <p th:text="${service.price}"></p>
+        <p th:text="${service.duration}"></p>
         <form th:action="@{'/services/' + ${service.getId()} + '/delete'}" th:method="post">
             <button>Delete</button>
         </form>
         <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/services}">Back</a>
-
-        <!--    <p th:text="${review.appointment}"></p>-->
 
 
     </div>

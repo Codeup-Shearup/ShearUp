@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class FilestackController {
 
     //Placeholder for now
-    @GetMapping("/filestack")
+    @GetMapping("/upload-page")
     public String about(Model model){
-        return "filestack";
+        return "upload-page";
     }
-
 
 }
