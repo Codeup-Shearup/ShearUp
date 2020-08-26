@@ -50,15 +50,14 @@ public class BarberController {
 
     //============DELETE A SERVICE BUTTON==============// -NEEDS WORK RAMON
     @PostMapping("/barber/service-delete")
-    public String deleteService(@RequestParam(name = "deleteButton") long id){
+    public String deleteService(@RequestParam(name = "deleteButton") Long id){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(id);
         usersDao.getOne(sessionUser.getId());
         Service service = servicesDao.getOne(id);
-        System.out.println("service.getBarberDetail().getUser().getFirstName() = " + service.getBarberDetail().getUser().getFirstName());
-        System.out.println("service.getBarberDetail().getUser().getId() = " + service.getBarberDetail().getUser().getId());
+        System.out.println("service.toString() = " + service.toString());
         servicesDao.delete(service);
-        return "redirect:/barber/profile/" + sessionUser.getBarberDetail().getId();
+        return "redirect:/barber/profile";
     }
     //======2ND TRY ON THIS
 //    @PostMapping("/barber/{id}/service-delete")
@@ -71,27 +70,33 @@ public class BarberController {
 //    }
 
     //================ EDIT SERVICE BUTTON =======///
-    @GetMapping("/barber/{id}/edit-service")
-    public String editButton(@PathVariable long id, Model model) {
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = usersDao.getOne(sessionUser.getId());
 
-        model.addAttribute("user", user);
-        model.addAttribute("editButton", servicesDao.getOne(id));
+
+        @GetMapping("/barber/edit-service")
+    public String editButton(Model model, @RequestParam(name="editButton") Long serviceId) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = usersDao.getOne(sessionUser.getId());
+        Service service = servicesDao.getOne(serviceId);
+
+        model.addAttribute("services", service);
+        model.addAttribute("user", sessionUser);
+//        model.addAttribute("editButton", servicesDao.getOne(id));
         return "barber/edit-service";
     }
 
-    @PostMapping("/barber/{id}/edit-service")
-    public String editService(@PathVariable long id,
-                              @ModelAttribute Service service) {
+    @PostMapping("/barber/edit-service")
+    public String editService(@ModelAttribute Service service, @RequestParam(name = "serviceId") Long serviceId) {
 
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        usersDao.getOne(sessionUser.getId());
 
-//        service.setBarberDetail(sessionUser);
-        servicesDao.save(service);
+        Service editService = servicesDao.getOne(serviceId);
+        editService.setTitle(service.getTitle());
+        editService.setDescription(service.getDescription());
+        editService.setDuration(service.getDuration());
+        editService.setPrice(service.getPrice());
+        servicesDao.save(editService);
 
-        return "redirect:/barber/edit-service";
+        return "redirect:/barber/profile";
     }
 
     //======ADD A SERVICE PAGE FOR BARBER=========//
@@ -102,7 +107,7 @@ public class BarberController {
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
         model.addAttribute("service", new Service());
-        return "barber/add-service";
+        return "/barber/add-service";
     }
 
     //NEED TO MANUALLY INPUT THE BARBER WHO MADE SERVICE=====

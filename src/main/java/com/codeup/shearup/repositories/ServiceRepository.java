@@ -12,4 +12,5 @@ import java.util.List;
 
 public interface ServiceRepository extends JpaRepository<Service, Long> {
     List<Service> findAllByBarberDetail(BarberDetail barberDetail);
+
 }
