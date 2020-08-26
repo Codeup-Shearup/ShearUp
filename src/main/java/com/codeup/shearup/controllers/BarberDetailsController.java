@@ -48,11 +48,17 @@ public class BarberDetailsController {
     public String insertBarberDetails(@ModelAttribute BarberDetail barberDetail) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User barber = usersDao.getOne(sessionUser.getId());
+        //ORIGINAL
         barberDetailDao.getOne(sessionUser.getId());
+
+//        BarberDetail testBarberDetail = barberDetailDao.getOne(sessionUser.getId());
+
+//        barberDetailDao.save(barberDetail); // ORIGINAL
 
         barberDetailDao.save(barberDetail);
         barber.setBarberDetail(barberDetail);
         usersDao.save(barber);
+
         return "redirect:/barber/barber-details/location";
     }
 
