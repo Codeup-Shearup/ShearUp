@@ -3,6 +3,7 @@ package com.codeup.shearup.models;
 import org.hibernate.boot.model.source.spi.ColumnsAndFormulasSourceContainer;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Entity
@@ -153,4 +154,5 @@ public class BarberDetail {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+
 }
