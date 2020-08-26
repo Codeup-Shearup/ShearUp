@@ -16,7 +16,7 @@ public class Service {
     @Column(nullable = false, columnDefinition = "LONGTEXT")
     private String description;
 
-    @Column(nullable = false, columnDefinition = "DECIMAL(5,2)")
+    @Column(nullable = false, columnDefinition = "DECIMAL(10,2)")
     private double price;
 
     @Column(nullable = false, columnDefinition = "INTEGER")
