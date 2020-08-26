@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:replace="partials :: head (Title = 'View all')"></head>
-<title>Submit a Barber Appointment!</title>
+<head th:replace="partials :: head (Title = 'Deltete By Id')"></head>
 
 <!--    Custom Styling For Side Nav-->
 <link th:href="@{/css/sidenav.css}" href="/css/sidenav.css" rel="stylesheet" type="text/css">
@@ -25,17 +24,20 @@
             <a th:href="@{'/reviews/create'}">Edit</a>
         </div>
 
-        <h2 class="text-center">Viewing Appointments</h2>
+        <h2 class="text-center">Would you like to Delete Appointment Details?</h2>
         <hr>
-        <!--    <a th:href="@{'/reviews/create'}">Create Review</a>-->
-        <!--    <hr>-->
 
-        <!--    Viewing the appointment based off off id-->
-        <div th:each="appointment : ${appointment}">
-            <h2 th:text="${appointment.createDateTime}"></h2>
-            <p th:text="${appointment.note}"></p>
-            <a th:href="@{'/appointments/' + ${appointment.id}}">View Appointment</a>
-        </div>
+        <!--    Viewing the review based off off id-->
+        <h2 th:text="${appointment.createDateTime}"></h2>
+        <p th:text="${appointment.note}"></p>
+<!--        <p th:text="${review.rating}"></p>-->
+        <form th:action="@{'/appointments/' + ${appointment.getId()} + '/delete'}" th:method="post">
+            <button>Delete</button>
+        </form>
+        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/appointments}">Back</a>
+
+        <!--    <p th:text="${review.appointment}"></p>-->
+
 
     </div>
     <footer th:replace="partials :: footer"></footer>

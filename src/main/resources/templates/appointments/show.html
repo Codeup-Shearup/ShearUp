@@ -5,44 +5,8 @@
 <title>Submit a Barber Review!</title>
 
 <!--    Custom Styling For Side Nav-->
-<style>
-    body {
-        font-family: "Lato", sans-serif;
-    }
+<link th:href="@{/css/sidenav.css}" href="/css/sidenav.css" rel="stylesheet" type="text/css">
 
-    .sidenav {
-        height: 100%;
-        width: 200px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        padding-top: 53px;
-    }
-
-    .sidenav a {
-        padding: 6px 6px 6px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-    }
-
-    .sidenav a:hover {
-        color: #f1f1f1;
-    }
-
-    .main {
-        margin-left: 200px; /* Same as the width of the sidenav */
-    }
-
-    @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
-    }
-</style>
 
 </head>
 <body>
@@ -57,24 +21,23 @@
         <div class="sidenav">
             <a th:href="@{'/about'}">About</a>
             <a th:href="@{'/appointments'}">View</a>
-            <a th:href="@{'/reviews/create'}">Create</a>
+            <a th:href="@{'/appointments/create'}">Create</a>
             <a th:href="@{'/reviews/create'}">Edit</a>
         </div>
 
-        <h2>Viewing Appointments By Id</h2>
+        <h2 class="text-center">Viewing Appointments By Id</h2>
         <hr>
 
         <!--    Viewing the appointment based off off id-->
-        <h2 th:text="${appointment.appointmentDate}"></h2>
-        <p th:text="${appointment.user}"></p>
-        <p th:text="${appointment.service}"></p>
-        <a th:href="@{'/appointments/' + ${appointment.id} + '/edit'}">Edit Review</a>
+        <h2 th:text="${appointment.createDateTime}"></h2>
+        <p th:text="${appointment.note}"></p>
+<!--        <a th:href="@{'/appointments/' + ${appointment.id} + '/edit'}">Edit Appointment</a>-->
         <br>
-        <a th:href="@{'/appointments/' + ${appointment.id} + '/delete'}">Delete Review</a>
+        <a th:href="@{'/appointments/' + ${appointment.id} + '/delete'}">Delete Appointment</a>
         <!--    <form th:action="@{'/reviews/' + ${review.getId()} + '/delete'}" th:method="post">-->
         <!--        <button>Delete</button>-->
         <!--    </form>-->
-        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
+        <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/appointments}">Back</a>
 
         <!--    <p th:text="${review.appointment}"></p>-->
 
