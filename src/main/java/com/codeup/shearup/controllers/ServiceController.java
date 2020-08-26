@@ -67,7 +67,7 @@ public class ServiceController {
     }
 
     @PostMapping("/services/create")
-    public @ResponseBody String createService(@ModelAttribute Service service, @RequestParam String imageUpload){
+    public String createService(@ModelAttribute Service service, @RequestParam String imageUpload){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(loggedInUser.getBarberDetail() != null){
             service.setBarberDetail(loggedInUser.getBarberDetail());
