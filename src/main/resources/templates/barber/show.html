@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+
+<head th:replace="partials :: head (Title = 'View Barber Profile')">
+	<meta charset="UTF-8">
+	<title>Barber profile page</title>
+</head>
+<body>
+<header th:replace="partials :: header"></header>
+
+<h1><h1 th:text="${user.firstName}">'s Barber Profile</h1>
+	
+	<h1>Bio: </h1><p th:text="${barber.bio}"></p>
+	<h1>Phone Number: </h1><p th:text="${barber.phone}"></p>
+	<h1>Location of Business: </h1>
+	<p th:text="${location.addressOne}"></p>
+	<p th:text="${location.addressTwo}"></p>
+	<p th:text="${location.city}"></p>
+	<p th:text="${location.state}"></p>
+	<p th:text="${location.zipCode}"></p>
+</h1>
+<h1>List of Services: </h1>
+<!--  THROWING ERROR FOR NOW WORKING ON FIX
+(I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
+<div class="card" style=" width: 18rem;" th:each="service : ${services}">
+	<!--   PICTURE OF SERVICE GOES HERE     -->
+	<img class="card-image-top" src="..." alt="">
+	<div class="card-body">
+		<h5 class="card-title">Title: </h5><p class="card-text" th:text="${service.title}"></p>
+		<h5 class ="card-title">Description: </h5><p class="card-text" th:text="${service.description}"></p>
+		<h5 class="card-title">Duration: </h5><p class="card-text" th:text="${service.duration}"></p>
+		<h5 class="card-title">Price: </h5><p class="card-text" th:text="${service.price}"></p>
+	</div>
+</div>
+
+<a href="/appointments/create"><button class="btn btn-secondary">Request appointment</button></a>
+
+<div class="card" style=" width: 18rem;" th:each="review : ${reviews}">
+	<!--   PICTURE OF SERVICE GOES HERE     -->
+	<img class="card-image-top" src="..." alt="">
+	<div class="card-body">
+		<h5 class="card-title"></h5><p class="card-text" th:text="${review.title}"></p>
+		<h5 class ="card-title"></h5><p class="card-text" th:text="${review.content}"></p>
+		<h5 class="card-title"></h5><p class="card-text" th:text="${review.rating}"></p>
+		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>
+	</div>
+</div>
+
+<a href="/reviews/create"><button class="btn btn-secondary">Review this barber</button></a>
+
+
+<footer th:replace="partials :: footer"></footer>
+</body>
+</html>

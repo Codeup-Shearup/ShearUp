@@ -1,10 +1,7 @@
 package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.*;
-import com.codeup.shearup.repositories.BarberDetailRepository;
-import com.codeup.shearup.repositories.LocationRepository;
-import com.codeup.shearup.repositories.ServiceRepository;
-import com.codeup.shearup.repositories.UserRepository;
+import com.codeup.shearup.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +16,17 @@ public class BarberController {
     private final ServiceRepository servicesDao;
     private final BarberDetailRepository barberDetailDao;
     private final LocationRepository locationsDao;
+    private final ReviewRepository reviewsDao;
 
     //========WE WILL NEED TO ADD MORE EVENTUALLY POSSIBLY=======//
-    public BarberController(UserRepository usersDao, ServiceRepository servicesDao, BarberDetailRepository barberDetailDao, LocationRepository locationsDao) {
+    public BarberController(UserRepository usersDao, ServiceRepository servicesDao,
+                            BarberDetailRepository barberDetailDao, LocationRepository locationsDao,
+                            ReviewRepository reviewsDao) {
         this.usersDao = usersDao;
         this.servicesDao = servicesDao;
         this.barberDetailDao = barberDetailDao;
         this.locationsDao = locationsDao;
+        this.reviewsDao = reviewsDao;
     }
 
     //==========PROFILE PAGE FOR SPECIFIC BARBER==========//
@@ -46,6 +47,21 @@ public class BarberController {
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
         return"barber/profile";
+    }
+    
+    //===BARBER PROFILE CLIENTS VIEW===
+    @GetMapping("/barber/profile/{id}")
+    public String barberProfile(@PathVariable long id, Model model) {
+        User user = usersDao.getOne(id);
+        //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
+        model.addAttribute("services", servicesDao.findAllByBarberDetail(user.getBarberDetail()));
+        //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
+        model.addAttribute("barber", barberDetailDao.getOne(user.getId()));
+        model.addAttribute("location", locationsDao.getOne(user.getId()));
+        model.addAttribute("reviews", reviewsDao.findAllReviewsByBarber(user.getBarberDetail().getId()));
+        //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
+        model.addAttribute("user", user);
+        return"barber/show";
     }
 
     //============DELETE A SERVICE BUTTON==============// -NEEDS WORK RAMON
@@ -130,6 +146,7 @@ public class BarberController {
     @GetMapping("/barbers")
     public String getBarbers(Model model) {
         List<User> allBarbers = usersDao.findAllBarbers();
+        System.out.println(allBarbers);
         model.addAttribute("barbers", allBarbers);
         return "barber/barbers";
     }
