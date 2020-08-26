@@ -52,15 +52,15 @@ public class BarberController {
     //===BARBER PROFILE CLIENTS VIEW===
     @GetMapping("/barber/profile/{id}")
     public String barberProfile(@PathVariable long id, Model model) {
-        User user = usersDao.getOne(id);
+        User barber = usersDao.getOne(id);
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
-        model.addAttribute("services", servicesDao.findAllByBarberDetail(user.getBarberDetail()));
-        //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
-        model.addAttribute("barber", barberDetailDao.getOne(user.getId()));
-        model.addAttribute("location", locationsDao.getOne(user.getId()));
-        model.addAttribute("reviews", reviewsDao.findAllReviewsByBarber(user.getBarberDetail().getId()));
+//        model.addAttribute("services", servicesDao.findAllByBarberDetail(barber.getBarberDetail()));
+//        //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
+//        model.addAttribute("barber", barberDetailDao.getOne(barber.getId()));
+//        model.addAttribute("location", locationsDao.getOne(barber.getId()));
+//        model.addAttribute("reviews", reviewsDao.findAllReviewsByBarber(barber.getBarberDetail().getId()));
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
-        model.addAttribute("user", user);
+        model.addAttribute("barber", barber);
         return"barber/show";
     }
 
@@ -146,7 +146,6 @@ public class BarberController {
     @GetMapping("/barbers")
     public String getBarbers(Model model) {
         List<User> allBarbers = usersDao.findAllBarbers();
-        System.out.println(allBarbers);
         model.addAttribute("barbers", allBarbers);
         return "barber/barbers";
     }
