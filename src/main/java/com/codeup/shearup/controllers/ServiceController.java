@@ -1,11 +1,9 @@
 package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.*;
-import com.codeup.shearup.repositories.AppointmentRepository;
 import com.codeup.shearup.repositories.ImageRepository;
 import com.codeup.shearup.repositories.ServiceRepository;
 import com.codeup.shearup.repositories.UserRepository;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,21 +17,25 @@ public class ServiceController {
     //dependency injection
     private final ServiceRepository servicesDao;
     private final UserRepository usersDao;
-    private final ImageRepository imageDao;
-    private final AppointmentRepository appointmentDao;
+    private final ImageRepository imagesDao;
 
-    public ServiceController(ServiceRepository servicesDao, UserRepository usersDao, ImageRepository imageDao, AppointmentRepository appointmentDao) {
+    public ServiceController(ServiceRepository servicesDao, UserRepository usersDao, ImageRepository imagesDao) {
         this.servicesDao = servicesDao;
         this.usersDao = usersDao;
-        this.imageDao = imageDao;
-        this.appointmentDao = appointmentDao;
+        this.imagesDao = imagesDao;
     }
 
     //  LIST OF ALL SERVICES
     @GetMapping("/services")
     public String serviceIndexPage(Model model) {
         List<Service> myService = servicesDao.findAll();
+        List<Image> myImage = imagesDao.findAll();
         model.addAttribute("services", myService);
+        model.addAttribute("images", myImage);
+//        Image img = new Image();
+//        img.getImages
+//        img.setFilestack_url(imagePreview);
+//        img.setService(service);
         return "services/index";
     }
 
@@ -53,10 +55,12 @@ public class ServiceController {
         try {
             User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         } catch (Exception e){
+            e.printStackTrace();
             return "redirect:/";
         }
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(loggedInUser.getBarberDetail() == null) {
+//        System.out.println("loggedInUser.getUsername() = " + loggedInUser.getUsername()); --prints out twice -K
+        if(!loggedInUser.isBarber()) {
 //            throw not barber error
             return "redirect:/";
         }
@@ -65,7 +69,7 @@ public class ServiceController {
     }
 
     @PostMapping("/services/create")
-    public @ResponseBody String createService(@ModelAttribute Service service, @RequestParam String imageUpload){
+    public String createService(@ModelAttribute Service service, @RequestParam String imageUpload){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(loggedInUser.getBarberDetail() != null){
             service.setBarberDetail(loggedInUser.getBarberDetail());
@@ -73,7 +77,7 @@ public class ServiceController {
             img.setFilestackurl(imageUpload);
             img.setService(service);
             servicesDao.save(service);
-            imageDao.save(img);
+            imagesDao.save(img);
             return "redirect:/services";
         }
         else {
@@ -87,7 +91,7 @@ public class ServiceController {
     //editing individual services
     @GetMapping("/services/{id}/edit")
     public String showEditForm(@PathVariable long id, Model model){
-        model.addAttribute("Service", servicesDao.getOne(id));
+        model.addAttribute("service", servicesDao.getOne(id));
         return "services/edit";
     }
 
@@ -96,6 +100,8 @@ public class ServiceController {
         //TODO: Change user to logged in user dynamic
         User user = usersDao.getOne(1L);
 //        Service.setBarberDetail(barberDetailId); <----own barber should edit their service
+//        service.setAuthor(user);
+//        service.setBarberDetail(loggedInUser.getBarberDetail());
         servicesDao.save(Service);
         return "redirect:/services";
     }
@@ -103,11 +109,19 @@ public class ServiceController {
 
 // ==== DELETING SERVICES ==== //
 
+    //Delete Service GET
+    @GetMapping("/services/{id}/delete")
+    public String deletePage(@PathVariable Long id, Model model){
+        Service pulledService = servicesDao.getOne(id);
+        model.addAttribute("service", pulledService);
+        return "services/delete";
+    }
 
-//    DELETING INDIVIDUAL SERVICES
+    //Deleting Service POST
     @PostMapping("/services/{id}/delete")
-    public String deletePost(@PathVariable long id) {
-        servicesDao.deleteById(id);
+    public String deleteService(@ModelAttribute Service service){
+        Service deleteService = servicesDao.getOne(service.getId());
+        servicesDao.delete(deleteService);
         return "redirect:/services";
     }
 

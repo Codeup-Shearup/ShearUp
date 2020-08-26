@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <head th:replace="partials :: head (Title = 'Map')"></head>
+    <meta charset="UTF-8">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <!--    <link rel="stylesheet" href="css/mapbox.css">-->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="js/mapbox-geocoder-utils.js"></script>
+    <title>Mapbox Map</title>
+
+    <!--    Custom Styling For Side Nav-->
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 53px;
+        }
+
+        .sidenav a {
+            padding: 6px 6px 6px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .main {
+            margin-left: 200px; /* Same as the width of the sidenav */
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+
+<div class="main">
+
+    <!--    Side Nav-->
+    <div class="sidenav">
+        <a th:href="@{'/about'}">About</a>
+        <a th:href="@{'/barbers'}">Barbers</a>
+        <a th:href="@{'/reviews'}">Reviews</a>
+        <a th:href="@{'/services'}">Services</a>
+    </div>
+
+    <div class="container p-3">
+    </div>
+    <h2 class="text-center">Closest Shave Near You</h2>
+
+    <div id='map' style='width: 100%; height: 500px;'></div>
+
+    <script th:src="@{../js/keys.js}"></script>
+    <script>
+        mapboxgl.accessToken = MAP_KEY;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            // style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+            // style: 'mapbox://styles/mapbox/satellite-streets-v11', //satellite version
+            style: 'mapbox://styles/mapbox/dark-v10', //dark, sleek version
+            center: {lng: -98.4916, lat: 29.4252}, // starting position [lng, lat]
+            zoom: 10 // starting zoom 0 is the farthest - 24 the closest
+        });
+        //San Antonio, TX --Center
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.4916, lat: 29.4252})
+            .addTo(map);
+        //Henley's Gentlemen's Grooming --14510 NW Military Hwy #103, San Antonio, TX 78231
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.544550, lat: 29.575790})
+            .addTo(map);
+        //Gentlemen's Barber Shop --1207 San Francisco, San Antonio, TX 78201
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.513280, lat: 29.468690})
+            .addTo(map);
+        //San Antonio, TX --Center
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.4916, lat: 29.4252})
+            .addTo(map);
+        //Boardroom Salon For Men - 7322 Jones Maltsberger Rd Suite 214, San Antonio, TX 78209
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.480040, lat: 29.498110})
+            .addTo(map);
+        //The Gents Place @ The Dominion -- 23718 IH-West 10, #114, San Antonio, TX 78257
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.627399, lat: 29.662949})
+            .addTo(map);
+        //San Antonio, TX --Center
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.492913, lat: 29.426299})
+            .addTo(map);
+        //Henley's Gentlemen's Grooming --14510 NW Military Hwy #103, San Antonio, TX 78231
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.544550, lat: 29.575790})
+            .addTo(map);
+        //18|8 Fine Men’s Salons - Downtown Riverwalk --122 E Houston St #104, San Antonio, TX 78205
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.513280, lat: 29.468690})
+            .addTo(map);
+        // Chacabana Barber Shop --5002 Eisenhauer Rd, San Antonio, TX 78218
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.387623, lat: 29.496053})
+            .addTo(map);
+        // Victory Salon --4745 Fredericksburg Rd, San Antonio, TX 78229
+        var marker = new mapboxgl.Marker();
+        marker
+            .setLngLat({lng: -98.555608, lat: 29.495377})
+            .addTo(map);
+
+        //this below still needs work...
+        var popup = new mapboxgl.Popup()
+            .setHTML("<h3>Cheers to Shears</h3>");
+
+        marker.setPopup(popup);
+        marker.setDraggable(true);
+
+        marker.on('dragged', function() {
+            console.log({lng: -98.4916, lat: 29.4252});
+        });
+
+        // user did not allow browser to use there location
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+            infoWindow.open(map);
+        }
+        // reverseGeocode({lng: -77.050636, lat: 38.889248}, "pk.eyJ1Ijoia2NvdHRvIiwiYSI6ImNrOXZoNHg1YzA0bm4za3FuZTVjcThkZXEifQ.723tKsE_Ur6m6DZDahOntA").then(function(results) {
+        //     console.log(results);
+        //     map.setCenter(results);
+        //     map.setZoom(20);
+        //     // do something with results
+        // });
+    </script>
+    <footer th:replace="partials :: footer"></footer>
+</div>
+</body>
+</html>
