@@ -78,6 +78,9 @@ public class BarberDetailsController {
         return "redirect:/barber/profile";
     }
 
+
+    //===========EDIT LOCATIONS ============//
+
 //    @PostMapping("/barber/barber-details/bio")
 //    public String insertBarberDetail(@ModelAttribute BarberDetail barberDetail) {
 //        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
