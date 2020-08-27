@@ -39,6 +39,5 @@ src/main/resources/application.properties
 /keys.js
 /src/main/resources/static/js/keys.js
 
-
 ### HIDDEN MODULES ###
 node_modules/
