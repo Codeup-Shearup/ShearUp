@@ -34,7 +34,7 @@
 	</div>
 </div>
 
-<a href="/appointments/create"><button class="btn btn-secondary">Request appointment</button></a>
+<a th:href="@{/appointments/create/{id}(id=${barber.id})}"><button class="btn btn-secondary">Request appointment</button></a>
 
 <div class="card" style=" width: 18rem;" th:each="review : ${barber.barberDetail.reviews}">
 	<!--   PICTURE OF SERVICE GOES HERE     -->
@@ -47,7 +47,7 @@
 	</div>
 </div>
 
-<a href="/reviews/create"><button class="btn btn-secondary">Review this barber</button></a>
+<a th:href="@{/reviews/create/{id}(id=${barber.id})}"><button class="btn btn-secondary">Review this barber</button></a>
 
 
 <footer th:replace="partials :: footer"></footer>

@@ -16,7 +16,7 @@
 				<p class="card-text" th:text="${barber.barberDetail.bio}"></p>
 			</div>
 			<div class="card-footer">
-				<small class="text-muted" th:text="${barber.barberDetail.location.addressOne}"></small>
+				<small class="text-muted" th:text="${barber.barberDetail.location.city} + ', ' + ${barber.barberDetail.location.state} + ' ' + ${barber.barberDetail.location.zipCode}"></small>
 			</div>
 		</div>
 	</div>

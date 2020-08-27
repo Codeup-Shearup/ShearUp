@@ -5,9 +5,10 @@
 </head>
 <body>
 <header th:replace="partials :: header"></header>
-
+<div class="container">
     <h1>Add Service page for</h1>
     <h2 th:text="${user.firstName}"></h2>
+
     <form th:action="@{'/barber/add-service'}"  th:method="POST" th:object="${service}">
         <div class="form-group">
             <label for="title">Service Name: </label>
@@ -30,9 +31,9 @@
         </div>
 
         <button class="btn btn-primary">Add Service</button>
-
+        <a class="btn btn-primary float-right" style="text-decoration: none; color:black;" th:href="@{/barber/profile}">Back</a>
     </form>
+</div>
     <footer th:replace="partials :: footer"></footer>
-
 </body>
 </html>

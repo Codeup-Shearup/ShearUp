@@ -30,8 +30,8 @@ public class BarberDetailsController {
         this.locationsDao = locationsDao;
     }
     
-    //===========START OF THREE STEP FORM========///
-    //==========BARBER-DETAIL => LOCATIONS => IMAGE ==//
+    //===========START OF TWO STEP FORM========///
+    //==========BARBER-DETAIL => LOCATIONS
     //=============BARBER DETAIL BIO FORM===========//
     //=============STEP ONE FORM =============//
     @GetMapping("/barber/barber-details/bio")
@@ -50,16 +50,39 @@ public class BarberDetailsController {
         User barber = usersDao.getOne(sessionUser.getId());
         //ORIGINAL
         barberDetailDao.getOne(sessionUser.getId());
-
 //        BarberDetail testBarberDetail = barberDetailDao.getOne(sessionUser.getId());
-
 //        barberDetailDao.save(barberDetail); // ORIGINAL
-
         barberDetailDao.save(barberDetail);
         barber.setBarberDetail(barberDetail);
         usersDao.save(barber);
-
         return "redirect:/barber/barber-details/location";
+    }
+
+    //=================STEP 2 OF FORM using LOCATION MODEL ========///
+    @GetMapping("/barber/barber-details/location")
+    public String barberLocation(Model model){
+        //=====GRABS LOGGED IN USER ASSOCIATED WITH SESSION FOR BARBER=====///
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        usersDao.getOne(sessionUser.getId());
+        model.addAttribute("user", sessionUser);
+        model.addAttribute("barberDetail", new BarberDetail());
+        model.addAttribute("location", new Location());
+        return "barber/barber-location";
+    }
+
+
+    @PostMapping("/barber/barber-details/location")
+    public String insertBarberLocation(@ModelAttribute Location location,
+                                       @ModelAttribute BarberDetail barberDetail) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User barber = usersDao.getOne(sessionUser.getId());
+        BarberDetail barberDeet = barberDetailDao.getOne(sessionUser.getId());
+        location.setBarber(barberDeet);
+
+        barberDeet.setLocation(location);
+        locationsDao.save(location);
+        barberDetailDao.save(barberDeet);
+        return "redirect:/profile";
     }
     
     //==============EDIT BARBER DETAILS=========//
@@ -80,51 +103,33 @@ public class BarberDetailsController {
         editBarberDetail.setPhone(barberDetail.getPhone());
         editBarberDetail.setHoursOfWork(barberDetail.getHoursOfWork());
         barberDetailDao.save(editBarberDetail);
-        
         return "redirect:/barber/profile";
     }
 
 
-    //===========EDIT LOCATIONS ============//
+    //===========EDIT LOCATION ============//
 
-//    @PostMapping("/barber/barber-details/bio")
-//    public String insertBarberDetail(@ModelAttribute BarberDetail barberDetail) {
-//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        usersDao.getOne(sessionUser.getId());
-//        barberDetailDao.getOne(sessionUser.getId());
-//
-//        barberDetail.setBio(sessionUser.getBarberDetail());
-//    }
-    
-    
-    
-    
-    //=================STEP 2 OF FORM using LOCATION MODEL ========///
-    @GetMapping("/barber/barber-details/location")
-    public String barberLocation(Model model){
-        //=====GRABS LOGGED IN USER ASSOCIATED WITH SESSION FOR BARBER=====///
+    @GetMapping("/barber/edit-barber-location")
+    public String editLocation(Model model, @RequestParam(name="editLocationButton") Long locationId) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        usersDao.getOne(sessionUser.getId());
+        Location locationDetail = locationsDao.getOne(locationId);
+        model.addAttribute("location", locationDetail);
         model.addAttribute("user", sessionUser);
-        model.addAttribute("barberDetail", new BarberDetail());
-        model.addAttribute("location", new Location());
-        return "barber/barber-location";
+        return "barber/edit-barber-location";
     }
-    
-    
-    @PostMapping("/barber/barber-details/location")
-    public String insertBarberLocation(@ModelAttribute Location location,
-                                       @ModelAttribute BarberDetail barberDetail) {
+
+    @PostMapping("/barber/edit-barber-location")
+    public String editLocationPost(@ModelAttribute Location location, @RequestParam(name="locationId") Long locationId) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User barber = usersDao.getOne(sessionUser.getId());
-        BarberDetail barberDeet = barberDetailDao.getOne(sessionUser.getId());
-        location.setBarber(barberDeet);
-        
-        barberDeet.setLocation(location);
-        locationsDao.save(location);
-        barberDetailDao.save(barberDeet);
-        return "redirect:/profile";
+        Location editLocationDetail = locationsDao.getOne(locationId);
+        editLocationDetail.setAddressOne(location.getAddressOne());
+        editLocationDetail.setAddressTwo(location.getAddressTwo());
+        editLocationDetail.setCity(location.getCity());
+        editLocationDetail.setState(location.getState());
+        editLocationDetail.setZipCode(location.getZipCode());
+        locationsDao.save(editLocationDetail);
+        return "redirect:/barber/profile";
     }
-    
-    
+
+
 }
