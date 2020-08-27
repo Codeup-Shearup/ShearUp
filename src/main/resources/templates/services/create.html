@@ -3,7 +3,7 @@
 <head>
     <head th:replace="partials :: head (Title = 'Create')"></head>
     <title>Create a Barber Service!</title>
-    <meta class="filestack" th:content="${filestack}">
+    <meta class="filestack" th:content="${@environment.getProperty('filestack.api.key')}">
 
     <!--    Custom Styling For Side Nav-->
     <style>
@@ -103,6 +103,8 @@
         <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/services}">Go Back</a>
 
     </form>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/keys.js}"></script>
     <script type="text/javascript" th:inline="javascript">
         // This one works with creating a service and uploading an image for that service
 
@@ -123,9 +125,9 @@
         }
     </script>
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-    <script type="text/javascript" th:src="@{/js/keys.js}"></script>
-    <script type="text/javascript" th:src="@{/js/file.js}"></script>
-<!--    <script>console.log(FILESTACK_KEY)</script>-->
+<!--    <script type="text/javascript" th:src="@{/js/keys.js}"></script>-->
+<!--    <script type="text/javascript" th:src="@{/js/file.js}"></script>-->
+    <script>console.log(FILESTACK_KEY)</script>
 
 
 </div>

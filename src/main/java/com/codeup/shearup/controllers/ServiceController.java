@@ -20,8 +20,8 @@ public class ServiceController {
     private final UserRepository usersDao;
     private final ImageRepository imagesDao;
 
-    @Value("${filestack.api.key}")
-    private String filestack;
+//    @Value("${filestack.api.key}")
+//    private String filestack;
 
     public ServiceController(ServiceRepository servicesDao, UserRepository usersDao, ImageRepository imagesDao) {
         this.servicesDao = servicesDao;
@@ -69,7 +69,7 @@ public class ServiceController {
             return "redirect:/";
         }
         model.addAttribute("Service", new Service());
-        model.addAttribute("filestack", filestack);
+//        model.addAttribute("filestack", filestack);
         return "services/create";
     }
 
