@@ -3,36 +3,53 @@
 <head th:replace="partials :: head (Title = 'Sign Up')"></head>
 <body>
 <header th:replace="partials :: header"></header>
-<h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-	<label for="is_barber">I am a: </label>
-	<select name="isBarber" id="is_barber" th:field="*{barber}">
-<!--		<option th:value="selected" th:text="Select one" selected="selected"></option>-->
-		<option th:value="true" th:text="Barber"></option>
-		<option th:value="false" th:text="Client"></option>
-	</select>
-	
-	<label for="first-name">First Name</label>
-	<input id="first-name" th:field="*{firstName}" required/>
-	
-	<label for="last-name">Last Name</label>
-	<input id="last-name" th:field="*{lastName}" required/>
-	
-	<label for="username">Username</label>
-	<input id="username" th:field="*{username}" required/>
-	
-	<label for="email">Email</label>
-	<input id="email" th:field="*{email}" required/>
-	
-	<label for="password">Password</label>
-	<input id="password" type="password" th:field="*{password}" required/>
-	
-	<label for="passwordConfirmation">Confirm Password</label>
-	<span id="message"></span>
-	<input id="passwordConfirmation" name="passwordConfirmation" type="password" required/>
-	
-	<input id="submitButton" value="Sign me up!" type="submit" />
-</form>
+
+<div class="container justify-content-center text-center">
+	<h1 class="mb-5">Create an account</h1>
+	<form th:action="@{/sign-up}" method="POST" th:object="${user}">
+		<div class="form-group">
+			<label for="is_barber">I am a: </label>
+			<select name="isBarber" id="is_barber" th:field="*{barber}">
+		<!--		<option th:value="selected" th:text="Select one" selected="selected"></option>-->
+				<option th:value="true" th:text="Barber"></option>
+				<option th:value="false" th:text="Client"></option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="first-name">First Name</label>
+			<input id="first-name" th:field="*{firstName}" required/>
+		</div>
+		
+		<div class="form-group">
+			<label for="last-name">Last Name</label>
+			<input id="last-name" th:field="*{lastName}" required/>
+		</div>
+		
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input id="username" th:field="*{username}" required/>
+		</div>
+		
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input id="email" th:field="*{email}" required/>
+		</div>
+		
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input id="password" type="password" th:field="*{password}" required/>
+		</div>
+		
+		<div class="form-group">
+			<label for="passwordConfirmation">Confirm Password</label>
+			<span id="message"></span>
+			<input id="passwordConfirmation" name="passwordConfirmation" type="password" required/>
+		</div>
+		
+		<input id="submitButton" value="Sign me up!" type="submit" />
+	</form>
+</div>
 <!--===PASSWORD CONFIRMATION SCRIPTS===-->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>
