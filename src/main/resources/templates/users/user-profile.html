@@ -28,11 +28,10 @@
 			<div class="py-4 px-4">
 				<div class="py-4">
 					<h5 class="mb-3">Recent reviews</h5>
-					<div class="p-4 bg-light rounded shadow-sm">
-						<p class="font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+					<div class="p-4 bg-light rounded shadow-sm" th:each="review : ${reviews}">
+						<p class="font-italic mb-0" th:text="${review.content}"></p>
 						<ul class="list-inline small text-muted mt-3 mb-0">
-							<li class="list-inline-item"><i class="far fa-user-circle mr-2"></i>Barber</li>
-							<li class="list-inline-item"><i class="fas fa-cut mr-2"></i>Service name</li>
+							<li class="list-inline-item" th:text="${review.barberDetail.getUser().firstName} + ' ' + ${review.barberDetail.getUser().lastName}"><i class="far fa-user-circle mr-2"></i></li>
 						</ul>
 					</div>
 				</div>
