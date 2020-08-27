@@ -12,7 +12,7 @@
 		<div class="bg-white shadow rounded overflow-hidden">
 			<div class="px-4 pt-0 pb-4 bg-dark" th:object="${user}">
 				<div class="media align-items-end profile-header">
-					<div class="profile mr-3"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.viawater.nl%2Fusers%2Fkristine-yakhama&psig=AOvVaw1pXsafPcNG-OEGwbAYUvfI&ust=1598132892677000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPie24yjresCFQAAAAAdAAAAABAO" alt="..." width="130" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>
+					<div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>
 					<div class="media-body mb-5 text-white">
 						<h4 class="mt-0 mb-0"><span th:text="*{firstName}"></span> <span th:text="*{lastName}"></span></h4>
 						<p class="small mb-4" th:text="*{username}"> <i class="fas fa-at mr-2"></i></p>
