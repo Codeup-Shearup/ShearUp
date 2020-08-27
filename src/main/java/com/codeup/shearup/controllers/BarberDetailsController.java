@@ -128,7 +128,7 @@ public class BarberDetailsController {
         editLocationDetail.setState(location.getState());
         editLocationDetail.setZipCode(location.getZipCode());
         locationsDao.save(editLocationDetail);
-        return "barber/edit-barber-location";
+        return "redirect:/barber/profile";
     }
 
 
