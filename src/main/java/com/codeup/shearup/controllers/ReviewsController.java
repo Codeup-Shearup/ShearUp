@@ -47,16 +47,18 @@ public class ReviewsController {
     @GetMapping("/reviews/create")
     public String showCreateReviewForm(Model model){
         model.addAttribute("review", new Review());
+        model.addAttribute("rating", new Review());
         return "reviews/create";
     }
 
     //Creating Review
     @PostMapping("reviews/create")
-    public String createReview(@ModelAttribute Review review, BarberDetail barberDetail){
+    public String createReview(@ModelAttribute Review review, Model model, BarberDetail barberDetail){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        BarberDetail barberDetail = BarberDetail.ge
         review.setAuthor(user);
 //        review.setBarberDetail(barberDetail);
+        model.addAttribute("rating", review);
         reviewsDao.save(review);
         return "redirect:/reviews";
     }

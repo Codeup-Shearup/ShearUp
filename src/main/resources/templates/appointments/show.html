@@ -27,10 +27,14 @@
 
         <h2 class="text-center">Viewing Appointments By Id</h2>
         <hr>
-
+        <ul class="list-group list-group-horizontal-md">
+<!--            <li th:text="${appointment.user}"></li>-->
+            <li class="list-group-item" th:text="${appointment.createDateTime}"></li>
+            <li class="list-group-item" th:text="${appointment.note}"></li>
+        </ul>
         <!--    Viewing the appointment based off off id-->
-        <h2 th:text="${appointment.createDateTime}"></h2>
-        <p th:text="${appointment.note}"></p>
+<!--        <h2 th:text="${appointment.createDateTime}"></h2>-->
+<!--        <p th:text="${appointment.note}"></p>-->
 <!--        <a th:href="@{'/appointments/' + ${appointment.id} + '/edit'}">Edit Appointment</a>-->
         <br>
         <a th:href="@{'/appointments/' + ${appointment.id} + '/delete'}">Delete Appointment</a>
