@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <head th:replace="partials :: head (Title = 'Create')"></head>
-    <title>Create a Barber Service!</title>
+    <title>Create a Barber Service with Photo!</title>
 
     <!--    Custom Styling For Side Nav-->
     <style>
@@ -69,23 +69,23 @@
 <div class="container p-5 border-left">
 
 
-    <h2 class="text-center">Create Barber Service</h2>
+    <h2 class="text-center">Add a photo to your Service Portfolio</h2>
 
     <!--    CREATE Service FORM   -->
     <hr>
 
     <form th:action="@{'/services/create'}" th:method="post" th:object="${Service}" class="p-5" style="margin-top: -5%;">
         <div class="form-group">
-            <label for="createTitle">Title</label>
+            <label for="createTitle">Service Title:</label>
             <input type="text" class="form-control" id="createTitle" th:field="*{title}">
         </div>
         <div class="form-group">
-            <label for="createDescription">Description</label>
+            <label for="createDescription">Description:</label>
             <textarea class="form-control" id="createDescription" th:field="*{description}" name="createDescription"></textarea>
         </div>
         <div class="form-group">
-            <label for="createPrice">Price</label>
-            <textarea class="form-control" id="createPrice" th:field="*{price}" name="createPrice"></textarea>
+            <label for="createPrice">Enter Price Amount:</label>
+            <textarea class="form-control" id="createPrice" value placeholder="$" th:field="*{price}" name="createPrice"></textarea>
         </div>
         <div class="form-group">
             <label for="createDuration">Duration</label>
