@@ -42,7 +42,7 @@ public class BarberController {
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
         model.addAttribute("services", servicesDao.findAllByBarberDetail(sessionUser.getBarberDetail()));
         //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
-        model.addAttribute("barber", barberDetailDao.getOne(sessionUser.getId()));
+//        model.addAttribute("barber", barberDetailDao.getOne(sessionUser.getId()));
         model.addAttribute("location", locationsDao.getOne(sessionUser.getId()));
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
@@ -123,7 +123,7 @@ public class BarberController {
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
         model.addAttribute("service", new Service());
-        return "/barber/add-service";
+        return "barber/add-service";
     }
 
     //NEED TO MANUALLY INPUT THE BARBER WHO MADE SERVICE=====
