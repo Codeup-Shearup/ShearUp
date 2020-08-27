@@ -103,6 +103,25 @@
         <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/services}">Go Back</a>
 
     </form>
+    <script type="text/javascript" th:inline="javascript">
+        // This one works with creating a service and uploading an image for that service
+
+        const client = filestack.init(FILESTACK_KEY);
+
+        const options = {
+            onUploadDone: saveLocation
+        };
+        client.picker(options).open();
+
+        function saveLocation(resp){
+            console.log(resp);
+            // do some error handling and such here like fileError > filesuploaded[0]
+            const photo = resp.filesUploaded[0];
+            document.getElementById("imageUpload").value = photo.handle;
+
+            document.getElementById("imagePreview").src = "https://cdn.filestackcontent.com/" + photo.handle;
+        }
+    </script>
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
     <script type="text/javascript" th:src="@{/js/keys.js}"></script>
     <script type="text/javascript" th:src="@{/js/file.js}"></script>
