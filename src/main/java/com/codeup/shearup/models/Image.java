@@ -47,12 +47,12 @@ public class Image {
     public void setId(long id) {
         this.id = id;
     }
-
-    public String getFilestackurl() {
+//whoever changed this from filestack_url to filestackurl please let others know, thank you. -K
+    public String getFilestackUrl() {
         return filestackUrl;
     }
 
-    public void setFilestackurl(String filestackUrl) {
+    public void setFilestackUrl(String filestackUrl) {
         this.filestackUrl = filestackUrl;
     }
 
