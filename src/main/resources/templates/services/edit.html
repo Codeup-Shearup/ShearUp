@@ -69,7 +69,7 @@
 
         <!-- EDIT SERVICES FORM   -->
         <hr>
-        <form th:action="@{'/service/{id}/edit(id=$(service.id)'}" th:method="POST" th:object="${services}" class="p-5"
+        <form th:action="@{'/service/{id}/edit(id=$(service.id)'}" th:method="POST" th:object="${service}" class="p-5"
               style="margin-top: -5%;">
             <div class="form-group">
                 <label for="editTitle">Title</label>
