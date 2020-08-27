@@ -56,7 +56,7 @@
 </header>
 <div class="container">
 <form th:action="@{'/barber/barber-details/bio'}"  th:method="POST" th:object="${barberDetail}">
-    <h1>Tell us about yourself!</h1>
+    <h1>Please enter your Barber Details!</h1>
     <div class="form-group">
         <label for="bio">Enter Bio: </label>
         <input class="form-control" type="text" th:field="*{bio}" id="bio" placeholder="Enter your bio: ">
