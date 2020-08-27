@@ -26,8 +26,10 @@
     <div class="sidenav">
         <a th:href="@{'/about'}">About</a>
         <a th:href="@{'/reviews'}">View</a>
-        <a th:href="@{'/reviews/create'}">Create</a>
-        <a th:href="@{'/reviews/create'}">Edit</a>
+<!--        <a th:href="@{'/reviews/create'}">Create</a>-->
+<!--        <a th:href="@{'/reviews/create'}">Edit</a>-->
+        <a th:href="@{'/mapbox-map'}">Map</a>
+
     </div>
 
     <div class="container p-5 border-left">
@@ -50,33 +52,33 @@
                 <label for="createContent">Content</label>
                 <textarea class="form-control" id="createContent" th:field="*{content}"></textarea>
             </div>
-<!--            <div class="form-group">-->
-<!--                <label for="createContent">Rating</label>-->
-<!--                <span class="form-control" id="createRating" th:value="*{rating}"><div class='rating-stars pl-3'>-->
-<!--                        <ul id='stars1' class="row list-unstyled">-->
-<!--                            <li class='star' title='Poor' data-value='1'>-->
-<!--                                <i class='fa fa-star fa-fw ${one}'></i>-->
-<!--                            </li>-->
-<!--                            <li class='star' title='Fair' data-value='2'>-->
-<!--                                <i class='fa fa-star fa-fw ${two}'></i>-->
-<!--                            </li>-->
-<!--                            <li class='star' title='Good' data-value='3'>-->
-<!--                                <i class='fa fa-star fa-fw ${three}'></i>-->
-<!--                            </li>-->
-<!--                            <li class='star' title='Excellent' data-value='4'>-->
-<!--                                <i class='fa fa-star fa-fw ${four}'></i>-->
-<!--                            </li>-->
-<!--                            <li class='star' title='WOW!!!' data-value='5'>-->
-<!--                                <i class='fa fa-star fa-fw ${five}'></i>-->
-<!--                            </li>-->
-<!--                        </ul>-->
+            <div class="form-group">
+                <label for="createContent">Rating</label>
+                <span class="form-control" id="createRating" th:value="*{rating}"><div class='rating-stars pl-3'>
+                        <ul id='stars1' class="row list-unstyled">
+                            <li class='star' title='Poor' data-value='1'>
+                                <i class='fa fa-star fa-fw ${one}'></i>
+                            </li>
+                            <li class='star' title='Fair' data-value='2'>
+                                <i class='fa fa-star fa-fw ${two}'></i>
+                            </li>
+                            <li class='star' title='Good' data-value='3'>
+                                <i class='fa fa-star fa-fw ${three}'></i>
+                            </li>
+                            <li class='star' title='Excellent' data-value='4'>
+                                <i class='fa fa-star fa-fw ${four}'></i>
+                            </li>
+                            <li class='star' title='WOW!!!' data-value='5'>
+                                <i class='fa fa-star fa-fw ${five}'></i>
+                            </li>
+                        </ul>
+                    </div>
+                </span>
+            </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="createContent">Content</label>-->
+<!--                        <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
 <!--                    </div>-->
-<!--                </span>-->
-<!--            </div>-->
-            <!--        <div class="form-group">-->
-            <!--            <label for="createContent">Content</label>-->
-            <!--            <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
-            <!--        </div>-->
             <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Review</button>
             <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
         </form>
