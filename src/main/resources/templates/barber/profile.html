@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-
-
-    <head th:replace="partials :: head (Title = 'View Barber Profile')">
+<head th:replace="partials :: head (Title = 'View Barber Profile')">
     <meta charset="UTF-8">
     <title>Barber profile page</title>
 </head>
 <body>
 <header th:replace="partials :: header"></header>
-    <h1>Barber Profile page of <p th:text="${user.firstName}"></p></h1>
-    <h1>Welcome </h1>
-    <h1 th:text="${user.firstName}"></h1>
+<h1>Barber Profile page of <p th:text="${user.firstName}"></p></h1>
+<h1>Welcome </h1>
+<h1 th:text="${user.firstName}"></h1>
 
 <!--  BIO NOT COMING OUT YET DEBUGGING POPULATES IN BIO IN BARBER DETAIL DATABASE  -->
 <h1>Bio: </h1><p th:text="${barber.bio}"></p>
@@ -22,35 +20,37 @@
 
 </form>
 <h1>Location of Business: </h1>
-    <p th:text="${location.addressOne}"></p>
-    <p th:text="${location.addressTwo}"></p>
-    <p th:text="${location.city}"></p>
-    <p th:text="${location.state}"></p>
-    <p th:text="${location.zipCode}"></p>
+<!--  NOBODY TOUCH THIS IF YOU ARE CONFUSED CALL BRANCE -ERASE LATER  -->
+<p th:text="${user.barberDetail.location.addressOne}"></p>
+<p th:text="${user.barberDetail.location.addressTwo}"></p>
+<p th:text="${user.barberDetail.location.city}"></p>
+<p th:text="${user.barberDetail.location.state}"></p>
+<p th:text="${user.barberDetail.location.zipCode}"></p>
 
-    <h1>List of Services: </h1>
-        <!--  THROWING ERROR FOR NOW WORKING ON FIX
-        (I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
-    <div class="card" style=" width: 18rem;" th:each="service : ${services}">
+<h1>List of Services: </h1>
+<!--  THROWING ERROR FOR NOW WORKING ON FIX
+(I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
+<!--  TH EACH WORKS THE USER IN ${A WAY TO GET AROUND DATABASE}  -->
+<div class="card" style=" width: 18rem;" th:each="service : ${user.getBarberDetail().getServices()}">
     <!--   PICTURE OF SERVICE GOES HERE     -->
-        <img class="card-image-top" src="..." alt="">
-        <div class="card-body">
-            <h5 class="card-title">Title: </h5><p class="card-text" th:text="${service.title}"></p>
-            <h5 class ="card-title">Description: </h5><p class="card-text" th:text="${service.description}"></p>
-            <h5 class="card-title">Duration: </h5><p class="card-text" th:text="${service.duration}"></p>
-            <h5 class="card-title">Price: </h5><p class="card-text" th:text="${service.price}"></p>
-        </div>
-            <form th:action="@{/barber/service-delete}" th:method="post">
-                <input type="hidden" th:name="deleteButton" th:value="${service.id}">
-                <button class="btn btn-danger">Delete</button>
-            </form>
-
-
-            <form th:action="@{/barber/edit-service}" th:method="get">
-                <input type="hidden" th:name="editButton" th:value="${service.id}">
-                <button class="btn btn-primary">Edit Service</button>
-            </form>
+    <img class="card-image-top" src="..." alt="">
+    <div class="card-body">
+        <h5 class="card-title">Title: </h5><p class="card-text" th:text="${service.title}"></p>
+        <h5 class ="card-title">Description: </h5><p class="card-text" th:text="${service.description}"></p>
+        <h5 class="card-title">Duration: </h5><p class="card-text" th:text="${service.duration}"></p>
+        <h5 class="card-title">Price: </h5><p class="card-text" th:text="${service.price}"></p>
     </div>
+    <form th:action="@{/barber/service-delete}" th:method="post">
+        <input type="hidden" th:name="deleteButton" th:value="${service.id}">
+        <button class="btn btn-danger">Delete</button>
+    </form>
+    
+    
+    <form th:action="@{/barber/edit-service}" th:method="get">
+        <input type="hidden" th:name="editButton" th:value="${service.id}">
+        <button class="btn btn-primary">Edit Service</button>
+    </form>
+</div>
 <a th:href="@{/barber/add-service}"><button class="btn btn-success">Add Service</button></a>
 </body>
 </html>
