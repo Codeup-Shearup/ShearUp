@@ -1,9 +1,8 @@
 package com.codeup.shearup.models;
 
-import org.hibernate.boot.model.source.spi.ColumnsAndFormulasSourceContainer;
+
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Entity
@@ -23,6 +22,9 @@ public class BarberDetail {
     @Column
     private String phone;
 
+    @Column
+    private String hoursOfWork;
+
     // Need 2 foreign key relationships location id fk
     //one to one barber details to location
     @OneToOne
@@ -32,9 +34,9 @@ public class BarberDetail {
 
     //TODO: ==========MAYBE CHANGE TO PROFILE IMAGE=========
     //One profile image per Barber
-    @OneToOne
-    private Image image;
-    //one to many barber details to images
+//    @OneToOne
+//    private Image image;
+//    //one to many barber details to images
 
     @OneToOne(cascade = CascadeType.MERGE, mappedBy = "barberDetail")
     private User user;
@@ -61,29 +63,29 @@ public class BarberDetail {
     // Constructor
 
 
-    public BarberDetail(long id, String bio, Location location, Image image) {
+    public BarberDetail(long id, String bio, String hoursOfWork, Location location) {
         this.id = id;
         this.bio = bio;
         this.location = location;
-        this.image = image;
+
     }
 
-    public BarberDetail(long id, String bio, String phone, Location location, Image image, User user, List<Service> services) {
+    public BarberDetail(long id, String bio, String phone, String hoursOfWork, Location location, User user, List<Service> services) {
         this.id = id;
         this.bio = bio;
         this.phone = phone;
+        this.hoursOfWork = hoursOfWork;
         this.location = location;
-        this.image = image;
         this.user = user;
         this.services = services;
     }
 
-    public BarberDetail(long id, String bio, String phone, Location location, Image image, User user, List<Service> services, List<Review> reviews) {
+    public BarberDetail(long id, String bio, String phone, String hoursOfWork, Location location, User user, List<Service> services, List<Review> reviews) {
         this.id = id;
         this.bio = bio;
         this.phone = phone;
+        this.hoursOfWork = hoursOfWork;
         this.location = location;
-        this.image = image;
         this.user = user;
         this.services = services;
         this.reviews = reviews;
@@ -114,13 +116,6 @@ public class BarberDetail {
         this.location = location;
     }
 
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
 
     public User getUser() {
         return user;
@@ -144,7 +139,14 @@ public class BarberDetail {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
 
+    public String getHoursOfWork() {
+        return hoursOfWork;
+    }
+
+    public void setHoursOfWork(String hoursOfWork) {
+        this.hoursOfWork = hoursOfWork;
     }
 
     public List<Review> getReviews() {

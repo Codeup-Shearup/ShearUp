@@ -46,6 +46,15 @@
 
 					<th:block sec:authorize="isAuthenticated()">
 						<li class="nav-item">
+							<a class="btn btn-primary" th:href="@{/reviews}">Reviews</a>
+						</li>
+						<li class="nav-item">
+							<a class="btn btn-primary" th:href="@{/appointments}">Appointments</a>
+						</li>
+						<li class="nav-item">
+							<a class="btn btn-primary" th:href="@{/barbers}">Barber</a>
+						</li>
+						<li class="nav-item">
 							<a class="btn btn-primary" th:href="@{/profile}">Profile</a>
 						</li>
 						<li class="nav-item">

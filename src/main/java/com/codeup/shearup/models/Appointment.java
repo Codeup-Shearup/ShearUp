@@ -58,7 +58,7 @@ public class Appointment {
 //        this.service = service;
     }
 
-    //------COMMENTED OUT REVIEWS-----
+    //------COMMENTED OUT REVIEWS-----//
     //NEEDS TO BE HERE FOR NOW PER BRANCE -RAMON
     public Appointment(Date appointmentDate, User user, Service service) {
 //        this.appointmentDate = appointmentDate;
