@@ -76,13 +76,13 @@ public class BarberDetailsController {
                                        @ModelAttribute BarberDetail barberDetail) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User barber = usersDao.getOne(sessionUser.getId());
-        BarberDetail barberDeet = barberDetailDao.getOne(sessionUser.getId());
+        BarberDetail barberDeet = barberDetailDao.getOne(barber.getBarberDetail().getId());
         location.setBarber(barberDeet);
+        locationsDao.save(location);
 
         barberDeet.setLocation(location);
-        locationsDao.save(location);
         barberDetailDao.save(barberDeet);
-        return "redirect:/profile";
+        return "redirect:/barber/profile";
     }
     
     //==============EDIT BARBER DETAILS=========//
