@@ -3,7 +3,7 @@
 <head>
     <head th:replace="partials :: head (Title = 'Create')"></head>
     <title>Create a Barber Service!</title>
-    <meta class="filestack" th:content="${filestack}">
+    <meta class="filestack" th:content="${@environment.getProperty('filestack.api.key')}">
 
     <!--    Custom Styling For Side Nav-->
     <style>
