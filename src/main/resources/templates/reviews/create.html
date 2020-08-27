@@ -10,6 +10,10 @@
 
     <link th:href="@{/css/sidenav.css}" href="/css/sidenav.css" rel="stylesheet" type="text/css">
 
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
+    <link th:rel="stylesheet" th:href="@{/assets/bootstrapless-star-rating/star-rating.css} "/>
+
+
 </head>
 <body>
 
@@ -32,8 +36,12 @@
 
         <!--    CREATE REVIEW FORM   -->
         <hr>
-        <form th:action="@{'/reviews/create'}" th:method="post" th:object="${review}" class="p-5"
-              style="margin-top: -5%;">
+        <form th:action="@{'/reviews/create'}" th:method="post" th:object="${review}" class="p-5" style="margin-top: -5%;">
+            <div class="form-group">
+                <label for="barber"></label>
+                <input type="hidden" placeholder="Barber Id" class="form-control" id="barber" name="barberId" th:value="${barber.barberDetail.id}">
+                <!--                <input type="text" disabled="disabled" placeholder="Barber Id" class="form-control" id="barber" th:value="*{getBarberDetail()}">-->
+            </div>
             <div class="form-group">
                 <label for="createTitle">Title</label>
                 <input type="text" class="form-control" id="createTitle" th:field="*{title}">
@@ -42,29 +50,29 @@
                 <label for="createContent">Content</label>
                 <textarea class="form-control" id="createContent" th:field="*{content}"></textarea>
             </div>
-            <div class="form-group">
-                <label for="createContent">Rating</label>
-                <span class="form-control" id="createRating" th:value="*{rating}"><div class='rating-stars pl-3'>
-                        <ul id='stars1' class="row list-unstyled">
-                            <li class='star' title='Poor' data-value='1'>
-                                <i class='fa fa-star fa-fw ${one}'></i>
-                            </li>
-                            <li class='star' title='Fair' data-value='2'>
-                                <i class='fa fa-star fa-fw ${two}'></i>
-                            </li>
-                            <li class='star' title='Good' data-value='3'>
-                                <i class='fa fa-star fa-fw ${three}'></i>
-                            </li>
-                            <li class='star' title='Excellent' data-value='4'>
-                                <i class='fa fa-star fa-fw ${four}'></i>
-                            </li>
-                            <li class='star' title='WOW!!!' data-value='5'>
-                                <i class='fa fa-star fa-fw ${five}'></i>
-                            </li>
-                        </ul>
-                    </div>
-                </span>
-            </div>
+<!--            <div class="form-group">-->
+<!--                <label for="createContent">Rating</label>-->
+<!--                <span class="form-control" id="createRating" th:value="*{rating}"><div class='rating-stars pl-3'>-->
+<!--                        <ul id='stars1' class="row list-unstyled">-->
+<!--                            <li class='star' title='Poor' data-value='1'>-->
+<!--                                <i class='fa fa-star fa-fw ${one}'></i>-->
+<!--                            </li>-->
+<!--                            <li class='star' title='Fair' data-value='2'>-->
+<!--                                <i class='fa fa-star fa-fw ${two}'></i>-->
+<!--                            </li>-->
+<!--                            <li class='star' title='Good' data-value='3'>-->
+<!--                                <i class='fa fa-star fa-fw ${three}'></i>-->
+<!--                            </li>-->
+<!--                            <li class='star' title='Excellent' data-value='4'>-->
+<!--                                <i class='fa fa-star fa-fw ${four}'></i>-->
+<!--                            </li>-->
+<!--                            <li class='star' title='WOW!!!' data-value='5'>-->
+<!--                                <i class='fa fa-star fa-fw ${five}'></i>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </span>-->
+<!--            </div>-->
             <!--        <div class="form-group">-->
             <!--            <label for="createContent">Content</label>-->
             <!--            <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
@@ -76,6 +84,11 @@
     </div>
     <footer th:replace="partials :: footer"></footer>
 </div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/bootstrapless-star-rating/star-rating.min.js}"></script>
 </body>
 </html>
 

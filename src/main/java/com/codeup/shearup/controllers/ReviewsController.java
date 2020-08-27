@@ -1,10 +1,10 @@
 package com.codeup.shearup.controllers;
 
-import com.codeup.shearup.models.Appointment;
 import com.codeup.shearup.models.BarberDetail;
 import com.codeup.shearup.models.Review;
 import com.codeup.shearup.models.User;
 import com.codeup.shearup.repositories.AppointmentRepository;
+import com.codeup.shearup.repositories.BarberDetailRepository;
 import com.codeup.shearup.repositories.ReviewRepository;
 import com.codeup.shearup.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,11 +20,14 @@ public class ReviewsController {
     private final ReviewRepository reviewsDao;
     private final UserRepository usersDao;
     private final AppointmentRepository appointmentDao;
+    private final BarberDetailRepository barberDetailDao;
 
-    public ReviewsController(ReviewRepository reviewsDao, UserRepository usersDao, AppointmentRepository appointmentDao){
+
+    public ReviewsController(ReviewRepository reviewsDao, UserRepository usersDao, AppointmentRepository appointmentDao, BarberDetailRepository barberDetailDao){
         this.reviewsDao = reviewsDao;
         this.usersDao = usersDao;
         this.appointmentDao = appointmentDao;
+        this.barberDetailDao = barberDetailDao;
     }
 
     @GetMapping("/reviews")
@@ -44,8 +47,10 @@ public class ReviewsController {
     }
 
     //Creating Review
-    @GetMapping("/reviews/create")
-    public String showCreateReviewForm(Model model){
+    @GetMapping("/reviews/create/{id}")
+    public String showCreateReviewForm(Model model, @PathVariable Long id){
+        User barber = usersDao.findByBarberDetail(barberDetailDao.getOne(id));
+        model.addAttribute("barber", barber);
         model.addAttribute("review", new Review());
         model.addAttribute("rating", new Review());
         return "reviews/create";
@@ -53,11 +58,11 @@ public class ReviewsController {
 
     //Creating Review
     @PostMapping("reviews/create")
-    public String createReview(@ModelAttribute Review review, Model model, BarberDetail barberDetail){
+    public String createReview(@ModelAttribute Review review, Model model, @RequestParam(name = "barberId") Long barberId){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        BarberDetail barberDetail = BarberDetail.ge
+        User barber = usersDao.findByBarberDetail(barberDetailDao.getOne(barberId));
+        review.setBarberDetail(barber.getBarberDetail());
         review.setAuthor(user);
-//        review.setBarberDetail(barberDetail);
         model.addAttribute("rating", review);
         reviewsDao.save(review);
         return "redirect:/reviews";
