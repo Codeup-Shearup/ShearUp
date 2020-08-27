@@ -66,13 +66,13 @@ public class BarberController {
 
     //============DELETE A SERVICE BUTTON==============// -NEEDS WORK RAMON
     @PostMapping("/barber/service-delete")
-    public String deleteService(@RequestParam(name = "deleteButton") Long id){
+    public String deleteService(@RequestParam(name = "deleteButton") Long serviceId){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(id);
         usersDao.getOne(sessionUser.getId());
-        Service service = servicesDao.getOne(id);
-        System.out.println("service.toString() = " + service.toString());
-        servicesDao.delete(service);
+        Service deleteService = servicesDao.getOne(serviceId);
+        System.out.println("deleteService = " + deleteService.getTitle());
+        System.out.println("service.toString() = " + deleteService);
+        servicesDao.delete(deleteService);
         return "redirect:/barber/profile";
     }
     //======2ND TRY ON THIS
