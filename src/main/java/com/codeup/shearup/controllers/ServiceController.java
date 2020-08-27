@@ -4,6 +4,7 @@ import com.codeup.shearup.models.*;
 import com.codeup.shearup.repositories.ImageRepository;
 import com.codeup.shearup.repositories.ServiceRepository;
 import com.codeup.shearup.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class ServiceController {
     private final ServiceRepository servicesDao;
     private final UserRepository usersDao;
     private final ImageRepository imagesDao;
+
+    @Value("${filestack.api.key}")
+    private String filestack;
 
     public ServiceController(ServiceRepository servicesDao, UserRepository usersDao, ImageRepository imagesDao) {
         this.servicesDao = servicesDao;
@@ -65,6 +69,7 @@ public class ServiceController {
             return "redirect:/";
         }
         model.addAttribute("Service", new Service());
+        model.addAttribute("filestack", filestack);
         return "services/create";
     }
 
