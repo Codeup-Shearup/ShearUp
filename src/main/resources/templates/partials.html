@@ -25,10 +25,10 @@
 					<!--WITH BANG IF NOT AUTHENTICATED HIDE THESE-->
 					<th:block sec:authorize="!isAuthenticated()">
 						<li class="nav-item">
-							<a class="btn btn-primary" th:href="@{/login}">Login</a>
+							<a class="nav-link" th:href="@{/login}">Login</a>
 						</li>
 						<li class="nav-item">
-							<a class="btn btn-primary ml-3" th:href="@{/sign-up}">Sign Up</a>
+							<a class="nav-link ml-3" th:href="@{/sign-up}">Sign Up</a>
 						</li>
 					</th:block>
 
@@ -49,16 +49,16 @@
 
 					<th:block sec:authorize="isAuthenticated()">
 						<li class="nav-item">
-							<a class="btn btn-primary" th:href="@{/reviews}">Reviews</a>
+							<a class="nav-link" th:href="@{/reviews}">Reviews</a>
 						</li>
 						<li class="nav-item">
-							<a class="btn btn-primary" th:href="@{/appointments}">Appointments</a>
+							<a class="nav-link" th:href="@{/appointments}">Appointments</a>
 						</li>
 						<li class="nav-item">
-							<a class="btn btn-primary" th:href="@{/barbers}">Barber</a>
+							<a class="nav-link" th:href="@{/barbers}">Barber</a>
 						</li>
 						<li class="nav-item">
-							<a class="btn btn-primary" th:href="@{/profile}">Profile</a>
+							<a class="nav-link" th:href="@{/profile}">Profile</a>
 						</li>
 						<li class="nav-item">
 							<form  th:action="@{/logout}" th:method="POST">
