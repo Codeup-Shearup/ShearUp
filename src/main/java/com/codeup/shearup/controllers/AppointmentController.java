@@ -1,19 +1,14 @@
 package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.Appointment;
-import com.codeup.shearup.models.Review;
 import com.codeup.shearup.models.User;
 import com.codeup.shearup.repositories.AppointmentRepository;
-import com.codeup.shearup.repositories.ReviewRepository;
+import com.codeup.shearup.repositories.BarberDetailRepository;
 import com.codeup.shearup.repositories.UserRepository;
-import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,10 +17,12 @@ public class AppointmentController {
 
     private final AppointmentRepository appointmentDao;
     private final UserRepository userDao;
+    private final BarberDetailRepository barberDetailDao;
 
-    public AppointmentController(AppointmentRepository appointmentDao, UserRepository userDao) {
+    public AppointmentController(AppointmentRepository appointmentDao, UserRepository userDao, BarberDetailRepository barberDetailDao) {
         this.appointmentDao = appointmentDao;
         this.userDao = userDao;
+        this.barberDetailDao = barberDetailDao;
     }
 
     // All Appointments
@@ -46,16 +43,21 @@ public class AppointmentController {
 
 
     //Creating Appointment
-    @GetMapping("/appointments/create")
-    public String showCreateAppointmentForm(Model model) {
+    @GetMapping("/appointments/create/{id}")
+    public String showCreateAppointmentForm(Model model, @PathVariable Long id) {
+        User barber = userDao.findByBarberDetail(barberDetailDao.getOne(id));
+        System.out.println(barber);
+        model.addAttribute("barber", barber);
         model.addAttribute("appointment", new Appointment());
         return "appointments/create";
     }
 
     //Creating Appointment
     @PostMapping("/appointments/create")
-    public String createAppointment(@ModelAttribute Appointment appointment) {
+    public String createAppointment(@ModelAttribute Appointment appointment, @RequestParam(name="barberId") Long barberId) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User barber = userDao.findByBarberDetail(barberDetailDao.getOne(barberId));
+        appointment.setBarberDetail(barber.getBarberDetail());
         appointment.setUser(loggedInUser);
 //        Appointment appointment = appointmentDao.getOne(1L);
         appointment.setCreateDateTime(appointment.getCreateDateTime());

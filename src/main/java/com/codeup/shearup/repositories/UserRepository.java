@@ -1,5 +1,6 @@
 package com.codeup.shearup.repositories;
 
+import com.codeup.shearup.models.BarberDetail;
 import com.codeup.shearup.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +17,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //	               + "barber_details.id", nativeQuery = true)
 	@Query("from User u where u.isBarber = true")
 	List<User> findAllBarbers();
+
+	User findByBarberDetail(BarberDetail barberDetail);
+
 }
