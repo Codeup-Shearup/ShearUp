@@ -1,8 +1,10 @@
 package com.codeup.shearup.controllers;
 
 import com.codeup.shearup.models.BarberDetail;
+import com.codeup.shearup.models.Review;
 import com.codeup.shearup.models.User;
 import com.codeup.shearup.models.UserWithRoles;
+import com.codeup.shearup.repositories.ReviewRepository;
 import com.codeup.shearup.repositories.UserRepository;
 import com.codeup.shearup.repositories.BarberDetailRepository;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,17 +18,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class UserController {
 	private UserRepository users;
 	private PasswordEncoder passwordEncoder;
 	private BarberDetailRepository barberDetailDao;
+	private ReviewRepository reviewsDao;
 //
-	public UserController(UserRepository users, PasswordEncoder passwordEncoder, BarberDetailRepository barberDetailDao) {
+	public UserController(UserRepository users, PasswordEncoder passwordEncoder,
+	                      BarberDetailRepository barberDetailDao, ReviewRepository reviewsDao) {
 		this.users = users;
 		this.passwordEncoder = passwordEncoder;
 		this.barberDetailDao = barberDetailDao;
+		this.reviewsDao = reviewsDao;
 	}
 	
 	@GetMapping("/sign-up")
@@ -91,7 +97,9 @@ public class UserController {
 	public String userProfile(Model model) {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = users.getOne(sessionUser.getId());
+		List<Review> reviews = reviewsDao.findAllReviewsByAuthor(user.getId());
 		model.addAttribute("user", user);
+		model.addAttribute("reviews", reviews);
 		if (user.isBarber()) {
 			return "redirect:barber/profile";
 		}
