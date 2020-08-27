@@ -3,6 +3,31 @@
 <head th:fragment="head (Title)">
     <meta charset="UTF-8">
     <title th:text="${Title}"></title>
-    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css}">
-</head>
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGRYZPXY4D"></script>
+        <script type="text/javascript" th:inline="javascript">
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-244561924');
+        </script>
+
+        <!-- BOOTSTRAP CSS -->
+        <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css}">
+
+
+        <!--  CUSTOM CSS  -->
+        <link rel="stylesheet" type="text/css" href="../footer.css" >
+
+
+        <!-- GOOGLE FONTS -->
+        <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
+
+
+    </head>
+<body>
+</body>
 </html>
