@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 }
 
-#title {
+#titleHome {
 	font-family: 'Dancing Script', cursive;
 	transform: rotate(-15deg);
 	font-size: 10em;
