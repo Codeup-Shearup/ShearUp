@@ -23,6 +23,9 @@ public class Appointment {
     @Column (nullable = false, columnDefinition = "TEXT")
     private String note;
 
+    @Column
+    private String phone;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -42,18 +45,23 @@ public class Appointment {
 //    private Review reviews;
 
 
+    public Appointment(String phone) {
+        this.phone = phone;
+    }
+
     //Zero argument constructor
     public Appointment() {
 
     }
     //------COMMENTED OUT REVIEWS-----
     //CONSTRUCTOR
-    public Appointment(long id, LocalDateTime createDateTime, User user, String note, BarberDetail barberDetail) {
+    public Appointment(long id, LocalDateTime createDateTime, User user, String note, BarberDetail barberDetail, String phone) {
         this.id = id;
         this.user = user;
         this.createDateTime = createDateTime;
         this.note = note;
         this.barberDetail = barberDetail;
+        this.phone = phone;
 //        this.appointmentDate = appointmentDate;
 //        this.service = service;
     }
@@ -108,6 +116,14 @@ public class Appointment {
 
     public void setBarberDetail(BarberDetail barberDetail) {
         this.barberDetail = barberDetail;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     //    public Date getAppointmentDate() {
