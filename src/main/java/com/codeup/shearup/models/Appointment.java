@@ -45,10 +45,6 @@ public class Appointment {
 //    private Review reviews;
 
 
-    public Appointment(String phone) {
-        this.phone = phone;
-    }
-
     //Zero argument constructor
     public Appointment() {
 
