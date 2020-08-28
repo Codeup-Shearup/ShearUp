@@ -1,0 +1,50 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+<!--<head th:replace="partials :: head (Title = 'Profile')">-->
+<!--    <link rel="stylesheet" href="../../static/css/profile.css">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<header th:replace="partials :: header"></header>-->
+
+<!--<div class="container">-->
+<!--&lt;!&ndash;    <h1>Barber Profile page of <p th:text="${user.firstName}"></p></h1>&ndash;&gt;-->
+<!--    <h1>Welcome,</h1><h1 th:text="${user.firstName}"></h1>-->
+
+<!--<div class="row py-5 px-4">-->
+<!--    <div class="col-xl-4 col-md-6 col-sm-10 mx-auto">-->
+<!--        <div class="bg-white shadow rounded overflow-hidden">-->
+<!--            <div class="px-4 pt-0 pb-4 bg-dark" th:object="${user}">-->
+<!--                <div class="media align-items-end profile-header">-->
+<!--                    <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>-->
+<!--                    <div class="media-body mb-5 text-white">-->
+<!--                        <h4 class="mt-0 mb-0"><span th:text="*{firstName}"></span> <span th:text="*{lastName}"></span></h4>-->
+<!--                        <p class="small mb-4" th:text="*{username}"> <i class="fas fa-at mr-2"></i></p>-->
+<!--                        <p class="small mb-4" th:text="*{email}"> <i class="far fa-envelope mr-2"></i>></p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="bg-light p-4 d-flex justify-content-end text-center">-->
+
+<!--            </div>-->
+
+<!--            <div class="py-4 px-4">-->
+<!--                <div class="py-4">-->
+<!--                    <h5 class="mb-3">Recent reviews</h5>-->
+<!--                    <div class="p-4 bg-light rounded shadow-sm" th:each="review : ${reviews}">-->
+<!--                        <p class="font-italic mb-0" th:text="${review.content}"></p>-->
+<!--                        <ul class="list-inline small text-muted mt-3 mb-0">-->
+<!--                            <li class="list-inline-item" th:text="${review.barberDetail.getUser().firstName} + ' ' + ${review.barberDetail.getUser().lastName}"><i class="far fa-user-circle mr-2"></i></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>&lt;!&ndash; End profile widget &ndash;&gt;-->
+
+<!--    </div>-->
+<!--</div>-->
+
+<!--<footer th:replace="partials :: footer"></footer>-->
+<!--</body>-->
+<!--</html>-->
