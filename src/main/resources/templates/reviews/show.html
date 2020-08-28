@@ -30,19 +30,34 @@
     <hr>
 
 <!--    Viewing the review based off off id-->
-    <h2 th:text="${review.title}"></h2>
-    <p th:text="${review.content}"></p>
-    <p th:text="${review.rating}"></p>
-    <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">Edit Review</a>
-    <br>
-    <a th:href="@{'/reviews/' + ${review.id} + '/delete'}">Delete Review</a>
+<!--    <h2 th:text="${review.title}"></h2>-->
+<!--    <p th:text="${review.content}"></p>-->
+<!--    <p th:text="${review.rating}"></p>-->
+<!--    <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">Edit Review</a>-->
+<!--    <br>-->
+<!--    <a th:href="@{'/reviews/' + ${review.id} + '/delete'}">Delete Review</a>-->
     <!--    <form th:action="@{'/reviews/' + ${review.getId()} + '/delete'}" th:method="post">-->
 <!--        <button>Delete</button>-->
 <!--    </form>-->
-    <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
+<!--    <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>-->
 
-    <!--    <p th:text="${review.appointment}"></p>-->
-
+    <div class="card">
+        <div class="card-header">
+            Review
+        </div>
+        <div class="card-body">
+            <h2 class="card-title" th:text="${review.title}"></h2>
+            <p class="card-text" th:text="${review.content}"></p>
+            <p class="card-text" th:text="${review.rating}"></p>
+            <a class="btn btn-primary" th:href="@{'/reviews/' + ${review.id} + '/edit'}">Edit Review</a>
+            <br>
+            <a class="btn btn-danger" th:href="@{'/reviews/' + ${review.id} + '/delete'}">Delete Review</a>
+            <!--    <form th:action="@{'/reviews/' + ${review.getId()} + '/delete'}" th:method="post">-->
+            <!--        <button>Delete</button>-->
+            <!--    </form>-->
+            <a class="btn btn-primary float-right"  style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
+        </div>
+    </div>
 
 </div>
 <footer th:replace="partials :: footer"></footer>

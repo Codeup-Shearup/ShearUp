@@ -36,8 +36,6 @@ build/
 src/main/resources/application.properties
 
 ### FILESTACK ###
-/keys.js
-/src/main/resources/static/js/keys.js
 
 ### HIDDEN MODULES ###
 node_modules/

@@ -53,28 +53,32 @@
                 <textarea class="form-control" id="createContent" th:field="*{content}"></textarea>
             </div>
             <div class="form-group">
-                <label for="createContent">Rating</label>
-                <span class="form-control" id="createRating" th:value="*{rating}"><div class='rating-stars pl-3'>
-                        <ul id='stars1' class="row list-unstyled">
-                            <li class='star' title='Poor' data-value='1'>
-                                <i class='fa fa-star fa-fw ${one}'></i>
-                            </li>
-                            <li class='star' title='Fair' data-value='2'>
-                                <i class='fa fa-star fa-fw ${two}'></i>
-                            </li>
-                            <li class='star' title='Good' data-value='3'>
-                                <i class='fa fa-star fa-fw ${three}'></i>
-                            </li>
-                            <li class='star' title='Excellent' data-value='4'>
-                                <i class='fa fa-star fa-fw ${four}'></i>
-                            </li>
-                            <li class='star' title='WOW!!!' data-value='5'>
-                                <i class='fa fa-star fa-fw ${five}'></i>
-                            </li>
-                        </ul>
-                    </div>
-                </span>
+                <label for="createContent">Content</label>
+                <input type="number" min="1" max="5" class="form-control" placeholder="Example: 4.0" id="createRating" th:field="*{rating}">
             </div>
+<!--            <div class="form-group">-->
+<!--                <label for="createContent">Rating</label>-->
+<!--                <span class="form-control" id="createRating" th:value="*{rating}"><div class='rating-stars pl-3'>-->
+<!--                        <ul id='stars1' class="row list-unstyled">-->
+<!--                            <li class='star' title='Poor' data-value='1'>-->
+<!--                                <i class='fa fa-star fa-fw ${one}'></i>-->
+<!--                            </li>-->
+<!--                            <li class='star' title='Fair' data-value='2'>-->
+<!--                                <i class='fa fa-star fa-fw ${two}'></i>-->
+<!--                            </li>-->
+<!--                            <li class='star' title='Good' data-value='3'>-->
+<!--                                <i class='fa fa-star fa-fw ${three}'></i>-->
+<!--                            </li>-->
+<!--                            <li class='star' title='Excellent' data-value='4'>-->
+<!--                                <i class='fa fa-star fa-fw ${four}'></i>-->
+<!--                            </li>-->
+<!--                            <li class='star' title='WOW!!!' data-value='5'>-->
+<!--                                <i class='fa fa-star fa-fw ${five}'></i>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </span>-->
+<!--            </div>-->
 <!--                    <div class="form-group">-->
 <!--                        <label for="createContent">Content</label>-->
 <!--                        <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
