@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-  <head th:replace="partials :: head (Title = 'Home Page')"></head>
-<!--	<link rel="stylesheet" href="../../static/css/home.css">-->
-	<meta charset="UTF-8">
-	<title>Home Page</title>
-</head>
+
+  <head th:replace="partials :: head (Title = 'Home Page')">
+	  <meta charset="UTF-8">
+  </head>
+
 
 <body>
-<header th:replace="partials :: header"></header>
+<header>
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+		
+		<a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i> SHEARUP</a>
+		
+	</nav>
+</header>
 
-
-<h1>This is the ShearUp's home page!</h1>
-
-
-
-
+<main class="bg">
+	<div class="container-fluid h-100">
+		<div class="container-fluid text-center d-flex flex-column justify-content-center align-items-center h-75">
+			<h1 class="text-center mb-5" id="title">ShearUp</h1>
+			<div class="text-center mt-3">
+				<a th:href="@{/login}"><button class="btn btn-secondary">Login</button></a>
+				<a class="ml-3" th:href="@{/sign-up}"><button class="btn btn-secondary">Sign Up</button></a>
+			</div>
+		</div>
+	</div>
+</main>
 
 </body>
 </html>
