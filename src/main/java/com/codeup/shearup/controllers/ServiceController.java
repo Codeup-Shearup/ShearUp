@@ -60,13 +60,13 @@ public class ServiceController {
             User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         } catch (Exception e){
             e.printStackTrace();
-            return "redirect:/";
+            return "redirect:/profile";
         }
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        System.out.println("loggedInUser.getUsername() = " + loggedInUser.getUsername()); --prints out twice -K
         if(!loggedInUser.isBarber()) {
 //            throw not barber error
-            return "redirect:/";
+            return "redirect:/profile";
         }
         model.addAttribute("Service", new Service());
 //        model.addAttribute("filestack", filestack);
