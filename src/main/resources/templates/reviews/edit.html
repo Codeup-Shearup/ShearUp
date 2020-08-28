@@ -42,7 +42,7 @@
             </div>
             <div class="form-group">
                 <label for="editRating">Rating</label>
-                <textarea class="form-control" id="editRating" th:field="*{rating}" th:value="*{rating}"></textarea>
+                <input type="number" min="1" max="5" class="form-control" id="editRating" th:field="*{rating}" th:value="*{rating}">
             </div>
             <!--        <div class="form-group">-->
             <!--            <label for="createContent">Content</label>-->
