@@ -1,0 +1,18 @@
+* {
+	box-sizing: border-box;
+}
+
+#title {
+	font-family: 'Dancing Script', cursive;
+	transform: rotate(-15deg);
+	font-size: 10em;
+}
+
+body, html {
+	height: 100%;
+}
+
+.bg {
+	height: 100%;
+}
+
