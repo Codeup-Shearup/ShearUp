@@ -9,8 +9,16 @@
         color: red;
     }
 
+    h1 {
+        color: #FEFED3;
+    }
+
     body {
         background-color: #2B333D;
+    }
+
+    label {
+        color: #FEFED3;
     }
 </style>
 <header th:replace="partials :: header"></header>
@@ -21,22 +29,22 @@
     <form th:action="@{'/barber/add-service'}"  th:method="POST" th:object="${service}">
         <div class="form-group">
             <label for="title">Service Name <span class="required">*</span></label>
-            <input class="form-control" type="text" th:field="*{title}" id="title" required placeholder="Enter service name">
+            <input class="form-control border border-danger rounded" type="text" th:field="*{title}" id="title" required placeholder="Enter service name">
         </div>
 
         <div class="form-group">
             <label for="description">Description <span class="required">*</span></label>
-            <input class="form-control" th:field="*{description}" id="description" required placeholder="Enter description of Service">
+            <input class="form-control border border-danger rounded" th:field="*{description}" id="description" required placeholder="Enter description of Service">
         </div>
 
         <div class="form-group">
             <label for="duration">Duration <span class="required">*</span></label>
-            <input class="form-control" th:field="*{duration}" type="number" id="duration" required placeholder="30 minutes">
+            <input class="form-control border border-danger rounded" th:field="*{duration}" type="number" id="duration" required placeholder="30 minutes">
         </div>
 
         <div class="form-group">
             <label for="price">Price <span class="required">*</span></label>
-            <input class="form-control" th:field="*{price}" id="price" required placeholder="Enter price">
+            <input class="form-control border border-danger rounded" th:field="*{price}" id="price" required placeholder="Enter price">
         </div>
 
         <button class="btn btn-primary">Add Service</button>
