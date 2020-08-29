@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS shearup_db;
+# DROP DATABASE IF EXISTS shearup_db;
 USE shearup_db;
 
 # SHOW GRANTS for 'root'@'localhost';
@@ -81,40 +81,40 @@ INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
 VALUES (10, '92 Emmet Terrace', 'Drive', 'Greensboro', 'NC', 78279);
 
 # Barber Details Table
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (1, 'Best barber in all of Texas!', 1, 1);
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (2, 'Pretty skilled with shear not going to lie.', 2, 2);
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (3, 'Cheers to the Shears!', 3, 3);
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (4, 'Superior cuts found here with me.', 4, 4);
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (5, 'nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis', 5, 5);
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (6, 'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in', 6, 6);
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (7, 'luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac', 7, 7);
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (8, 'aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed', 8, 8);
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (9, 'adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy', 9, 9);
-INSERT INTO barber_details (id, bio, location_id, image_id)
-VALUES (10, 'quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus', 10, 10);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (1, 'House calls available, with COVID precautions', 8302834028, 'Monday-Friday, 9am-9pm', 1);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (2, 'Hablo español! Espero verlos pronto.', 7871234567, 'Tuesday-Saturday, 8am-8pm', 2);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (3, 'Best barber in all of Texas. Check out my portfolio, it speaks for itself.', 210345687, 'Monday-Friday, 9am-9pm', 3);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (4, 'Superior cuts and the best fades, every time. Just checkout my reviews!', 8302384921, 'Monday-Saturday, 7am-7pm', 4);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (5, 'Best barber in town! Feel free to call anytime.', 210675687, 'Monday-Friday, 9am-9pm', 5);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (6, 'Will drive up to 25 miles to provide the best cuts!', 830945687, 'Monday-Saturday, 10am-7pm', 6);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (7, 'Reservations for weddings available upon request.', 912345664, 'Monday-Friday, 9am-9pm', 7);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (8, 'Over ten years experience here. So no worries you are in capable hands!', 912346382, 'Monday-Friday, 9am-9pm', 8);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (9, 'Skilled barber here! Let us connect', 787233091, 'Monday-Friday, 9am-9pm', 9);
+INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
+VALUES (10, 'Pretty skilled with shears, have you seen my portfolio?', 2108394120, 'Monday-Friday, 9am-9pm', 10);
 
 # Services Table
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (1, 'Gentlemen Cut', 'natoque penatibus et magnis dis', '23.00', 30, 1);
+VALUES (1, 'Beard Trim', '', '23.00', 30, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (2, 'Bald Fade', 'pede lobortis ligula sit amet', '15.00', 20, 1);
+VALUES (2, 'Buzz Cut', '', '15.00', 20, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (3, 'Beard Trim', 'dapibus dolor vel est donec odio justo sollicitudin ut', '7.00', 25, 1);
+VALUES (3, 'High and Tight plus Eyebrow wax', '', '7.00', 25, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (4, 'Kids Cut', 'ut blandit non interdum in ante vestibulum ante', '20.00', 30, 1);
+VALUES (4, 'Kids Cut', '', '20.00', 30, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (5, 'Taper', 'luctus et ultrices posuere cubilia curae', '16.00', 20, 1);
+VALUES (5, 'Taper Fade', '', '16.00', 20, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (6, 'BuzzCut', 'amet nunc viverra dapibus nulla suscipit', '13.00', 20, 1);
+VALUES (6, 'Wedding Special', 'amet nunc viverra dapibus nulla suscipit', '13.00', 20, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (7, 'Straight Razor Shave', 'volutpat in congue etiam justo etiam pretium iaculis', '15.00', 25, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
@@ -126,19 +126,38 @@ VALUES (10, 'Grey Hair Blending Treatment', 'ut blandit non interdum in ante ves
 
 
 
-
+# any user with 123 on the username are a Client user
 # Users Table
 INSERT INTO users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (1, 'albert92', 'Albert', 'Cudd', 'acudd0@mac.com', 'albert', 1, 1);
+VALUES (1, 'albert92', 'Albert', 'Cudd', 'acudd0@mail.com', 'albert', 1, 1);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (2, 'yoli21', 'Yolanda', 'Breawood', 'ybreawood1@gizmodo.com', 'yolanda', 1, 2);
+VALUES (2, 'yoli21', 'Yolanda', 'Sanchez', 'yoli21@gmail.com', 'yolanda', 1, 2);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (3, 'marty007', 'Martin', 'Dormand', 'mdormand2@time.com', 'martin', 0, null);
+VALUES (3, 'martin123', 'Martin', 'Dormand', 'mdormand2@time.com', 'martin', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (4, 'richie', 'Jerome', 'Richards', 'jrichardes3@scribd.com', 'jerome', 0, null);
+VALUES (4, 'jerome123', 'Jerome', 'Richards', 'jrichards3@scribd.com', 'jerome', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
 VALUES (5, 'susie79', 'Susan', 'Stormouth', 'mstormouth4@themeforest.net', 'susan', 1, 3);
-
+INSERT INTO users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (6, 'hank123', 'Hank', 'Hill', 'hank@yahoo.com', 'hank', 1, 4);
+INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (7, 'bobby20', 'Robert', 'Smith', 'robert@gizmodo.com', 'robert', 1, 5);
+INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (8, 'jane123', 'Jane', 'Doe', 'jane@mail.com', 'jane', 0, null);
+INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (9, 'greg123', 'Greg', 'Jett', 'greg@mail.com', 'greg', 0, null);
+INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (10, 'tina78', 'Tina', 'Turner', 'tina78@mail.com', 'tina', 1, 6);
+INSERT INTO users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (11, 'joey', 'Joe', 'Dirt', 'joe@mail.com', 'joe', 1, 7);
+INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (12, 'ramoni', 'Ramon', 'Ramon', 'ramon@yahoo.com', 'ramon', 1, 8);
+INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (13, 'michael123', 'Michael', 'Garrison', 'michael@gmail.com', 'michael', 0, null);
+INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (14, 'chris123', 'Chris', 'Eckert', 'chris@yahoo.com', 'chris', 0, null);
+INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
+VALUES (15, 'kcotto', 'Knoah', 'Cotto', 'kcotto@mail.com', 'knoah', 1, 9);
 
 
 # Appointments Table
