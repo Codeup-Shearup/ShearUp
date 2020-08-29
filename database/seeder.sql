@@ -3,82 +3,83 @@ USE shearup_db;
 
 # SHOW GRANTS for 'root'@'localhost';
 
+# Might not use this for demonstration purposes
 # Images Table
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (1, 'http://dummyimage.com/145x209.png/ff4444/ffffff', 1);
+VALUES (1, 'https://cdn.filestackcontent.com/AsXkBLtTybLfQCsHT0QW', 1);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (2, 'http://dummyimage.com/141x248.png/5fa2dd/ffffff', 2);
+VALUES (2, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 2);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (3, 'http://dummyimage.com/150x222.bmp/dddddd/000000', 3);
+VALUES (3, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 3);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (4, 'http://dummyimage.com/174x111.png/cc0000/ffffff', 4);
+VALUES (4, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 4);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (5, 'http://dummyimage.com/101x187.jpg/dddddd/000000', 5);
+VALUES (5, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 5);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (6, 'http://dummyimage.com/125x188.bmp/ff4444/ffffff', 6);
+VALUES (6, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 6);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (7, 'http://dummyimage.com/125x175.bmp/5fa2dd/ffffff', 7);
+VALUES (7, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 7);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (8, 'http://dummyimage.com/126x222.bmp/ff4444/ffffff', 8);
+VALUES (8, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 8);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (9, 'http://dummyimage.com/144x203.bmp/ff4444/ffffff', 9);
+VALUES (9, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 9);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (10, 'http://dummyimage.com/198x122.bmp/5fa2dd/ffffff', 10);
+VALUES (10, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 10);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (11, 'http://dummyimage.com/165x101.bmp/cc0000/ffffff', 11);
+VALUES (11, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 11);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (12, 'http://dummyimage.com/102x194.bmp/cc0000/ffffff', 12);
+VALUES (12, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 12);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (13, 'http://dummyimage.com/145x105.jpg/5fa2dd/ffffff', 13);
+VALUES (13, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 13);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (14, 'http://dummyimage.com/187x196.bmp/dddddd/000000', 14);
+VALUES (14, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 14);
 INSERT INTO images (id, filestack_url, service_id)
-VALUES (15, 'http://dummyimage.com/184x113.jpg/dddddd/000000', 15);
+VALUES (15, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 15);
 
 
 # Reviews Table
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (1, 'Easy to connect with.', 'consectetuer eget rutrum at lorem', 4.5, 1, 1);
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (2, 'Best barber in town!', 'libero non mattis pulvinar nulla pede ullamcorper augue a', 5.0, 2, 2);
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (3, 'Great Communication', 'proin interdum mauris non ligula pellentesque', 4.0, 3, 3);
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (4, 'Very professional', 'rhoncus mauris enim leo rhoncus sed vestibulum', 4.5, 4, 4);
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (5, 'Okay experience', 'sed magna at nunc commodo placerat praesent blandit nam nulla', 2.9, 5, 5);
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (6, 'Will definitely schedule again!', 'eget congue eget semper rutrum nulla nunc purus phasellus in', 5.0, 6, 6);
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (7, 'Dope skills', 'id nisl venenatis lacinia aenean', 4.1, 7, 7);
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (8, 'Quick responder!', 'diam neque vestibulum eget vulputate', 4.0, 8, 8);
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (9, 'Awesome barber', 'sed vestibulum sit amet cursus', 5.0, 9, 9);
-INSERT INTO reviews (id, title, content, rating, image_id, user_id)
-VALUES (10, 'Good skills', 'turpis integer aliquet massa id', 3.5, 10, 10);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (1, 'Easy to connect with.', 'Thank you for connecting with me on such short notice!', 4.0, 1);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (2, 'Best barber in town!', 'My spouse loved that I finally managed to find a barber who could provide house calls. Thanks again!', 5.0, 2);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (3, 'Great Communication.', 'No complaints.', 5.0, 3);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (4, 'Very professional', 'Replies quickly.', 4.0, 4);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (5, 'Okay experience', 'Think better communication next time on when to meet up would help this barber out.', 2.0, 5);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (6, 'Will definitely schedule again!', '', 5.0, 6);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (7, 'Dope skills', 'Shout out to this barber for helping me look fresh.', 4.0, 7);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (8, 'Wish I could give more than five stars!', 'Thanks for helping me look almost normal again during this pandemic.', 5.0, 8);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (9, 'Awesome flexible hours.', 'Works in shop or will come to your home. Very convenient', 5.0, 9);
+INSERT INTO reviews (id, title, content, rating, user_id)
+VALUES (10, 'Good shearing skills.', 'Can see why with so many years of experience this barber knows what they are doing.', 5.0, 10);
 
 # Locations Table
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (1, '21783 Clove Point', 'Way', 'Houston', 'TX', 78257);
+VALUES (1, '14510 NW Military Hwy #103', null, 'San Antonio', 'TX', 78231);
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (2, '42040 Mariners Cove Alley', 'Junction', 'Norwalk', 'CT', 78266);
+VALUES (2, '1207 San Francisco', null, 'San Antonio', 'TX', 78201);
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (3, '729 Fordem Alley', 'Trail', 'Atlanta', 'GA', 78205);
+VALUES (3, '7322 Jones Maltsberger Rd', 'Suite 214', 'San Antonio', 'TX', 78209);
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (4, '9 Annamark Street', 'Lane', 'Sacramento', 'CA', 78228);
+VALUES (4, '23718 IH-West 10', '#114', 'San Antonio', 'TX', 78257);
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (5, '67 Delladonna Trail', 'Center', 'Tallahassee', 'FL', 78250);
+VALUES (5, '122 E Houston St #104', null, 'San Antonio', 'TX', 78205);
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (6, '25408 Westport Street', 'Place', 'North Hollywood', 'CA', 78298);
+VALUES (6, '5002 Eisenhauer Rd', null, 'San Antonio', 'TX', 78218);
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (7, '69283 Fieldstone Trail', 'Pass', 'Birmingham', 'AL', 78286);
+VALUES (7, '4745 Fredericksburg Rd', null, 'San Antonio', 'TX', 78229);
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (8, '81 Thierer Road', 'Circle', 'New Orleans', 'LA', 78227);
+VALUES (8, '315 E Commerce St # 102', null, 'San Antonio', 'TX', 78205);
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (9, '44449 Bowman Park', 'Crossing', 'Dallas', 'TX', 78296);
+VALUES (9, '1802 S St Marys St', null, 'San Antonio', 'TX', 78210);
 INSERT INTO locations (id, address_one, address_two, city, state, zip_code)
-VALUES (10, '92 Emmet Terrace', 'Drive', 'Greensboro', 'NC', 78279);
+VALUES (10, '443 McCarty Rd', null, 'San Antonio', 'TX', 78216);
 
 # Barber Details Table
 INSERT INTO barber_details (id, bio, phone, hours_of_work, location_id)
@@ -104,9 +105,9 @@ VALUES (10, 'Pretty skilled with shears, have you seen my portfolio?', 210839412
 
 # Services Table
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (1, 'Beard Trim', 'Shampoo, treatment with light trim to enhance desired style', '15.00', 30, 1);
+VALUES (1, 'Beard Trim', 'Shampoo treatment with light trim to enhance desired style', '15.00', 30, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (2, 'Buzz Cut', 'Typical quick military styled cut. Discounts available for active duty and responders.', '13.00', 20, 1);
+VALUES (2, 'Buzz Cut', 'Typical quick cut. Discounts available for active duty and responders.', '13.00', 20, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (3, 'High and Tight plus Eyebrow wax', 'Nothing looks better than cleaned up eyebrows and a nice clean cut.', '20.00', 25, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
@@ -114,15 +115,15 @@ VALUES (4, 'Kids Cut', 'Easy going when handling your child/s first cut.', '20.0
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (5, 'Taper Fade', 'Just a regular tapper to best suit your style.', '16.00', 20, 2);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (6, 'Wedding Special', 'This service package comes with a days worht of work', '13.00', 20, 3);
+VALUES (6, 'Wedding Special', 'This service package comes with hours worth of stying for you and all groomsmen. Please request an appointment at least a week in advance.', '300.00', 90, 3);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (7, 'Straight Razor Shave', 'volutpat in congue etiam justo etiam pretium iaculis', '15.00', 25, 3);
+VALUES (7, 'Straight Razor Shave', 'Working remote can get tough. Early house calls available to get you ready for the rest of your work day.', '15.00', 25, 3);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (8, 'Beard Conditioning Treatment', 'sit amet nulla quisque arcu libero', '25.00', 45, 4);
+VALUES (8, 'Caveman Beard Conditioning Treatment', 'If COVID has got you looking rough, feel free to contact me to put some life back into your style.', '25.00', 45, 4);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (9, 'Long haircut', 'primis in faucibus orci luctus et ultrices posuere', '17.00', 30, 5);
+VALUES (9, 'Long haircut', 'Tired of split ends? Expect the best shears for you with my own personal technique.', '45.00', 30, 5);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (10, 'Grey Hair Blending Treatment', 'ut blandit non interdum in ante vestibulum', '55.00', 60, 5);
+VALUES (10, 'Grey Hair Blending Treatment', 'Lay your grey hair to rest with this quick and easy treatment!', '55.00', 60, 5);
 
 
 

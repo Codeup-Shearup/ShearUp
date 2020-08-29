@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8"/>
     <title th:text="'Ooops, ' + ${error}"></title>
+    <!--CSS STYLING-->
+    <link rel="stylesheet" type="text/css" href="/static/css/footer.css" th:href="@{/css/error.css}">
 </head>
 <body>
 <th:block th:switch="${error}">
