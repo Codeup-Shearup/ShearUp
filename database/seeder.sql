@@ -104,25 +104,25 @@ VALUES (10, 'Pretty skilled with shears, have you seen my portfolio?', 210839412
 
 # Services Table
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (1, 'Beard Trim', '', '23.00', 30, 1);
+VALUES (1, 'Beard Trim', 'Shampoo, treatment with light trim to enhance desired style', '15.00', 30, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (2, 'Buzz Cut', '', '15.00', 20, 1);
+VALUES (2, 'Buzz Cut', 'Typical quick military styled cut. Discounts available for active duty and responders.', '13.00', 20, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (3, 'High and Tight plus Eyebrow wax', '', '7.00', 25, 1);
+VALUES (3, 'High and Tight plus Eyebrow wax', 'Nothing looks better than cleaned up eyebrows and a nice clean cut.', '20.00', 25, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (4, 'Kids Cut', '', '20.00', 30, 1);
+VALUES (4, 'Kids Cut', 'Easy going when handling your child/s first cut.', '20.00', 30, 2);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (5, 'Taper Fade', '', '16.00', 20, 1);
+VALUES (5, 'Taper Fade', 'Just a regular tapper to best suit your style.', '16.00', 20, 2);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (6, 'Wedding Special', 'amet nunc viverra dapibus nulla suscipit', '13.00', 20, 1);
+VALUES (6, 'Wedding Special', 'This service package comes with a days worht of work', '13.00', 20, 3);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (7, 'Straight Razor Shave', 'volutpat in congue etiam justo etiam pretium iaculis', '15.00', 25, 1);
+VALUES (7, 'Straight Razor Shave', 'volutpat in congue etiam justo etiam pretium iaculis', '15.00', 25, 3);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (8, 'Beard Conditioning Treatment', 'sit amet nulla quisque arcu libero', '25.00', 45, 1);
+VALUES (8, 'Beard Conditioning Treatment', 'sit amet nulla quisque arcu libero', '25.00', 45, 4);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (9, 'Long haircut', 'primis in faucibus orci luctus et ultrices posuere', '17.00', 30, 2);
+VALUES (9, 'Long haircut', 'primis in faucibus orci luctus et ultrices posuere', '17.00', 30, 5);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (10, 'Grey Hair Blending Treatment', 'ut blandit non interdum in ante vestibulum', '55.00', 60, 2);
+VALUES (10, 'Grey Hair Blending Treatment', 'ut blandit non interdum in ante vestibulum', '55.00', 60, 5);
 
 
 
