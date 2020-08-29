@@ -4,29 +4,46 @@
     <meta charset="UTF-8">
 </head>
 <body>
+<style>
+    .required {
+        color: red;
+    }
+
+    h1 {
+        color: #FEFED3;
+    }
+
+    body {
+        background-color: #2B333D;
+    }
+
+    label {
+        color: #FEFED3;
+    }
+</style>
 <header th:replace="partials :: header"></header>
 
 <h1>Edit Service page for</h1>
 <h2 th:text="${user.firstName}"></h2>
 <form th:action="@{'/barber/edit-service'}"  th:method="POST" th:object="${services}">
     <div class="form-group">
-        <label for="title">Service Name: </label>
-        <input class="form-control" type="text" th:field="*{title}" id="title" name="title" th:value="${services.title}">
+        <label for="title">Service Name <span class="required">*</span></label>
+        <input class="form-control border border-danger rounded" type="text" th:field="*{title}" id="title" required name="title" th:value="${services.title}">
     </div>
 
     <div class="form-group">
-        <label for="description">Description: </label>
-        <input class="form-control" th:field="*{description}" id="description" name="description" th:value="${services.description}">
+        <label for="description">Description <span class="required">*</span></label>
+        <input class="form-control border border-danger rounded" th:field="*{description}" id="description" required name="description" th:value="${services.description}">
     </div>
 
     <div class="form-group">
-        <label for="duration">Duration: </label>
-        <input class="form-control" th:field="*{duration}" type="number" id="duration" name="duration" th:value="${services.duration}">
+        <label for="duration">Duration <span class="required">*</span></label>
+        <input class="form-control border border-danger rounded" th:field="*{duration}" type="number" id="duration" required name="duration" th:value="${services.duration}">
     </div>
 
     <div class="form-group">
-        <label for="price">Price: $</label>
-        <input class="form-control" th:field="*{price}" id="price" name="price" th:value="${services.price}">
+        <label for="price">Price <span class="required">*</span></label>
+        <input class="form-control border border-danger rounded" th:field="*{price}" id="price" required name="price" th:value="${services.price}">
     </div>
     <!--        <div th:object="${user}">-->
     <!--            <input type="hidden" th:value="${user.barberDetail}" th:field="${service.barberDetail}">-->
@@ -35,7 +52,8 @@
     <input type="hidden" th:value="${services.id}" name="serviceId">
     <a class="btn btn-primary float-right" style="text-decoration: none; color:black;" th:href="@{/barber/profile}">Back</a>
 
-
+</form>
     <footer th:replace="partials :: footer"></footer>
+
 </body>
 </html>
