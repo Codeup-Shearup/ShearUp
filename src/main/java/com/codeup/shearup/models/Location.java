@@ -27,6 +27,9 @@ public class Location {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "location")
     private BarberDetail barber;
 
+    public String getFormattedAddress(){
+        return String.format("%s %s %s, %s %s", addressOne, addressTwo, city, state, zipCode);
+    }
 
     //Zero argument Constructor
     public Location() {
