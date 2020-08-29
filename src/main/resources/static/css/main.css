@@ -7,91 +7,91 @@
 /*change thymeleaf favicon*/
 
 /*font family mulish*/
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
-/*CSS rules to specify families*/
-/*font-family: 'Mulish', sans-serif;*/
+/*@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');*/
+/*!*CSS rules to specify families*!*/
+/*!*font-family: 'Mulish', sans-serif;*!*/
 
-:root{
-    --primary-dark-blue: #2B333D;
-    --dark-red: #8D2827;
-    --cream-font-primary: #C2B59B;
-    --lighter-cream: #FEFED3;
-    --black: #000000;
-    --white: #FFFFFF;
-}
+/*:root{*/
+/*    --primary-dark-blue: #2B333D;*/
+/*    --dark-red: #8D2827;*/
+/*    --cream-font-primary: #C2B59B;*/
+/*    --lighter-cream: #FEFED3;*/
+/*    --black: #000000;*/
+/*    --white: #FFFFFF;*/
+/*}*/
 
-* {
-    box-sizing: border-box;
-}
-html {
-    scroll-behavior: smooth;
-}
-html,
-body {
-    background-color: var(--primary-dark-blue);
-    color: #fff;
-    font-family: 'Mulish', sans-serif;
-    height: 100%;
-}
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/
+/*html {*/
+/*    scroll-behavior: smooth;*/
+/*}*/
+/*html,*/
+/*body {*/
+/*    background-color: var(--primary-dark-blue);*/
+/*    color: #fff;*/
+/*    font-family: 'Mulish', sans-serif;*/
+/*    height: 100%;*/
+/*}*/
 
 
-/*NAVBAR*/
-.navbar {
-    color: #fff;
-    background-color: var(--primary-dark-blue);
-}
-.navbar-brand {
-    color: #fff;
-    font-size: 25px;
-    font-weight: 800;
-}
-.navbar-toggler-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    padding-left: 40px;
-}
-ul li a.nav-link {
-    color: #fff;
-}
-.logout-btn {
-    background: none;
-    border: none;
-    color: #fff;
-}
-ul li a.nav-link:hover,
-.logout-btn:hover,
-.navbar-brand:hover,
-.navbar-toggler-icon:hover {
-    color: var(--dark-red);
-}
-.nav-shearup:hover {
-    text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-}
+/*!*NAVBAR*!*/
+/*.navbar {*/
+/*    color: #fff;*/
+/*    background-color: var(--primary-dark-blue);*/
+/*}*/
+/*.navbar-brand {*/
+/*    color: #fff;*/
+/*    font-size: 25px;*/
+/*    font-weight: 800;*/
+/*}*/
+/*.navbar-toggler-icon {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    color: #fff;*/
+/*    padding-left: 40px;*/
+/*}*/
+/*ul li a.nav-link {*/
+/*    color: #fff;*/
+/*}*/
+/*.logout-btn {*/
+/*    background: none;*/
+/*    border: none;*/
+/*    color: #fff;*/
+/*}*/
+/*ul li a.nav-link:hover,*/
+/*.logout-btn:hover,*/
+/*.navbar-brand:hover,*/
+/*.navbar-toggler-icon:hover {*/
+/*    color: var(--dark-red);*/
+/*}*/
+/*.nav-shearup:hover {*/
+/*    text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;*/
+/*}*/
 
-.navbar-toggler:focus,
-.buy-stock-btn:focus, .sell-stock-btn:focus,
-td>a:focus, .modal-buy-btn:focus, .register-btn:focus, .logout-btn:focus,
-.login-btn:focus, #subtract-btn:focus, #add-btn:focus, .close:focus{
-    outline: 0;
-}
-.page-content {
-    min-height: 100vh;
-}
+/*.navbar-toggler:focus,*/
+/*.buy-stock-btn:focus, .sell-stock-btn:focus,*/
+/*td>a:focus, .modal-buy-btn:focus, .register-btn:focus, .logout-btn:focus,*/
+/*.login-btn:focus, #subtract-btn:focus, #add-btn:focus, .close:focus{*/
+/*    outline: 0;*/
+/*}*/
+/*.page-content {*/
+/*    min-height: 100vh;*/
+/*}*/
 
-/*CHROME, SAFARI, EDGE, OPERA*/
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-/* Change autocomplete styles in WebKit */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
-    -webkit-text-fill-color: #fff !important;
-}
+/*!*CHROME, SAFARI, EDGE, OPERA*!*/
+/*input[type=number]::-webkit-inner-spin-button,*/
+/*input[type=number]::-webkit-inner-spin-button {*/
+/*    -webkit-appearance: none;*/
+/*    margin: 0;*/
+/*}*/
+/*!* Change autocomplete styles in WebKit *!*/
+/*input:-webkit-autofill,*/
+/*input:-webkit-autofill:hover,*/
+/*input:-webkit-autofill:focus,*/
+/*input:-webkit-autofill:active {*/
+/*    transition: background-color 5000s ease-in-out 0s;*/
+/*    -webkit-text-fill-color: #fff !important;*/
+/*}*/
