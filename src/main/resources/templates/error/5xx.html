@@ -7,20 +7,13 @@
 <nav th:replace="partials/partials :: navbar"></nav>
 <div class="container p-5 text-center">
     <br>
-    <h1>Looks like you haven't made the cut!</h1>
+    <h1>Looks like this page hasn't made the cut!</h1>
     <h3>No problem, maybe next time...</h3>
-    <a class="btn btn-warning" href="/static">Let's try that again.</a>
+    <a class="btn btn-warning" href="/static">Click here to find your way back to Shears.</a>
     <br>
     <img width="95%" id="errorImg" src="" alt="">
 
-
 </div>
-<script>
 
-    let random = Math.ceil(Math.random() * 4);
-    let errorImg = document.getElementById("errorImg");
-    errorImg.src = "../../images/error_" + random + ".jpg";
-
-</script>
 </body>
 </html>
