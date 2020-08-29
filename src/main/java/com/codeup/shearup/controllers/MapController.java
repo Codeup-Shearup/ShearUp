@@ -25,15 +25,14 @@ public class MapController {
         this.locationsDao = locationsDao;
     }
 
-
     @GetMapping("/mapbox-map")
     public String viewMap(Model model) {
         return "mapbox-map";
     }
 
-//    @GetMapping("/api/things")
+//    @GetMapping("/mapbox-api/things")
 //    @ResponseBody
-//    public List<Thing> getThings() {
+//    public List<Thing> getLocation() {
 //        return locationsDao.findAll();
 //    }
 
