@@ -170,7 +170,7 @@
         // }
 
         function addMarker(barber) {
-            const physicalAddress = barber.barberDetail.location.address1 + " " + barber.barberDetail.location.address2 ....
+            const physicalAddress = barber.barberDetail.location.addressOne + " " + barber.barberDetail.location.addressTwo + " " + barber.barberDetail.location.city + " " + barber.barberDetail.location.state + " " + barber.barberDetail.location.zipCode;
             geocode(address, MAPBOX_KEY).then( function(coordinates){
                 // // Victory Salon --4745 Fredericksburg Rd, San Antonio, TX 78229
                 var popup = new mapboxgl.Popup()
@@ -184,7 +184,7 @@
             })
         }
 
-        const barbers = [...]; // json from barbers
+        // const barbers = [...]; // json from barbers
 
         json.forEach(function(barber) {
             addMarker(barber);
