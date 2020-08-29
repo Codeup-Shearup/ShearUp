@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS shearup_db;
 USE shearup_db;
 
 # SHOW GRANTS for 'root'@'localhost';
@@ -113,7 +114,7 @@ VALUES (4, 'Kids Cut', 'ut blandit non interdum in ante vestibulum ante', '20.00
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (5, 'Taper', 'luctus et ultrices posuere cubilia curae', '16.00', 20, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
-VALUES (6, 'Military Cut', 'amet nunc viverra dapibus nulla suscipit', '13.00', 20, 1);
+VALUES (6, 'BuzzCut', 'amet nunc viverra dapibus nulla suscipit', '13.00', 20, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
 VALUES (7, 'Straight Razor Shave', 'volutpat in congue etiam justo etiam pretium iaculis', '15.00', 25, 1);
 INSERT INTO services (id, title, description, price, duration, barber_details_id)
@@ -126,18 +127,17 @@ VALUES (10, 'Grey Hair Blending Treatment', 'ut blandit non interdum in ante ves
 
 
 
-
 # Users Table
 INSERT INTO users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (1, 'Barber1', 'Albert', 'Cudd', 'acudd0@mac.com', 'iX0R2rtCQ', 1, 1);
+VALUES (1, 'albert92', 'Albert', 'Cudd', 'acudd0@mac.com', 'albert', 1, 1);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (2, 'Barber2', 'Yolanda', 'Breawood', 'ybreawood1@gizmodo.com', 'Ayx82M2v3wPr', 1, 2);
+VALUES (2, 'yoli21', 'Yolanda', 'Breawood', 'ybreawood1@gizmodo.com', 'yolanda', 1, 2);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (3, 'User1', 'Martin', 'Dormand', 'mdormand2@time.com', 'YWLESLF', 0, 3);
+VALUES (3, 'marty007', 'Martin', 'Dormand', 'mdormand2@time.com', 'martin', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (4, 'User2', 'Jerome', 'Richards', 'jrichardes3@scribd.com', 'uoEj4UtqHk', 0, 4);
+VALUES (4, 'richie', 'Jerome', 'Richards', 'jrichardes3@scribd.com', 'jerome', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (5, 'Barber3', 'Susan', 'Stormouth', 'mstormouth4@themeforest.net', 'dfD9WAUjoH', 1, 5);
+VALUES (5, 'susie79', 'Susan', 'Stormouth', 'mstormouth4@themeforest.net', 'susan', 1, 3);
 
 
 
