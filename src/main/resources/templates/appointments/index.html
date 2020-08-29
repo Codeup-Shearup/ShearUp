@@ -10,21 +10,28 @@
 
 </head>
 <body>
+<style>
+    body {
+        background-color: #2B333D;
+        color: #FEFED3;
+    }
 
+    .cardz {
+        background-color: #2B333D;
+    }
+
+    .div1 {
+        border: 15px #8D2827;
+        padding: 50px;
+        margin: 20px;
+    }
+</style>
 <!--Nav-->
 <header th:replace="partials :: header"></header>
 
 <div class="main">
     <div class="container p-5 border-left">
 
-        <!--    Side Nav-->
-<!--        <div class="sidenav">-->
-<!--            <a th:href="@{'/about'}">About</a>-->
-<!--            <a th:href="@{'/appointments'}">View</a>-->
-<!--&lt;!&ndash;            <a th:href="@{'/appointments/create'}">Create</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            <a th:href="@{'/reviews/create'}">Edit</a>&ndash;&gt;-->
-<!--            <a th:href="@{'/mapbox-map'}">Map</a>-->
-<!--        </div>-->
 
         <h2 class="text-center">Viewing Appointments</h2>
         <hr>
@@ -42,11 +49,11 @@
 <!--        </div>-->
 
         <div th:each="appointment : ${appointment}">
-            <div class="card">
+            <div class="card cardz">
                 <div class="card-header">
                     Appointment
                 </div>
-                <div class="card-body">
+                <div class="card-body cardz">
                     <!--            <div th:each="review : ${reviews}">-->
                     <h2 class="card-title" th:text="${appointment.createDateTime}"></h2>
                     <p class="card-text" th:text="${appointment.note}"></p>

@@ -7,6 +7,7 @@ import com.codeup.shearup.repositories.AppointmentRepository;
 import com.codeup.shearup.repositories.BarberDetailRepository;
 import com.codeup.shearup.repositories.ReviewRepository;
 import com.codeup.shearup.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ public class ReviewsController {
     private final AppointmentRepository appointmentDao;
     private final BarberDetailRepository barberDetailDao;
 
-
+    @Autowired
     public ReviewsController(ReviewRepository reviewsDao, UserRepository usersDao, AppointmentRepository appointmentDao, BarberDetailRepository barberDetailDao){
         this.reviewsDao = reviewsDao;
         this.usersDao = usersDao;
@@ -58,7 +59,7 @@ public class ReviewsController {
 
     //Creating Review
     @PostMapping("reviews/create")
-    public String createReview(@ModelAttribute Review review, Model model, @RequestParam(name = "barberId") Long barberId){
+    public String createReview(@ModelAttribute Review review, Model model, @RequestParam(name = "barberId") Long barberId, Long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User barber = usersDao.findByBarberDetail(barberDetailDao.getOne(barberId));
         review.setBarberDetail(barber.getBarberDetail());
