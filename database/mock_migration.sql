@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS  images (
                                        PRIMARY KEY (id),
                                        FOREIGN KEY (service_id) REFERENCES images(id)
 );
+# are we incorporating images currently into reviews? -K
 CREATE TABLE IF NOT EXISTS  reviews (
                                         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
                                         title VARCHAR(255) NOT NULL,
@@ -26,10 +27,10 @@ CREATE TABLE IF NOT EXISTS  reviews (
                                         rating DECIMAL (2,1),
                                         images_id INT UNSIGNED NOT NULL,
                                         price DECIMAL (4,2),
-                                        `appointment_id` INT UNSIGNED NOT NULL,
+                                        barber_details_id INT UNSIGNED NOT NULL,
                                         PRIMARY KEY (id),
-                                        FOREIGN KEY (images_id) REFERENCES images(id)
-
+                                        FOREIGN KEY (images_id) REFERENCES images(id),
+                                        FOREIGN KEY (barber_details_id) REFERENCES images(id)
 );
 
 CREATE TABLE IF NOT EXISTS locations (
@@ -42,13 +43,13 @@ CREATE TABLE IF NOT EXISTS locations (
                                          PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS barber_details (
-                                              id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-                                              bio LONGTEXT NOT NULL,
-                                              images_id INT UNSIGNED NOT NULL,
-                                              location_id INT UNSIGNED NOT NULL,
-                                              PRIMARY KEY (id),
-                                              FOREIGN KEY (images_id) REFERENCES images (id),
-                                              FOREIGN KEY (location_id) REFERENCES locations (id)
+                                        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                        bio LONGTEXT NOT NULL,
+                                        phone VARCHAR(15) NOT NULL,
+                                        location_id INT UNSIGNED NOT NULL,
+                                        hours_of_work VARCHAR(255) NOT NULL,
+                                        PRIMARY KEY (id),
+                                        FOREIGN KEY (location_id) REFERENCES locations (id)
 );
 CREATE TABLE IF NOT EXISTS  services (
                                          id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -60,27 +61,28 @@ CREATE TABLE IF NOT EXISTS  services (
                                          PRIMARY KEY (id),
                                          FOREIGN KEY (barber_details_id) REFERENCES barber_details (id)
 );
-
+# possibly add profile_img_src VARCHAR(255) NOT NULL, -K
 CREATE TABLE IF NOT EXISTS users (
-                    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	                username VARCHAR(255) NOT NULL,
-                    first_name VARCHAR(255) NOT NULL,
-                    last_name  VARCHAR(255) NOT NULL,
-                    email VARCHAR(100) NOT NULL,
-                    password VARCHAR(32) NOT NULL,
-	                is_barber TINYINT NOT NULL,
-                    barber_details_id INT UNSIGNED NOT NULL,
-                    PRIMARY KEY (id),
-                    UNIQUE KEY(username, email),
-                    FOREIGN KEY (barber_details_id) REFERENCES barber_details (id)
+                                        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	                                    username VARCHAR(255) NOT NULL,
+                                        first_name VARCHAR(255) NOT NULL,
+                                        last_name  VARCHAR(255) NOT NULL,
+                                        email VARCHAR(100) NOT NULL,
+                                        password VARCHAR(32) NOT NULL,
+	                                    is_barber TINYINT NOT NULL,
+                                        barber_details_id INT UNSIGNED NOT NULL,
+                                        PRIMARY KEY (id),
+                                        UNIQUE KEY(username, email),
+                                        FOREIGN KEY (barber_details_id) REFERENCES barber_details (id)
 );
 
 CREATE TABLE IF NOT EXISTS  appointments (
-                    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-                    user_id INT UNSIGNED NOT NULL,
-                    service_id INT UNSIGNED NOT NULL,
-                    appointment_date DATETIME DEFAULT NULL,
-		            PRIMARY KEY (id),
-                    FOREIGN KEY (user_id) REFERENCES users (id),
-                    FOREIGN KEY (service_id) REFERENCES services (id)
+                                        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                        user_id INT UNSIGNED NOT NULL,
+                                        barber_details_id INT UNSIGNED NOT NULL,
+                                        create_date_time DATETIME NOT NULL,
+                                        note TEXT NOT NULL,
+		                                PRIMARY KEY (id),
+                                        FOREIGN KEY (user_id) REFERENCES users (id),
+                                        FOREIGN KEY (barber_details_id) REFERENCES users (id)
 );

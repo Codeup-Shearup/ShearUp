@@ -4,7 +4,7 @@
 <head th:replace="partials :: head (Title = 'Deltete By Id')"></head>
 
 <!--    Custom Styling For Side Nav-->
-<link th:href="@{/css/sidenav.css}" href="/css/sidenav.css" rel="stylesheet" type="text/css">
+<!--<link th:href="@{/css/sidenav.css}" href="/css/sidenav.css" rel="stylesheet" type="text/css">-->
 
 
 </head>
@@ -17,13 +17,13 @@
     <div class="container p-5 border-left">
 
         <!--    Side Nav-->
-        <div class="sidenav">
-            <a th:href="@{'/about'}">About</a>
-            <a th:href="@{'/appointments'}">View</a>
-<!--            <a th:href="@{'/appointments/create'}">Create</a>-->
-<!--            <a th:href="@{'/reviews/create'}">Edit</a>-->
-            <a th:href="@{'/mapbox-map'}">Map</a>
-        </div>
+<!--        <div class="sidenav">-->
+<!--            <a th:href="@{'/about'}">About</a>-->
+<!--            <a th:href="@{'/appointments'}">View</a>-->
+<!--&lt;!&ndash;            <a th:href="@{'/appointments/create'}">Create</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a th:href="@{'/reviews/create'}">Edit</a>&ndash;&gt;-->
+<!--            <a th:href="@{'/mapbox-map'}">Map</a>-->
+<!--        </div>-->
 
         <h2 class="text-center">Would you like to Delete Appointment Details?</h2>
         <hr>
@@ -44,6 +44,7 @@
             <div class="card-body">
                 <h2 class="card-title" th:text="${appointment.createDateTime}"></h2>
                 <p class="card-text" th:text="${appointment.note}"</p>
+                <p class="card-text" th:text="${appointment.phone}"</p>
                 <form th:action="@{'/appointments/' + ${appointment.getId()} + '/delete'}"th:method="post">
                     <button class="btn btn-danger">Delete</button>
                 </form>

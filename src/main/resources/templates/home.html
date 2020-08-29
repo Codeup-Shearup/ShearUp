@@ -7,22 +7,54 @@
 
 
 <body>
-<header>
-	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-		
-		<a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i> SHEARUP</a>
-		
-	</nav>
-</header>
+<header th:replace="partials :: header"></header>
+<!--<header>-->
+<!--	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">-->
+<!--		-->
+<!--		<a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i> SHEARUP</a>-->
+<!--		-->
+<!--		<th:block sec:authorize="isAuthenticated()">-->
+<!--			<li class="nav-item">-->
+<!--				<a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro"></i></a>-->
+<!--			</li>-->
+<!--			<li class="nav-item">-->
+<!--				<a class="nav-link" th:href="@{/reviews}">Reviews</a>-->
+<!--			</li>-->
+<!--			<li class="nav-item">-->
+<!--				<a class="nav-link" th:href="@{mapbox-map}">Map</a>-->
+<!--			</li>-->
+<!--			<li class="nav-item">-->
+<!--				<a class="nav-link" th:href="@{/appointments}">Appointments</a>-->
+<!--			</li>-->
+<!--			<li class="nav-item">-->
+<!--				<a class="nav-link" th:href="@{/barbers}">Barbers</a>-->
+<!--			</li>-->
+<!--			<li class="nav-item">-->
+<!--				<a class="nav-link" th:href="@{/about}">About Us</a>-->
+<!--			</li>-->
+<!--			<li class="nav-item">-->
+<!--				<a class="nav-link" th:href="@{/profile}">Profile</a>-->
+<!--			</li>-->
+<!--			<li class="nav-item">-->
+<!--				<form  th:action="@{/logout}" th:method="POST">-->
+<!--					<button id="logout" class="btn-link btn" style="color: #8D2827"><i class="fas fa-sign-out-alt"></i></button>-->
+<!--				</form>-->
+<!--			</li>-->
+<!--		</th:block>-->
+<!--		-->
+<!--	</nav>-->
+<!--</header>-->
 
 <main class="bg">
 	<div class="container-fluid h-100">
 		<div class="container-fluid text-center d-flex flex-column justify-content-center align-items-center h-75">
 			<h1 class="text-center mb-5" id="titleHome">ShearUp</h1>
-			<div class="text-center mt-3">
-				<a th:href="@{/login}"><button class="btn btn-secondary">Login</button></a>
-				<a class="ml-3" th:href="@{/sign-up}"><button class="btn btn-secondary">Sign Up</button></a>
-			</div>
+			<th:block sec:authorize="!isAuthenticated()">
+				<div class="text-center mt-3">
+					<a th:href="@{/login}"><button class="btn btn-secondary">Login</button></a>
+					<a class="ml-3" th:href="@{/sign-up}"><button class="btn btn-secondary">Sign Up</button></a>
+				</div>
+			</th:block>
 		</div>
 	</div>
 </main>

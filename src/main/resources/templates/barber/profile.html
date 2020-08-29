@@ -3,21 +3,13 @@
 <head th:replace="partials :: head (Title = 'View Barber Profile')">
     <meta charset="UTF-8">
     <title>Barber profile page</title>
-    <link rel="stylesheet" th:href="@{../resources/static/css/sidenav.css}" type="text/css">
 </head>
 <body>
 <header th:replace="partials :: header"></header>
-<!--    Side Nav-->
-<div class="main">
-<div class="sidenav">
-    <a th:href="@{/barber/edit-barber-details}">Edit Barber Details</a>
-    <a th:href="@{/barber/edit-barber-location}">Edit Barber Location</a>
-    <a th:href="@{/barber/add-service}">Add Service</a>
-</div>
+
 <div class="container">
 <!--<h1>Barber Profile page of <p th:text="${user.firstName}"></p></h1>-->
-<h1>Welcome, </h1>
-<h1 th:text="${user.firstName}"></h1>
+<h1>Welcome, </h1><h1 th:text="${user.firstName}">!</h1>
 
 <!--  BIO NOT COMING OUT YET DEBUGGING POPULATES IN BIO IN BARBER DETAIL DATABASE  -->
 <h1>Bio: </h1><p th:text="${user.barberDetail.bio}"></p>
