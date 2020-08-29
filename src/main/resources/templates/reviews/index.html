@@ -4,26 +4,31 @@
 <head th:replace="partials :: head (Title = 'View all')"></head>
 <title>Submit a Barber Review!</title>
 
-<!--    Custom Styling For Side Nav-->
-<!--<link th:href="@{/css/sidenav.css}" href="/css/sidenav.css" rel="stylesheet" type="text/css">-->
-
 
 </head>
 <body>
+<style>
+    body {
+        background-color: #2B333D;
+        color: #FEFED3;
+    }
 
+    .cardz {
+        background-color: #2B333D;
+    }
+
+    .div1 {
+        border: 15px #8D2827;
+        padding: 50px;
+        margin: 20px;
+    }
+</style>
 <!--Nav-->
 <header th:replace="partials :: header"></header>
 
 <div class="main">
 <div class="container p-5 border-left">
 
-<!--    Side Nav-->
-<!--    <div class="sidenav">-->
-<!--        <a th:href="@{'/about'}">About</a>-->
-<!--        <a th:href="@{'/reviews'}">View</a>-->
-<!--&lt;!&ndash;        <a th:href="@{'/reviews/create'}">Create</a>&ndash;&gt;-->
-<!--        <a th:href="@{'/mapbox-map'}">Map</a>-->
-<!--    </div>-->
 
     <h2 class="text-center">Viewing Barber Reviews</h2>
     <hr>
@@ -39,10 +44,10 @@
 <!--    </div>-->
     <div th:each="review : ${reviews}">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header cardz">
             Review
         </div>
-        <div class="card-body">
+        <div class="card-body cardz">
 <!--            <div th:each="review : ${reviews}">-->
                 <h2 class="card-title" th:text="${review.title}"></h2>
                 <p class="card-text" th:text="${review.content}"></p>

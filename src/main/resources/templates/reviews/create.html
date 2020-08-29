@@ -1,49 +1,104 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<head th:replace="partials :: head (Title = 'Create')"></head>
+    <head th:replace="partials :: head (Title = 'Create')"></head>
     <title>Create a Barber Review!</title>
 
     <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+    <script src="(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"></script>
 
-    <script type="javascript" th:src="@{/js/rating.js}"></script>
-
-<!--    <link th:href="@{/css/sidenav.css}" href="/css/sidenav.css" rel="stylesheet" type="text/css">-->
-
-    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
-    <link th:rel="stylesheet" th:href="@{/assets/bootstrapless-star-rating/star-rating.css} "/>
+<!--    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>-->
 
 
 </head>
 <body>
+
+<style>
+    @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+    body {
+        background-color: #2B333D;
+        color: #FEFED3;
+    }
+
+    .cardz {
+        background-color: #2B333D;
+    }
+
+    .div1 {
+        border: 15px #8D2827;
+        padding: 50px;
+        margin: 20px;
+    }
+
+    /****** Style Star Rating Widget *****/
+
+    .rating {
+        border: none;
+        float: left;
+    }
+
+    .rating > input {
+        display: none;
+    }
+
+    .rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating > .half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating > label {
+        color: #ddd;
+        float: right;
+    }
+
+    /***** CSS Magic to Highlight Stars on Hover *****/
+
+    .rating > input:checked ~ label, /* show gold star when clicked */
+    .rating:not(:checked) > label:hover, /* hover current star */
+    .rating:not(:checked) > label:hover ~ label {
+        color: #FFD700;
+    }
+
+    /* hover previous stars in list */
+
+    .rating > input:checked + label:hover, /* hover current star when changing rating */
+    .rating > input:checked ~ label:hover,
+    .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+    .rating > input:checked ~ label:hover ~ label {
+        color: #FFED85;
+    }
+
+</style>
 
 <!--Nav-->
 <header th:replace="partials :: header"></header>
 
 <div class="main">
 
-<!--    Side Nav-->
-<!--    <div class="sidenav">-->
-<!--        <a th:href="@{'/about'}">About</a>-->
-<!--        <a th:href="@{'/reviews'}">View</a>-->
-<!--&lt;!&ndash;        <a th:href="@{'/reviews/create'}">Create</a>&ndash;&gt;-->
-<!--&lt;!&ndash;        <a th:href="@{'/reviews/create'}">Edit</a>&ndash;&gt;-->
-<!--        <a th:href="@{'/mapbox-map'}">Map</a>-->
-<!--    </div>-->
-
-    <div class="container p-5 border-left">
+    <div class="container p-5 border-left div1" id="div1">
 
         <h2 class="text-center">Create Barber Review</h2>
 
         <!--    CREATE REVIEW FORM   -->
         <hr>
-        <form th:action="@{'/reviews/create'}" th:method="post" th:object="${review}" class="p-5" style="margin-top: -5%;">
+        <form th:action="@{'/reviews/create'}" th:method="post" th:object="${review}" class="p-5"
+              style="margin-top: -5%;">
             <div class="form-group">
                 <label for="barber"></label>
-                <input type="hidden" placeholder="Barber Id" class="form-control" id="barber" name="barberId" th:value="${barber.barberDetail.id}">
+                <input type="hidden" placeholder="Barber Id" class="form-control" id="barber" name="barberId"
+                       th:value="${barber.barberDetail.id}">
                 <!--                <input type="text" disabled="disabled" placeholder="Barber Id" class="form-control" id="barber" th:value="*{getBarberDetail()}">-->
             </div>
-            <div class="form-group">
+            <div class="form-group ">
                 <label for="createTitle">Title</label>
                 <input type="text" class="form-control" id="createTitle" th:field="*{title}">
             </div>
@@ -52,36 +107,17 @@
                 <textarea class="form-control" id="createContent" th:field="*{content}"></textarea>
             </div>
             <div class="form-group">
-                <label for="createContent">Content</label>
-                <input type="number" min="1" max="5" class="form-control" placeholder="Example: 4.0" id="createRating" th:field="*{rating}">
+                <label for="createContent">Rating</label>
             </div>
-<!--            <div class="form-group">-->
-<!--                <label for="createContent">Rating</label>-->
-<!--                <span class="form-control" id="createRating" th:value="*{rating}"><div class='rating-stars pl-3'>-->
-<!--                        <ul id='stars1' class="row list-unstyled">-->
-<!--                            <li class='star' title='Poor' data-value='1'>-->
-<!--                                <i class='fa fa-star fa-fw ${one}'></i>-->
-<!--                            </li>-->
-<!--                            <li class='star' title='Fair' data-value='2'>-->
-<!--                                <i class='fa fa-star fa-fw ${two}'></i>-->
-<!--                            </li>-->
-<!--                            <li class='star' title='Good' data-value='3'>-->
-<!--                                <i class='fa fa-star fa-fw ${three}'></i>-->
-<!--                            </li>-->
-<!--                            <li class='star' title='Excellent' data-value='4'>-->
-<!--                                <i class='fa fa-star fa-fw ${four}'></i>-->
-<!--                            </li>-->
-<!--                            <li class='star' title='WOW!!!' data-value='5'>-->
-<!--                                <i class='fa fa-star fa-fw ${five}'></i>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                </span>-->
-<!--            </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label for="createContent">Content</label>-->
-<!--                        <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
-<!--                    </div>-->
+            <div class="form-group">
+            <fieldset class="rating" th:value="*{rating}">
+                    <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                </fieldset>
+            </div>
             <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Review</button>
             <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">Back</a>
         </form>

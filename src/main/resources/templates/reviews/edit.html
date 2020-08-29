@@ -4,25 +4,82 @@
 <head th:replace="partials :: head (Title = 'Edit')"></head>
 <title>Edit a Barber Review!</title>
 
-<!--    Custom Styling For Side Nav-->
-<!--    <link th:href="@{/css/sidenav.css}" href="/css/sidenav.css" rel="stylesheet" type="text/css">-->
+    <script src="https://kit.fontawesome.com/0f79ad2218.js" crossorigin="anonymous"></script>
+    <script src="(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"></script>
 
 
 </head>
 <body>
+<style>
+    @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
+    body {
+        background-color: #2B333D;
+        color: #FEFED3;
+    }
+
+    .cardz {
+        background-color: #2B333D;
+    }
+
+    .div1 {
+        border: 15px #8D2827;
+        padding: 50px;
+        margin: 20px;
+    }
+
+    /****** Style Star Rating Widget *****/
+
+    .rating {
+        border: none;
+        float: left;
+    }
+
+    .rating > input {
+        display: none;
+    }
+
+    .rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating > .half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating > label {
+        color: #ddd;
+        float: right;
+    }
+
+    /***** CSS Magic to Highlight Stars on Hover *****/
+
+    .rating > input:checked ~ label, /* show gold star when clicked */
+    .rating:not(:checked) > label:hover, /* hover current star */
+    .rating:not(:checked) > label:hover ~ label {
+        color: #FFD700;
+    }
+
+    /* hover previous stars in list */
+
+    .rating > input:checked + label:hover, /* hover current star when changing rating */
+    .rating > input:checked ~ label:hover,
+    .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+    .rating > input:checked ~ label:hover ~ label {
+        color: #FFED85;
+    }
+
+</style>
 <!--Nav-->
 <header th:replace="partials :: header"></header>
 
 <div class="main">
-    <!--        Side Nav-->
-<!--    <div class="sidenav">-->
-<!--        <a th:href="@{'/about'}">About</a>-->
-<!--        <a th:href="@{'/reviews'}">View</a>-->
-<!--&lt;!&ndash;        <a th:href="@{'/reviews/create'}">Create</a>&ndash;&gt;-->
-<!--&lt;!&ndash;        <a th:href="@{'/reviews/create'}">Edit</a>&ndash;&gt;-->
-<!--        <a th:href="@{'/mapbox-map'}">Map</a>-->
-<!--    </div>-->
+
 
     <div class="container p-5 border-left">
 
@@ -41,13 +98,15 @@
                 <textarea class="form-control" id="editContent" th:field="*{content}" th:value="*{content}"></textarea>
             </div>
             <div class="form-group">
-                <label for="editRating">Rating</label>
-                <input type="number" min="1" max="5" class="form-control" id="editRating" th:field="*{rating}" th:value="*{rating}">
+                <label for="editContent">Rating</label>
+                <fieldset class="rating" th:value="*{rating}" th:field="*{rating}">
+                    <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                </fieldset>
             </div>
-            <!--        <div class="form-group">-->
-            <!--            <label for="createContent">Content</label>-->
-            <!--            <textarea class="form-control" id="createimage" th:field="*{image}"></textarea>-->
-            <!--        </div>-->
             <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Edit Review</button>
             <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/reviews}">back</a>
         </form>
