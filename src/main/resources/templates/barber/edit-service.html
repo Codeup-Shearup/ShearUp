@@ -13,6 +13,10 @@
         color: #FEFED3;
     }
 
+    h2 {
+        color: #FEFED3;
+    }
+
     body {
         background-color: #2B333D;
     }
@@ -22,7 +26,7 @@
     }
 </style>
 <header th:replace="partials :: header"></header>
-
+<div class="container">
 <h1>Edit Service page for</h1>
 <h2 th:text="${user.firstName}"></h2>
 <form th:action="@{'/barber/edit-service'}"  th:method="POST" th:object="${services}">
@@ -38,7 +42,7 @@
 
     <div class="form-group">
         <label for="duration">Duration <span class="required">*</span></label>
-        <input class="form-control border border-danger rounded" th:field="*{duration}" type="number" id="duration" required name="duration" th:value="${services.duration}">
+        <input class="form-control border border-danger rounded" th:field="*{duration}" type="text" id="duration" required name="duration" th:value="${services.duration}">
     </div>
 
     <div class="form-group">
@@ -53,6 +57,7 @@
     <a class="btn btn-primary float-right" style="text-decoration: none; color:black;" th:href="@{/barber/profile}">Back</a>
 
 </form>
+</div>
     <footer th:replace="partials :: footer"></footer>
 
 </body>

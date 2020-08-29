@@ -19,7 +19,7 @@ public class Service {
     @Column(nullable = false, columnDefinition = "DECIMAL(10,2)")
     private double price;
 
-    @Column
+    @Column(nullable = false)
     private String duration;
 
     //BARBER DETAILS FOREIGN KEY NEEDED HERE
@@ -39,6 +39,15 @@ public class Service {
     //Constructor
     public Service(long id, String title, String description, double price, String duration, BarberDetail barberDetail) {
         this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.duration = duration;
+        this.barberDetail = barberDetail;
+    }
+
+    public Service(String title, String description, double price, String duration, BarberDetail barberDetail) {
+
         this.title = title;
         this.description = description;
         this.price = price;
