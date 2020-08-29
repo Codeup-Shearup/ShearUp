@@ -54,36 +54,53 @@
             </ul>
         </div>
     </nav>
+    <style>
+        .required {
+            color: red;
+        }
+
+        h1 {
+            color: #FEFED3;
+        }
+
+        body {
+            background-color: #2B333D;
+        }
+
+        label {
+            color: #FEFED3;
+        }
+    </style>
 </header>
 <div class="container">
     <form th:action="@{'/barber/edit-barber-location'}"  th:method="POST" th:object="${location}">
         <h1>Where do you Shearup?</h1>
         <div class="form-group">
-            <label for="addressOne">Enter Address: </label>
-            <input class="form-control" type="text" th:field="*{addressOne}" id="addressOne" name="addressOne" th:value="${location.addressOne}">
+            <label for="addressOne">Address Line 1 <span class="required">*</span></label>
+            <input class="form-control border border-danger rounded" type="text" th:field="*{addressOne}" id="addressOne" name="addressOne" required th:value="${location.addressOne}">
         </div>
 
         <div class="form-group">
-            <label for="addressTwo">Enter Street/Ln/Apt: </label>
-            <input class="form-control" type="text" th:field="*{addressTwo}" id="addressTwo" name="addressTwo" th:value="${location.addressTwo}">
+            <label for="addressTwo">Address Line 2 </label>
+            <input class="form-control border border-danger rounded" type="text" th:field="*{addressTwo}" id="addressTwo" name="addressTwo" th:value="${location.addressTwo}">
         </div>
 
         <div class="form-group">
-            <label for="city">Enter City: </label>
-            <input class="form-control" type="text" th:field="*{city}" id="city" name="city" th:value="${location.city}">
+            <label for="city">City <span class="required">*</span></label>
+            <input class="form-control border border-danger rounded" type="text" th:field="*{city}" id="city" name="city" required th:value="${location.city}">
         </div>
 
         <div class="form-group">
-            <label for="state">Enter State: </label>
-            <input class="form-control" type="text" th:field="*{state}" id="state" name="state" th:value="${location.state}">
+            <label for="state">State <span class="required">*</span></label>
+            <input class="form-control border border-danger rounded" type="text" th:field="*{state}" id="state" name="state" required th:value="${location.state}">
         </div>
 
         <div class="form-group">
-            <label for="zipcode">Enter Zipcode: </label>
-            <input class="form-control" type="number" th:field="*{zipCode}" id="zipcode" name="zipcode" th:value="${location.zipCode}">
+            <label for="zipcode">Zipcode <span class="required">*</span></label>
+            <input class="form-control border border-danger rounded" type="number" th:field="*{zipCode}" id="zipcode" name="zipcode" required th:value="${location.zipCode}">
         </div>
 
-        <button class="btn btn-primary">Edit Location!</button>
+        <button class="btn btn-primary">Edit Location</button>
         <input type="hidden" th:value="${location.id}" name="locationId">
         <a class="btn btn-primary float-right" style="text-decoration: none; color:black;" th:href="@{/barber/profile}">Back</a>
 
