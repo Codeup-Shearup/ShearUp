@@ -19,8 +19,8 @@ public class Service {
     @Column(nullable = false, columnDefinition = "DECIMAL(10,2)")
     private double price;
 
-    @Column(nullable = false, columnDefinition = "INTEGER")
-    private int duration;
+    @Column
+    private String duration;
 
     //BARBER DETAILS FOREIGN KEY NEEDED HERE
     @ManyToOne
@@ -37,7 +37,7 @@ public class Service {
 
     }
     //Constructor
-    public Service(long id, String title, String description, double price, int duration, BarberDetail barberDetail) {
+    public Service(long id, String title, String description, double price, String duration, BarberDetail barberDetail) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -83,11 +83,11 @@ public class Service {
         this.price = price;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
