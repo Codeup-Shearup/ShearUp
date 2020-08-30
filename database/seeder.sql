@@ -1,4 +1,4 @@
-# DROP DATABASE IF EXISTS shearup_db;
+DROP DATABASE IF EXISTS shearup_db;
 USE shearup_db;
 
 # SHOW GRANTS for 'root'@'localhost';
