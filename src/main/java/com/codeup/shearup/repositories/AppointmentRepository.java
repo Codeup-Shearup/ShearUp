@@ -1,6 +1,7 @@
 package com.codeup.shearup.repositories;
 
 import com.codeup.shearup.models.Appointment;
+import com.codeup.shearup.models.BarberDetail;
 import org.hibernate.mapping.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
