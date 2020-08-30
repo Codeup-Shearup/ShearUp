@@ -16,16 +16,18 @@ public class BarberController {
     private final ServiceRepository servicesDao;
     private final BarberDetailRepository barberDetailDao;
     private final LocationRepository locationsDao;
+    private final ImageRepository imagesDao;
     private final ReviewRepository reviewsDao;
 
     //========WE WILL NEED TO ADD MORE EVENTUALLY POSSIBLY=======//
     public BarberController(UserRepository usersDao, ServiceRepository servicesDao,
                             BarberDetailRepository barberDetailDao, LocationRepository locationsDao,
-                            ReviewRepository reviewsDao) {
+                            ImageRepository imagesDao, ReviewRepository reviewsDao) {
         this.usersDao = usersDao;
         this.servicesDao = servicesDao;
         this.barberDetailDao = barberDetailDao;
         this.locationsDao = locationsDao;
+        this.imagesDao = imagesDao;
         this.reviewsDao = reviewsDao;
     }
 
@@ -38,7 +40,7 @@ public class BarberController {
         //=====THIS REPRESENTS CURRENT USER THAT IS LOGGED IN GRABBING USER OBJECT==////
         //===== GETS USER OBJECT OF ASSOCIATED ID WITH USER THAT IS LOGGED IN=======///
         User user = usersDao.getOne(sessionUser.getId());
-
+        List<Image> myImage = imagesDao.findAll();
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
         model.addAttribute("services", servicesDao.findAllByBarberDetail(sessionUser.getBarberDetail()));
         //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
@@ -46,6 +48,7 @@ public class BarberController {
         model.addAttribute("location", locationsDao.getOne(sessionUser.getId()));
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
+        model.addAttribute("images", myImage);
         return"barber/profile";
     }
     
@@ -128,7 +131,7 @@ public class BarberController {
 
     //NEED TO MANUALLY INPUT THE BARBER WHO MADE SERVICE=====
     @PostMapping("/barber/add-service")
-    public String insertService(@ModelAttribute Service service) {
+    public String insertService(@ModelAttribute Service service, @RequestParam String imageUpload) {
         //=======OLD USER OBJECT HERE======//
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //=====This is Placeholder for now====//
@@ -136,8 +139,13 @@ public class BarberController {
         User barber = usersDao.getOne(sessionUser.getId());
         BarberDetail barberDetail = barber.getBarberDetail();
         barberDetail.getServices().add(service);
+        Image img = new Image();
+        img.setFilestackUrl(imageUpload);
+        img.setService(service);
         service.setBarberDetail(barberDetail);
+        servicesDao.save(service);
         barberDetailDao.save(barberDetail);
+        imagesDao.save(img);
         return "redirect:/barber/profile";
     }
 
