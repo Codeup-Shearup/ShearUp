@@ -10,7 +10,8 @@
 <div class="row row-cols-1 row-cols-md-3">
 	<div class="col mb-4">
 		<div class="card h-100" th:each="barber : ${barbers}" th:if="${barber.barberDetail != null}">
-			<img src="..." class="card-img-top" alt="...">
+			<div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail">
+<!--			<img src="..." class="card-img-top" alt="...">-->
 			<div class="card-body">
 				<a th:href="@{/barber/profile/{id}(id=${barber.id})}"><h5 class="card-title" th:text="${barber.firstName}"></h5></a>
 				<p class="card-text" th:text="${barber.barberDetail.bio}"></p>
