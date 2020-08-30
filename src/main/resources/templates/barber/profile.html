@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials :: head (Title = 'View Barber Profile')">
-    <meta charset="UTF-8">
-    <title>Barber profile page</title>
-
+<head>
+    <head th:replace="partials :: head (Title = 'View Barber Profile')">
+        <meta charset="UTF-8">
+        <title>Barber profile page</title>
+            <meta class="map" th:content="${@environment.getProperty('map.api.key')}">
+    </head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
+<!--Added script here, this is for mapbox SDK-->
+<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
 <style>
     body {
         background-color: #2B333D;
@@ -176,11 +182,62 @@
         <button class="btn btn-primary">Edit Service</button>
     </form>
 </div>
-
+<!--Add a service with a photo attached -->
 <a th:href="@{/barber/add-service}">
     <button class="btn btn-success">Add Service</button>
 </a>
 
+<!--   added map-->
+<div id='map' style='width: 100%; height: 500px;'></div>
+<!--   added three spans below, display is none-->
+<span id="map_addr1" style="display: none;" th:text="${location.addressOne}"></span>
+<span id="map_city" style="display: none;" th:text="${location.city}"></span>
+<span id="map_state" style="display: none;" th:text="${location.state}"></span>
+<!--   added the entire script below -->
+<script>
+    // change the accessToken to yours, use the applicaiton.properties to fetch the token
+    const MAPBOX_KEY = document.querySelector('meta.map').content;
+    mapboxgl.accessToken = MAPBOX_KEY;
+    var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+    // Grabbed the three spans and assigned them to vars (spans come from the controller)
+    var address = document.getElementById("map_addr1").innerHTML;
+    var city = document.getElementById("map_city").innerHTML;
+    var state = document.getElementById("map_state").innerHTML;
+    // geocoded it (turned it into lat/long)
+    mapboxClient.geocoding
+        .forwardGeocode({
+            query: address + "," + city + "," + state,
+            autocomplete: false,
+            limit: 1
+        })
+        // sent it to Mapbox SDK/API
+        .send()
+        // Take the response from API in form of JS promise
+        .then(function(response) {
+            // check if response is valid
+            if (
+                response &&
+                response.body &&
+                response.body.features &&
+                response.body.features.length
+            ) {
+                // if yes, grab the response (JSON) into a var
+                var feature = response.body.features[0];
+
+                // init the map object, pass in params
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/dark-v10',
+                    center: feature.center,
+                    zoom: 10
+                });
+                // take the response var (feature) and set the lat and long .setLngLat()
+                // then add to map .addTo()
+                new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
+            }
+        });
+</script>
+</div>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="text/javascript" th:src="@{/js/file.js}" />
 </div>
