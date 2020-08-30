@@ -2,7 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials :: head (Title = 'Login')"></head>
 <body>
+<!--Styling for text and background color-->
+<style>
+	body {
+		background-color: #2B333D;
+		color: #FEFED3;
+	}
 
+	.cardz {
+		background-color: #2B333D;
+	}
+
+	.div1 {
+		border: 15px #8D2827;
+		padding: 50px;
+		margin: 20px;
+	}
+</style>
 <header th:replace="partials :: header"></header>
 
 <!--<div sec:authorize="isAuthenticated()">-->
