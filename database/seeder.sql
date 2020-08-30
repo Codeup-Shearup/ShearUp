@@ -2,8 +2,8 @@
 USE shearup_db;
 
 # SHOW GRANTS for 'root'@'localhost';
+# TRUNCATE table_name;
 
-# Might not use this for demonstration purposes
 # Images Table
 INSERT INTO images (id, filestack_url, service_id)
 VALUES (1, 'https://cdn.filestackcontent.com/AsXkBLtTybLfQCsHT0QW', 1);
@@ -130,35 +130,35 @@ VALUES (10, 'Grey Hair Blending Treatment', 'Lay your grey hair to rest with thi
 # any user with 123 on the username are a Client user
 # Users Table
 INSERT INTO users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (1, 'albert92', 'Albert', 'Cudd', 'acudd0@mail.com', 'albert', 1, 1);
+VALUES (1, 'albert92', 'Albert', 'Cudd', 'acudd0@mail.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 1, 1);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (2, 'yoli21', 'Yolanda', 'Sanchez', 'yoli21@gmail.com', 'yolanda', 1, 2);
+VALUES (2, 'yoli21', 'Yolanda', 'Sanchez', 'yoli21@gmail.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 1, 2);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (3, 'martin123', 'Martin', 'Dormand', 'mdormand2@time.com', 'martin', 0, null);
+VALUES (3, 'martin123', 'Martin', 'Dormand', 'mdormand2@time.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (4, 'jerome123', 'Jerome', 'Richards', 'jrichards3@scribd.com', 'jerome', 0, null);
+VALUES (4, 'jerome123', 'Jerome', 'Richards', 'jrichards3@scribd.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (5, 'susie79', 'Susan', 'Stormouth', 'mstormouth4@themeforest.net', 'susan', 1, 3);
+VALUES (5, 'susie79', 'Susan', 'Stormouth', 'mstormouth4@themeforest.net', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 1, 3);
 INSERT INTO users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (6, 'hank123', 'Hank', 'Hill', 'hank@yahoo.com', 'hank', 1, 4);
+VALUES (6, 'hank123', 'Hank', 'Hill', 'hank@yahoo.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 1, 4);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (7, 'bobby20', 'Robert', 'Smith', 'robert@gizmodo.com', 'robert', 1, 5);
+VALUES (7, 'bobby20', 'Robert', 'Smith', 'robert@gizmodo.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 1, 5);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (8, 'jane123', 'Jane', 'Doe', 'jane@mail.com', 'jane', 0, null);
+VALUES (8, 'jane123', 'Jane', 'Doe', 'jane@mail.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (9, 'greg123', 'Greg', 'Jett', 'greg@mail.com', 'greg', 0, null);
+VALUES (9, 'greg123', 'Greg', 'Jett', 'greg@mail.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (10, 'tina78', 'Tina', 'Turner', 'tina78@mail.com', 'tina', 1, 6);
+VALUES (10, 'tina1968', 'Tina', 'Turner', 'tina78@mail.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 1, 6);
 INSERT INTO users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (11, 'joey', 'Joe', 'Dirt', 'joe@mail.com', 'joe', 1, 7);
+VALUES (11, 'joey1987', 'Joseph', 'Dirt', 'joe@mail.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 1, 7);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (12, 'ramoni', 'Ramon', 'Ramon', 'ramon@yahoo.com', 'ramon', 1, 8);
+VALUES (12, 'ramoni93', 'Ramon', 'Ramon', 'ramon@yahoo.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 1, 8);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (13, 'michael123', 'Michael', 'Garrison', 'michael@gmail.com', 'michael', 0, null);
+VALUES (13, 'michael123', 'Michael', 'Garrison', 'michael@gmail.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (14, 'chris123', 'Chris', 'Eckert', 'chris@yahoo.com', 'chris', 0, null);
+VALUES (14, 'chris123', 'Chris', 'Eckert', 'chris@yahoo.com', '%20$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 0, null);
 INSERT INTO  users (id, username, first_name, last_name, email, password, is_barber, barber_detail_id)
-VALUES (15, 'kcotto', 'Knoah', 'Cotto', 'kcotto@mail.com', 'knoah', 1, 9);
+VALUES (15, 'knoahknows92', 'Knoah', 'Cotto', 'kcotto@mail.com', '$2a$10$9TtfTJFAdZlJziSknY69QOmakPUx8E5f4j7OUtivNIEBkrVwAmm4e!', 1, 9);
 
 
 # Appointments Table
