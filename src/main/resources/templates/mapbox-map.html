@@ -186,14 +186,7 @@
         //     console.log({lng: -98.4916, lat: 29.4252});
         // });
 
-        // user did not allow browser to use there location
-        // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        //     infoWindow.setPosition(pos);
-        //     infoWindow.setContent(browserHasGeolocation ?
-        //         'Error: The Geolocation service failed.' :
-        //         'Error: Your browser doesn\'t support geolocation.');
-        //     infoWindow.open(map);
-        // }
+
 
         function addMarker(barber) {
             const physicalAddress = barber.barberDetail.location.addressOne + " " + barber.barberDetail.location.addressTwo + " " + barber.barberDetail.location.city + " " + barber.barberDetail.location.state + " " + barber.barberDetail.location.zipCode;
@@ -215,6 +208,8 @@
         json.forEach(function(barber) {
             addMarker(barber);
         });
+
+
 
         // reverseGeocode({lng: -77.050636, lat: 38.889248}, MAPBOX_KEY).then(function(results) {
         //     console.log(results);
