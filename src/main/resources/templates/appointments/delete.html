@@ -50,9 +50,9 @@
                 <p class="card-text" th:text="${appointment.note}"</p>
                 <p class="card-text" th:text="${appointment.phone}"</p>
                 <form th:action="@{'/appointments/' + ${appointment.getId()} + '/delete'}"th:method="post">
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                 </form>
-                <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/appointments}">Back</a>
+                <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/appointments}"><i class="fas fa-arrow-circle-left"></i></a>
             </div>
         </div>
 

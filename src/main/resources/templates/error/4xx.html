@@ -7,6 +7,19 @@
     <link rel="stylesheet" type="text/css" href="/static/css/footer.css" th:href="@{/css/error.css}">
 </head>
 <body>
+<style>
+    body {
+        background-color: #2B333D;
+    }
+    h1 {
+        color: #FEFED3;
+    }
+    h2 {
+        color: #C2B59B;
+    }
+
+</style>
+<div class="container p-5 text-center">
 <th:block th:switch="${error}">
     <div th:case="'Not Found'">
         <h1>404 Page Not Found</h1>
@@ -23,5 +36,6 @@
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
 <p>Probably not as much as the guy in the video.</p>
+</div>
 </body>
 </html>

@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials :: head (Title = 'View Barber Profile')">
-    <meta charset="UTF-8">
-    <title>Barber profile page</title>
+<head>
+    <head th:replace="partials :: head (Title = 'View Barber Profile')">
+        <meta charset="UTF-8">
+        <title>Barber profile page</title>
+            <meta class="map" th:content="${@environment.getProperty('map.api.key')}">
+        <!--FONT AWESOME ICONS-->
+        <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
 
+    </head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
+<!--Added script here, this is for mapbox SDK-->
+<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
 <style>
     body {
         background-color: #2B333D;
@@ -41,7 +50,9 @@
 <br>
 <div class="container">
     <!--<h1>Barber Profile page of <p th:text="${user.firstName}"></p></h1>-->
-    <h1 class="text-center">Welcome, <h1 class="text-center" th:text="${user.firstName}">!</h1></h1>
+    <div class="d-flex d-inline">
+        <h1 class="text-center">Welcome, </h1> <h1 class="text-center" th:text="${user.firstName}">!</h1>
+    </div>
 
     <div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">
         <div class="media align-items-end profile-header">
@@ -51,7 +62,7 @@
                 profile</a></div>
             <div class="media-body mb-5 text-white">
                 <h4>Bio: </h4>
-                <p class="mt-0 mb-0"><span th:text="${user.barberDetail.bio}"></span></p>
+                <p class="mt-0 mb-0" th:text="${user.barberDetail.bio}"></p>
                 <h4>Phone Number: </h4>
                 <p class="small mb-4" th:text="${user.barberDetail.phone}"><i class="fas fa-at mr-2"></i></p>
                 <h4>Hours of Operation: </h4>
@@ -59,7 +70,7 @@
                 </p>
                 <form th:action="@{/barber/edit-barber-details}" th:method="get">
                     <input type="hidden" th:name="editBarberDetailsButton" th:value="${user.barberDetail.id}">
-                    <button class="btn btn-primary">Edit Barber Details</button>
+                    <button class="btn btn-primary">Edit Barber Details <i class="fas fa-user-cog"></i></button>
                 </form>
             </div>
         </div>
@@ -87,7 +98,7 @@
         <div class="media align-items-end profile-header">
             <!--            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>-->
             <div class="media-body mb-5 text-white">
-                <h5>Address One: </h5>
+                <h5>Address: </h5>
                 <p class="mt-0 mb-0">
                 <p th:text="${user.barberDetail.location.addressOne}"></p> </p>
                 <h5>City: </h5>
@@ -96,8 +107,7 @@
                 <p class="small mb-4" th:text="${user.barberDetail.location.state}"><i class="far fa-envelope mr-2"></i>>
                 </p>
                 <h5>Zip Code: </h5>
-                <p class="small mb-4" th:text="${user.barberDetail.location.zipCode}"><i
-                        class="far fa-envelope mr-2"></i>></p>
+                <p class="small mb-4" th:text="${user.barberDetail.location.zipCode}"><i class="far fa-envelope mr-2"></i>></p>
                 <form th:action="@{/barber/edit-barber-location}" th:method="get">
                     <input type="hidden" th:name="editLocationButton" th:value="${user.barberDetail.location.id}">
                     <button class="btn btn-primary">Edit Barber Location</button>
@@ -119,7 +129,7 @@
     <!--        </form>-->
     <!--        </div>-->
 </div>
-h
+
 </div>
 
 
@@ -174,18 +184,77 @@ h
 
     <form th:action="@{/barber/edit-service}" th:method="get">
         <input type="hidden" th:name="editButton" th:value="${service.id}">
-        <button class="btn btn-primary">Edit Service</button>
+        <button class="btn btn-primary">Edit Service <i class="fas fa-edit"></i></button>
     </form>
 </div>
-</div>
-
+<!--Add a service with a photo attached ---try to span these horizontal -->
 <a th:href="@{/barber/add-service}">
-    <button class="btn btn-success">Add Service</button>
+    <button class="btn btn-success">Add Service <i class="fas fa-camera-retro icon"></i></button>
+<!--    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
 </a>
+
+<!--<p th:text="${@environment.getProperty('map.api.key')}"></p>-->
+<!--   added map-->
+<div id='map' style='width: 70%; height: 500px;'></div>
+<!--   added three spans below, display is none-->
+<span id="map_addr1" style="display: none;" th:text="${location.addressOne}"></span>
+<span id="map_city" style="display: none;" th:text="${location.city}"></span>
+<span id="map_state" style="display: none;" th:text="${location.state}"></span>
+<!--   added the entire script below -->
+<script th:inline="javascript">
+    // change the accessToken to yours, use the application.properties to fetch the token
+    // mapboxgl.accessToken = '';
+    const MAPBOX_KEY = document.querySelector('map.api.key').content; //issue with connecting to page - it does pop up with hardcoded API KEY!!
+    mapboxgl.accessToken = MAPBOX_KEY;
+    var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+    // Grabbed the three spans and assigned them to vars (spans come from the controller)
+    var address = document.getElementById("map_addr1").innerHTML;
+    var city = document.getElementById("map_city").innerHTML;
+    var state = document.getElementById("map_state").innerHTML;
+    // geocoded it (turned it into lat/long)
+    mapboxClient.geocoding
+        .forwardGeocode({
+            query: address + "," + city + "," + state,
+            autocomplete: false,
+            limit: 1
+        })
+        // sent it to Mapbox SDK/API
+        .send()
+        // Take the response from API in form of JS promise
+        .then(function(response) {
+            // check if response is valid
+            if (
+                response &&
+                response.body &&
+                response.body.features &&
+                response.body.features.length
+            ) {
+                // if yes, grab the response (JSON) into a var
+                var feature = response.body.features[0];
+
+                // init the map object, pass in params
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    // style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                    // style: 'mapbox://styles/mapbox/satellite-streets-v11', //satellite version
+                    style: 'mapbox://styles/mapbox/dark-v10',
+                    center: feature.center,
+                    zoom: 10
+                });
+                // take the response var (feature) and set the lat and long .setLngLat()
+                // then add to map .addTo()
+                new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
+            }
+        });
+
+</script>
+</div>
 
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="text/javascript" th:src="@{/js/file.js}" />
+<!--<script th:src="@{/js/keys.js}"></script>-->
 </div>
 
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>

@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <head th:replace="partials/partials :: head"></head>
+    <head th:replace="partials :: head (Title = '500 Error')">
     <!--CSS STYLING-->
-    <link rel="stylesheet" type="text/css" href="/static/css/footer.css" th:href="@{/css/error.css}">
+<!--    <link rel="stylesheet" type="text/css" href="/static/css/footer.css" th:href="@{/css/error.css}">-->
     <!--FONT AWESOME ICONS-->
     <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav th:replace="partials/partials :: navbar"></nav>
+<style>
+    body {
+        background-color: #2B333D;
+    }
+    h1 {
+        color: #FEFED3;
+    }
+    h2 {
+        color: #C2B59B;
+    }
+
+</style>
 <div class="container p-5 text-center">
     <br>
-    <h1>Oops.That's an error.</h1>
+    <h1>Oops. That's an error.</h1>
     <h2>This page hasn't made the cut.</h2>
     <h2>Try to freshin' up or feel free to contact us if the problem persists.</h2>
-    <a href="/">Click here to return to the login page<i class="fas fa-laptop-house"></i></a>
+    <a href="/">Click here to return to the login page <i class="fas fa-laptop-house"></i></a>
+    <br>
     <br>
 
-
-<!--    <img width="95%" id="errorImg" src="" alt="">-->
+<!--    <img width="95%" id="errorImg" th:src="@{${'static/img/500-error-image.png'}}" alt="">-->
+<!--    <img th:src="@{${'static/img/500-error-image.png'}}" alt="...">-->
+    <div class="profile mr-3"><img th:src="@{${'/img/500-error-image.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail">
 
 </div>
 

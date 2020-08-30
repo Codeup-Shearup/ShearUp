@@ -32,7 +32,7 @@
 							<a class="nav-link ml-3" th:href="@{/sign-up}">Sign Up</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link ml-3" th:href="@{/about}">Contact Us</a>
+							<a class="nav-link ml-3" th:href="@{/about}"><i class="fas fa-head-side-mask"></i></a>
 						</li>
 					</th:block>
 
@@ -52,17 +52,17 @@
 					<!--                </th:block>-->
 
 					<th:block sec:authorize="isAuthenticated()">
+<!--						<li class="nav-item">-->
+<!--							<a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
+<!--						</li>-->
 						<li class="nav-item">
-							<a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>
+							<a class="nav-link" th:href="@{/mapbox-map}"><i class="fas fa-map-marked-alt"></i></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/reviews}"><i class="fas fa-thumbs-up"></i> Reviews</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" th:href="@{mapbox-map}"><i class="fas fa-map-marked-alt"></i></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" th:href="@{/appointments}"><i class="fas fa-clipboard-list"></i>Appointments</a>
+							<a class="nav-link" th:href="@{/appointments}"><i class="fas fa-clipboard-list"></i> Appointments</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/barbers}"><i class="fas fa-users"></i> Barbers</a>
@@ -84,7 +84,7 @@
 		</nav>
 </header>
 
-<footer class="footer fixed-bottom footer-expand-lg" th:fragment="footer">
+<footer class="footer footer-expand-lg" th:fragment="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-sm-6 col-xs-12">
