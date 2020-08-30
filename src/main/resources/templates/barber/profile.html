@@ -231,9 +231,9 @@
 <!--   added map-->
 <div id='map' style='width: 70%; height: 500px;'></div>
 <!--   added three spans below, display is none-->
-<span id="map_addr1" style="display: none;" th:text="${location.addressOne}"></span>
-<span id="map_city" style="display: none;" th:text="${location.city}"></span>
-<span id="map_state" style="display: none;" th:text="${location.state}"></span>
+<span id="map_addr1" style="display: none;" th:text="${user.barberDetail.location.addressOne}"></span>
+<span id="map_city" style="display: none;" th:text="${user.barberDetail.location.city}"></span>
+<span id="map_state" style="display: none;" th:text="${user.barberDetail.location.state}"></span>
 <!--   added the entire script below -->
 <script th:inline="javascript">
     // change the accessToken to yours, use the application.properties to fetch the token

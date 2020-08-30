@@ -5,34 +5,149 @@
 <head th:replace="partials :: head (Title = 'View Barber Profile')">
 	<meta charset="UTF-8">
 	<title>Barber profile page</title>
+	<meta class="map" th:content="${@environment.getProperty('map.api.key')}">
+	<!--FONT AWESOME ICONS-->
+	<script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
 </head>
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 <body>
+<style>
+	body {
+		background-color: #2B333D;
+	}
+
+	h1 {
+		color: #FEFED3;
+	}
+
+	p {
+		color: #FEFED3;
+	}
+
+	.card {
+		background-color: #2B333D;
+	}
+
+	.card-text {
+		color: #FEFED3;
+	}
+
+	.card-body {
+		background-color: #2B333D;
+	}
+
+	.card-title {
+		color: white;
+	}
+
+</style>
 <header th:replace="partials :: header"></header>
 
-<h1><h1 th:text="${barber.firstName}">'s Barber Profile</h1>
-	
-	<h1>Bio: </h1><p th:text="${barber.barberDetail.bio}"></p>
-	<h1>Phone Number: </h1><p th:text="${barber.barberDetail.phone}"></p>
-	<h1>Location of Business: </h1>
-	<p th:text="${barber.barberDetail.location.addressOne}"></p>
-	<p th:text="${barber.barberDetail.location.addressTwo}"></p>
-	<p th:text="${barber.barberDetail.location.city}"></p>
-	<p th:text="${barber.barberDetail.location.state}"></p>
-	<p th:text="${barber.barberDetail.location.zipCode}"></p>
+<!--ORIGINAL CHRIS-->
+
+<!--<header th:replace="partials :: header"></header>-->
+<!--<div class="container">-->
+<!--<h1><h1 th:text="${barber.firstName}">'s Barber Profile</h1>-->
+<!--	-->
+<!--	<h1>Bio: </h1><p th:text="${barber.barberDetail.bio}"></p>-->
+<!--	<h1>Phone Number: </h1><p th:text="${barber.barberDetail.phone}"></p>-->
+<div class="container">
+<div class="d-flex d-inline">
+	<h1 class="text-center">Barber Profile of </h1> <h1 class="text-center" th:text="${barber.firstName}">!</h1>
+</div>
+
+<div class="px-4 pt-0 pb-4 bg-dark" th:object="${barber.firstName}">
+	<div class="media align-items-end profile-header">
+		<div class="profile mr-3"><img th:src="@{${'/img/barber.jpg'}}" alt="..." width="196"
+									   class="rounded mb-2 img-thumbnail">
+<!--				th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit-->
+
+			</div>
+		<div class="media-body mb-5 text-white">
+			<h4>Bio: </h4>
+			<p class="mt-0 mb-0" th:text="${barber.barberDetail.bio}"></p>
+			<h4>Phone Number: </h4>
+			<p class="small mb-4" th:text="${barber.barberDetail.phone}"><i class="fas fa-at mr-2"></i></p>
+			<h4>Hours of Operation: </h4>
+			<p class="small mb-4" th:text="${barber.barberDetail.hoursOfWork}"><i class="far fa-envelope mr-2"></i>>
+			</p>
+		</div>
+	</div>
+</div>
+<br>
+<hr>
+
+<h1 class="card-title">Location of Business: </h1>
+
+<div class="px-4 pt-0 pb-4 bg-dark" th:object="${barber.firstName}">
+	<div class="media align-items-end profile-header">
+		<!--            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>-->
+		<div class="media-body mb-5 text-white">
+			<h5>Address: </h5>
+			<p class="mt-0 mb-0">
+			<p th:text="${barber.barberDetail.location.addressOne}"></p> </p>
+			<h5>City: </h5>
+			<p class="small mb-4" th:text="${barber.barberDetail.location.city}"><i class="fas fa-at mr-2"></i></p>
+			<h5>State: </h5>
+			<p class="small mb-4" th:text="${barber.barberDetail.location.state}"><i class="far fa-envelope mr-2"></i>>
+			</p>
+			<h5>Zip Code: </h5>
+			<p class="small mb-4" th:text="${barber.barberDetail.location.zipCode}"><i class="far fa-envelope mr-2"></i>></p>
+		</div>
+	</div>
+</div>
+<br>
+
+<!--	<h1>Location of Business: </h1>-->
+<!--	<p th:text="${barber.barberDetail.location.addressOne}"></p>-->
+<!--	<p th:text="${barber.barberDetail.location.addressTwo}"></p>-->
+<!--	<p th:text="${barber.barberDetail.location.city}"></p>-->
+<!--	<p th:text="${barber.barberDetail.location.state}"></p>-->
+<!--	<p th:text="${barber.barberDetail.location.zipCode}"></p>-->
+<!--</h1>-->
+
+
+
+<!--<h1>List of Services: </h1>-->
+
+<h1>
+	List of Services
+	<small class="text-muted">See below</small>
 </h1>
-<h1>List of Services: </h1>
-<!--  THROWING ERROR FOR NOW WORKING ON FIX
-(I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
-<div class="card" style=" width: 18rem;" th:each="service : ${barber.barberDetail.services}">
+
+<div class="card border border-danger rounded" style=" width: 19rem;"
+	 th:each="service : ${barber.barberDetail.services}">
+
 	<!--   PICTURE OF SERVICE GOES HERE     -->
 	<img class="card-image-top" src="..." alt="">
 	<div class="card-body">
 		<h5 class="card-title">Title: </h5><p class="card-text" th:text="${service.title}"></p>
-		<h5 class ="card-title">Description: </h5><p class="card-text" th:text="${service.description}"></p>
-		<h5 class="card-title">Duration: </h5><p class="card-text" th:text="${service.duration}"></p>
+		<h5 class="card-title">Description: </h5><p class="card-text" th:text="${service.description}"></p>
+		<h5 class="card-title">Duration: </h5><p class="card-text" th:text="${service.description}"></p>
 		<h5 class="card-title">Price: </h5><p class="card-text" th:text="${service.price}"></p>
 	</div>
+
+	<div th:each="image :${service.getImages()}">
+		<img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden" style="height: 200px"></img>
+	</div>
+
 </div>
+
+
+<!--  THROWING ERROR FOR NOW WORKING ON FIX
+(I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
+
+<!--<div class="card" style=" width: 18rem;" th:each="service : ${barber.barberDetail.services}">-->
+<!--	&lt;!&ndash;   PICTURE OF SERVICE GOES HERE     &ndash;&gt;-->
+<!--	<img class="card-image-top" src="..." alt="">-->
+<!--	<div class="card-body">-->
+<!--		<h5 class="card-title">Title: </h5><p class="card-text" th:text="${service.title}"></p>-->
+<!--		<h5 class ="card-title">Description: </h5><p class="card-text" th:text="${service.description}"></p>-->
+<!--		<h5 class="card-title">Duration: </h5><p class="card-text" th:text="${service.duration}"></p>-->
+<!--		<h5 class="card-title">Price: </h5><p class="card-text" th:text="${service.price}"></p>-->
+<!--	</div>-->
+<!--</div>-->
 
 <a th:href="@{/appointments/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Request appointment</button></a>
 
@@ -49,7 +164,7 @@
 
 <a th:href="@{/reviews/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Review this barber</button></a>
 
-
+</div>
 <footer th:replace="partials :: footer"></footer>
 </body>
 </html>
