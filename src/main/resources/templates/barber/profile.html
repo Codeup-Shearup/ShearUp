@@ -4,13 +4,13 @@
     <head th:replace="partials :: head (Title = 'View Barber Profile')">
         <meta charset="UTF-8">
         <title>Barber profile page</title>
-            <meta class="map" th:content="${@environment.getProperty('map.api.key')}">
+        <meta class="map" th:content="${@environment.getProperty('map.api.key')}">
         <!--FONT AWESOME ICONS-->
         <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
 
     </head>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
 </head>
 <body>
 <!--Added script here, this is for mapbox SDK-->
@@ -51,7 +51,8 @@
 <div class="container">
     <!--<h1>Barber Profile page of <p th:text="${user.firstName}"></p></h1>-->
     <div class="d-flex d-inline">
-        <h1 class="text-center">Welcome, </h1> <h1 class="text-center" th:text="${user.firstName}">!</h1>
+        <h1 class="text-center">Welcome, </h1>
+        <h1 class="text-center" th:text="${user.firstName}">!</h1>
     </div>
 
     <div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">
@@ -107,7 +108,8 @@
                 <p class="small mb-4" th:text="${user.barberDetail.location.state}"><i class="far fa-envelope mr-2"></i>>
                 </p>
                 <h5>Zip Code: </h5>
-                <p class="small mb-4" th:text="${user.barberDetail.location.zipCode}"><i class="far fa-envelope mr-2"></i>></p>
+                <p class="small mb-4" th:text="${user.barberDetail.location.zipCode}"><i
+                        class="far fa-envelope mr-2"></i>></p>
                 <form th:action="@{/barber/edit-barber-location}" th:method="get">
                     <input type="hidden" th:name="editLocationButton" th:value="${user.barberDetail.location.id}">
                     <button class="btn btn-primary">Edit Barber Location</button>
@@ -128,71 +130,103 @@
     <!--            <button class="btn btn-primary">Edit Barber Location</button>-->
     <!--        </form>-->
     <!--        </div>-->
-</div>
-
-</div>
 
 
-<!--  THROWING ERROR FOR NOW WORKING ON FIX
-(I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
-<!--  TH EACH WORKS THE USER IN ${A WAY TO GET AROUND DATABASE}  -->
+    <h1 class="card-title">New Leads</h1>
 
-<h1>
-    List of Services
-    <small class="text-muted">See below</small>
-</h1>
-
-<!--<div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">-->
-<!--    <div class="media align-items-end profile-header">-->
-<!--        &lt;!&ndash;            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>&ndash;&gt;-->
-<!--        <div class="media-body mb-5 text-white">-->
-<!--            <div class="card border border-danger rounded" style=" width: 19rem;" th:each="service : ${user.getBarberDetail().getServices()}">-->
-<!--            <h5>Title </h5><p class="mt-0 mb-0"><p th:text="${service.title}"></p> </p>-->
-<!--                <h5>Description: </h5><p class="small mb-4" th:text="${service.description}"><i class="fas fa-at mr-2"></i></p>-->
-<!--                <h5>Duration: </h5><p class="small mb-4" th:text="${service.duration}"><i class="fas fa-at mr-2"></i></p>-->
-<!--            <h5>Price: </h5><p class="small mb-4" th:text="${service.price}"><i class="far fa-envelope mr-2"></i></p>-->
-<!--            </div>-->
-<!--                <form th:action="@{/barber/edit-service}" th:method="get">-->
-<!--                    <input type="hidden" th:name="editButton" th:value="${service.id}">-->
-<!--                    <button class="btn btn-primary">Edit Service</button>-->
-<!--                </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-<div class="card border border-danger rounded" style=" width: 19rem;"
-     th:each="service : ${user.getBarberDetail().getServices()}">
-
-    <!--   PICTURE OF SERVICE GOES HERE     -->
-    <img class="card-image-top" src="..." alt="">
-    <div class="card-body">
-        <h5 class="card-title">Title: </h5><p class="card-text" th:text="${service.title}"></p>
-        <h5 class="card-title">Description: </h5><p class="card-text" th:text="${service.description}"></p>
-        <h5 class="card-title">Duration: </h5><p class="card-text" th:text="${service.duration}"></p>
-        <h5 class="card-title">Price: </h5><p class="card-text" th:text="${service.price}"></p>
-    </div>
-    <div th:each="image :${service.getImages()}">
-        <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden" style="height: 200px"></img>
+    <div class="px-4 pt-0 pb-4 bg-dark" th:each="appointment : ${user.getBarberDetail().getAppointments()}">
+        <div class="media align-items-end profile-header">
+            <!--            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>-->
+            <div class="media-body mb-5 text-white">
+                <h5>Created At: </h5>
+                <p class="mt-0 mb-0">
+                <p th:text="${appointment.createDateTime}"></p>
+                <h5>Contact information: </h5>
+                <p class="small mb-4" th:text="${appointment.phone}"><i class="fas fa-at mr-2"></i></p>
+                <h5>Details: </h5>
+                <p class="small mb-4" th:text="${appointment.note}"><i class="far fa-envelope mr-2"></i>>
+                </p>
+                <a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Appointments</a>
+            </div>
+        </div>
     </div>
 
-    <!--    <form th:action="@{/barber/service-delete}" th:method="post">-->
-    <!--        <input type="hidden" th:name="deleteButton" th:value="${service.id}">-->
-    <!--        <button class="btn btn-danger">Delete</button>-->
-    <!--    </form>-->
+    <!--<div class="px-4 pt-0 pb-4 bg-dark">-->
+    <!--    <h5 class="mb-3">Recent Leads</h5>-->
+    <!--    <div class="p-4 bg-light rounded shadow-sm bg-dark" th:each="appointment : ${user.getBarberDetail().getAppointments()}">-->
+    <!--        <h5 class="card-title" th:text="${appointment.createDateTime}"></h5>-->
+    <!--        <p class="font-italic mb-0 cardz" th:text="${appointment.phone}"></p>-->
+    <!--        <p class="font-italic mb-0 cardz" th:text="${appointment.note}"></p>-->
+    <!--        <a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Appointments</a>-->
+    <!--    </div>-->
+    <!--</div>-->
 
 
-    <form th:action="@{/barber/edit-service}" th:method="get">
-        <input type="hidden" th:name="editButton" th:value="${service.id}">
-        <button class="btn btn-primary">Edit Service <i class="fas fa-edit"></i></button>
-    </form>
+    <!--  THROWING ERROR FOR NOW WORKING ON FIX
+    (I DID NOT WANT TO BREAK APPLICATION) -RAMON  -->
+    <!--  TH EACH WORKS THE USER IN ${A WAY TO GET AROUND DATABASE}  -->
+
+    <h1>
+        List of Services
+        <small class="text-muted">See below</small>
+    </h1>
+
+    <!--<div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">-->
+    <!--    <div class="media align-items-end profile-header">-->
+    <!--        &lt;!&ndash;            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>&ndash;&gt;-->
+    <!--        <div class="media-body mb-5 text-white">-->
+    <!--            <div class="card border border-danger rounded" style=" width: 19rem;" th:each="service : ${user.getBarberDetail().getServices()}">-->
+    <!--            <h5>Title </h5><p class="mt-0 mb-0"><p th:text="${service.title}"></p> </p>-->
+    <!--                <h5>Description: </h5><p class="small mb-4" th:text="${service.description}"><i class="fas fa-at mr-2"></i></p>-->
+    <!--                <h5>Duration: </h5><p class="small mb-4" th:text="${service.duration}"><i class="fas fa-at mr-2"></i></p>-->
+    <!--            <h5>Price: </h5><p class="small mb-4" th:text="${service.price}"><i class="far fa-envelope mr-2"></i></p>-->
+    <!--            </div>-->
+    <!--                <form th:action="@{/barber/edit-service}" th:method="get">-->
+    <!--                    <input type="hidden" th:name="editButton" th:value="${service.id}">-->
+    <!--                    <button class="btn btn-primary">Edit Service</button>-->
+    <!--                </form>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+
+
+    <div class="card border border-danger rounded" style=" width: 19rem;"
+         th:each="service : ${user.getBarberDetail().getServices()}">
+
+        <!--   PICTURE OF SERVICE GOES HERE     -->
+        <img class="card-image-top" src="..." alt="">
+        <div class="card-body">
+            <h5 class="card-title">Title: </h5>
+            <p class="card-text" th:text="${service.title}"></p>
+            <h5 class="card-title">Description: </h5>
+            <p class="card-text" th:text="${service.description}"></p>
+            <h5 class="card-title">Duration: </h5>
+            <p class="card-text" th:text="${service.duration}"></p>
+            <h5 class="card-title">Price: </h5>
+            <p class="card-text" th:text="${service.price}"></p>
+        </div>
+        <div th:each="image :${service.getImages()}">
+            <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"
+                 style="height: 200px"></img>
+        </div>
+
+        <!--    <form th:action="@{/barber/service-delete}" th:method="post">-->
+        <!--        <input type="hidden" th:name="deleteButton" th:value="${service.id}">-->
+        <!--        <button class="btn btn-danger">Delete</button>-->
+        <!--    </form>-->
+
+
+        <form th:action="@{/barber/edit-service}" th:method="get">
+            <input type="hidden" th:name="editButton" th:value="${service.id}">
+            <button class="btn btn-primary">Edit Service <i class="fas fa-edit"></i></button>
+        </form>
+    </div>
+    <!--Add a service with a photo attached ---try to span these horizontal -->
+    <a th:href="@{/barber/add-service}">
+        <button class="btn btn-success">Add Service <i class="fas fa-camera-retro icon"></i></button>
+        <!--    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
+    </a>
 </div>
-<!--Add a service with a photo attached ---try to span these horizontal -->
-<a th:href="@{/barber/add-service}">
-    <button class="btn btn-success">Add Service <i class="fas fa-camera-retro icon"></i></button>
-<!--    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
-</a>
-
 <!--<p th:text="${@environment.getProperty('map.api.key')}"></p>-->
 <!--   added map-->
 <div id='map' style='width: 70%; height: 500px;'></div>
@@ -206,7 +240,7 @@
     // mapboxgl.accessToken = '';
     const MAPBOX_KEY = document.querySelector('map.api.key').content; //issue with connecting to page - it does pop up with hardcoded API KEY!!
     mapboxgl.accessToken = MAPBOX_KEY;
-    var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+    var mapboxClient = mapboxSdk({accessToken: mapboxgl.accessToken});
     // Grabbed the three spans and assigned them to vars (spans come from the controller)
     var address = document.getElementById("map_addr1").innerHTML;
     var city = document.getElementById("map_city").innerHTML;
@@ -221,7 +255,7 @@
         // sent it to Mapbox SDK/API
         .send()
         // Take the response from API in form of JS promise
-        .then(function(response) {
+        .then(function (response) {
             // check if response is valid
             if (
                 response &&
@@ -251,7 +285,7 @@
 </div>
 
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-<script type="text/javascript" th:src="@{/js/file.js}" />
+<script type="text/javascript" th:src="@{/js/file.js}"/>
 <!--<script th:src="@{/js/keys.js}"></script>-->
 </div>
 

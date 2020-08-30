@@ -78,7 +78,7 @@ public class AppointmentController {
     public String deleteAppointment(@ModelAttribute Appointment appointment){
         Appointment deleteAppointment = appointmentDao.getOne(appointment.getId());
         appointmentDao.delete(deleteAppointment);
-        return "redirect:/appointments";
+        return "redirect:/barber/profile";
     }
 
 }

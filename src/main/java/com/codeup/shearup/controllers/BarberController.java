@@ -17,17 +17,19 @@ public class BarberController {
     private final BarberDetailRepository barberDetailDao;
     private final LocationRepository locationsDao;
     private final ImageRepository imagesDao;
+    private final AppointmentRepository appointmentsDao;
     private final ReviewRepository reviewsDao;
 
     //========WE WILL NEED TO ADD MORE EVENTUALLY POSSIBLY=======//
     public BarberController(UserRepository usersDao, ServiceRepository servicesDao,
                             BarberDetailRepository barberDetailDao, LocationRepository locationsDao,
-                            ImageRepository imagesDao, ReviewRepository reviewsDao) {
+                            ImageRepository imagesDao, AppointmentRepository appointmentsDao, ReviewRepository reviewsDao) {
         this.usersDao = usersDao;
         this.servicesDao = servicesDao;
         this.barberDetailDao = barberDetailDao;
         this.locationsDao = locationsDao;
         this.imagesDao = imagesDao;
+        this.appointmentsDao = appointmentsDao;
         this.reviewsDao = reviewsDao;
     }
 
@@ -41,14 +43,17 @@ public class BarberController {
         //===== GETS USER OBJECT OF ASSOCIATED ID WITH USER THAT IS LOGGED IN=======///
         User user = usersDao.getOne(sessionUser.getId());
         List<Image> myImage = imagesDao.findAll();
+        List<Appointment> appointments = appointmentsDao.findAllAppointmentsByBarber(user.getBarberDetail().getId());
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
         model.addAttribute("services", servicesDao.findAllByBarberDetail(sessionUser.getBarberDetail()));
+//        model.addAttribute("appointments", appointmentsDao.findAllAppointmentsByBarber(user.getId()));
         //=====PULLING ASSOCIATED BARBER DETAIL INFORMATION OF BARBER==//////
 //        model.addAttribute("barber", barberDetailDao.getOne(sessionUser.getId()));
         model.addAttribute("location", locationsDao.getOne(sessionUser.getId()));
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
         model.addAttribute("user", user);
         model.addAttribute("images", myImage);
+        model.addAttribute("appointments", appointments);
         return"barber/profile";
     }
     
