@@ -151,7 +151,7 @@
 
 <a th:href="@{/appointments/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Request appointment</button></a>
 
-<div class="card" style=" width: 18rem;" th:each="review : ${barber.barberDetail.reviews}">
+<div class="card" style=" width: 18rem;" th:each="review : ${barber.getBarberDetail().getReviews()}">
 	<!--   PICTURE OF SERVICE GOES HERE     -->
 	<img class="card-image-top" src="..." alt="">
 	<div class="card-body">
