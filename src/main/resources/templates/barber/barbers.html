@@ -22,12 +22,12 @@
 	}
 </style>
 
-<!--<header th:replace="partials :: header"></header>-->
+<header th:replace="partials :: header"></header>
 
 <div class="row row-cols-2 row-cols-md-3">
 	<div class="col mb-4 ">
 		<div class="card cardz" th:each="barber : ${barbers}" th:if="${barber.barberDetail != null}">
-			<div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail">
+			<div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="gentleman_placeholder" width="196" class="rounded mb-2 img-thumbnail">
 			<div class="card-body">
 				<a th:href="@{/barber/profile/{id}(id=${barber.id})}"><h5 class="card-title" th:text="${barber.firstName}"></h5></a>
 				<p class="card-text" th:text="${barber.barberDetail.bio}"></p>
