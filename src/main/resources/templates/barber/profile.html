@@ -189,8 +189,8 @@
 </div>
 <!--Add a service with a photo attached ---try to span these horizontal -->
 <a th:href="@{/barber/add-service}">
-    <button class="btn btn-success">Add Service</button>
-    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>
+    <button class="btn btn-success">Add Service <i class="fas fa-camera-retro icon"></i></button>
+<!--    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
 </a>
 <!--<script th:src="@{/js/keys.js}"></script> should this be here instead?-->
 <!--   added map-->
@@ -203,7 +203,7 @@
 <script>
     // change the accessToken to yours, use the application.properties to fetch the token
     // mapboxgl.accessToken = '';
-    const MAPBOX_KEY = document.querySelector('map.api.key').content; //issue with connecting to page - it does pop up with hardcoded API KEY
+    const MAPBOX_KEY = document.querySelector('map.api.key').content; //issue with connecting to page - it does pop up with hardcoded API KEY!!
     mapboxgl.accessToken = MAPBOX_KEY;
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
     // Grabbed the three spans and assigned them to vars (spans come from the controller)
@@ -234,6 +234,8 @@
                 // init the map object, pass in params
                 var map = new mapboxgl.Map({
                     container: 'map',
+                    // style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                    // style: 'mapbox://styles/mapbox/satellite-streets-v11', //satellite version
                     style: 'mapbox://styles/mapbox/dark-v10',
                     center: feature.center,
                     zoom: 10
