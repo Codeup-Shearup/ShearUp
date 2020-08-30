@@ -11,10 +11,10 @@
 	<script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<header th:fragment="header">
-		<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<header th:fragment="header" class="sticky-top">
+		<nav class="navbar sticky-top navbar-expand-lg">
 
-			<a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i> SHEARUP</a>
+			<a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut icon"></i> SHEARUP</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@
 
 					<th:block sec:authorize="isAuthenticated()">
 						<li class="nav-item">
-							<a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro"></i></a>
+							<a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/reviews}">Reviews</a>
