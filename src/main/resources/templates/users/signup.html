@@ -34,10 +34,6 @@
 		</div>
 		
 		<div class="form-group">
-			<p><span style="color: red">*</span> indicates a required field</p>
-		</div>
-		
-		<div class="form-group">
 			<label for="first-name">First Name <span style="color: red">*</span></label>
 			<input id="first-name" th:field="*{firstName}" required/>
 		</div>
@@ -70,6 +66,10 @@
 		<div class="form-group">
 			<label for="passwordConfirmation">Confirm Password</label>
 			<input id="passwordConfirmation" name="passwordConfirmation" type="password" required/>
+		</div>
+
+		<div class="form-group">
+			<p><span style="color: red">*</span> indicates a required field</p>
 		</div>
 		
 		<input id="submitButton" value="Sign me up!" type="submit" />

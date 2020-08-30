@@ -19,7 +19,7 @@
 <!--    LOGO ON ALL NAVBARS-->
 <nav  th:fragment="nav" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 
-        <a class="navbar-brand nav-link" href="/home"><i class="fas fa-cut"></i>SHEARUP</a>
+        <a class="navbar-brand nav-link" href="/home"><i class="fas fa-cut"></i></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,7 @@
 <!--                    </li>-->
 <!--                </th:block>-->
 
+<!--                there is an issue with signing out-->
                 <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item">
                         <form  th:action="/logout" th:method="POST">
