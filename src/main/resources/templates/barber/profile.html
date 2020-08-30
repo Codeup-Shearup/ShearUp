@@ -179,24 +179,25 @@
 
     <form th:action="@{/barber/edit-service}" th:method="get">
         <input type="hidden" th:name="editButton" th:value="${service.id}">
-        <button class="btn btn-primary">Edit Service</button>
+        <button class="btn btn-primary">Edit Service <i class="fas fa-edit"></i></button>
     </form>
 </div>
-<!--Add a service with a photo attached -->
+<!--Add a service with a photo attached ---try to span these horizontal -->
 <a th:href="@{/barber/add-service}">
     <button class="btn btn-success">Add Service</button>
 </a>
 
 <!--   added map-->
-<div id='map' style='width: 100%; height: 500px;'></div>
+<div id='map' style='width: 70%; height: 500px;'></div>
 <!--   added three spans below, display is none-->
 <span id="map_addr1" style="display: none;" th:text="${location.addressOne}"></span>
 <span id="map_city" style="display: none;" th:text="${location.city}"></span>
 <span id="map_state" style="display: none;" th:text="${location.state}"></span>
 <!--   added the entire script below -->
 <script>
-    // change the accessToken to yours, use the applicaiton.properties to fetch the token
-    const MAPBOX_KEY = document.querySelector('meta.map').content;
+    // change the accessToken to yours, use the application.properties to fetch the token
+    // mapboxgl.accessToken = 'pk.eyJ1Ijoid3N0YXVkIiwiYSI6ImNrZWdiNGNzbDBkMXkyd21uc2FwaTU4b20ifQ.anZxQ8mTSuZFbNLFjGmAfQ';
+    const MAPBOX_KEY = document.querySelector('map.api.key').content; //issue with connecting to page
     mapboxgl.accessToken = MAPBOX_KEY;
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
     // Grabbed the three spans and assigned them to vars (spans come from the controller)
@@ -236,8 +237,10 @@
                 new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
             }
         });
+
 </script>
 </div>
+
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="text/javascript" th:src="@{/js/file.js}" />
 </div>

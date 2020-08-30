@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS shearup_db;
 USE shearup_db;
 
 # SHOW GRANTS for 'root'@'localhost';
+# DROP DATABASE IF EXISTS shearup_db;
 # TRUNCATE table_name;
 
 # Images Table
@@ -25,16 +25,6 @@ INSERT INTO images (id, filestack_url, service_id)
 VALUES (9, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 9);
 INSERT INTO images (id, filestack_url, service_id)
 VALUES (10, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 10);
-INSERT INTO images (id, filestack_url, service_id)
-VALUES (11, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 11);
-INSERT INTO images (id, filestack_url, service_id)
-VALUES (12, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 12);
-INSERT INTO images (id, filestack_url, service_id)
-VALUES (13, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 13);
-INSERT INTO images (id, filestack_url, service_id)
-VALUES (14, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 14);
-INSERT INTO images (id, filestack_url, service_id)
-VALUES (15, 'https://cdn.filestackcontent.com/9u7NzKMPT3670xrhdJXD', 15);
 
 
 # Reviews Table
