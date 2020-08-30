@@ -4,6 +4,23 @@
 	<link rel="stylesheet" href="../../static/css/profile.css">
 </head>
 <body>
+<!--Styling for text and background color-->
+<style>
+	body {
+		background-color: #2B333D;
+		color: #FEFED3;
+	}
+
+	.cardz {
+		background-color: #2B333D;
+	}
+
+	.div1 {
+		border: 15px #8D2827;
+		padding: 50px;
+		margin: 20px;
+	}
+</style>
 
 <header th:replace="partials :: header"></header>
 
@@ -25,12 +42,12 @@
 			
 			</div>
 			
-			<div class="py-4 px-4">
+			<div class="py-4 px-4 cardz">
 				<div class="py-4">
 					<h5 class="mb-3">Recent reviews</h5>
-					<div class="p-4 bg-light rounded shadow-sm" th:each="review : ${reviews}">
-						<p class="font-italic mb-0" th:text="${review.content}"></p>
-						<ul class="list-inline small text-muted mt-3 mb-0">
+					<div class="p-4 bg-light rounded shadow-sm " th:each="review : ${reviews}">
+						<p class="font-italic mb-0 cardz" th:text="${review.content}"></p>
+						<ul class="list-inline small text-muted mt-3 mb-0 cardz">
 							<li class="list-inline-item" th:text="${review.barberDetail.getUser().firstName} + ' ' + ${review.barberDetail.getUser().lastName}"><i class="far fa-user-circle mr-2"></i></li>
 						</ul>
 					</div>
