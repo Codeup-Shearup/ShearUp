@@ -27,12 +27,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
                 <!--WITH BANG IF NOT AUTHENTICATED HIDE THESE-->
-                <th:block sec:authorize="!isAuthenticated()">
-                    <li class="nav-item">
-<!--                        <a class="nav-link" th:href="@{/login}">Login</a> this format does not work, why?  knoah-->
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                </th:block>
+<!--                <th:block sec:authorize="!isAuthenticated()">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="/login">Login</a>-->
+<!--                    </li>-->
+<!--                </th:block>-->
 
                 <!--IF AUTHENTICATED SHOW THESE-->
                 <!--LOGGED IN CLIENT / BARBER USER-->

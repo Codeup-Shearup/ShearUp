@@ -12,28 +12,30 @@
 /*CSS rules to specify families*/
 /*font-family: 'Mulish', sans-serif;*/
 
-/*:root{*/
-/*    --primary-dark-blue: #2B333D;*/
-/*    --dark-red: #8D2827;*/
-/*    --cream-font-primary: #C2B59B;*/
-/*    --lighter-cream: #FEFED3;*/
-/*    --black: #000000;*/
-/*    --white: #FFFFFF;*/
-/*}*/
-
+:root{
+    --primary-dark-blue: #2B333D;
+    --dark-red: #8D2827;
+    --cream-font-primary: #C2B59B;
+    --lighter-cream: #FEFED3;
+    --black: #000000;
+    --white: #FFFFFF;
+}
+* {
+    min-height: 100vh;
+}
 /** {*/
 /*    box-sizing: border-box;*/
 /*}*/
-/*html {*/
-/*    scroll-behavior: smooth;*/
-/*}*/
-/*html,*/
-/*body {*/
-/*    background-color: var(--primary-dark-blue);*/
-/*    color: #fff;*/
-/*    font-family: 'Mulish', sans-serif;*/
-/*    height: 100%;*/
-/*}*/
+html {
+    scroll-behavior: smooth;
+}
+html,
+body {
+    background-color: var(--primary-dark-blue);
+    color: #fff;
+    font-family: 'Mulish', sans-serif;
+    height: 100%;
+}
 
 
 /*!*NAVBAR*!*/
@@ -78,9 +80,6 @@
 /*.login-btn:focus, #subtract-btn:focus, #add-btn:focus, .close:focus{*/
 /*    outline: 0;*/
 /*}*/
-/*.page-content {*/
-/*    min-height: 100vh;*/
-/*}*/
 
 /*CHROME, SAFARI, EDGE, OPERA*/
 input[type=number]::-webkit-inner-spin-button,
@@ -96,3 +95,16 @@ input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-fill-color: #fff !important;
 }
+
+
+/* Small devices (phones and pocket devices, 576 and up) */
+@media screen and (min-width:576px) { /* ... */ }
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width:768px) { /* ... */ }
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width:992px) { /* ... */ }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width:1200px) { /* ... */ }
