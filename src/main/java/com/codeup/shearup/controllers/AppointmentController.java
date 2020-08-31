@@ -62,7 +62,7 @@ public class AppointmentController {
 //        Appointment appointment = appointmentDao.getOne(1L);
         appointment.setCreateDateTime(appointment.getCreateDateTime());
         appointmentDao.save(appointment);
-        return "redirect:/appointments";
+        return "redirect:/barbers";
     }
 
     //Delete Review GET

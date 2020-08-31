@@ -220,10 +220,12 @@
     </div>
     <!--Add a service with a photo attached ---try to span these horizontal -->
     <a th:href="@{/barber/add-service}">
-        <button class="btn btn-success">Add Service <i class="fas fa-camera-retro icon"></i></button>
+        <button class="btn btn-primary">Add Service <i class="fas fa-camera-retro icon"></i></button>
         <!--    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
     </a>
-</div>
+    <br>
+    <hr>
+
 <!--<p th:text="${@environment.getProperty('map.api.key')}"></p>-->
 <!--   added map-->
 <div id='map' style='width: 70%; height: 500px;'></div>
@@ -281,7 +283,6 @@
 
 </script>
 </div>
-
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="text/javascript" th:src="@{/js/file.js}"/>
 </div>
