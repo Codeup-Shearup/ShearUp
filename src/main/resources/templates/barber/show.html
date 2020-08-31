@@ -107,8 +107,18 @@
 <!--	<p th:text="${barber.barberDetail.location.zipCode}"></p>-->
 <!--</h1>-->
 
-
-
+	<div class="card" style=" width: 18rem;" th:each="review : ${barber.getBarberDetail().getReviews()}">
+		<!--   PICTURE OF SERVICE GOES HERE     -->
+		<img class="card-image-top" src="..." alt="">
+		<div class="card-body">
+			<h5 class="card-title"></h5><p class="card-text" th:text="${review.title}"></p>
+			<h5 class ="card-title"></h5><p class="card-text" th:text="${review.content}"></p>
+			<h5 class="card-title"></h5><p class="card-text" th:text="${review.rating}"></p>
+			<!--		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>-->
+		</div>
+	</div>
+	<a th:href="@{/reviews/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Review this barber</button></a>
+<br>
 <!--<h1>List of Services: </h1>-->
 
 <h1>
@@ -151,18 +161,18 @@
 
 <a th:href="@{/appointments/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Request appointment</button></a>
 
-<div class="card" style=" width: 18rem;" th:each="review : ${barber.getBarberDetail().getReviews()}">
-	<!--   PICTURE OF SERVICE GOES HERE     -->
-	<img class="card-image-top" src="..." alt="">
-	<div class="card-body">
-		<h5 class="card-title"></h5><p class="card-text" th:text="${review.title}"></p>
-		<h5 class ="card-title"></h5><p class="card-text" th:text="${review.content}"></p>
-		<h5 class="card-title"></h5><p class="card-text" th:text="${review.rating}"></p>
-		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>
-	</div>
-</div>
+<!--<div class="card" style=" width: 18rem;" th:each="review : ${barber.getBarberDetail().getReviews()}">-->
+<!--	&lt;!&ndash;   PICTURE OF SERVICE GOES HERE     &ndash;&gt;-->
+<!--	<img class="card-image-top" src="..." alt="">-->
+<!--	<div class="card-body">-->
+<!--		<h5 class="card-title"></h5><p class="card-text" th:text="${review.title}"></p>-->
+<!--		<h5 class ="card-title"></h5><p class="card-text" th:text="${review.content}"></p>-->
+<!--		<h5 class="card-title"></h5><p class="card-text" th:text="${review.rating}"></p>-->
+<!--&lt;!&ndash;		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>&ndash;&gt;-->
+<!--	</div>-->
+<!--</div>-->
 
-<a th:href="@{/reviews/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Review this barber</button></a>
+<!--<a th:href="@{/reviews/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Review this barber</button></a>-->
 
 </div>
 <footer th:replace="partials :: footer"></footer>
