@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
 <head th:replace="partials :: head (Title = 'Entered Bio: ')">
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-lg">
         
         <a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i> SHEARUP</a>
         
@@ -81,16 +81,16 @@
 
     <div class="form-group">
         <label for="phone">Phone Number: <span class="required">*</span></label>
-        <input class="form-control border border-danger rounded" type="number" th:field="*{phone}" id="phone" placeholder="Enter Phone " required oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        <input class="form-control border border-danger rounded" type="number" th:field="*{phone}" id="phone" placeholder="8305329812" required oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 maxlength = "10">
     </div>
 
     <div class="form-group">
         <label for="hours">Hours of Operation: <span class="required">*</span></label>
-        <input class="form-control border border-danger rounded" type="text" th:field="*{hoursOfWork}" id="hours" placeholder="Monday-Saturday, 8am-8pm " required>
+        <input class="form-control border border-danger rounded" type="text" th:field="*{hoursOfWork}" id="hours" placeholder="Monday-Saturday from 8am-8pm " required>
     </div>
 
-    <button class="btn btn-primary">Submit Bio</button>
+    <button class="btn" style="color: #FEFED3">Submit Bio</button>
 </form>
 </div>
 <footer th:replace="partials :: footer"></footer>

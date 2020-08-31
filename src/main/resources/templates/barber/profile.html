@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <head th:replace="partials :: head (Title = 'View Barber Profile')">
-        <meta charset="UTF-8">
-        <title>Barber profile page</title>
-        <meta class="map" th:content="${@environment.getProperty('map.api.key')}">
-        <!--FONT AWESOME ICONS-->
-        <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
-
-    </head>
+    <head th:replace="partials :: head (Title = 'View Barber Profile')"></head>
+    <meta charset="UTF-8">
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+    <title>Barber profile page</title>
+    <meta class="map" th:content="${@environment.getProperty('map.api.key')}">
+    <!--FONT AWESOME ICONS-->
+    <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!--Added script here, this is for mapbox SDK-->
@@ -215,7 +213,6 @@
         <!--        <button class="btn btn-danger">Delete</button>-->
         <!--    </form>-->
 
-
         <form th:action="@{/barber/edit-service}" th:method="get">
             <input type="hidden" th:name="editButton" th:value="${service.id}">
             <button class="btn btn-primary">Edit Service <i class="fas fa-edit"></i></button>
@@ -231,14 +228,15 @@
 <!--   added map-->
 <div id='map' style='width: 70%; height: 500px;'></div>
 <!--   added three spans below, display is none-->
-<span id="map_addr1" style="display: none;" th:text="${user.barberDetail.location.addressOne}"></span>
-<span id="map_city" style="display: none;" th:text="${user.barberDetail.location.city}"></span>
-<span id="map_state" style="display: none;" th:text="${user.barberDetail.location.state}"></span>
+<script th:src="@{/js/keys.js}"></script>
+<span id="map_addr1" style="display: none;" th:text="${location.addressOne}"></span>
+<span id="map_city" style="display: none;" th:text="${location.city}"></span>
+<span id="map_state" style="display: none;" th:text="${location.state}"></span>
 <!--   added the entire script below -->
-<script th:inline="javascript">
+<script>
     // change the accessToken to yours, use the application.properties to fetch the token
     // mapboxgl.accessToken = '';
-    const MAPBOX_KEY = document.querySelector('map.api.key').content; //issue with connecting to page - it does pop up with hardcoded API KEY!!
+    const MAPBOX_KEY = document.querySelector('meta.map').content; //issue with connecting to page - it does pop up with hardcoded API KEY!!
     mapboxgl.accessToken = MAPBOX_KEY;
     var mapboxClient = mapboxSdk({accessToken: mapboxgl.accessToken});
     // Grabbed the three spans and assigned them to vars (spans come from the controller)
@@ -286,7 +284,6 @@
 
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="text/javascript" th:src="@{/js/file.js}"/>
-<!--<script th:src="@{/js/keys.js}"></script>-->
 </div>
 
 <footer th:replace="partials :: footer"></footer>
