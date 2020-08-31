@@ -201,7 +201,7 @@
             <h5 class="card-title">Duration: </h5>
             <p class="card-text" th:text="${service.duration}"></p>
             <h5 class="card-title">Price: </h5>
-            <p class="card-text" th:text="${service.price}"></p>
+            <p class="card-text" th:text="'$' + ${service.price} + '.00'"></p>
         </div>
         <div th:each="image :${service.getImages()}">
             <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"
