@@ -45,11 +45,12 @@
 			<div class="py-4 px-4 cardz">
 				<div class="py-4">
 					<h5 class="mb-3">Recent reviews</h5>
-					<div class="p-4 bg-light rounded shadow-sm " th:each="review : ${reviews}">
+					<div class="p-4 rounded shadow-sm cardz" th:each="review : ${reviews}">
 						<p class="font-italic mb-0 cardz" th:text="${review.content}"></p>
 						<ul class="list-inline small text-muted mt-3 mb-0 cardz">
 							<li class="list-inline-item" th:text="${review.barberDetail.getUser().firstName} + ' ' + ${review.barberDetail.getUser().lastName}"><i class="far fa-user-circle mr-2"></i></li>
 						</ul>
+						<a class="btn btn-danger" th:href="@{'/reviews/' + ${review.id} + '/delete'}">Delete Review</a>
 					</div>
 				</div>
 			</div>

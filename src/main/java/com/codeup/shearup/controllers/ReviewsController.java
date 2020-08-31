@@ -66,7 +66,7 @@ public class ReviewsController {
         review.setAuthor(user);
         model.addAttribute("rating", review);
         reviewsDao.save(review);
-        return "redirect:/reviews";
+        return "redirect:/barbers";
     }
 
     //creation time stamp
@@ -108,7 +108,7 @@ public class ReviewsController {
     public String deleteReview(@ModelAttribute Review review){
         Review deleteReview = reviewsDao.getOne(review.getId());
         reviewsDao.delete(deleteReview);
-        return "redirect:/reviews";
+        return "redirect:/profile";
     }
 
 
