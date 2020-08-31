@@ -1,12 +1,21 @@
 package com.codeup.shearup.repositories;
 
 import com.codeup.shearup.models.Appointment;
-import org.hibernate.mapping.List;
+import com.codeup.shearup.models.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 // Ad is the reference type of the entity to CRUD
 // Long is the reference type for the primary key of Ad
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 //    List<Appointments> findAppointmentByUserId(long id);
+
+    @Query("from Appointment a where a.barberDetail.id = ?1")
+    List<Appointment> findAllAppointmentsByBarber(long barberDetailsId);
+
+    @Query("from Appointment a where a.user.id = ?1")
+    List<Appointment> findAllAppointmentsByAuthor(long userId);
 
 }

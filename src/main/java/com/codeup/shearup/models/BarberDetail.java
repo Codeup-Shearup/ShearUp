@@ -49,7 +49,10 @@ public class BarberDetail {
     private List<Review> reviews;
 
 
-    //=======TODO: UPDATE GETTERS AND SETTERS========
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "barberDetail", fetch = FetchType.LAZY)
+    private List<Appointment> appointments;
+
+//=======TODO: UPDATE GETTERS AND SETTERS========
 
     //Empty Constructor
     public BarberDetail(){ }
@@ -89,6 +92,18 @@ public class BarberDetail {
         this.user = user;
         this.services = services;
         this.reviews = reviews;
+    }
+
+    public BarberDetail(long id, String bio, String phone, String hoursOfWork, Location location, User user, List<Service> services, List<Review> reviews, List<Appointment> appointments) {
+        this.id = id;
+        this.bio = bio;
+        this.phone = phone;
+        this.hoursOfWork = hoursOfWork;
+        this.location = location;
+        this.user = user;
+        this.services = services;
+        this.reviews = reviews;
+        this.appointments = appointments;
     }
 
     //GETTERS AND SETTERS
@@ -157,4 +172,11 @@ public class BarberDetail {
         this.reviews = reviews;
     }
 
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
 }

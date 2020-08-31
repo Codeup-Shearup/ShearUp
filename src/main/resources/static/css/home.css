@@ -11,7 +11,7 @@
 
 body, html {
 	height: 100%;
-	/*background-color: #2B333D;*/
+	background-color: #8D2827;
 	/*background-color: rgba(43, 51, 61, 0.4);*/
 	/*background-image: url("/static/img/barber-tools.jpg");*/
 	/*background-position: center;*/
@@ -54,3 +54,36 @@ header, .navbar, .navbar-brand, .navbar-toggler, .navbar-toggler-icon, .nav-item
 	color: #C2B59B !important;
 }
 
+.home-main {
+	background-color: #8D2827;
+}
+
+.home-main-section {
+	background-color: #2B333D;
+	color: #FEFED3;
+}
+
+.hr-home {
+	color: #8D2827;
+}
+
+.pic-1 {
+	background-image: url("../img/shave-mask.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.pic-2 {
+	background-image: url("../img/barber.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.pic-3 {
+	background-image: url("../img/shave-phonebooth.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}

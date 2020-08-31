@@ -3,6 +3,8 @@
 
   <head th:replace="partials :: head (Title = 'Home Page')">
 	  <meta charset="UTF-8">
+<!--	  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />-->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <!--	  <link rel="stylesheet" type="text/css" href="/static/css/home.css" th:href="@{/css/home.css}">-->
   </head>
 
@@ -24,5 +26,92 @@
 	</div>
 </main>
 
+<main class="home-main">
+	<div class="container home-main-section rounded-lg shadow-lg">
+		<section class="section text-center mt-5">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-12 col-md-10">
+						<h2 class="mb-5 pt-4">Why ShearUp?</h2>
+						<p>Because supporting local barbers is important; now, more than ever before. ShearUp was dreamed up
+						at the beginning of the pandemic of 2020. When stay-at-home orders were put into place, it made it near
+						impossible for barbers and clients to unite.</p>
+						<p>ShearUp makes it easy for barbers and clients to reconnect, or to connect for the first time!</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="text-center container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10">
+					<h2 class="mb-4 mt-4">How do I ShearUp?</h2>
+				</div>
+			</div>
+			<div class="container">
+				
+				<div class="row" style="margin-bottom: 4rem">
+					<div class="col-md-12">
+						<div class="row border-0">
+							<div class="col-md-4 m-auto" style="display: flex; align-items: center;">
+								<div class="pic-1" style="width:300px; height: 300px; border-radius:50%;"></div>
+							</div>
+							<div class="col-md-8 my-auto pl-5">
+								<h3 class="card-title mb-1">Barbers</h3>
+								<hr class="hr-home w-50">
+								<p class="card-text">
+									Your clients are your business. Create your own custom profile page where you can
+									share a bit about yourself with clients, such as when and where you work, show off your
+									portfolio of services and styles, and keep track of your clients, both current and new.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="row" style="margin-bottom: 4rem">
+					<div class="col-md-12">
+						<div class="row border-0">
+							<div class="col-md-8 my-auto pr-5">
+								<h3 class="card-title mb-1">Clients</h3>
+								<hr class="hr-home w-50">
+								<p class="card-text">
+									Is that hair getting a little long? Is that beard getting a bit scruffy? Would you REALLY
+									trust someone at home to take those clippers to your head? With ShearUp you can find local
+									barbers, browse their services and styles, and request an appointment right from their profile.
+								</p>
+							</div>
+							<div class="col-md-4 m-auto" style="display: flex; align-items: center;">
+								<div class="pic-2" style="width:300px; height: 300px; border-radius:50%;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="row pb-5" style="margin-bottom: 4rem">
+					<div class="col-md-12">
+						<div class="row border-0">
+							<div class="col-md-4 m-auto" style="display: flex; align-items: center;">
+								<div class="pic-3" style="width:300px; height: 300px; border-radius:50%;"></div>
+							</div>
+							<div class="col-md-8 my-auto pl-5">
+								<h3 class="card-title mb-1">Community</h3>
+								<hr class="hr-home w-50">
+								<p class="card-text">
+									Whether you're a barber or a client, ShearUp aims to build a community of people and
+									revitalize an industry deeply impacted by the pandemic of 2020.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		</section>
+	</div>
+</main>
+
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
