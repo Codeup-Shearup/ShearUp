@@ -55,6 +55,7 @@ public class BarberController {
     //===BARBER PROFILE CLIENTS VIEW===
     @GetMapping("/barber/profile/{id}")
     public String barberProfile(@PathVariable long id, Model model) {
+
         User barber = usersDao.getOne(id);
         //=======FIND SERVICES BY USERID ADD TO SERVICES REPOSITORY======//
 //        model.addAttribute("services", servicesDao.findAllByBarberDetail(barber.getBarberDetail()));
@@ -63,6 +64,8 @@ public class BarberController {
 //        model.addAttribute("location", locationsDao.getOne(barber.getId()));
 //        model.addAttribute("reviews", reviewsDao.findAllReviewsByBarber(barber.getBarberDetail().getId()));
         //=====REPRESENTS CURRENTLY LOGGED IN USER=====//
+        List<Review> reviews = reviewsDao.findAllReviewsByBarber(barber.getBarberDetail().getId());
+        model.addAttribute("reviews", reviews);
         model.addAttribute("barber", barber);
         return"barber/show";
     }

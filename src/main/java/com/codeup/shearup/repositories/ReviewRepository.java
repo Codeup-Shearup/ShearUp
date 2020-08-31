@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-	@Query("from Review r where r.barberDetail = ?1")
+	@Query("from Review r where r.barberDetail.id = ?1")
     List<Review> findAllReviewsByBarber(long barberDetailsId);
 	
 	@Query("from Review r where r.author.id = ?1")
