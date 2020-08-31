@@ -12,10 +12,10 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 //    List<Appointments> findAppointmentByUserId(long id);
 
-    @Query("from Review r where r.barberDetail.id = ?1")
+    @Query("from Appointment a where a.barberDetail.id = ?1")
     List<Appointment> findAllAppointmentsByBarber(long barberDetailsId);
 
-    @Query("from Review r where r.author.id = ?1")
+    @Query("from Appointment a where a.user.id = ?1")
     List<Appointment> findAllAppointmentsByAuthor(long userId);
 
 }
