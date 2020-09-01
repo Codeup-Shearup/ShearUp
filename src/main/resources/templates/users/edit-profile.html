@@ -3,9 +3,35 @@
 <head th:replace="partials :: head (Title = 'Edit Profile')"></head>
 <body>
 
+<style>
+	body {
+		background-color: #2B333D;
+		color: #FEFED3;
+	}
+	
+	.cardz {
+		background-color: #2B333D;
+	}
+	
+	.btn-submit {
+		background-color: #FEFED3 !important;
+		color: #2B333D !important;
+	}
+	.btn-submit:hover {
+		background-color: #C2B59B !important;
+		color: #FEFED3 !important;
+	}
+	
+	.div1 {
+		border: 15px #8D2827;
+		padding: 50px;
+		margin: 20px;
+	}
+</style>
+
 <header th:replace="partials :: header"></header>
 
-<div class="container p-5 border-left">
+<div class="container p-5">
 	
 	<h2>Edit Profile</h2>
 	
@@ -16,19 +42,19 @@
 		style="margin-top: -5%;">
 	<div class="form-group">
 		<label for="editFirstName">First Name</label>
-		<input type="text" class="form-control" id="editFirstName" name="editFirstName" th:field="*{firstName}" th:value="${user.firstName}">
+		<input type="text" class="form-control border border-danger" id="editFirstName" name="editFirstName" th:field="*{firstName}" th:value="${user.firstName}">
 	</div>
 	<div class="form-group">
 		<label for="editLastName">Last Name</label>
-		<input type="text" class="form-control" id="editLastName" name="editLastName" th:field="*{lastName}" th:value="${user.lastName}">
+		<input type="text" class="form-control border border-danger" id="editLastName" name="editLastName" th:field="*{lastName}" th:value="${user.lastName}">
 	</div>
 	<div class="form-group">
 		<label for="editUsername">Username</label>
-		<input type="text" class="form-control" id="editUsername" name="editUsername" th:field="*{username}" th:value="${user.username}">
+		<input type="text" class="form-control border border-danger" id="editUsername" name="editUsername" th:field="*{username}" th:value="${user.username}">
 	</div>
 	<div class="form-group">
 		<label for="editEmail">Email</label>
-		<input type="text" class="form-control" id="editEmail" name="editEmail" th:field="*{email}" th:value="${user.email}">
+		<input type="text" class="form-control border border-danger" id="editEmail" name="editEmail" th:field="*{email}" th:value="${user.email}">
 	</div>
 <!--	<div class="form-group">-->
 <!--		<label for="editPassword">Password</label>-->
@@ -39,8 +65,8 @@
 <!--		<span id="message"></span>-->
 <!--		<input id="passwordConfirmation" name="passwordConfirmation" type="password" />-->
 <!--	</div>-->
-	<button style="border-left: 4px solid navy;" class="btn btn-dark text-white" type="submit">Save</button>
-	<a class="btn btn-secondary float-right" style="text-decoration: none; color:black;" th:href="@{/profile}">back</a>
+	<button class="btn btn-submit" type="submit">Save</button>
+	<a class="btn btn-submit float-right" style="text-decoration: none; color:black;" th:href="@{/profile}">back</a>
 </form>
 </div>
 <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
