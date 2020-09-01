@@ -9,7 +9,7 @@
 	color: #FEFED3;
 }
 
-body, html {
+.home-body, .home-html {
 	height: 100%;
 	background-color: #8D2827;
 	/*background-color: rgba(43, 51, 61, 0.4);*/
@@ -41,13 +41,18 @@ body, html {
 }
 
 header, .navbar, .navbar-brand, .navbar-toggler, .navbar-toggler-icon, .nav-item, .nav-link {
-	background-color: #2B333D;
-	color: #FEFED3;
+	/*BLUE NAV W/ CREAM FONT*/
+	background-color: #A7754D;
+	color: #2B333D;
+	/*TAN NAV W/ DARK BLUE FONT*/
+	/*background-color: #DCCCBB;*/
+	/*color: #2B333D;*/
+	/*BROWN NAV W/ DARK BLUE FONT*/
 }
 
 .nav-link:hover {
-	background-color: #FEFED3;
-	color: #2B333D;
+	background-color: #2B333D;
+	color: #DCCCBB;
 }
 
 .icon {
