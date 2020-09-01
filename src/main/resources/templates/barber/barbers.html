@@ -24,8 +24,11 @@
 
 
 <header th:replace="partials :: header"></header>
+<h1 class="text-center">Displaying All Barbers</h1>
+<br>
+<br>
 <div class="container">
-    <div class="row row-cols-1 row-cols-md-3">
+    <div class="row row-cols-1 row-cols-md-3 pt-5">
         <div class="card cardz" th:each="barber : ${barbers}" th:if="${barber.barberDetail != null}">
             <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="gentleman_placeholder"
                                            width="196" class="rounded mb-2 img-thumbnail">
@@ -42,6 +45,7 @@
         </div>
     </div>
 </div>
+
 
 
 

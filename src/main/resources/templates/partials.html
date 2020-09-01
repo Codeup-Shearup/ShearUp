@@ -37,7 +37,7 @@
 <!--							<a class="nav-link ml-3" th:href="@{/sign-up}">Sign Up</a>-->
 <!--						</li>-->
 						<li class="nav-item">
-							<a class="nav-link ml-3" th:href="@{/about}"><i class="fas fa-head-side-mask"></i>  Contact Us</a>
+							<a class="nav-link ml-3" th:href="@{/about}"><i class="fas fa-head-side-mask"></i>  CONTACT US</a>
 						</li>
 					</th:block>
 
@@ -61,7 +61,7 @@
 <!--							<a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
 <!--						</li>-->
 						<li class="nav-item">
-							<a class="nav-link" th:href="@{/mapbox-map}"><i class="fas fa-map-marked-alt"></i></a>
+							<a class="nav-link" th:href="@{/mapbox-map}"><i class="fas fa-map-marked-alt"></i> MAP</a>
 						</li>
 <!--						<li class="nav-item">-->
 <!--							<a class="nav-link" th:href="@{/reviews}"><i class="fas fa-thumbs-up"></i> Reviews</a>-->
@@ -70,10 +70,10 @@
 <!--							<a class="nav-link" th:href="@{/appointments}"><i class="fas fa-clipboard-list"></i> Appointments</a>-->
 <!--						</li>-->
 						<li class="nav-item">
-							<a class="nav-link" th:href="@{/barbers}"><i class="fas fa-users"></i> Barbers</a>
+							<a class="nav-link" th:href="@{/barbers}"><i class="fas fa-users"></i> BARBERS</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" th:href="@{/about}">Contact Us</a>
+							<a class="nav-link" th:href="@{/about}"><i class="fas fa-head-side-mask"></i> CONTACT US</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/profile}"><i class="fas fa-user-tie"></i></a>
@@ -89,21 +89,23 @@
 		</nav>
 </header>
 
-<footer class="footer position-sticky footer-expand-lg" th:fragment="footer">
+<!--<footer class="footer fixed-bottom footer-expand-lg" th:fragment="footer">-->
+	<footer th:fragment="footer" style="background-color: #7d7d7d; height: 10%; z-index:8000; position: fixed; left: 0; bottom: 0; width: 100%; text-align: center; color:white;">
 	<div class="container min-vh-100">
-		<div class="row">
-			<div class="col-md-8 col-sm-6 col-xs-12">
-				<p class="copyright-text">If you have any suggestions to make this extension better please send us an email.
-					<a href="">shearup.services@gmail.com</a>
-				</p>
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-12">
+		<div class="row d-flex justify-content-center">
+			<div class="pt-3 col-md-6 col-sm-6 col-xs-12">
 				<ul class="social-icons">
 					<li><a class="facebook" href="https://www.facebook.com/GoCodeup/"><i class="fa fa-facebook"></i></a></li>
 					<li><a class="twitter" href="https://twitter.com/shear_up"><i class="fa fa-twitter"></i></a></li>
 					<li><a class="instagram" href="https://www.instagram.com/shear_up/"><i class="fab fa-instagram"></i></a></li>
 					<li><a class="linkedin" href="https://www.linkedin.com/in/cottoknoah"><i class="fa fa-linkedin"></i></a></li>
 				</ul>
+			</div>
+			<br>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<p class="copyright-text pt-4">
+					<a href=""style="color: #2B333D;">shearup.services@gmail.com</a>
+				</p>
 			</div>
 		</div>
 	</div>
