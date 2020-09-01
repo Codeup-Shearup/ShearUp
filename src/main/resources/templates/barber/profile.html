@@ -132,23 +132,41 @@
 
     <h1 class="card-title">New Leads</h1>
 
-    <div class="px-4 pt-0 pb-4 bg-dark" th:each="appointment : ${user.getBarberDetail().getAppointments()}">
-        <div class="media align-items-end profile-header">
-            <!--            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>-->
-            <div class="media-body mb-5 text-white">
-                <h5>Created At: </h5>
-                <p class="mt-0 mb-0">
-                <p th:text="${appointment.createDateTime}"></p>
-                <h5>Contact information: </h5>
-                <p class="small mb-4" th:text="${appointment.phone}"><i class="fas fa-at mr-2"></i></p>
-                <h5>Details: </h5>
-                <p class="small mb-4" th:text="${appointment.note}"><i class="far fa-envelope mr-2"></i>>
-                </p>
-                <a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Appointments</a>
-            </div>
-        </div>
-    </div>
+    <!--    <div class="px-4 pt-0 pb-4 bg-dark" th:each="appointment : ${user.getBarberDetail().getAppointments()}">-->
+    <!--        <div class="media align-items-end profile-header">-->
+    <!--            &lt;!&ndash;            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>&ndash;&gt;-->
+    <!--            <div class="media-body mb-5 text-white">-->
+    <!--                <h5>Created At: </h5>-->
+    <!--                <p class="mt-0 mb-0">-->
+    <!--                <p th:text="${appointment.createDateTime}"></p>-->
+    <!--                <h5>Contact information: </h5>-->
+    <!--                <p class="small mb-4" th:text="${appointment.phone}"><i class="fas fa-at mr-2"></i></p>-->
+    <!--                <h5>Details: </h5>-->
+    <!--                <p class="small mb-4" th:text="${appointment.note}"><i class="far fa-envelope mr-2"></i>>-->
+    <!--                </p>-->
+    <!--                <a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Appointments</a>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Created</th>
+            <th>Contact Information</th>
+            <th>Details</th>
+            <th>View Lead</th>
+        </tr>
+        </thead>
+        <tbody th:each="appointment : ${user.getBarberDetail().getAppointments()}">
+        <tr>
+            <td><span class="date" th:text="${appointment.createDateTime}"></span></td>
+            <td th:text="${appointment.phone}"></td>
+            <td th:text="${appointment.note}"></td>
+            <td><a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Lead</td>
+        </tr>
+        </tbody>
+    </table>
     <!--<div class="px-4 pt-0 pb-4 bg-dark">-->
     <!--    <h5 class="mb-3">Recent Leads</h5>-->
     <!--    <div class="p-4 bg-light rounded shadow-sm bg-dark" th:each="appointment : ${user.getBarberDetail().getAppointments()}">-->
@@ -169,6 +187,11 @@
         <small class="text-muted">See below</small>
     </h1>
 
+    <a th:href="@{/barber/add-service}">
+        <button class="btn btn-primary">Add Service <i class="fas fa-camera-retro icon"></i></button>
+        <!--    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
+    </a>
+
     <!--<div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">-->
     <!--    <div class="media align-items-end profile-header">-->
     <!--        &lt;!&ndash;            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>&ndash;&gt;-->
@@ -187,104 +210,131 @@
     <!--    </div>-->
     <!--</div>-->
 
+    <div class="row row-cols-1 row-cols-md-3">
 
-    <div class="card border border-danger rounded" style=" width: 19rem;"
-         th:each="service : ${user.getBarberDetail().getServices()}">
+        <div class="card border border-danger rounded" style=" width: 19rem;"
+             th:each="service : ${user.getBarberDetail().getServices()}">
 
-        <!--   PICTURE OF SERVICE GOES HERE     -->
-        <img class="card-image-top" src="..." alt="">
-        <div class="card-body">
-            <h5 class="card-title">Title: </h5>
-            <p class="card-text" th:text="${service.title}"></p>
-            <h5 class="card-title">Description: </h5>
-            <p class="card-text" th:text="${service.description}"></p>
-            <h5 class="card-title">Duration: </h5>
-            <p class="card-text" th:text="${service.duration}"></p>
-            <h5 class="card-title">Price: </h5>
-            <p class="card-text" th:text="'$' + ${service.price} + '.00'"></p>
+            <!--   PICTURE OF SERVICE GOES HERE     -->
+            <!--            <img class="card-image-top" src="..." alt="">-->
+            <div class="card-image-top" th:each="image :${service.getImages()}">
+                <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"
+                     style="height: 200px"></img>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Title: </h5>
+                <p class="card-text" th:text="${service.title}"></p>
+                <h5 class="card-title">Description: </h5>
+                <p class="card-text" th:text="${service.description}"></p>
+                <h5 class="card-title">Duration: </h5>
+                <p class="card-text" th:text="${service.duration}"></p>
+                <h5 class="card-title">Price: </h5>
+                <p class="card-text" th:text="${service.price}"></p>
+            </div>
+            <!--            <div th:each="image :${service.getImages()}">-->
+            <!--                <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"-->
+            <!--                     style="height: 200px"></img>-->
+            <!--            </div>-->
+
+
+            <!--    <form th:action="@{/barber/service-delete}" th:method="post">-->
+            <!--        <input type="hidden" th:name="deleteButton" th:value="${service.id}">-->
+            <!--        <button class="btn btn-danger">Delete</button>-->
+            <!--    </form>-->
+
+            <form th:action="@{/barber/edit-service}" th:method="get">
+                <input type="hidden" th:name="editButton" th:value="${service.id}">
+                <button class="btn btn-primary">Edit Service <i class="fas fa-edit"></i></button>
+            </form>
         </div>
-        <div th:each="image :${service.getImages()}">
-            <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"
-                 style="height: 200px"></img>
-        </div>
-
-        <!--    <form th:action="@{/barber/service-delete}" th:method="post">-->
-        <!--        <input type="hidden" th:name="deleteButton" th:value="${service.id}">-->
-        <!--        <button class="btn btn-danger">Delete</button>-->
-        <!--    </form>-->
-
-        <form th:action="@{/barber/edit-service}" th:method="get">
-            <input type="hidden" th:name="editButton" th:value="${service.id}">
-            <button class="btn btn-primary">Edit Service <i class="fas fa-edit"></i></button>
-        </form>
     </div>
     <!--Add a service with a photo attached ---try to span these horizontal -->
-    <a th:href="@{/barber/add-service}">
-        <button class="btn btn-primary">Add Service <i class="fas fa-camera-retro icon"></i></button>
-        <!--    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
-    </a>
+    <!--    <a th:href="@{/barber/add-service}">-->
+    <!--        <button class="btn btn-primary">Add Service <i class="fas fa-camera-retro icon"></i></button>-->
+    <!--        &lt;!&ndash;    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>&ndash;&gt;-->
+    <!--    </a>-->
     <br>
     <hr>
 
-<!--<p th:text="${@environment.getProperty('map.api.key')}"></p>-->
-<!--   added map-->
-<div id='map' style='width: 70%; height: 500px;'></div>
-<!--   added three spans below, display is none-->
-<script th:src="@{/js/keys.js}"></script>
-<span id="map_addr1" style="display: none;" th:text="${user.barberDetail.location.addressOne}"></span>
-<span id="map_city" style="display: none;" th:text="${user.barberDetail.location.city}"></span>
-<span id="map_state" style="display: none;" th:text="${user.barberDetail.location.state}"></span>
-<!--   added the entire script below -->
-<script>
-    // change the accessToken to yours, use the application.properties to fetch the token
-    // mapboxgl.accessToken = '';
-    const MAPBOX_KEY = document.querySelector('meta.map').content; //
-    mapboxgl.accessToken = MAPBOX_KEY;
-    var mapboxClient = mapboxSdk({accessToken: mapboxgl.accessToken});
-    // Grabbed the three spans and assigned them to vars (spans come from the controller)
-    var address = document.getElementById("map_addr1").innerHTML;
-    var city = document.getElementById("map_city").innerHTML;
-    var state = document.getElementById("map_state").innerHTML;
-    // geocoded it (turned it into lat/long)
-    mapboxClient.geocoding
-        .forwardGeocode({
-            query: address + "," + city + "," + state,
-            autocomplete: false,
-            limit: 1
-        })
-        // sent it to Mapbox SDK/API
-        .send()
-        // Take the response from API in form of JS promise
-        .then(function (response) {
-            // check if response is valid
-            if (
-                response &&
-                response.body &&
-                response.body.features &&
-                response.body.features.length
-            ) {
-                // if yes, grab the response (JSON) into a var
-                var feature = response.body.features[0];
+    <!--<p th:text="${@environment.getProperty('map.api.key')}"></p>-->
+    <!--   added map-->
+    <div id='map' style='width: 70%; height: 500px;'></div>
+    <!--   added three spans below, display is none-->
+    <script th:src="@{/js/keys.js}"></script>
+    <span id="map_addr1" style="display: none;" th:text="${user.barberDetail.location.addressOne}"></span>
+    <span id="map_city" style="display: none;" th:text="${user.barberDetail.location.city}"></span>
+    <span id="map_state" style="display: none;" th:text="${user.barberDetail.location.state}"></span>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 
-                // init the map object, pass in params
-                var map = new mapboxgl.Map({
-                    container: 'map',
-                    // style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-                    // style: 'mapbox://styles/mapbox/satellite-streets-v11', //satellite version
-                    style: 'mapbox://styles/mapbox/dark-v10',
-                    center: feature.center,
-                    zoom: 10
-                });
-                // take the response var (feature) and set the lat and long .setLngLat()
-                // then add to map .addTo()
-                new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
-            }
-        });
+    <!--   added the entire script below -->
+    <script>
+        // change the accessToken to yours, use the application.properties to fetch the token
+        // mapboxgl.accessToken = '';
+        const MAPBOX_KEY = document.querySelector('meta.map').content; //
+        mapboxgl.accessToken = MAPBOX_KEY;
+        var mapboxClient = mapboxSdk({accessToken: mapboxgl.accessToken});
+        // Grabbed the three spans and assigned them to vars (spans come from the controller)
+        var address = document.getElementById("map_addr1").innerHTML;
+        var city = document.getElementById("map_city").innerHTML;
+        var state = document.getElementById("map_state").innerHTML;
+        // geocoded it (turned it into lat/long)
+        mapboxClient.geocoding
+            .forwardGeocode({
+                query: address + "," + city + "," + state,
+                autocomplete: false,
+                limit: 1
+            })
+            // sent it to Mapbox SDK/API
+            .send()
+            // Take the response from API in form of JS promise
+            .then(function (response) {
+                // check if response is valid
+                if (
+                    response &&
+                    response.body &&
+                    response.body.features &&
+                    response.body.features.length
+                ) {
+                    // if yes, grab the response (JSON) into a var
+                    var feature = response.body.features[0];
 
-</script>
+                    // init the map object, pass in params
+                    var map = new mapboxgl.Map({
+                        container: 'map',
+                        // style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                        // style: 'mapbox://styles/mapbox/satellite-streets-v11', //satellite version
+                        style: 'mapbox://styles/mapbox/dark-v10',
+                        center: feature.center,
+                        zoom: 10
+                    });
+                    // take the response var (feature) and set the lat and long .setLngLat()
+                    // then add to map .addTo()
+                    new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
+                }
+            });
+
+        // to view the many options for how to display a date, visit: https://momentjs.com/docs/#/displaying/
+        "use strict";
+        const dates = document.querySelectorAll(".date");
+        for (let date of dates) {
+            date.innerText = moment(date.innerText).format("l");
+        }
+    </script>
 </div>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="text/javascript" th:src="@{/js/file.js}"/>
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>-->
+<!-- Include the script to convert all dates -->
+<!--<script>-->
+<!--    // to view the many options for how to display a date, visit: https://momentjs.com/docs/#/displaying/-->
+<!--    "use strict";-->
+<!--    const dates = document.querySelectorAll(".date");-->
+<!--    for (let date of dates) {-->
+<!--        date.innerText = moment(date.innerText).format("l");-->
+<!--    }-->
+<!--</script>-->
+
 </div>
 
 <footer th:replace="partials :: footer"></footer>
