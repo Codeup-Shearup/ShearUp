@@ -28,6 +28,15 @@
     h2 {
         color: #FEFED3;
     }
+
+    .btn-submit {
+        background-color: #FEFED3 !important;
+        color: #2B333D !important;
+    }
+    .btn-submit:hover {
+        background-color: #C2B59B !important;
+        color: #FEFED3 !important;
+    }
 </style>
 <header th:replace="partials :: header"></header>
 <div class="container">
@@ -61,8 +70,8 @@
         <input type="hidden" id="imageUpload" name="imageUpload" value="null">
         <img src="" class="hidden" id="imagePreview" style="height: 200px">
 
-        <button class="btn btn-primary">Add Service</button>
-        <a class="btn btn-primary float-right" style="text-decoration: none; color:black;" th:href="@{/barber/profile}">Back</a>
+        <button class="btn btn-primary btn-submit">Add Service</button>
+        <a class="btn btn-primary float-right btn-primary btn-submit" style="text-decoration: none; color:black;" th:href="@{/barber/profile}"><i class="fas fa-arrow-circle-left"></i></a>
     </form>
 
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
