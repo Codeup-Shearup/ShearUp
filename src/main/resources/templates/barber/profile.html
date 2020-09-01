@@ -58,7 +58,7 @@
 <div class="container">
     <!--<h1>Barber Profile page of <p th:text="${user.firstName}"></p></h1>-->
     <div class="d-flex d-inline">
-        <h1 class="text-center">Welcome, </h1>
+        <h1 class="text-center">Welcome </h1>
         <h1 class="text-center" th:text="${user.firstName}">!</h1>
     </div>
 
@@ -100,7 +100,7 @@
     <!--    </div>-->
 
     <!--    <div class="card border-danger rounded" style=" width: 19rem;">-->
-    <h1 class="card-title">Location of Business: </h1>
+    <h1 class="card-title">Location of Business</h1>
 
     <div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">
         <div class="media align-items-end profile-header">
@@ -172,7 +172,7 @@
             <td><span class="date" th:text="${appointment.createDateTime}"></span></td>
             <td th:text="${appointment.phone}"></td>
             <td th:text="${appointment.note}"></td>
-            <td><a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Lead</td>
+            <td><a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Lead</a></td>
         </tr>
         </tbody>
     </table>
@@ -265,7 +265,6 @@
     <br>
     <hr>
 
-<!--<p th:text="${@environment.getProperty('map.api.key')}"></p>-->
 <!--   added map-->
 <div id='map' style='width: 70%; height: 500px;'></div>
 <!--   added three spans below, display is none-->
