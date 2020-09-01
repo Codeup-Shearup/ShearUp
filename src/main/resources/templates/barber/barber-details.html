@@ -69,6 +69,15 @@
         label {
             color: #FEFED3;
         }
+
+        .btn-submit {
+            background-color: #FEFED3 !important;
+            color: #2B333D !important;
+        }
+        .btn-submit:hover {
+            background-color: #C2B59B !important;
+            color: #FEFED3 !important;
+        }
     </style>
 </header>
 <div class="container">
@@ -90,7 +99,7 @@
         <input class="form-control border border-danger rounded" type="text" th:field="*{hoursOfWork}" id="hours" placeholder="Monday-Saturday from 8am-8pm " required>
     </div>
 
-    <button class="btn" style="color: #FEFED3">Submit Bio</button>
+    <button class="btn btn-submit" style="color: #FEFED3">Submit Bio</button>
 </form>
 </div>
 <footer th:replace="partials :: footer"></footer>
