@@ -1,5 +1,7 @@
 package com.codeup.shearup.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,6 +27,7 @@ public class Location {
     private String zipCode;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "location")
+    @JsonBackReference
     private BarberDetail barber;
 
     public String getFormattedAddress(){
