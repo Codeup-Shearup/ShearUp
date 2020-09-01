@@ -12,6 +12,15 @@
 	.cardz {
 		background-color: #2B333D;
 	}
+	
+	.btn-submit {
+		background-color: #FEFED3 !important;
+		color: #2B333D !important;
+	}
+	.btn-submit:hover {
+		background-color: #C2B59B !important;
+		color: #FEFED3 !important;
+	}
 
 	.div1 {
 		border: 15px #8D2827;
@@ -21,12 +30,12 @@
 </style>
 <header th:replace="partials :: header"></header>
 
-<div class="container justify-content-center ">
-	<h1 class="mb-5">Create an account</h1>
+<div class="container d-flex flex-column align-items-center">
+	<h1 class="mb-5 mt-3">Create an account</h1>
 	<form th:action="@{/sign-up}" method="POST" th:object="${user}">
 		<div class="form-group">
-			<label for="is_barber">I am a: </label>
-			<select name="isBarber" id="is_barber" th:field="*{barber}">
+			<label for="is_barber">I am a: </label><br>
+			<select class="custom-select form-control border border-danger" name="isBarber" id="is_barber" th:field="*{barber}">
 		<!--		<option th:value="selected" th:text="Select one" selected="selected"></option>-->
 				<option th:value="true" th:text="Barber"></option>
 				<option th:value="false" th:text="Client"></option>
@@ -34,27 +43,27 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="first-name">First Name: <span style="color: red">*</span></label>
+			<label for="first-name">First Name <span style="color: red">*</span></label>
 			<input class="form-control border border-danger rounded" id="first-name" th:field="*{firstName}" required/>
 		</div>
 		
 		<div class="form-group">
-			<label for="last-name">Last Name: <span style="color: red">*</span></label>
+			<label for="last-name">Last Name <span style="color: red">*</span></label>
 			<input class="form-control border border-danger rounded" id="last-name" th:field="*{lastName}" required/>
 		</div>
 		
 		<div class="form-group">
-			<label for="username">Username: <span style="color: red">*</span></label>
+			<label for="username">Username <span style="color: red">*</span></label>
 			<input class="form-control border border-danger rounded" id="username" pattern=".{8,}" title="Username must be at least 8 characters" th:field="*{username}" required/>
 		</div>
 		
 		<div class="form-group">
-			<label for="email">Email: <span style="color: red">*</span></label>
+			<label for="email">Email <span style="color: red">*</span></label>
 			<input class="form-control border border-danger rounded" id="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="email@email.com" th:field="*{email}" required/>
 		</div>
 		
 		<div class="form-group">
-			<label for="password">Password: <span style="color: red">*</span></label>
+			<label for="password">Password <span style="color: red">*</span></label>
 			<input class="form-control border border-danger rounded" id="password" type="password" pattern="(?=.*\d)(?=.*[\W_])(?=.*[a-z])(?=.*[A-Z]).{8,}"
 					title="Must contain at least one number, one upper and lowercase letter, one special character, and at least 8 characters" th:field="*{password}" required/>
 		</div>
@@ -72,7 +81,7 @@
 			<p><span style="color: red">*</span> Indicates a required field</p>
 		</div>
 		
-		<input id="submitButton" value="Sign me up!" type="submit" />
+		<input class="btn btn-submit" id="submitButton" value="Sign up" type="submit" />
 	</form>
 	<br>
 </div>
