@@ -69,11 +69,11 @@
                     th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block btn-submit">Edit
                 profile</a></div>
             <div class="media-body mb-5 text-white">
-                <h4>Bio: </h4>
+                <h4>Bio</h4>
                 <p class="mt-0 mb-0" th:text="${user.barberDetail.bio}"></p>
-                <h4>Phone Number: </h4>
+                <h4>Phone Number</h4>
                 <p class="small mb-4" th:text="${user.barberDetail.phone}"><i class="fas fa-at mr-2"></i></p>
-                <h4>Hours of Operation: </h4>
+                <h4>Hours of Operation</h4>
                 <p class="small mb-4" th:text="${user.barberDetail.hoursOfWork}"><i class="far fa-envelope mr-2"></i>>
                 </p>
                 <form th:action="@{/barber/edit-barber-details}" th:method="get">
@@ -102,10 +102,10 @@
     <!--    <div class="card border-danger rounded" style=" width: 19rem;">-->
     <h1 class="card-title">Location of Business: </h1>
 
-    <div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">
+    <div class="px-4 pt-0 pb-4 bg-dark pt-4 m-0" th:object="${user.firstName}">
         <div class="media align-items-end profile-header">
             <!--            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>-->
-            <div class="media-body mb-5 text-white">
+            <div class="media-body mb-0 text-white">
                 <h5>Address: </h5>
                 <p class="mt-0 mb-0">
                 <p th:text="${user.barberDetail.location.addressOne}"></p> </p>
@@ -157,6 +157,25 @@
             </div>
         </div>
     </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Created</th>
+            <th>Contact Information</th>
+            <th>Details</th>
+            <th>View Lead</th>
+        </tr>
+        </thead>
+        <tbody th:each="appointment : ${user.getBarberDetail().getAppointments()}">
+        <tr>
+            <td><span class="date" th:text="${appointment.createDateTime}"></span></td>
+            <td th:text="${appointment.phone}"></td>
+            <td th:text="${appointment.note}"></td>
+            <td><a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Lead</td>
+        </tr>
+        </tbody>
+    </table>
 
     <!--<div class="px-4 pt-0 pb-4 bg-dark">-->
     <!--    <h5 class="mb-3">Recent Leads</h5>-->
@@ -220,7 +239,7 @@
                 <h5 class="card-title">Duration: </h5>
                 <p class="card-text" th:text="${service.duration}"></p>
                 <h5 class="card-title">Price: </h5>
-                <p class="card-text" th:text="${service.price}"></p>
+                <p class="card-text" th:text="'$' + ${service.price}"></p>
             </div>
             <!--            <div th:each="image :${service.getImages()}">-->
             <!--                <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"-->
@@ -254,7 +273,9 @@
 <span id="map_addr1" style="display: none;" th:text="${user.barberDetail.location.addressOne}"></span>
 <span id="map_city" style="display: none;" th:text="${user.barberDetail.location.city}"></span>
 <span id="map_state" style="display: none;" th:text="${user.barberDetail.location.state}"></span>
-<!--   added the entire script below -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+
+  <!--   added the entire script below -->
 <script>
     // change the accessToken to yours, use the application.properties to fetch the token
     // mapboxgl.accessToken = '';
@@ -305,7 +326,17 @@
     for (let moneyDisplay of moneyDisplays) {
         moneyDisplay.innerText = "$" + moneyDisplay.toFixed(2);
     }
+<<<<<<< HEAD
 
+=======
+       // to view the many options for how to display a date, visit: https://momentjs.com/docs/#/displaying/
+        "use strict";
+        const dates = document.querySelectorAll(".date");
+        for (let date of dates) {
+            date.innerText = moment(date.innerText).format("l");
+        }
+      
+>>>>>>> master
 </script>
 </div>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
