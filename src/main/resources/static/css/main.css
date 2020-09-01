@@ -12,7 +12,7 @@
 /*CSS rules to specify families*/
 /*font-family: 'Mulish', sans-serif;*/
 
-:root{
+:root {
     --primary-dark-blue: #2B333D;
     --dark-red: #8D2827;
     --cream-font-primary: #C2B59B;
@@ -20,21 +20,29 @@
     --black: #000000;
     --white: #FFFFFF;
 }
+
 * {
     min-height: 100vh;
 }
+
 /** {*/
 /*    box-sizing: border-box;*/
 /*}*/
 html {
     scroll-behavior: smooth;
 }
+
 html,
 body {
     background-color: var(--primary-dark-blue);
     color: #fff;
     font-family: 'Mulish', sans-serif;
     height: 100%;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
 }
 
 
@@ -87,6 +95,7 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 /* Change autocomplete styles in WebKit */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -98,13 +107,21 @@ input:-webkit-autofill:active {
 
 
 /* Small devices (phones and pocket devices, 576 and up) */
-@media screen and (min-width:576px) { /* ... */ }
+@media screen and (min-width: 576px) {
+    /* ... */
+}
 
 /* Medium devices (tablets, 768px and up) */
-@media screen and (min-width:768px) { /* ... */ }
+@media screen and (min-width: 768px) {
+    /* ... */
+}
 
 /* Large devices (desktops, 992px and up) */
-@media screen and (min-width:992px) { /* ... */ }
+@media screen and (min-width: 992px) {
+    /* ... */
+}
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media screen and (min-width:1200px) { /* ... */ }
+@media screen and (min-width: 1200px) {
+    /* ... */
+}

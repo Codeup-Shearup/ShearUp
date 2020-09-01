@@ -140,26 +140,26 @@
         // });
 
 
-        function addMarker(barber) {
-            const physicalAddress = barber.barberDetail.location.addressOne + " " + barber.barberDetail.location.addressTwo + " " + barber.barberDetail.location.city + " " + barber.barberDetail.location.state + " " + barber.barberDetail.location.zipCode;
-            geocode(address, MAPBOX_KEY).then(function (coordinates) {
-                // // Victory Salon --4745 Fredericksburg Rd, San Antonio, TX 78229
-                var popup = new mapboxgl.Popup()
-                    .setHTML("<h3>Cheers to Shears</h3>");
-                var marker = new mapboxgl.Marker();
-                marker
-                    .setLngLat(coordinates)
-                    .setPopup(popup)
-                    .addTo(map);
-                //
-            })
-        }
+        // function addMarker(barber) {
+        //     const physicalAddress = barber.barberDetail.location.addressOne + " " + barber.barberDetail.location.addressTwo + " " + barber.barberDetail.location.city + " " + barber.barberDetail.location.state + " " + barber.barberDetail.location.zipCode;
+        //     geocode(address, MAPBOX_KEY).then(function (coordinates) {
+        //         // // Victory Salon --4745 Fredericksburg Rd, San Antonio, TX 78229
+        //         var popup = new mapboxgl.Popup()
+        //             .setHTML("<h3>Cheers to Shears</h3>");
+        //         var marker = new mapboxgl.Marker();
+        //         marker
+        //             .setLngLat(coordinates)
+        //             .setPopup(popup)
+        //             .addTo(map);
+        //         //
+        //     })
+        // }
 
         // const barbers = [...]; // json from barbers
 
-        json.forEach(function (barber) {
-            addMarker(barber);
-        });
+        // json.forEach(function (barber) {
+        //     addMarker(barber);
+        // });
 
 
         // reverseGeocode({lng: -77.050636, lat: 38.889248}, MAPBOX_KEY).then(function(results) {
@@ -171,6 +171,7 @@
 
 
     </script>
+    <br>
     <div>
         <h3 class="text-center">Current locations where our barbers can meet. The locations are currently following all
             state mandate and COVID precautions.</h3>
