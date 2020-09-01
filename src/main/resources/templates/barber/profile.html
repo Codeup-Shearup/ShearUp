@@ -141,22 +141,22 @@
 
     <h1 class="card-title">New Leads</h1>
 
-    <div class="px-4 pt-0 pb-4 bg-dark" th:each="appointment : ${user.getBarberDetail().getAppointments()}">
-        <div class="media align-items-end profile-header">
-            <!--            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>-->
-            <div class="media-body mb-5 text-white">
-                <h5>Created At: </h5>
-                <p class="mt-0 mb-0">
-                <p th:text="${appointment.createDateTime}"></p>
-                <h5>Contact information: </h5>
-                <p class="small mb-4" th:text="${appointment.phone}"><i class="fas fa-at mr-2"></i></p>
-                <h5>Details: </h5>
-                <p class="small mb-4" th:text="${appointment.note}"><i class="far fa-envelope mr-2"></i>>
-                </p>
-                <a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Appointments</a>
-            </div>
-        </div>
-    </div>
+<!--    <div class="px-4 pt-0 pb-4 bg-dark" th:each="appointment : ${user.getBarberDetail().getAppointments()}">-->
+<!--        <div class="media align-items-end profile-header">-->
+<!--            &lt;!&ndash;            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>&ndash;&gt;-->
+<!--            <div class="media-body mb-5 text-white">-->
+<!--                <h5>Created At: </h5>-->
+<!--                <p class="mt-0 mb-0">-->
+<!--                <p th:text="${appointment.createDateTime}"></p>-->
+<!--                <h5>Contact information: </h5>-->
+<!--                <p class="small mb-4" th:text="${appointment.phone}"><i class="fas fa-at mr-2"></i></p>-->
+<!--                <h5>Details: </h5>-->
+<!--                <p class="small mb-4" th:text="${appointment.note}"><i class="far fa-envelope mr-2"></i>>-->
+<!--                </p>-->
+<!--                <a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Appointments</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <table class="table">
         <thead>
