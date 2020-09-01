@@ -53,39 +53,47 @@
 
     /****** Style Star Rating Widget *****/
 
-    /*.rating {*/
-    /*    border: none;*/
-    /*    float: left;*/
+    .rating {
+        border: none;
+        float: left;
+    }
+
+    .rating > input {
+        display: none;
+    }
+
+    .rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating > .half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating > label {
+        color: #ddd;
+        float: right;
+    }
+
+    /*label {*/
+    /*    color: #FFD700 !important;*/
     /*}*/
 
-    /*.rating > input {*/
-    /*    display: none;*/
-    /*}*/
-
-    /*.rating > label:before {*/
-    /*    margin: 5px;*/
-    /*    font-size: 1.25em;*/
-    /*    font-family: FontAwesome;*/
-    /*    display: inline-block;*/
-    /*    content: "\f005";*/
-    /*}*/
-
-    /*.rating > .half:before {*/
-    /*    content: "\f089";*/
-    /*    position: absolute;*/
-    /*}*/
-
-    /*.rating > label {*/
-    /*    color: #ddd;*/
-    /*    float: right;*/
-    /*}*/
+    .myclass {
+            color: #FFD700 !important;
+    }
 
     /***** CSS Magic to Highlight Stars on Hover *****/
 
-    /*.rating > input:checked ~ label, !* show gold star when clicked *!*/
+    /*.rating > input:checked ~ label { !* show gold star when clicked *!*/
     /*.rating:not(:checked) > label:hover, !* hover current star *!*/
-    /*.rating:not(:checked) > label:hover ~ label {*/
-    /*    color: #FFD700;*/
+    /*.rating:not(:checked) > input ~ label {*/
+    /*    color: #FFD700 !important;*/
     /*}*/
 
     /* hover previous stars in list */
@@ -186,15 +194,15 @@
             <h5 class="card-title">Content</h5>
             <p class="card-text" style="font-size: larger;" th:text="${review.content}"></p>
             <h5 class="card-title">Rating</h5>
-<!--            <fieldset class="rating" th:value="*{review.rating}">-->
-<!--                <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" title="Awesome - 5 stars"></label>-->
-<!--                <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>-->
-<!--                <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" title="Meh - 3 stars"></label>-->
-<!--                <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" title="Kinda bad - 2 stars"></label>-->
-<!--                <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" title="Sucks big time - 1 star"></label>-->
-<!--            </fieldset>-->
-            <p class="card-text" style="font-size: larger;" th:text="${review.rating}"></p>
-            		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>
+            <fieldset class="rating" th:value="*{review.rating}">
+                <input type="radio"  name="rating" value="5"/><label class="full"  title="Awesome - 5 stars"></label>
+                <input type="radio"  name="rating" value="4"/><label class="full"  title="Pretty good - 4 stars"></label>
+                <input type="radio" name="rating" value="3"/><label class="full"  title="Meh - 3 stars"></label>
+                <input type="radio"  name="rating" value="2"/><label class="full"  title="Kinda bad - 2 stars"></label>
+                <input type="radio"  name="rating" value="1"/><label class="full"  title="Sucks big time - 1 star"></label>
+            </fieldset>
+<!--            <p class="card-text" style="font-size: larger;" th:text="${review.rating}"></p>-->
+<!--            		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>-->
         </div>
     </div>
 	</div>
@@ -268,7 +276,38 @@
     <!--<a th:href="@{/reviews/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Review this barber</button></a>-->
 
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+
+    $(document).ready(function () {
+        // $("fieldset").children().eq(4).addClass("myclass");
+        console.log($("fieldset"))
+        let fieldsets = $("fieldset")
+        for (var i = 0 ; i < fieldsets.length; i++){
+            // fieldsets.eq(i).children().addClass("myclass")
+            let startingPoint = fieldsets.eq(i).attr("value")
+            startingPoint = parseFloat(startingPoint)
+            console.log(startingPoint);
+            for (var j = 4 ; j > (4 -startingPoint) ; j--) {
+                fieldsets.eq(i).children("label").eq(j).addClass("myclass")
+            }
+        }
+    })
+
+
+</script>
 <footer th:replace="partials :: footer"></footer>
+
+<!--<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>-->
+<!--<script>-->
+
+<!--    $(document).ready(function () {-->
+<!--        $("fieldset").children().eq(4).addClass("myclass");-->
+<!--    })-->
+
+
+<!--</script>-->
+
 </body>
 </html>
 
