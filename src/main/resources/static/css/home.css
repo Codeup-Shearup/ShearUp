@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
 * {
 	box-sizing: border-box;
+	font-family: 'Mulish', sans-serif;
+}
+
+p, li, span {
+	font-size: larger;
 }
 
 #titleHome {
-	font-family: 'Dancing Script', cursive;
+	font-family: 'Dancing Script', cursive !important;
 	transform: rotate(-10deg);
 	font-size: 10em;
 	color: #FEFED3;
