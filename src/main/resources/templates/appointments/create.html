@@ -35,7 +35,7 @@
 <!--        <a th:href="@{'/mapbox-map'}">Map</a>-->
 <!--    </div>-->
 
-    <div class="container p-5 border-left">
+    <div class="container p-5">
 
         <h2 class="text-center">Create Appointment</h2>
 
@@ -66,7 +66,7 @@
                 <textarea class="form-control" placeholder="Detailed Appointment Information" id="createContent" th:field="*{note}"></textarea>
             </div>
             <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Appointment</button>
-            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/appointments}">Back</a>
+            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/barbers}">Back</a>
         </form>
 
     </div>
