@@ -54,8 +54,8 @@
 <!--	<h1>Phone Number: </h1><p th:text="${barber.barberDetail.phone}"></p>-->
 <div class="container">
 <div class="d-flex d-inline">
-	<h1 class="text-center">Barber Profile of </h1>
-	<h1 class="text-center" th:text="${barber.firstName}">!</h1>
+<!--	<h1 class="text-center">Barber Profile of </h1>-->
+	<h1 class="text-center" th:text="${'Viewing' + barber.firstName}">!</h1>
 </div>
 
 <div class="px-4 pt-0 pb-4 bg-dark" th:object="${barber.firstName}">

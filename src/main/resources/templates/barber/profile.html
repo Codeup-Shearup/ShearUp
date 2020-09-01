@@ -58,8 +58,8 @@
 <div class="container">
     <!--<h1>Barber Profile page of <p th:text="${user.firstName}"></p></h1>-->
     <div class="d-flex d-inline">
-        <h1 class="text-center">Welcome </h1>
-        <h1 class="text-center" th:text="${user.firstName}">!</h1>
+<!--        <h1 class="text-center">Welcome </h1>-->
+        <h1 class="text-center" th:text="${'Welcome ' + user.firstName}">!</h1>
     </div>
 
     <div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">
