@@ -20,6 +20,16 @@
         padding: 50px;
         margin: 20px;
     }
+
+    .btn-submit {
+        background-color: #FEFED3 !important;
+        color: #2B333D !important;
+    }
+    .btn-submit:hover {
+        background-color: #C2B59B !important;
+        color: #FEFED3 !important;
+    }
+
 </style>
 <!--Nav-->
 <header th:replace="partials :: header"></header>
@@ -65,7 +75,7 @@
                 <label for="createContent">Appointment Details</label>
                 <textarea class="form-control" placeholder="Detailed Appointment Information" id="createContent" th:field="*{note}"></textarea>
             </div>
-            <button style="border-left: 4px solid navy;" class="bg-dark text-white" type="submit">Submit Appointment</button>
+            <button style="border-left: 4px solid navy;" class="btn btn-submit " type="submit">Submit Appointment</button>
             <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/barbers}">Back</a>
         </form>
 

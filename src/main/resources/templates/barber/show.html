@@ -47,34 +47,38 @@
         color: white;
     }
 
+    p, li, span {
+        font-size: larger;
+    }
+
     /****** Style Star Rating Widget *****/
 
-    .rating {
-        border: none;
-        float: left;
-    }
+    /*.rating {*/
+    /*    border: none;*/
+    /*    float: left;*/
+    /*}*/
 
-    .rating > input {
-        display: none;
-    }
+    /*.rating > input {*/
+    /*    display: none;*/
+    /*}*/
 
-    .rating > label:before {
-        margin: 5px;
-        font-size: 1.25em;
-        font-family: FontAwesome;
-        display: inline-block;
-        content: "\f005";
-    }
+    /*.rating > label:before {*/
+    /*    margin: 5px;*/
+    /*    font-size: 1.25em;*/
+    /*    font-family: FontAwesome;*/
+    /*    display: inline-block;*/
+    /*    content: "\f005";*/
+    /*}*/
 
-    .rating > .half:before {
-        content: "\f089";
-        position: absolute;
-    }
+    /*.rating > .half:before {*/
+    /*    content: "\f089";*/
+    /*    position: absolute;*/
+    /*}*/
 
-    .rating > label {
-        color: #ddd;
-        float: right;
-    }
+    /*.rating > label {*/
+    /*    color: #ddd;*/
+    /*    float: right;*/
+    /*}*/
 
     /***** CSS Magic to Highlight Stars on Hover *****/
 
@@ -120,11 +124,11 @@
             </div>
             <div class="media-body mb-5 text-white">
                 <h4>Bio: </h4>
-                <p class="mt-0 mb-0" th:text="${barber.barberDetail.bio}"></p>
+                <p class="mt-0 mb-0" style="font-size: larger;" th:text="${barber.barberDetail.bio}"></p>
                 <h4>Phone Number: </h4>
-                <p class="small mb-4" th:text="${barber.barberDetail.phone}"><i class="fas fa-at mr-2"></i></p>
+                <p class="small mb-4" style="font-size: larger;" th:text="${barber.barberDetail.phone}"><i class="fas fa-at mr-2"></i></p>
                 <h4>Hours of Operation: </h4>
-                <p class="small mb-4" th:text="${barber.barberDetail.hoursOfWork}"><i class="far fa-envelope mr-2"></i>>
+                <p class="small mb-4" style="font-size: larger;" th:text="${barber.barberDetail.hoursOfWork}"><i class="far fa-envelope mr-2"></i>>
                 </p>
 				<a th:href="@{/appointments/create/{id}(id=${barber.barberDetail.id})}">
 					<button class="btn btn-secondary">Request appointment</button>
@@ -140,21 +144,21 @@
 
     <h1 class="card-title">Location of Business: </h1>
 
-    <div class="px-4 pt-0 pb-4 bg-dark" th:object="${barber.firstName}">
+    <div class="px-4 pt-0 pb-4 bg-dark pt-4 m-0" th:object="${barber.firstName}">
         <div class="media align-items-end profile-header">
             <!--            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>-->
             <div class="media-body mb-5 text-white">
                 <h5>Address: </h5>
                 <p class="mt-0 mb-0">
-                <p th:text="${barber.barberDetail.location.addressOne}"></p> </p>
+                <p style="font-size: larger;" th:text="${barber.barberDetail.location.addressOne}"></p> </p>
                 <h5>City: </h5>
-                <p class="small mb-4" th:text="${barber.barberDetail.location.city}"><i class="fas fa-at mr-2"></i></p>
+                <p style="font-size: larger;" class="small mb-4" th:text="${barber.barberDetail.location.city}"><i class="fas fa-at mr-2"></i></p>
                 <h5>State: </h5>
-                <p class="small mb-4" th:text="${barber.barberDetail.location.state}"><i
+                <p style="font-size: larger;" class="small mb-4" th:text="${barber.barberDetail.location.state}"><i
                         class="far fa-envelope mr-2"></i>>
                 </p>
                 <h5>Zip Code: </h5>
-                <p class="small mb-4" th:text="${barber.barberDetail.location.zipCode}"><i
+                <p class="small " style="font-size: larger;" th:text="${barber.barberDetail.location.zipCode}"><i
                         class="far fa-envelope mr-2"></i>></p>
             </div>
         </div>
@@ -178,19 +182,19 @@
         <img class="card-image-top" src="..." alt="">
         <div class="card-body">
             <h5 class="card-title">Title</h5>
-            <p class="card-text" th:text="${review.title}"></p>
+            <p class="card-text" style="font-size: larger;" th:text="${review.title}"></p>
             <h5 class="card-title">Content</h5>
-            <p class="card-text" th:text="${review.content}"></p>
+            <p class="card-text" style="font-size: larger;" th:text="${review.content}"></p>
             <h5 class="card-title">Rating</h5>
-            <fieldset class="rating" th:value="*{review.rating}">
-                <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" title="Awesome - 5 stars"></label>
-                <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" title="Meh - 3 stars"></label>
-                <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-            </fieldset>
-<!--            <p class="card-text" th:text="${review.rating}"></p>-->
-            <!--		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>-->
+<!--            <fieldset class="rating" th:value="*{review.rating}">-->
+<!--                <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" title="Awesome - 5 stars"></label>-->
+<!--                <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>-->
+<!--                <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" title="Meh - 3 stars"></label>-->
+<!--                <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" title="Kinda bad - 2 stars"></label>-->
+<!--                <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" title="Sucks big time - 1 star"></label>-->
+<!--            </fieldset>-->
+            <p class="card-text" style="font-size: larger;" th:text="${review.rating}"></p>
+            		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>
         </div>
     </div>
 	</div>
@@ -213,13 +217,13 @@
             <img class="card-image-top" src="..." alt="">
             <div class="card-body">
                 <h5 class="card-title">Title: </h5>
-                <p class="card-text" th:text="${service.title}"></p>
+                <p class="card-text" style="font-size: larger;" th:text="${service.title}"></p>
                 <h5 class="card-title">Description: </h5>
-                <p class="card-text" th:text="${service.description}"></p>
+                <p class="card-text" style="font-size: larger;" th:text="${service.description}"></p>
                 <h5 class="card-title">Duration: </h5>
-                <p class="card-text" th:text="${service.description}"></p>
+                <p class="card-text" style="font-size: larger;" th:text="${service.description}"></p>
                 <h5 class="card-title">Price: </h5>
-                <p class="card-text" th:text="'$' + ${service.price}"></p>
+                <p class="card-text" style="font-size: larger;" th:text="'$' + ${service.price}"></p>
             </div>
 
             <div th:each="image :${service.getImages()}">
