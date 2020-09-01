@@ -158,6 +158,25 @@
         </div>
     </div>
 
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Created</th>
+            <th>Contact Information</th>
+            <th>Details</th>
+            <th>View Lead</th>
+        </tr>
+        </thead>
+        <tbody th:each="appointment : ${user.getBarberDetail().getAppointments()}">
+        <tr>
+            <td><span class="date" th:text="${appointment.createDateTime}"></span></td>
+            <td th:text="${appointment.phone}"></td>
+            <td th:text="${appointment.note}"></td>
+            <td><a class="btn btn-primary" th:href="@{'/appointments/' + ${appointment.id}}">View Lead</td>
+        </tr>
+        </tbody>
+    </table>
+
     <!--<div class="px-4 pt-0 pb-4 bg-dark">-->
     <!--    <h5 class="mb-3">Recent Leads</h5>-->
     <!--    <div class="p-4 bg-light rounded shadow-sm bg-dark" th:each="appointment : ${user.getBarberDetail().getAppointments()}">-->
@@ -254,7 +273,9 @@
 <span id="map_addr1" style="display: none;" th:text="${user.barberDetail.location.addressOne}"></span>
 <span id="map_city" style="display: none;" th:text="${user.barberDetail.location.city}"></span>
 <span id="map_state" style="display: none;" th:text="${user.barberDetail.location.state}"></span>
-<!--   added the entire script below -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+
+  <!--   added the entire script below -->
 <script>
     // change the accessToken to yours, use the application.properties to fetch the token
     // mapboxgl.accessToken = '';
@@ -304,7 +325,14 @@
     const moneyDisplays = document.querySelectorAll(".currency");
     for (let moneyDisplay of moneyDisplays) {
         moneyDisplay.innerText = "$" + moneyDisplay.toFixed(2);
-
+    }
+       // to view the many options for how to display a date, visit: https://momentjs.com/docs/#/displaying/
+        "use strict";
+        const dates = document.querySelectorAll(".date");
+        for (let date of dates) {
+            date.innerText = moment(date.innerText).format("l");
+        }
+      
 </script>
 </div>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
