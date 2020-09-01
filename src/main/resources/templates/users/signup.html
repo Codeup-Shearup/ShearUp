@@ -30,7 +30,7 @@
 </style>
 <header th:replace="partials :: header"></header>
 
-<div class="container d-flex flex-column align-items-center">
+<div class="container d-flex flex-column align-items-center  min-vh-100" style="height: 100%;" >
 	<h1 class="mb-5 mt-3">Create an account</h1>
 	<form th:action="@{/sign-up}" method="POST" th:object="${user}">
 		<div class="form-group">
@@ -95,6 +95,6 @@
 			$('#message').html('Passwords do not match').css('color', 'red');
 	});
 </script>
-<footer th:replace="partials :: footer"></footer>
+<!--<footer th:replace="partials :: footer"></footer>-->
 </body>
 </html>
