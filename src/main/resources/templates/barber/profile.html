@@ -243,7 +243,7 @@
                 <h5 class="card-title">Duration: </h5>
                 <p class="card-text" style="font-size: larger;" th:text="${service.duration}"></p>
                 <h5 class="card-title">Price: </h5>
-                <p class="card-text" style="font-size: larger;" th:text="'$' + ${service.price}"></p>
+                <p class="card-text currency" style="font-size: larger;" th:text="${service.price}"></p>
             </div>
             <!--            <div th:each="image :${service.getImages()}">-->
             <!--                <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"-->
@@ -327,7 +327,9 @@
 
     const moneyDisplays = document.querySelectorAll(".currency");
     for (let moneyDisplay of moneyDisplays) {
-        moneyDisplay.innerText = "$" + moneyDisplay.toFixed(2);
+        let amount = parseFloat(moneyDisplay.innerText).toFixed(2);
+
+        moneyDisplay.innerText = "$" + amount;
     }
 
 
