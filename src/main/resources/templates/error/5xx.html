@@ -2,19 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <head th:replace="partials :: head (Title = '500 Error')">
-    <!--CSS STYLING-->
-<!--    <link rel="stylesheet" type="text/css" href="/static/css/footer.css" th:href="@{/css/error.css}">-->
-    <!--FONT AWESOME ICONS-->
-    <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
-</head>
+        <!--CSS STYLING-->
+        <!--    <link rel="stylesheet" type="text/css" href="/static/css/footer.css" th:href="@{/css/error.css}">-->
+        <!--FONT AWESOME ICONS-->
+        <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
+    </head>
 <body>
 <style>
     body {
         background-color: #2B333D;
     }
+
     h1 {
         color: #FEFED3;
     }
+
     h2 {
         color: #C2B59B;
     }
@@ -23,18 +25,18 @@
 <div class="container p-5 text-center">
     <div>
         <br>
-        <h1>Pardon. That's an error.</h1>
         <h2>Looks like this page hasn't made the cut.</h2>
         <h2>Try to freshin' up or feel free to contact us if the problem persists.</h2>
         <br>
-        <a style="color: #8D2827" href="/">Click here to return to the login page <i class="fas fa-laptop-house"></i></a>
+        <a style="color: #8D2827" href="/">Click here to return to the login page <i
+                class="fas fa-laptop-house"></i></a>
         <br>
         <br>
     </div>
 
     <div class="profile mr-3"><img th:src="@{${'/img/500-error-image.png'}}" alt="barber-cutting-hair" width="196">
 
-</div>
+    </div>
 
 </body>
 </html>
