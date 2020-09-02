@@ -30,7 +30,8 @@ p, li, span {
 	height: 100%;
 	background-image: url("../img/barber-tools.jpg");
 	background-position: center;
-	background-size: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
 	z-index: 0;
 }
 

@@ -35,7 +35,7 @@
 
 <div class="row py-5 px-4">
 	<div class="col-xl-4 col-md-6 col-sm-10 mx-auto">
-		<div class="bg-white shadow rounded overflow-hidden" style="border: #8D2827 solid 1px">
+		<div class="bg-white shadow rounded" style="border: #8D2827 solid 1px">
 			<div class="px-4 pt-0 pb-4 bg-dark" th:object="${user}">
 				<div class="media align-items-end profile-header">
 					<div class="profile mr-3 mt-2"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-submit btn-sm btn-block">Edit profile</a></div>
