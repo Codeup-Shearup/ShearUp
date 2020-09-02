@@ -124,18 +124,38 @@ public class UserController {
 //		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User currentUser = users.findById(id);
 		User userz = users.getOne(currentUser.getId());
+		System.out.println(imageUpload);
 		Image img = new Image();
-		img.setFilestackUrl(imageUpload);
-		img.setUser(user);
+		if (imageUpload != null && !imageUpload.isEmpty()){
+			System.out.println("imageUpload");
+			img.setFilestackUrl(imageUpload);
+			img.setUser(user);
+		}
+
 		currentUser.setFirstName(user.getFirstName());
 		currentUser.setLastName(user.getLastName());
 		currentUser.setUsername(user.getUsername());
 		currentUser.setEmail(user.getEmail());
-		userz.setImages(user.getImages());
+		if (imageUpload != null && !imageUpload.isEmpty()){
+			imagesDao.save(img);
+//			currentUser.setImages(img);
+		} else {
+			currentUser.setImages(user.getImages());
+		}
+//		currentUser.setImages(user.getImages());
 //		String hash = passwordEncoder.encode(user.getPassword());
 //		currentUser.setPassword(hash);
 		users.save(currentUser);
-		imagesDao.save(img);
+//		imagesDao.save(img);
 		return "redirect:/profile";
 	}
+
+
+//	@GetMapping()
+//	public String picture(){
+//		User currentUser = users.findById(id);
+//		User userz = users.getOne(currentUser.getId());
+//	}
+
+
 }
