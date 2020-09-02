@@ -30,6 +30,8 @@ public class User {
     @Column(nullable = false, columnDefinition = "TINYINT")
     private boolean isBarber;
 
+
+
     //NEED HELP WITH FK RELATIONSHIP // may have solved it
     // Relationship with Appointments Table One to Many
     //Grabs users id and service id from appointments Table
@@ -43,6 +45,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL ,mappedBy = "author")
     private List<Review> reviews;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Image> images;
 
 //    @JoinTable(
 //            name="barber_details")
@@ -152,5 +156,13 @@ public class User {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

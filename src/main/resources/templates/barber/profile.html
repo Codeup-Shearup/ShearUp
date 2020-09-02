@@ -68,10 +68,12 @@
 
     <div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">
         <div class="media align-items-end profile-header">
-            <div class="profile mr-3"><img th:src="@{${'/img/barber.jpg'}}" alt="..." width="196"
-                                           class="rounded mb-2 img-thumbnail"><a
-                    th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block btn-submit">Edit
-                profile</a></div>
+
+
+            <div class="profile mr-3" th:each="image :${user.getImages()}"><img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" alt="..." width="196" class="rounded mb-2 img-thumbnail"></div>
+        <div>  <a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block btn-submit">Edit profile</a></div>
+
+
             <div class="media-body mb-5 text-white">
                 <h4>Bio</h4>
                 <p class="mt-0 mb-0" th:text="${user.barberDetail.bio}"></p>
@@ -270,7 +272,7 @@
     <hr>
     </div>
 <!--   added map-->
-<div id='map' style='width: 100%; height: 500px;'></div>
+<!--<div id='map' style='width: 100%; height: 500px;'></div>-->
 <!--   added three spans below, display is none-->
 <script th:src="@{/js/keys.js}"></script>
 <span id="map_addr1" style="display: none;" th:text="${user.barberDetail.location.addressOne}"></span>
