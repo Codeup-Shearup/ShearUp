@@ -45,7 +45,7 @@
                     <!--					</div>-->
                     <div class="profile mr-3 mt-2" th:each="image :${user.getImages()}"><img
                             th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"
-                            style="height: 200px"></div>
+                            style="height: 200px"></div><br>
                     <div><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-submit btn-sm btn-block">Edit
                         profile</a></div>
                     <div class="media-body mb-5 text-white">

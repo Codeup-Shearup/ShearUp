@@ -89,7 +89,7 @@
     <form th:action="@{'/barber/edit-barber-details'}"  th:method="POST" th:object="${barberDetail}">
 
 <!--        <h1>Edit Barber Details Page for</h1>-->
-        <h2 th:text="${'Edit Barber Details Page for' + user.firstName}"></h2>
+        <h2 th:text="${'Edit Barber Details Page for ' + user.firstName}" class="mt-4"></h2>
 
         <div class="form-group">
             <label for="bio">Bio <span class="required">*</span></label>

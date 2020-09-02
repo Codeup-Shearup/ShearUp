@@ -41,7 +41,7 @@
 <header th:replace="partials :: header"></header>
 <div class="container">
 <!--    <h1>Add Service page for</h1>-->
-    <h2 th:text="${'Add a Service to your portfolio ' + user.firstName}"></h2>
+    <h2 class="mt-4" th:text="${'Add a Service to your portfolio ' + user.firstName}"></h2>
 
     <form th:action="@{'/barber/add-service'}"  th:method="POST" th:object="${service}">
         <div class="form-group">
