@@ -17,4 +17,6 @@ public interface ImageRepository extends JpaRepository<Image, Long> {
     @Query("SELECT u FROM Image u WHERE u.user = ?1")
     List<Image> findImageById(User Id);
 
+    Image findByUserIdAndServiceIsNull(Long id);
+
 }

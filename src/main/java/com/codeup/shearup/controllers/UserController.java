@@ -101,7 +101,7 @@ public class UserController {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = users.getOne(sessionUser.getId());
 		List<Review> reviews = reviewsDao.findAllReviewsByAuthor(user.getId());
-		List<Image> myImage = imagesDao.findAll();
+		Image myImage = imagesDao.findByUserIdAndServiceIsNull(user.getId());
 		model.addAttribute("user", user);
 		model.addAttribute("reviews", reviews);
 		model.addAttribute("images", myImage);
@@ -115,7 +115,7 @@ public class UserController {
 	public String editProfile(@PathVariable long id, Model model) {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		User user = users.getOne(sessionUser.getId());
-		model.addAttribute("user", sessionUser);
+		model.addAttribute("user", users.getOne(sessionUser.getId()));
 		return "users/edit-profile";
 	}
 	
@@ -124,18 +124,40 @@ public class UserController {
 //		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User currentUser = users.findById(id);
 		User userz = users.getOne(currentUser.getId());
-		Image img = new Image();
-		img.setFilestackUrl(imageUpload);
-		img.setUser(user);
+		Image oldImage = imagesDao.findByUserIdAndServiceIsNull(currentUser.getId());
+		if(oldImage == null){
+			//there is not an old profile image
+			if (!imageUpload.equals("null")){
+				System.out.println("imageUpload has something");
+				Image img = new Image();
+				img.setFilestackUrl(imageUpload);
+				img.setUser(user);
+				imagesDao.save(img);
+			}
+		} else {
+			//there is a profile image
+			if (!imageUpload.equals("null")){
+				oldImage.setFilestackUrl(imageUpload);
+				imagesDao.save(oldImage);
+			}
+		}
 		currentUser.setFirstName(user.getFirstName());
 		currentUser.setLastName(user.getLastName());
 		currentUser.setUsername(user.getUsername());
 		currentUser.setEmail(user.getEmail());
-		userz.setImages(user.getImages());
+//		currentUser.setImages(user.getImages());
 //		String hash = passwordEncoder.encode(user.getPassword());
 //		currentUser.setPassword(hash);
 		users.save(currentUser);
-		imagesDao.save(img);
 		return "redirect:/profile";
 	}
+
+
+//	@GetMapping()
+//	public String picture(){
+//		User currentUser = users.findById(id);
+//		User userz = users.getOne(currentUser.getId());
+//	}
+
+
 }

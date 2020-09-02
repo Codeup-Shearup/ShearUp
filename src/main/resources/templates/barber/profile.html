@@ -168,6 +168,7 @@
         <thead>
         <tr>
             <th style="color: #FEFED3">Created</th>
+            <th style="color: #FEFED3">Name</th>
             <th style="color: #FEFED3">Contact Information</th>
             <th style="color: #FEFED3">Details</th>
             <th style="color: #FEFED3">View Lead</th>
@@ -176,6 +177,7 @@
         <tbody th:each="appointment : ${user.getBarberDetail().getAppointments()}">
         <tr>
             <td><span class="date" th:text="${appointment.createDateTime}"></span></td>
+            <td th:text="${appointment.user.firstName} +' ' + ${appointment.user.lastName}"></td>
             <td th:text="${appointment.phone}"></td>
             <td th:text="${appointment.note}"></td>
             <td><a class="btn btn-submit " style="color: #FEFED3" th:href="@{'/appointments/' + ${appointment.id}}">View Lead</a></td>

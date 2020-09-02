@@ -197,6 +197,8 @@
         <!--   PICTURE OF SERVICE GOES HERE     -->
         <img class="card-image-top" src="..." alt="">
         <div class="card-body">
+            <h5 class="card-title">Author</h5>
+            <p class="card-text" style="font-size: larger;" th:text="${review.author.firstName} + ' ' + ${review.author.lastName}"></p>
             <h5 class="card-title">Title</h5>
             <p class="card-text" style="font-size: larger;" th:text="${review.title}"></p>
             <h5 class="card-title">Content</h5>
