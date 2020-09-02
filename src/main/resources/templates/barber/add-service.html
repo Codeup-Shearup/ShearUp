@@ -40,8 +40,8 @@
 </style>
 <header th:replace="partials :: header"></header>
 <div class="container">
-    <h1>Add Service page for</h1>
-    <h2 th:text="${user.firstName}"></h2>
+<!--    <h1>Add Service page for</h1>-->
+    <h2 th:text="${'Add a Service to your portfolio ' + user.firstName}"></h2>
 
     <form th:action="@{'/barber/add-service'}"  th:method="POST" th:object="${service}">
         <div class="form-group">
@@ -69,8 +69,8 @@
 
         <input type="hidden" id="imageUpload" name="imageUpload" value="null">
         <img src="" class="hidden" id="imagePreview" style="height: 200px"><br>
-        <button class="btn btn-primary btn-submit">Add Service</button>
-        <a class="btn btn-primary float-right btn-primary btn-submit" style="text-decoration: none; color:black;" th:href="@{/barber/profile}"><i class="fas fa-arrow-circle-left"></i></a>
+        <button class="btn btn-submit">Add Service</button>
+        <a class="btn float-right btn-submit" style="text-decoration: none; color:black;" th:href="@{/barber/profile}"><i class="fas fa-arrow-circle-left"></i></a>
     </form>
     <br>
     <br>
