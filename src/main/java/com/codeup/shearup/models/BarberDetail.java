@@ -2,6 +2,8 @@ package com.codeup.shearup.models;
 
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class BarberDetail {
     // Need 2 foreign key relationships location id fk
     //one to one barber details to location
     @OneToOne
+    @JsonManagedReference
     private Location location;
     // image id fk
     //Barber should be only OneToOne 1 profile image

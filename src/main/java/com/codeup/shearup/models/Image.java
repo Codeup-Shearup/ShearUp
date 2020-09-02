@@ -19,6 +19,9 @@ public class Image {
     @JoinColumn(name = "service_id")
     private Service service;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 //    @OneToOne(cascade = CascadeType.ALL, mappedBy = "image")
 //    private BarberDetail barber;
@@ -31,11 +34,14 @@ public class Image {
 
     }
 
+
+
     //Constructor
-    public Image(long id, String filestackUrl, Service service) {
+    public Image(long id, String filestackUrl, Service service, User user) {
         this.id = id;
         this.filestackUrl = filestackUrl;
         this.service = service;
+        this.user = user;
     }
 
     //GETTERS AND SETTERS
@@ -62,5 +68,13 @@ public class Image {
 
     public void setService(Service service) {
         this.service = service;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

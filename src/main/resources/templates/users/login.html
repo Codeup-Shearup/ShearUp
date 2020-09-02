@@ -36,10 +36,10 @@
 <div class="container d-flex flex-column align-items-center">
 	<h1 class="mb-5 mt-3">Log In</h1>
 	
-	<div th:if="${param.error}">
+	<div class="alert alert-danger" th:if="${param.error}">
 		Invalid Username and Password.
 	</div>
-	<div th:if="${param.logout}">
+	<div class="alert alert-danger" th:if="${param.logout}">
 		You have been logged out.
 	</div>
 	

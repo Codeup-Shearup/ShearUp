@@ -2,20 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 
-<head th:replace="partials :: head (Title = 'View Barber Profile')">
+<head th:replace="partials :: head (Title = 'View Barber Profile')"></head>
     <meta charset="UTF-8">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
     <title>Barber profile page</title>
     <meta class="map" th:content="${@environment.getProperty('map.api.key')}">
+
     <!--FONT AWESOME ICONS-->
     <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
 
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+
 
     <script src="(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"></script>
 
 </head>
 <body>
+<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
 <style>
     @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
@@ -53,39 +56,47 @@
 
     /****** Style Star Rating Widget *****/
 
-    /*.rating {*/
-    /*    border: none;*/
-    /*    float: left;*/
+    .rating {
+        border: none;
+        float: left;
+    }
+
+    .rating > input {
+        display: none;
+    }
+
+    .rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating > .half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating > label {
+        color: #ddd;
+        float: right;
+    }
+
+    /*label {*/
+    /*    color: #FFD700 !important;*/
     /*}*/
 
-    /*.rating > input {*/
-    /*    display: none;*/
-    /*}*/
-
-    /*.rating > label:before {*/
-    /*    margin: 5px;*/
-    /*    font-size: 1.25em;*/
-    /*    font-family: FontAwesome;*/
-    /*    display: inline-block;*/
-    /*    content: "\f005";*/
-    /*}*/
-
-    /*.rating > .half:before {*/
-    /*    content: "\f089";*/
-    /*    position: absolute;*/
-    /*}*/
-
-    /*.rating > label {*/
-    /*    color: #ddd;*/
-    /*    float: right;*/
-    /*}*/
+    .myclass {
+            color: #FFD700 !important;
+    }
 
     /***** CSS Magic to Highlight Stars on Hover *****/
 
-    /*.rating > input:checked ~ label, !* show gold star when clicked *!*/
+    /*.rating > input:checked ~ label { !* show gold star when clicked *!*/
     /*.rating:not(:checked) > label:hover, !* hover current star *!*/
-    /*.rating:not(:checked) > label:hover ~ label {*/
-    /*    color: #FFD700;*/
+    /*.rating:not(:checked) > input ~ label {*/
+    /*    color: #FFD700 !important;*/
     /*}*/
 
     /* hover previous stars in list */
@@ -117,8 +128,12 @@
 
     <div class="px-4 pt-0 pb-4 bg-dark" th:object="${barber.firstName}">
         <div class="media align-items-end profile-header">
-            <div class="profile mr-3"><img th:src="@{${'/img/barber.jpg'}}" alt="..." width="196"
-                                           class="rounded mb-2 img-thumbnail">
+
+            <div class="profile mr-3" th:each="image :${barber.getImages()}"><img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" alt="..." width="196" class="rounded mb-2 img-thumbnail">
+
+
+<!--                <div class="profile mr-3"><img th:src="@{${'/img/barber.jpg'}}" alt="..." width="196"-->
+<!--                                           class="rounded mb-2 img-thumbnail">-->
                 <!--				th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit-->
 
             </div>
@@ -144,10 +159,10 @@
 
     <h1 class="card-title">Location of Business: </h1>
 
-    <div class="px-4 pt-0 pb-4 bg-dark pt-4 m-0" th:object="${barber.firstName}">
+    <div class="px-4 pt-0 pb-2 bg-dark pt-4 m-0" th:object="${barber.firstName}">
         <div class="media align-items-end profile-header">
             <!--            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>-->
-            <div class="media-body mb-5 text-white">
+            <div class="media-body mb-0 text-white">
                 <h5>Address: </h5>
                 <p class="mt-0 mb-0">
                 <p style="font-size: larger;" th:text="${barber.barberDetail.location.addressOne}"></p> </p>
@@ -164,7 +179,8 @@
         </div>
     </div>
     <br>
-
+    <div id='map' style='width: 100%; height: 500px;'></div>
+<br>
     <!--	<h1>Location of Business: </h1>-->
     <!--	<p th:text="${barber.barberDetail.location.addressOne}"></p>-->
     <!--	<p th:text="${barber.barberDetail.location.addressTwo}"></p>-->
@@ -186,15 +202,15 @@
             <h5 class="card-title">Content</h5>
             <p class="card-text" style="font-size: larger;" th:text="${review.content}"></p>
             <h5 class="card-title">Rating</h5>
-<!--            <fieldset class="rating" th:value="*{review.rating}">-->
-<!--                <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" title="Awesome - 5 stars"></label>-->
-<!--                <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>-->
-<!--                <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" title="Meh - 3 stars"></label>-->
-<!--                <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" title="Kinda bad - 2 stars"></label>-->
-<!--                <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" title="Sucks big time - 1 star"></label>-->
-<!--            </fieldset>-->
-            <p class="card-text" style="font-size: larger;" th:text="${review.rating}"></p>
-            		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>
+            <fieldset class="rating" th:value="*{review.rating}">
+                <input type="radio"  name="rating" value="5"/><label class="full"  title="Awesome - 5 stars"></label>
+                <input type="radio"  name="rating" value="4"/><label class="full"  title="Pretty good - 4 stars"></label>
+                <input type="radio" name="rating" value="3"/><label class="full"  title="Meh - 3 stars"></label>
+                <input type="radio"  name="rating" value="2"/><label class="full"  title="Kinda bad - 2 stars"></label>
+                <input type="radio"  name="rating" value="1"/><label class="full"  title="Sucks big time - 1 star"></label>
+            </fieldset>
+<!--            <p class="card-text" style="font-size: larger;" th:text="${review.rating}"></p>-->
+<!--            		<a th:href="@{'/reviews/' + ${review.id}}">View Review</a>-->
         </div>
     </div>
 	</div>
@@ -208,7 +224,7 @@
         List of Services
         <small class="text-muted">See below</small>
     </h1>
-    <div class="row row-cols-1 row-cols-md-3">
+    <div class="row row-cols-1 row-cols-md-3 pt-4 m-0">
 
         <div class="card border border-danger rounded" style=" width: 19rem;"
              th:each="service : ${barber.barberDetail.services}">
@@ -223,7 +239,7 @@
                 <h5 class="card-title">Duration: </h5>
                 <p class="card-text" style="font-size: larger;" th:text="${service.description}"></p>
                 <h5 class="card-title">Price: </h5>
-                <p class="card-text" style="font-size: larger;" th:text="'$' + ${service.price}"></p>
+                <p class="card-text currency" style="font-size: larger;" th:text="${service.price}"></p>
             </div>
 
             <div th:each="image :${service.getImages()}">
@@ -270,6 +286,7 @@
     <!--</div>-->
 
     <!--<a th:href="@{/reviews/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Review this barber</button></a>-->
+
 <br>
     <br>
     <br>
@@ -280,7 +297,96 @@
     <br>
     <br>
 </div>
+
+<script th:src="@{/js/keys.js}"></script>
+<span id="map_addr1" style="display: none;" th:text="${barber.barberDetail.location.addressOne}"></span>
+<span id="map_city" style="display: none;" th:text="${barber.barberDetail.location.city}"></span>
+<span id="map_state" style="display: none;" th:text="${barber.barberDetail.location.state}"></span>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+
+    // change the accessToken to yours, use the application.properties to fetch the token
+    // mapboxgl.accessToken = '';
+    const MAPBOX_KEY = document.querySelector('meta.map').content; //
+    mapboxgl.accessToken = MAPBOX_KEY;
+    var mapboxClient = mapboxSdk({accessToken: mapboxgl.accessToken});
+    // Grabbed the three spans and assigned them to vars (spans come from the controller)
+    var address = document.getElementById("map_addr1").innerHTML;
+    var city = document.getElementById("map_city").innerHTML;
+    var state = document.getElementById("map_state").innerHTML;
+    // geocoded it (turned it into lat/long)
+    mapboxClient.geocoding
+        .forwardGeocode({
+            query: address + "," + city + "," + state,
+            autocomplete: false,
+            limit: 1
+        })
+        // sent it to Mapbox SDK/API
+        .send()
+        // Take the response from API in form of JS promise
+        .then(function (response) {
+            // check if response is valid
+            if (
+                response &&
+                response.body &&
+                response.body.features &&
+                response.body.features.length
+            ) {
+                // if yes, grab the response (JSON) into a var
+                var feature = response.body.features[0];
+
+                // init the map object, pass in params
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    // style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                    // style: 'mapbox://styles/mapbox/satellite-streets-v11', //satellite version
+                    style: 'mapbox://styles/mapbox/dark-v10',
+                    center: feature.center,
+                    zoom: 10
+                });
+                // take the response var (feature) and set the lat and long .setLngLat()
+                // then add to map .addTo()
+                new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
+            }
+        });
+
+
+    $(document).ready(function () {
+        // $("fieldset").children().eq(4).addClass("myclass");
+        console.log($("fieldset"))
+        let fieldsets = $("fieldset")
+        for (var i = 0 ; i < fieldsets.length; i++){
+            // fieldsets.eq(i).children().addClass("myclass")
+            let startingPoint = fieldsets.eq(i).attr("value")
+            startingPoint = parseFloat(startingPoint)
+            console.log(startingPoint);
+            for (var j = 4 ; j > (4 -startingPoint) ; j--) {
+                fieldsets.eq(i).children("label").eq(j).addClass("myclass")
+            }
+        }
+    })
+
+    const moneyDisplays = document.querySelectorAll(".currency");
+    for (let moneyDisplay of moneyDisplays) {
+        let amount = parseFloat(moneyDisplay.innerText).toFixed(2);
+
+        moneyDisplay.innerText = "$" + amount;
+    }
+
+
+</script>
 <footer th:replace="partials :: footer"></footer>
+<script type="text/javascript" th:src="@{/js/file.js}"/>
+<!--<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>-->
+<!--<script>-->
+
+<!--    $(document).ready(function () {-->
+<!--        $("fieldset").children().eq(4).addClass("myclass");-->
+<!--    })-->
+
+
+<!--</script>-->
+
 </body>
 </html>
 

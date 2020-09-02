@@ -10,7 +10,7 @@ p, li, span {
 }
 
 #titleHome {
-	font-family: 'Dancing Script', cursive !important;
+	font-family: 'Dancing Script', 'Kaushan Script', 'Marck Script', cursive !important;
 	transform: rotate(-10deg);
 	font-size: 10em;
 	color: #FEFED3;
@@ -30,7 +30,8 @@ p, li, span {
 	height: 100%;
 	background-image: url("../img/barber-tools.jpg");
 	background-position: center;
-	background-size: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
 	z-index: 0;
 }
 
@@ -50,21 +51,27 @@ p, li, span {
 header, .navbar, .navbar-brand, .navbar-toggler, .navbar-toggler-icon, .nav-item, .nav-link {
 	/*BLUE NAV W/ CREAM FONT*/
 	background-color: #7D7D7D;
-	color: #2B333D;
+	color: #FEFED3;
 	/*TAN NAV W/ DARK BLUE FONT*/
 	/*background-color: #DCCCBB;*/
 	/*color: #2B333D;*/
 	/*BROWN NAV W/ DARK BLUE FONT*/
 }
 
-.nav-link:hover {
+.nav-link:hover{
 	background-color: #2B333D;
-	color: #DCCCBB;
+	color: #FEFED3 !important;
+}
+
+.icon:hover {
+	background-color: #2B333D;
+	color: #FEFED3 !important;
 }
 
 .icon {
-	color: #C2B59B !important;
+	color: #FEFED3;
 }
+
 
 .home-main {
 	background-color: #7D7D7D;
