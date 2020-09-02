@@ -84,7 +84,7 @@
                 </p>
                 <form th:action="@{/barber/edit-barber-details}" th:method="get">
                     <input type="hidden" th:name="editBarberDetailsButton" th:value="${user.barberDetail.id}">
-                    <button class="btn btn-primary btn-submit">Edit Barber Details <i class="fas fa-user-cog"></i></button>
+                    <button class="btn btn-submit">Edit Barber Details <i class="fas fa-user-cog"></i></button>
                 </form>
             </div>
         </div>
@@ -121,11 +121,11 @@
                 <p class="small mb-4" style="font-size: larger;" th:text="${user.barberDetail.location.state}"><i class="far fa-envelope mr-2"></i>>
                 </p>
                 <h5>Zip Code: </h5>
-                <p class="small mb-4" th:text="${user.barberDetail.location.zipCode}"><i
+                <p style="font-size: larger;" class="small mb-4" th:text="${user.barberDetail.location.zipCode}"><i
                         class="far fa-envelope mr-2"></i>></p>
                 <form th:action="@{/barber/edit-barber-location}" th:method="get">
                     <input type="hidden" th:name="editLocationButton" th:value="${user.barberDetail.location.id}">
-                    <button class="btn btn-primary btn-submit">Edit Barber Location</button>
+                    <button class="btn btn-submit">Edit Barber Location</button>
                 </form>
             </div>
         </div>
@@ -178,7 +178,7 @@
             <td><span class="date" th:text="${appointment.createDateTime}"></span></td>
             <td th:text="${appointment.phone}"></td>
             <td th:text="${appointment.note}"></td>
-            <td><a class="btn btn-submit" th:href="@{'/appointments/' + ${appointment.id}}">View Lead</a></td>
+            <td><a class="btn btn-submit " style="color: #FEFED3" th:href="@{'/appointments/' + ${appointment.id}}">View Lead</a></td>
         </tr>
         </tbody>
     </table>
@@ -204,27 +204,9 @@
     </h1>
 
     <a th:href="@{/barber/add-service}">
-        <button class="btn btn-primary btn-submit">Add Service <i class="fas fa-camera-retro icon"></i></button>
-        <!--    <a class="nav-link" th:href="@{/services/create}"><i class="fas fa-camera-retro icon"></i></a>-->
-    </a>
+        <button class="btn btn-submit">Add Service <i class="fas fa-camera-retro"></i></button>
 
-    <!--<div class="px-4 pt-0 pb-4 bg-dark" th:object="${user.firstName}">-->
-    <!--    <div class="media align-items-end profile-header">-->
-    <!--        &lt;!&ndash;            <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit profile</a></div>&ndash;&gt;-->
-    <!--        <div class="media-body mb-5 text-white">-->
-    <!--            <div class="card border border-danger rounded" style=" width: 19rem;" th:each="service : ${user.getBarberDetail().getServices()}">-->
-    <!--            <h5>Title </h5><p class="mt-0 mb-0"><p th:text="${service.title}"></p> </p>-->
-    <!--                <h5>Description: </h5><p class="small mb-4" th:text="${service.description}"><i class="fas fa-at mr-2"></i></p>-->
-    <!--                <h5>Duration: </h5><p class="small mb-4" th:text="${service.duration}"><i class="fas fa-at mr-2"></i></p>-->
-    <!--            <h5>Price: </h5><p class="small mb-4" th:text="${service.price}"><i class="far fa-envelope mr-2"></i></p>-->
-    <!--            </div>-->
-    <!--                <form th:action="@{/barber/edit-service}" th:method="get">-->
-    <!--                    <input type="hidden" th:name="editButton" th:value="${service.id}">-->
-    <!--                    <button class="btn btn-primary">Edit Service</button>-->
-    <!--                </form>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</div>-->
+    </a>
 
     <div class="row row-cols-1 row-cols-md-3">
 
@@ -232,7 +214,6 @@
          th:each="service : ${user.getBarberDetail().getServices()}">
 
             <!--   PICTURE OF SERVICE GOES HERE     -->
-            <!--            <img class="card-image-top" src="..." alt="">-->
             <div class="card-image-top" th:each="image :${service.getImages()}">
                 <img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"
                      style="height: 200px"></img>
@@ -350,7 +331,10 @@
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="text/javascript" th:src="@{/js/file.js}"/>
 </div>
-
-<!--<footer th:replace="partials :: footer"></footer>-->
+<br>
+<br>
+<br>
+<br>
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>

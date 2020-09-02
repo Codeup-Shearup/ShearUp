@@ -29,6 +29,9 @@
         background-color: #C2B59B !important;
         color: #FEFED3 !important;
     }
+    p, li, span {
+        font-size: larger;
+    }
 
 </style>
 <!--Nav-->
@@ -36,35 +39,21 @@
 
 <div class="main">
 
-    <!--    Side Nav-->
-<!--    <div class="sidenav">-->
-<!--        <a th:href="@{'/about'}">About</a>-->
-<!--        <a th:href="@{'/appointments'}">View</a>-->
-<!--&lt;!&ndash;        <a th:href="@{'/appointments/create'}">Create</a>&ndash;&gt;-->
-<!--&lt;!&ndash;        <a th:href="@{'/reviews/create'}">Edit</a>&ndash;&gt;-->
-<!--        <a th:href="@{'/mapbox-map'}">Map</a>-->
-<!--    </div>-->
-
     <div class="container p-5">
 
         <h2 class="text-center">Create Appointment</h2>
 
-        <!--    CREATE Appointment FORM   -->
+        <!--    CREATE APPOINTMENT FORM   -->
         <hr>
         <form th:action="@{'/appointments/create'}" th:method="post" th:object="${appointment}" class="p-5"
               style="margin-top: -5%;">
             <div class="form-group">
-<!--                <label for="user"></label>-->
                 <input type="hidden" placeholder="User Id" class="form-control" id="user" th:value="*{getUser()}">
-<!--                <input type="text" disabled="disabled" placeholder="User Id" class="form-control" id="user" th:value="*{getUser()}">-->
             </div>
             <div class="form-group">
-<!--                <label for="barber"></label>-->
                 <input type="hidden" placeholder="Barber Id" class="form-control" id="barber" name="barberId" th:value="${barber.barberDetail.id}">
-<!--                <input type="text" disabled="disabled" placeholder="Barber Id" class="form-control" id="barber" th:value="*{getBarberDetail()}">-->
             </div>
             <div class="form-group">
-<!--                <label for="createTitle">Created At</label>-->
                 <input type="hidden" disabled="disabled" placeholder="Current Time Stamp" class="form-control" id="createTitle" th:value="*{getCreateDateTime()}">
             </div>
             <div class="form-group">
@@ -75,8 +64,8 @@
                 <label for="createContent">Appointment Details</label>
                 <textarea class="form-control" placeholder="Detailed Appointment Information" id="createContent" th:field="*{note}"></textarea>
             </div>
-            <button style="border-left: 4px solid navy;" class="btn btn-submit " type="submit">Submit Appointment</button>
-            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/barbers}">Back</a>
+            <button class="btn btn-submit " type="submit">Submit Appointment</button>
+            <a class="float-right" style="text-decoration: none; color:black;" th:href="@{/barbers}"><i class="fas fa-arrow-circle-left"></i></a>
         </form>
 
     </div>
@@ -84,6 +73,3 @@
 </div>
 </body>
 </html>
-
-<!--Source-->
-<!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav-->

@@ -29,13 +29,6 @@
 				<ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
 					<!--WITH BANG IF NOT AUTHENTICATED HIDE THESE-->
 					<th:block sec:authorize="!isAuthenticated()">
-<!--						Chris has added it to the center of the page-->
-<!--						<li class="nav-item">-->
-<!--							<a class="nav-link" th:href="@{/login}">Login</a>-->
-<!--						</li>-->
-<!--						<li class="nav-item">-->
-<!--							<a class="nav-link ml-3" th:href="@{/sign-up}">Sign Up</a>-->
-<!--						</li>-->
 						<li class="nav-item">
 							<a class="nav-link ml-3" th:href="@{/about}"><i class="fas fa-head-side-mask"></i>  CONTACT US</a>
 						</li>
@@ -104,7 +97,7 @@
 			<br>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<p class="copyright-text pt-4">
-					<a href=""style="color: #2B333D;">shearup.services@gmail.com</a>
+					<a href="mailto: shearup.services@gmail.com" style="color: #2B333D;">shearup.services@gmail.com</a>
 				</p>
 			</div>
 		</div>

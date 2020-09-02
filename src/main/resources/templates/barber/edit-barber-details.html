@@ -87,8 +87,10 @@
 <!--</header>-->
 <div class="container">
     <form th:action="@{'/barber/edit-barber-details'}"  th:method="POST" th:object="${barberDetail}">
-        <h1 th:text="'Edit Barber Details Page for ' + ${user.firstName}" class="mt-4"></h1>
-<!--        <h1 th:text="${user.firstName}"></h1>-->
+
+<!--        <h1>Edit Barber Details Page for</h1>-->
+        <h2 th:text="${'Edit Barber Details Page for' + user.firstName}"></h2>
+
         <div class="form-group">
             <label for="bio">Bio <span class="required">*</span></label>
             <input class="form-control border-danger rounded" type="text" th:field="*{bio}" id="bio" name="bio" th:value="${barberDetail.bio}">
