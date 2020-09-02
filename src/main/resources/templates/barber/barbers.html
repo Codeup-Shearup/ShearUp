@@ -28,8 +28,8 @@
 <br>
 <br>
 <div class="container">
-    <div class="row row-cols-1 row-cols-md-3 pt-5">
-        <div class="card cardz" th:each="barber : ${barbers}" th:if="${barber.barberDetail != null}">
+    <div class="card-group row row-cols-1 row-cols-md-3 pt-5">
+        <div class="card m-3 cardz" th:each="barber : ${barbers}" th:if="${barber.barberDetail != null}" style="border: #8D2827 solid 1px">
             <div class="profile mr-3" th:each="image :${barber.getImages()}"><img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" alt="..." width="196" class="rounded mb-2 img-thumbnail">
 
 <!--                <div class="profile mr-3"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="gentleman_placeholder" width="196" class="rounded mb-2 img-thumbnail">-->
