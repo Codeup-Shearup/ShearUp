@@ -7,53 +7,53 @@
     <title>Title</title>
 </head>
 <body>
-<header>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<header th:replace="partials :: header"></header>
+<!--    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">-->
 
-        <a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i> SHEARUP</a>
+<!--        <a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i> SHEARUP</a>-->
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
+<!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">
-                <!--WITH BANG IF NOT AUTHENTICATED HIDE THESE-->
-                <th:block sec:authorize="!isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="btn btn-primary" th:href="@{/login}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary ml-3" th:href="@{/sign-up}">Sign Up</a>
-                    </li>
-                </th:block>
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--            <ul class=" nav justify-content-center navbar-nav navbar-inner ml-auto">-->
+<!--                &lt;!&ndash;WITH BANG IF NOT AUTHENTICATED HIDE THESE&ndash;&gt;-->
+<!--                <th:block sec:authorize="!isAuthenticated()">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="btn btn-primary" th:href="@{/login}">Login</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="btn btn-primary ml-3" th:href="@{/sign-up}">Sign Up</a>-->
+<!--                    </li>-->
+<!--                </th:block>-->
 
-                <!--IF AUTHENTICATED SHOW THESE-->
-                <!--LOGGED IN CLIENT / BARBER USER-->
+<!--                &lt;!&ndash;IF AUTHENTICATED SHOW THESE&ndash;&gt;-->
+<!--                &lt;!&ndash;LOGGED IN CLIENT / BARBER USER&ndash;&gt;-->
 
-                <!--                <th:block sec:authorize="isAuthenticated()">-->
-                <!--                    <li class="nav-item">-->
-                <!--                        <a class="nav-link" th:href="/services">Services</a>-->
-                <!--                    </li>-->
-                <!--                    <li class="nav-item">-->
-                <!--                        <a class="nav-link" th:href="/barberProfile">Barber</a>-->
-                <!--                    </li>-->
-                <!--                    <li class="nav-item">-->
-                <!--                        <a class="nav-link" th:href="/clientProfile">Client</a>-->
-                <!--                    </li>-->
-                <!--                </th:block>-->
+<!--                &lt;!&ndash;                <th:block sec:authorize="isAuthenticated()">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <li class="nav-item">&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <a class="nav-link" th:href="/services">Services</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <li class="nav-item">&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <a class="nav-link" th:href="/barberProfile">Barber</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <li class="nav-item">&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <a class="nav-link" th:href="/clientProfile">Client</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </th:block>&ndash;&gt;-->
 
-                <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <form  th:action="@{/logout}" th:method="POST">
-                            <button id="logout" class="btn-link btn" style="color: #8D2827"><i class="fas fa-sign-out-alt"></i></button>
-                        </form>
-                    </li>
-                </th:block>
-            </ul>
-        </div>
-    </nav>
+<!--                <th:block sec:authorize="isAuthenticated()">-->
+<!--                    <li class="nav-item">-->
+<!--                        <form  th:action="@{/logout}" th:method="POST">-->
+<!--                            <button id="logout" class="btn-link btn" style="color: #8D2827"><i class="fas fa-sign-out-alt"></i></button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </th:block>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
     <style>
         .required {
             color: red;
@@ -84,7 +84,6 @@
             color: #FEFED3 !important;
         }
     </style>
-</header>
 <div class="container">
     <form th:action="@{'/barber/edit-barber-location'}"  th:method="POST" th:object="${location}">
         <h1>Edit Location Page for</h1>
