@@ -2,20 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 
-<head th:replace="partials :: head (Title = 'View Barber Profile')">
+<head th:replace="partials :: head (Title = 'View Barber Profile')"></head>
     <meta charset="UTF-8">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
     <title>Barber profile page</title>
     <meta class="map" th:content="${@environment.getProperty('map.api.key')}">
+
     <!--FONT AWESOME ICONS-->
     <script src="https://kit.fontawesome.com/330785b678.js" crossorigin="anonymous"></script>
 
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+
 
     <script src="(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"></script>
 
 </head>
 <body>
+<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
 <style>
     @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
@@ -125,8 +128,12 @@
 
     <div class="px-4 pt-0 pb-4 bg-dark" th:object="${barber.firstName}">
         <div class="media align-items-end profile-header">
-            <div class="profile mr-3"><img th:src="@{${'/img/barber.jpg'}}" alt="..." width="196"
-                                           class="rounded mb-2 img-thumbnail">
+
+            <div class="profile mr-3" th:each="image :${barber.getImages()}"><img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" alt="..." width="196" class="rounded mb-2 img-thumbnail">
+
+
+<!--                <div class="profile mr-3"><img th:src="@{${'/img/barber.jpg'}}" alt="..." width="196"-->
+<!--                                           class="rounded mb-2 img-thumbnail">-->
                 <!--				th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-light btn-sm btn-block">Edit-->
 
             </div>
@@ -172,7 +179,8 @@
         </div>
     </div>
     <br>
-
+    <div id='map' style='width: 100%; height: 500px;'></div>
+<br>
     <!--	<h1>Location of Business: </h1>-->
     <!--	<p th:text="${barber.barberDetail.location.addressOne}"></p>-->
     <!--	<p th:text="${barber.barberDetail.location.addressTwo}"></p>-->
@@ -275,9 +283,61 @@
 
     <!--<a th:href="@{/reviews/create/{id}(id=${barber.barberDetail.id})}"><button class="btn btn-secondary">Review this barber</button></a>-->
 
+<!--    <div id='map' style='width: 100%; height: 500px;'></div>-->
 </div>
+
+<script th:src="@{/js/keys.js}"></script>
+<span id="map_addr1" style="display: none;" th:text="${barber.barberDetail.location.addressOne}"></span>
+<span id="map_city" style="display: none;" th:text="${barber.barberDetail.location.city}"></span>
+<span id="map_state" style="display: none;" th:text="${barber.barberDetail.location.state}"></span>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script>
+
+    // change the accessToken to yours, use the application.properties to fetch the token
+    // mapboxgl.accessToken = '';
+    const MAPBOX_KEY = document.querySelector('meta.map').content; //
+    mapboxgl.accessToken = MAPBOX_KEY;
+    var mapboxClient = mapboxSdk({accessToken: mapboxgl.accessToken});
+    // Grabbed the three spans and assigned them to vars (spans come from the controller)
+    var address = document.getElementById("map_addr1").innerHTML;
+    var city = document.getElementById("map_city").innerHTML;
+    var state = document.getElementById("map_state").innerHTML;
+    // geocoded it (turned it into lat/long)
+    mapboxClient.geocoding
+        .forwardGeocode({
+            query: address + "," + city + "," + state,
+            autocomplete: false,
+            limit: 1
+        })
+        // sent it to Mapbox SDK/API
+        .send()
+        // Take the response from API in form of JS promise
+        .then(function (response) {
+            // check if response is valid
+            if (
+                response &&
+                response.body &&
+                response.body.features &&
+                response.body.features.length
+            ) {
+                // if yes, grab the response (JSON) into a var
+                var feature = response.body.features[0];
+
+                // init the map object, pass in params
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    // style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                    // style: 'mapbox://styles/mapbox/satellite-streets-v11', //satellite version
+                    style: 'mapbox://styles/mapbox/dark-v10',
+                    center: feature.center,
+                    zoom: 10
+                });
+                // take the response var (feature) and set the lat and long .setLngLat()
+                // then add to map .addTo()
+                new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
+            }
+        });
+
 
     $(document).ready(function () {
         // $("fieldset").children().eq(4).addClass("myclass");
@@ -297,7 +357,7 @@
 
 </script>
 <footer th:replace="partials :: footer"></footer>
-
+<script type="text/javascript" th:src="@{/js/file.js}"/>
 <!--<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>-->
 <!--<script>-->
 

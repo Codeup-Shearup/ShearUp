@@ -1,9 +1,7 @@
 package com.codeup.shearup.controllers;
 
-import com.codeup.shearup.models.BarberDetail;
-import com.codeup.shearup.models.Review;
-import com.codeup.shearup.models.User;
-import com.codeup.shearup.models.UserWithRoles;
+import com.codeup.shearup.models.*;
+import com.codeup.shearup.repositories.ImageRepository;
 import com.codeup.shearup.repositories.ReviewRepository;
 import com.codeup.shearup.repositories.UserRepository;
 import com.codeup.shearup.repositories.BarberDetailRepository;
@@ -26,13 +24,15 @@ public class UserController {
 	private PasswordEncoder passwordEncoder;
 	private BarberDetailRepository barberDetailDao;
 	private ReviewRepository reviewsDao;
+	private ImageRepository imagesDao;
 //
 	public UserController(UserRepository users, PasswordEncoder passwordEncoder,
-	                      BarberDetailRepository barberDetailDao, ReviewRepository reviewsDao) {
+	                      BarberDetailRepository barberDetailDao, ReviewRepository reviewsDao, ImageRepository imagesDao) {
 		this.users = users;
 		this.passwordEncoder = passwordEncoder;
 		this.barberDetailDao = barberDetailDao;
 		this.reviewsDao = reviewsDao;
+		this.imagesDao = imagesDao;
 	}
 	
 	@GetMapping("/sign-up")
@@ -76,13 +76,16 @@ public class UserController {
 
 	// this will redirect differently for barbers and clients
 	@GetMapping("/dashboard")
-	public String loginGateway() {
+	public String loginGateway(Model model) {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		//=====THIS REPRESENTS CURRENT USER THAT IS LOGGED IN GRABBING USER OBJECT==////
 		//===== GETS USER OBJECT OF ASSOCIATED ID WITH USER THAT IS LOGGED IN=======///
 		//==SUPPOSED TO BE USERDAO====//
 		//BELOW IF STATEMENT SEND THEM TO DASHBOARD===//
 		User user = users.getOne(sessionUser.getId());
+		List<Image> myImage = imagesDao.findAll();
+		model.addAttribute("images", myImage);
+
 //		(barberDetailDao.getOne(Long.parseLong(user.getBarberDetail().toString())).getBio() == null))
 		if (user.isBarber() && (user.getBarberDetail() == null)) {
 			return "redirect:barber/barber-details/bio";
@@ -98,8 +101,10 @@ public class UserController {
 		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = users.getOne(sessionUser.getId());
 		List<Review> reviews = reviewsDao.findAllReviewsByAuthor(user.getId());
+		List<Image> myImage = imagesDao.findAll();
 		model.addAttribute("user", user);
 		model.addAttribute("reviews", reviews);
+		model.addAttribute("images", myImage);
 		if (user.isBarber()) {
 			return "redirect:barber/profile";
 		}
@@ -115,17 +120,22 @@ public class UserController {
 	}
 	
 	@PostMapping("/profile/edit/{id}")
-	public String update(@PathVariable long id, @ModelAttribute User user) {
+	public String update(@PathVariable long id, @ModelAttribute User user, @RequestParam String imageUpload) {
 //		User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User currentUser = users.findById(id);
-		
+		User userz = users.getOne(currentUser.getId());
+		Image img = new Image();
+		img.setFilestackUrl(imageUpload);
+		img.setUser(user);
 		currentUser.setFirstName(user.getFirstName());
 		currentUser.setLastName(user.getLastName());
 		currentUser.setUsername(user.getUsername());
 		currentUser.setEmail(user.getEmail());
+		userz.setImages(user.getImages());
 //		String hash = passwordEncoder.encode(user.getPassword());
 //		currentUser.setPassword(hash);
 		users.save(currentUser);
+		imagesDao.save(img);
 		return "redirect:/profile";
 	}
 }

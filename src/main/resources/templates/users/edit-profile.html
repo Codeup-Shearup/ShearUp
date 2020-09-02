@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
 <head th:replace="partials :: head (Title = 'Edit Profile')"></head>
+	<meta class="filestack" th:content="${@environment.getProperty('filestack.api.key')}">
+
+</head>
 <body>
 
 <style>
@@ -56,6 +60,10 @@
 		<label for="editEmail">Email</label>
 		<input type="text" class="form-control border border-danger" id="editEmail" name="editEmail" th:field="*{email}" th:value="${user.email}">
 	</div>
+
+	<input type="hidden" id="imageUpload" name="imageUpload" value="null">
+	<img src="" class="hidden" id="imagePreview" style="height: 200px">
+
 <!--	<div class="form-group">-->
 <!--		<label for="editPassword">Password</label>-->
 <!--		<input class="form-control" id="editPassword" type="password" name="editPassword" th:field="*{password}">-->
@@ -69,6 +77,27 @@
 	<a class="btn btn-submit float-right" style="text-decoration: none; color:black;" th:href="@{/profile}">back</a>
 </form>
 </div>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script type="text/javascript" th:src="@{/js/keys.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+	// This one works with creating a service and uploading an image for that service
+
+	const client = filestack.init(FILESTACK_KEY);
+
+	const options = {
+		onUploadDone: saveLocation
+	};
+	client.picker(options).open();
+
+	function saveLocation(resp){
+		console.log(resp);
+		// do some error handling and such here like fileError > filesuploaded[0]
+		const photo = resp.filesUploaded[0];
+		document.getElementById("imageUpload").value = photo.handle;
+
+		document.getElementById("imagePreview").src = "https://cdn.filestackcontent.com/" + photo.handle;
+	}
+</script>
 <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
 <!--<script>-->
 <!--	$('#editPassword, #passwordConfirmation').on('keyup', function () {-->
