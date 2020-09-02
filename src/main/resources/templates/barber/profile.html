@@ -145,7 +145,7 @@
     <!--        </div>-->
 
 
-    <h1 class="card-title">New Leads</h1>
+    <h1 class="card-title" style="color: #FEFED3">New Leads</h1>
 
 <!--    <div class="px-4 pt-0 pb-4 bg-dark" th:each="appointment : ${user.getBarberDetail().getAppointments()}">-->
 <!--        <div class="media align-items-end profile-header">-->
@@ -175,7 +175,7 @@
         </tr>
         </thead>
         <tbody th:each="appointment : ${user.getBarberDetail().getAppointments()}">
-        <tr>
+        <tr style="color: #FEFED3">
             <td><span class="date" th:text="${appointment.createDateTime}"></span></td>
             <td th:text="${appointment.user.firstName} +' ' + ${appointment.user.lastName}"></td>
             <td th:text="${appointment.phone}"></td>
