@@ -107,7 +107,7 @@
             <input class="form-control border-danger rounded" type="text" th:field="*{hoursOfWork}" id="hours" name="hours" th:value="${barberDetail.hoursOfWork}">
         </div>
 
-        <button class="btn btn-submit">Edit Barber Details</button>
+        <button class="btn btn-submit">Save</button>
         <input type="hidden" th:value="${barberDetail.id}" name="barberDetailId">
         <a class="btn float-right btn-submit" style="text-decoration: none; color:black;" th:href="@{/barber/profile}"><i class="fas fa-arrow-circle-left"></i></a>
 

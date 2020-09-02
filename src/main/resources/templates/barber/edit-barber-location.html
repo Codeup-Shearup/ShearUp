@@ -8,7 +8,6 @@
 </head>
 <body>
 <header th:replace="partials :: header"></header>
-<header>
 <!--    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">-->
 
 <!--        <a class="navbar-brand nav-link" th:href="@{/}"><i class="fas fa-cut"></i> SHEARUP</a>-->
@@ -114,7 +113,7 @@
             <input class="form-control border border-danger rounded" type="number" th:field="*{zipCode}" id="zipcode" name="zipcode" required th:value="${location.zipCode}">
         </div>
 
-        <button class="btn btn-submit">Edit Location</button>
+        <button class="btn btn-submit">Save</button>
         <input type="hidden" th:value="${location.id}" name="locationId">
         <a class="btn float-right btn-submit" style="text-decoration: none; color:black;" th:href="@{/barber/profile}"><i class="fas fa-arrow-circle-left"></i></a>
 
