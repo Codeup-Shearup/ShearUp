@@ -68,7 +68,7 @@
                 <p class="card-text" th:text="${appointment.phone}"></p>
                 <a class="btn btn-danger" th:href="@{'/appointments/' + ${appointment.id} + '/delete'}"><i class="fas fa-trash-alt"></i></a>
 
-                <a class="btn btn-primary float-right" style="text-decoration: none; color:black;" th:href="@{/appointments}"><i class="fas fa-arrow-circle-left"></i></a>
+                <a class="btn btn-submit float-right" style="text-decoration: none; color:black;" th:href="@{/appointments}"><i class="fas fa-arrow-circle-left"></i></a>
             </div>
         </div>
 
