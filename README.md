@@ -18,7 +18,7 @@ Purpose: - ability to upload pictures on
 https://www.filestack.com/docs
 
 
-## Framework used
+## Framework
 
 Built with 
 * Spring Boot
