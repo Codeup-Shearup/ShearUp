@@ -10,7 +10,7 @@ This is when the idea for Shearup was created, by Knoah Cotto. Shearup aims to c
 ## API Reference
 
 * MapboxAPI
-Purpose: - ability to dynamically display Barber locations so clients are able to see
+Purpose: - ability to dynamically display Barber locations so clients are able to search location
 https://docs.mapbox.com/api/
 
 * FileStackAPI
