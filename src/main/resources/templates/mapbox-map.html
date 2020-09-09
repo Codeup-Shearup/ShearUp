@@ -49,7 +49,7 @@
     <div id='map' style='width: 100%; height: 500px;'></div>
 
 
-    <script th:src="@{/js/keys.js}"></script>
+<!--    <script th:src="@{/js/keys.js}"></script>-->
     <script>
         const MAPBOX_KEY = document.querySelector('meta.map').content;
         mapboxgl.accessToken = MAPBOX_KEY;
@@ -59,79 +59,29 @@
             // style: 'mapbox://styles/mapbox/satellite-streets-v11', //satellite version
             style: 'mapbox://styles/mapbox/dark-v10', //dark, sleek version
             center: {lng: -98.4916, lat: 29.4252}, // starting position [lng, lat]
-            zoom: 10 // starting zoom 0 is the farthest - 24 the closest
+            zoom: 11 // starting zoom 0 is the farthest - 24 the closest
         });
-        //San Antonio, TX --Center
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.4916, lat: 29.4252})
-            .addTo(map);
-        //Henley's Gentlemen's Grooming --14510 NW Military Hwy #103, San Antonio, TX 78231
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.544550, lat: 29.575790})
-            .addTo(map);
-        //Gentlemen's Barber Shop --1207 San Francisco, San Antonio, TX 78201
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.513280, lat: 29.468690})
-            .addTo(map);
-        //San Antonio, TX --Center
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.4916, lat: 29.4252})
-            .addTo(map);
-        //Boardroom Salon For Men - 7322 Jones Maltsberger Rd Suite 214, San Antonio, TX 78209
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.480040, lat: 29.498110})
-            .addTo(map);
-        //The Gents Place @ The Dominion -- 23718 IH-West 10, #114, San Antonio, TX 78257
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.627399, lat: 29.662949})
-            .addTo(map);
-        //San Antonio, TX --Center
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.492913, lat: 29.426299})
-            .addTo(map);
-        //18|8 Fine Men’s Salons - Downtown Riverwalk --122 E Houston St #104, San Antonio, TX 78205
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.513280, lat: 29.468690})
-            .addTo(map);
-        // Chacabana Barber Shop --5002 Eisenhauer Rd, San Antonio, TX 78218
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.387623, lat: 29.496053})
-            .addTo(map);
-        // Victory Salon --4745 Fredericksburg Rd, San Antonio, TX 78229
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({lng: -98.555608, lat: 29.495377})
-            .addTo(map);
-        // Matador Men's Grooming --315 E Commerce St # 102, San Antonio, TX 78205
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({})
-            .addTo(map);
-        // Southtown barbers --1802 S St Mary's St, San Antonio, TX 78210
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({})
-            .addTo(map);
-        // Los Barberos Classic Barbershop --443 McCarty Rd, San Antonio, TX 78216
-        var marker = new mapboxgl.Marker();
-        marker
-            .setLngLat({})
-            .addTo(map)
 
-        // //this below still needs work...
-        var popup = new mapboxgl.Popup()
-            .setHTML("<h3>23718 IH-West 10, #114, San Antonio, TX 78257</h3>");
-
-        marker.setPopup(popup);
+        map.addControl(new mapboxgl.NavigationControl());
+        function addMarker(location) {
+            geocode(location.formattedAddress, MAPBOX_KEY).then(function(coordinates) {
+                const popup = new mapboxgl.Popup()
+                        .setLngLat([-98.489615, 29.426827])
+                        .setHTML(`<h5 style="color: #2B333D;">${location.formattedAddress}</h5>`);
+                const marker = new mapboxgl.Marker()
+                        .setLngLat(coordinates)
+                        .setPopup(popup)
+                        .addTo(map);
+            })
+        }
+        fetch('/mapbox/barbers')
+                .then(res => res.json())
+                .then(locations => {
+                    locations.forEach(function(location) {
+                        addMarker(location);
+                    });
+                });
+        
         // marker.setDraggable(true);
         //
         // marker.on('dragged', function() {

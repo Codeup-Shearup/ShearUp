@@ -1,71 +1,88 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials :: head (Title = 'Profile')">
-	<link rel="stylesheet" href="../../static/css/profile.css">
+    <link rel="stylesheet" href="../../static/css/profile.css">
 </head>
 <body>
 <!--Styling for text and background color-->
 <style>
-	body {
-		background-color: #2B333D;
-		color: #FEFED3;
-	}
+    body {
+        background-color: #2B333D;
+        color: #FEFED3;
+    }
 
-	.cardz {
-		background-color: #2B333D;
-	}
-	
-	.btn-submit {
-		background-color: #FEFED3 !important;
-		color: #2B333D !important;
-	}
-	.btn-submit:hover {
-		background-color: #C2B59B !important;
-		color: #FEFED3 !important;
-	}
+    .cardz {
+        background-color: #2B333D;
+    }
 
-	.div1 {
-		border: 15px #8D2827;
-		padding: 50px;
-		margin: 20px;
-	}
+    .btn-submit {
+        background-color: #FEFED3 !important;
+        color: #2B333D !important;
+    }
+
+    .btn-submit:hover {
+        background-color: #C2B59B !important;
+        color: #FEFED3 !important;
+    }
+
+    .div1 {
+        border: 15px #8D2827;
+        padding: 50px;
+        margin: 20px;
+    }
 </style>
 
 <header th:replace="partials :: header"></header>
 
 <div class="row py-5 px-4">
-	<div class="col-xl-4 col-md-6 col-sm-10 mx-auto">
-		<div class="bg-white shadow rounded overflow-hidden" style="border: #8D2827 solid 1px">
-			<div class="px-4 pt-0 pb-4 bg-dark" th:object="${user}">
-				<div class="media align-items-end profile-header">
-					<div class="profile mr-3 mt-2"><img th:src="@{${'/img/profile_placeholder.png'}}" alt="..." width="196" class="rounded mb-2 img-thumbnail"><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-submit btn-sm btn-block">Edit profile</a></div>
-					<div class="media-body mb-5 text-white">
-						<h4 class="mt-0 mb-1"><span th:text="*{firstName}"></span> <span th:text="*{lastName}"></span></h4>
-						<p class="small mb-4" style="font-size: larger" th:text="*{username}"> <i class="fas fa-at mr-2"></i></p>
-						<p class="small mb-4" style="font-size: larger;" th:text="*{email}"> <i class="far fa-envelope mr-2"></i>></p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="py-4 px-4 cardz">
-				<div class="py-4">
-					<h5 class="mb-1">Recent reviews</h5>
-					<div class="p-4 pb-2 card rounded shadow-sm cardz mt-3" style="border: #8D2827 solid 1px" th:each="review : ${reviews}">
-						<p class="card-title font-italic mb-0 cardz" th:text="${review.content}"></p>
-						<ul class="list-inline small text-muted mt-3 mb-0 cardz">
-							<li class="card-subtitle list-inline-item" th:text="${review.barberDetail.getUser().firstName} + ' ' + ${review.barberDetail.getUser().lastName}"><i class="far fa-user-circle mr-2" style="color: #C2B59B"></i></li>
-						</ul>
-						<div class="card-body pb-0 pr-0 d-inline-flex justify-content-end">
-							<a class="btn btn-danger" th:href="@{'/reviews/' + ${review.id} + '/delete'}">Delete</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!-- End profile widget -->
-	
-	</div>
-</div>
+    <div class="col-xl-4 col-md-6 col-sm-10 mx-auto">
+        <div class="bg-white shadow rounded overflow-hidden" style="border: #8D2827 solid 1px">
+            <div class="px-4 pt-0 pb-4 bg-dark" th:object="${user}">
+                <div class="media align-items-end profile-header">
+                    <!--					<div class="card-image-top" th:each="image :${user.getImages()}">-->
+                    <!--						<img th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"-->
+                    <!--							 style="height: 200px"></img>-->
+                    <!--					</div>-->
+                    <div class="profile mr-3 mt-2" th:each="image :${user.getImages()}"><img
+                            th:src="${'https://cdn.filestackcontent.com/' + image.getFilestackUrl()}" class="hidden"
+                            style="height: 200px"></div><br>
+                    <div><a th:href="@{/profile/edit/{id}(id=${user.id})}" class="btn btn-submit btn-sm btn-block">Edit
+                        profile</a></div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-1"><span th:text="*{firstName}"></span> <span th:text="*{lastName}"></span>
+                        </h4>
+                        <p class="small mb-4" style="font-size: larger" th:text="*{username}"><i
+                                class="fas fa-at mr-2"></i></p>
+                        <p class="small mb-4" style="font-size: larger;" th:text="*{email}"><i
+                                class="far fa-envelope mr-2"></i>></p>
+                    </div>
+                </div>
+            </div>
 
+
+            <div class="py-4 px-4 cardz">
+                <div class="py-4">
+                    <h5 class="mb-1">Recent reviews</h5>
+                    <div class="p-4 pb-2 card rounded shadow-sm cardz mt-3" style="border: #8D2827 solid 1px"
+                         th:each="review : ${reviews}">
+                        <p class="card-title font-italic mb-0 cardz" th:text="${review.content}"></p>
+                        <ul class="list-inline small text-muted mt-3 mb-0 cardz">
+                            <li class="card-subtitle list-inline-item"
+                                th:text="${review.barberDetail.getUser().firstName} + ' ' + ${review.barberDetail.getUser().lastName}">
+                                <i class="far fa-user-circle mr-2" style="color: #C2B59B"></i></li>
+                        </ul>
+                        <div class="card-body pb-0 pr-0 d-inline-flex justify-content-end">
+                            <a class="btn btn-danger" th:href="@{'/reviews/' + ${review.id} + '/delete'}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End profile widget -->
+
+    </div>
+</div>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script type="text/javascript" th:src="@{/js/file.js}"/>
 <footer th:replace="partials :: footer"></footer>
 </body>
 </html>
