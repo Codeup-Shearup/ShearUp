@@ -21,7 +21,7 @@ https://www.filestack.com/docs
 ## Framework
 
 Built with 
-* Spring Boot
+* Spring Boot Framework
 
 ## User Stories
 
